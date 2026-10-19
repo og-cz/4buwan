@@ -1,4 +1,0 @@
-corpus,writers,mean_gray,std_gray,median_gray,p05_gray,p95_gray,fill_density,height,width,aspect_ratio,file_size
-Bengali,45,0.9119,0.9147,0.6042,0.7083,0.6042,0.9144,0.9138,0.8097,0.646,0.8723
-CEDAR,25,1.0,0.7824,1.0,0.8622,1.0,0.7954,0.7723,0.7691,0.7805,0.8325
-Hindi,72,0.9093,0.9093,,0.7238,,0.9093,0.7635,0.6965,0.6037,0.6917
