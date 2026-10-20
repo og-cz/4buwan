@@ -1,0 +1,144 @@
+{
+  "notebook": "v11_covariance_metric",
+  "n_dev_writers": 142,
+  "corpora": [
+    "Bengali",
+    "CEDAR",
+    "Hindi"
+  ],
+  "split_seed": 20261014,
+  "nu": 0.1,
+  "gamma": "scale",
+  "n_enrol": 12,
+  "F1": {
+    "eigenvalues": [
+      10.499808274766021,
+      2.8785044802559234,
+      1.2937915604943915,
+      0.849872499081691,
+      0.7481311374262131,
+      0.2871882163856608,
+      0.2706280990679396,
+      0.075731101603072,
+      0.03632290793693247,
+      0.026153157226589136,
+      0.020871858371897874,
+      0.006458340363844395,
+      0.004638510700573891,
+      0.0015602017577193979,
+      0.00030223943110426957,
+      3.7415130421249945e-05,
+      5.438730791681778e-16
+    ],
+    "n95": 5,
+    "participation_ratio": 2.375636683802548
+  },
+  "F2": {
+    "observed": 7.435259970799094,
+    "noise12": 3.854531960882188,
+    "signal": 3.5807280099169057,
+    "reliability": 0.48158746620557935
+  },
+  "means": {
+    "B_global_diagonal": {
+      "Bengali": 0.7024691358024692,
+      "CEDAR": 0.8161111111111111,
+      "Hindi": 0.800733024691358
+    },
+    "A_perwriter_diagonal": {
+      "Bengali": 0.7182098765432099,
+      "CEDAR": 0.821111111111111,
+      "Hindi": 0.8035783179012346
+    },
+    "G_pooled_fullcov": {
+      "Bengali": 0.795524691358025,
+      "CEDAR": 0.8377777777777777,
+      "Hindi": 0.8506944444444444
+    },
+    "own_rank1": {
+      "Bengali": 0.8013888888888889,
+      "CEDAR": 0.8386111111111112,
+      "Hindi": 0.8582175925925926
+    },
+    "own_rank17": {
+      "Bengali": 0.8401234567901235,
+      "CEDAR": 0.8286111111111112,
+      "Hindi": 0.8382523148148149
+    },
+    "permuted_rank17": {
+      "Bengali": 0.762037037037037,
+      "CEDAR": 0.835,
+      "Hindi": 0.7752700617283951
+    }
+  },
+  "tests": [
+    {
+      "test": "F3  pooled full-cov  >  global diagonal",
+      "pooled_d": 0.0586,
+      "ci": [
+        0.0407,
+        0.0772
+      ],
+      "pooled_p": 8.295466612861337e-10,
+      "holm_rejected_on": [
+        "Bengali",
+        "Hindi"
+      ],
+      "n_corpora_rejected": 2
+    },
+    {
+      "test": "F4  own cov (r=17)   >  permuted writer",
+      "pooled_d": 0.0556,
+      "ci": [
+        0.0272,
+        0.0854
+      ],
+      "pooled_p": 0.0007544124928031264,
+      "holm_rejected_on": [
+        "Hindi"
+      ],
+      "n_corpora_rejected": 1
+    },
+    {
+      "test": "F5  own cov (r=1)    >  pooled full-cov",
+      "pooled_d": 0.0058,
+      "ci": [
+        0.0036,
+        0.0081
+      ],
+      "pooled_p": 2.865064561866663e-06,
+      "holm_rejected_on": [
+        "Bengali",
+        "Hindi"
+      ],
+      "n_corpora_rejected": 2
+    },
+    {
+      "test": "    own cov (r=17)   >  pooled full-cov",
+      "pooled_d": 0.0062,
+      "ci": [
+        -0.0089,
+        0.0226
+      ],
+      "pooled_p": 0.8360435637181611,
+      "holm_rejected_on": [],
+      "n_corpora_rejected": 0
+    },
+    {
+      "test": "    per-writer diag (v9 A) > global diag (B)",
+      "pooled_d": 0.0073,
+      "ci": [
+        -0.0027,
+        0.0177
+      ],
+      "pooled_p": 0.25794800301567344,
+      "holm_rejected_on": [],
+      "n_corpora_rejected": 0
+    }
+  ],
+  "oracle": {
+    "global_": 0.7724716353677622,
+    "honest": 0.8120598591549296,
+    "cheating_ceiling": 0.9077415884194052
+  }
+}
