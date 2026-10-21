@@ -1,0 +1,10 @@
+{
+  "description": "Enables users to submit multi-part prompts sequentially and finalize input when complete, streamlining complex content creation workflows.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
