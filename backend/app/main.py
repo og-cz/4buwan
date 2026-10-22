@@ -6,16 +6,21 @@ Storage: one SQLite file + one folder of images and profiles under backend/data/
 """
 from __future__ import annotations
 
+import base64
+import csv
+import io
 import json
 import os
 import sqlite3
 import uuid
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, Query, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+from PIL import Image
 
 from sigdesk_engine import engine as E
 
@@ -109,17 +114,20 @@ def sample(pid: str, idx: int):
 async def verify(person_id: str = Form(...), file: UploadFile = File(...), strictness: str = Form("Standard"),
                  uncertain: str = Form("Standard"), case_title: str = Form(""), notes: str = Form("")):
     pf = DATA / "profiles" / f"{person_id}.npz"
-    if not pf.exists(): raise HTTPException(404, "This person has no ready Signature Profile.")
+    with db() as c:
+        p = c.execute("SELECT status FROM persons WHERE id=?", (person_id,)).fetchone()
+    if not p or p["status"] != "Ready" or not pf.exists(): raise HTTPException(404, "This person has no ready Signature Profile.")
     blob = await file.read()
     qc = E.quality_check(blob)
     if not qc["ok"]: raise HTTPException(400, qc["issues"][0]["message"])
     res = E.verify(E.Profile.load(pf), blob, K, strictness, uncertain)
     cid = "C-" + uuid.uuid4().hex[:8].upper()
+    out = dict(case_id=cid, quality=qc, **res)
     with db() as c:
         c.execute("INSERT INTO checks VALUES(?,?,?,?,?,?,?,?,?,?,?)", (cid, person_id, now(), res["verdict"], res["confidence"],
-                  res["score"], save_upload(blob, file.filename), case_title, notes, "Pending", json.dumps(res)))
+                  res["score"], save_upload(blob, file.filename), case_title, notes, "Pending", json.dumps(out)))
         log(c, "verify", cid, res["verdict"])
-    return dict(case_id=cid, quality=qc, **res)
+    return out
 
 
 @app.get("/api/checks")
@@ -139,13 +147,14 @@ def check(cid: str):
         ev = c.execute("SELECT at,kind,detail FROM events WHERE ref=? ORDER BY id", (cid,)).fetchall()
     if not r: raise HTTPException(404, "Case not found.")
     return dict(id=r["id"], person_id=r["person_id"], created=r["created"], case_title=r["case_title"], notes=r["notes"],
-                decision=r["decision"], timeline=[dict(e) for e in ev], result=json.loads(r["result"]))
+                decision=r["decision"], timeline=[dict(e) for e in ev], result={"case_id": r["id"], **json.loads(r["result"])})
 
 
 @app.post("/api/checks/{cid}/decision")
 def decide(cid: str, decision: str = Form(...), note: str = Form("")):
     if decision not in ("Accepted", "Rejected", "Needs more evidence"): raise HTTPException(400, "Unknown decision.")
     with db() as c:
+        if not c.execute("SELECT 1 FROM checks WHERE id=?", (cid,)).fetchone(): raise HTTPException(404, "Case not found.")
         c.execute("UPDATE checks SET decision=? WHERE id=?", (decision, cid)); log(c, "decision", cid, f"{decision}: {note}")
     return dict(ok=True)
 
@@ -156,3 +165,78 @@ def research():
     p = E.ARTIFACT_DIR / "research" / "results.json"
     if not p.exists(): raise HTTPException(404, "Copy the notebook's outputs/results.json into sigdesk_engine/artifacts/research/.")
     return json.loads(p.read_text(encoding="utf-8"))
+
+
+def data_url(a) -> str:
+    buf = io.BytesIO(); Image.fromarray(a).save(buf, format="PNG")
+    return "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode()
+
+
+@app.get("/api/checks/{cid}/image")
+def check_image(cid: str):
+    with db() as c:
+        r = c.execute("SELECT image FROM checks WHERE id=?", (cid,)).fetchone()
+    if not r or not Path(r["image"]).exists(): raise HTTPException(404, "Image not found.")
+    return FileResponse(r["image"])
+
+
+@app.post("/api/preprocess")
+async def preprocess(file: UploadFile = File(...)):
+    st = E.stages(await file.read())
+    return dict(stages={k: data_url(v) for k, v in st.items()}, hog=data_url(E.hog_picture(st["S4"])))
+
+
+@app.get("/api/research/performance")
+def performance():
+    """Rows of the notebook's table_performance.csv (numbers converted, labels unchanged)."""
+    p = E.ARTIFACT_DIR / "research" / "table_performance.csv"
+    if not p.exists(): raise HTTPException(404, "Copy the notebook's table_performance.csv into sigdesk_engine/artifacts/research/.")
+    with p.open(encoding="utf-8", newline="") as f:
+        rows = list(csv.DictReader(f))
+    return [{k: (v if k in ("condition", "scope") else int(v) if k == "writers" else float(v)) for k, v in r.items()} for r in rows]
+
+
+AGREES = {"Accepted": "LIKELY GENUINE", "Rejected": "LIKELY FORGED"}
+
+
+@app.get("/api/stats")
+def stats(date_from: str = Query("", alias="from"), date_to: str = Query("", alias="to")):
+    """Counts for the Dashboard and Reports, computed from the checks table. Dates are YYYY-MM-DD (inclusive)."""
+    sql, args = "SELECT created, verdict, confidence, decision FROM checks WHERE 1=1", []
+    if date_from: sql += " AND substr(created,1,10)>=?"; args.append(date_from)
+    if date_to: sql += " AND substr(created,1,10)<=?"; args.append(date_to)
+    with db() as c:
+        rows = c.execute(sql, args).fetchall()
+        people = Counter(r["status"] for r in c.execute("SELECT status FROM persons").fetchall())
+    per_day = Counter(r["created"][:10] for r in rows)
+    verdicts = Counter(r["verdict"] for r in rows)
+    decided = [r for r in rows if r["decision"] in AGREES]
+    n = len(rows)
+    return dict(checks=n, per_day=[dict(date=d, checks=per_day[d]) for d in sorted(per_day)],
+                verdicts={v: verdicts.get(v, 0) for v in ("LIKELY GENUINE", "LIKELY FORGED", "UNCERTAIN")},
+                uncertain_rate=(verdicts.get("UNCERTAIN", 0) / n) if n else None,
+                pending=sum(1 for r in rows if r["decision"] == "Pending"),
+                decided=len(decided),
+                human_agreement=(sum(AGREES[r["decision"]] == r["verdict"] for r in decided) / len(decided)) if decided else None,
+                average_confidence=(sum(r["confidence"] for r in rows) / n) if n else None,
+                persons=dict(people))
+
+
+@app.post("/api/persons/{pid}/archive")
+def archive(pid: str):
+    with db() as c:
+        if not c.execute("SELECT 1 FROM persons WHERE id=?", (pid,)).fetchone(): raise HTTPException(404, "Person not found.")
+        c.execute("UPDATE persons SET status='Archived' WHERE id=?", (pid,)); log(c, "archive", pid)
+    return dict(ok=True)
+
+
+@app.delete("/api/persons/{pid}")
+def delete_person(pid: str):
+    with db() as c:
+        if not c.execute("SELECT 1 FROM persons WHERE id=?", (pid,)).fetchone(): raise HTTPException(404, "Person not found.")
+        for r in c.execute("SELECT path FROM samples WHERE person_id=?", (pid,)).fetchall():
+            Path(r["path"]).unlink(missing_ok=True)
+        (DATA / "profiles" / f"{pid}.npz").unlink(missing_ok=True)
+        c.execute("DELETE FROM samples WHERE person_id=?", (pid,)); c.execute("DELETE FROM persons WHERE id=?", (pid,))
+        log(c, "delete", pid)
+    return dict(ok=True)
