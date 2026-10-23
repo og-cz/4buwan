@@ -1,18 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { listPersons } from "../api/client";
+import useAsync from "../state/useAsync";
+import { useTerms } from "../state/settings";
+import { formatDate, initials, statusTone } from "../format";
+import type { PersonSummary } from "../types";
 import Icon from "./Icon";
 import Tag from "./Tag";
-const clients = [
-  { name: "Amira Rahman", id: "CL-0047", status: "Ready", date: "14 Feb 2025" },
-  { name: "Daniel Cruz", id: "CL-0103", status: "Incomplete", date: "10 Feb 2025" },
-  { name: "Maya Santos", id: "CL-0126", status: "No profile", date: "—" },
-  { name: "Leo Villanueva", id: "CL-0138", status: "Ready", date: "06 Feb 2025" },
-];
+import { EmptyState, ErrorState } from "./States";
+import Button from "./Button";
 
-export default function PersonSearch({ onSelect }: { onSelect: (ready: boolean) => void }) {
+type Props = { onSelect: (p: PersonSummary) => void; onEnrol?: () => void };
+
+export default function PersonSearch({ onSelect, onEnrol }: Props) {
+  const t = useTerms();
   const [search, setSearch] = useState("");
-  const visible = clients.filter(c => `${c.name} ${c.id}`.toLowerCase().includes(search.toLowerCase()));
+  const [q, setQ] = useState("");
+  useEffect(() => { const h = window.setTimeout(() => setQ(search.trim()), 200); return () => window.clearTimeout(h); }, [search]);
+  const people = useAsync(() => listPersons(q), [q]);
+  const rows = people.data ?? [];
   return <section className="client-search">
-    <div className="search-box"><Icon name="search" /><input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search by client name or ID" /><span>{visible.length} clients</span></div>
-    <div className="client-results">{visible.map(c => <button key={c.id} onClick={() => onSelect(c.status === "Ready")}><span className="avatar">{c.name.split(" ").map(n => n[0]).join("")}</span><div><strong>{c.name}</strong><small>{c.id}</small></div><Tag tone={c.status === "Ready" ? "ready" : c.status === "Incomplete" ? "warn" : "neutral"}>{c.status.toUpperCase()}</Tag><div className="enrolled"><span>ENROLLED</span><strong>{c.date}</strong></div><Icon name="chevron" size={15} /></button>)}</div>
+    <div className="search-box"><Icon name="search" /><input value={search} onChange={e => setSearch(e.target.value)} placeholder={`Search by ${t.lower} name or ${t.idLabel}`} /><span>{people.loading ? "Searching…" : `${rows.length} ${rows.length === 1 ? t.lower : t.people.toLowerCase()}`}</span></div>
+    {people.error ? <ErrorState message={people.error} retry={people.reload} />
+      : !people.loading && rows.length === 0 ? <EmptyState icon="user" title={q ? `No ${t.people.toLowerCase()} match "${q}"` : `No ${t.people.toLowerCase()} enrolled yet`} text={`Enrol a ${t.lower} with 12 genuine signatures to start.`} action={onEnrol && <Button icon="enrol" onClick={onEnrol}>Enrol {t.person}</Button>} />
+      : rows.length > 0 && <div className="client-results">{rows.map(p => <button key={p.id} onClick={() => onSelect(p)}><span className="avatar">{initials(p.name)}</span><div><strong>{p.name}</strong><small>{p.external_id || "—"} · {p.consistency.label}</small></div><Tag tone={statusTone(p.status)}>{p.status.toUpperCase()}</Tag><div className="enrolled"><span>ENROLLED</span><strong>{formatDate(p.created)}</strong></div><Icon name="chevron" size={15} /></button>)}</div>}
   </section>;
 }
