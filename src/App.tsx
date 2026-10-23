@@ -13,6 +13,8 @@ import Reports from "./screens/Reports";
 import ResearchLab from "./screens/research/ResearchLab";
 import Settings from "./screens/Settings";
 import Help from "./screens/Help";
+import ServiceBanner from "./components/ServiceBanner";
+import useHealth from "./state/useHealth";
 import { presetScreens, type Go, type Preset, type Route } from "./navigation";
 
 type Session = { user: string; preset: Preset };
@@ -21,6 +23,8 @@ export default function App() {
   const [session, setSession] = useState<Session | null>(null);
   const [route, setRoute] = useState<Route>({ screen: "Verify" });
   const [expert, setExpert] = useState(false);
+  const health = useHealth();
+  const banner = health.status === "down" ? <ServiceBanner /> : null;
   const go: Go = (screen, params) => { setRoute({ screen, ...params }); window.scrollTo(0, 0); };
 
   function start(user: string, preset: Preset) {
@@ -29,7 +33,7 @@ export default function App() {
     setRoute({ screen: presetScreens[preset][0] });
   }
 
-  if (!session) return <Login onDemo={preset => start(`${preset} demo`, preset)} onSignIn={user => start(user, "Examiner")} />;
+  if (!session) return <>{banner}<Login onDemo={preset => start(`${preset} demo`, preset)} onSignIn={user => start(user, "Examiner")} /></>;
 
   let page: ReactNode;
   switch (route.screen) {
@@ -47,5 +51,5 @@ export default function App() {
     case "CaseDetail": case "Evidence Report": page = <div className="page"><PageHeader title="Case" description="No checks yet." /></div>; break;
     default: page = <Help />;
   }
-  return <Shell preset={session.preset} user={session.user} expert={expert} setExpert={setExpert} screen={route.screen} go={go} logout={() => setSession(null)}>{page}</Shell>;
+  return <Shell preset={session.preset} user={session.user} expert={expert} setExpert={setExpert} screen={route.screen} go={go} logout={() => setSession(null)} banner={banner}>{page}</Shell>;
 }

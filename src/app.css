@@ -1,0 +1,4 @@
+/* Additions for live data. index.css holds the design and stays unchanged. */
+.service-banner{margin:16px 28px 0;border-radius:5px}.service-banner code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--text)}
+.signature img{width:100%;height:100%;object-fit:contain;display:block}
+.login-shell .service-banner{position:fixed;top:0;left:0;right:0;margin:0;z-index:30;border-radius:0}
