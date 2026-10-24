@@ -37,3 +37,4 @@
   .main,.sidebar-collapsed .main,.app-shell:not(.sidebar-collapsed) .main{margin:0!important;min-width:0!important}.content{padding:0;max-width:none}
   .panel{box-shadow:none;border:0;padding:0}.evidence-report h2{break-after:avoid}.chart-svg,.comparison-bars,.measure-profile{break-inside:avoid}
 }
+.fact-meter em.ours-meter{background:var(--blue)}.fact-reading{margin-top:14px}
