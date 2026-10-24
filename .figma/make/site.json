@@ -1,5 +1,6 @@
 {
-  "description": "Enables users to submit multi-part prompts sequentially and finalize input when complete, streamlining complex content creation workflows.",
+  "title": "Signature Desk",
+  "description": "Verifies a signature using only the person's own genuine samples.",
   "robots": {
     "index": false
   },
