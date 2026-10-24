@@ -1,0 +1,68 @@
+# Testing Signature Desk
+
+You need **Python 3.10+** and **Node.js 20+**. Use two terminals, both opened in the repository root.
+
+## 1. Verification service (terminal 1)
+
+```
+cd backend
+python -m venv .venv
+.venv\Scripts\activate            (Windows)
+source .venv/bin/activate         (macOS / Linux)
+pip install -r requirements.txt
+pytest -q
+```
+
+Expected: **21 passed**. The tests check that:
+- the service gives the **same AUC as the research notebook** for the reference writers (B, G, J match exactly);
+- real CEDAR images turn into the same features and scores as the notebook (difference = 0);
+- enrol → verify → record decision works through the API, plus the preprocessing, stats, performance,
+  archive and delete endpoints.
+
+The engine constants (`backend/sigdesk_engine/artifacts/`) and the test images (`backend/tests/fixtures/`)
+are distributed separately and must be in place before the tests or the service can run.
+
+Fill the app with demo people (CEDAR development writers only) and start the service:
+
+```
+python tools/seed_demo.py --cedar "<path to cedar-dataset>/signatures" --n 8
+uvicorn app.main:app --reload --port 8000
+```
+
+http://localhost:8000/docs lists every endpoint. Try `GET /api/persons`.
+
+## 2. Web interface (terminal 2)
+
+```
+pnpm install
+pnpm dev
+```
+
+Open http://localhost:8443. The dev server forwards `/api` to port 8000.
+
+## 3. Manual test script
+
+| # | Do this | You should see |
+|---|---|---|
+| 1 | Login → **Examiner demo** | Sidebar: Verify, Cases, Reference Library, Enrol, Batch Check, Help |
+| 2 | Log out → **Supervisor demo** | Dashboard first, plus Review Queue, Reports, Research Lab, Settings |
+| 3 | Reference Library | 8 "Demo Person" entries, each with a consistency label |
+| 4 | Verify → Demo Person 05 → upload `full_org/original_5_14.png` | A verdict for a genuine sample *not* used for enrolment |
+| 5 | Same person → upload `full_forg/forgeries_5_3.png` | A verdict for a forgery |
+| 6 | Switch to **Expert view** | Panels A–H with real numbers; the policy line says *provisional* |
+| 7 | Upload a blank white image | "Blank or almost blank" message, Run verification is disabled |
+| 8 | Enrol a new person with only 11 images | Create profile is blocked with the reason |
+| 9 | Cases → open the check from step 4 → Record decision "Accepted" | Decision and timeline saved |
+| 10 | Stop uvicorn (Ctrl+C) and wait a few seconds | "The analysis service is not running" banner |
+| 11 | Research Lab → Method comparison → All | 0.772 / 0.831 / 0.837 |
+| 12 | Research Lab → Dataset check → Bengali | Shortcut 0.936 is higher than our method, with the warning text |
+
+Use images numbered **13–24** and the forgeries for testing: images 1–12 are the enrolment samples.
+Expect some wrong verdicts: the model's equal error rate is about 21%. That is the honest behaviour of the
+research model, not an app bug.
+
+## If something fails
+
+- `pytest` fails in `test_engine.py` → the engine copy or its constants changed. Restore `backend/sigdesk_engine/`.
+- `ModuleNotFoundError` → the virtual environment is not active.
+- The page loads but shows no data → the service is not running on port 8000.

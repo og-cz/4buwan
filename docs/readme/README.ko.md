@@ -1,0 +1,141 @@
+<h1 align="center">
+  <img src="../image/icon.png" alt="4buwan" width="64" valign="middle" /> 4buwan
+</h1>
+
+<p align="center">
+  <a href="https://github.com/og-cz/4buwan"><img src="https://img.shields.io/github/stars/og-cz/4buwan?style=flat&amp;label=%E2%98%85&amp;color=08C" alt="GitHub stars" /></a>
+  <a href="https://github.com/og-cz/4buwan/releases"><img src="https://img.shields.io/github/downloads/og-cz/4buwan/total?style=flat&amp;color=08C" alt="Total downloads across all releases" /></a>
+  <img src="https://img.shields.io/badge/license-MIT-08C?style=flat" alt="License: MIT" />
+</p>
+
+<p align="center">
+  <sub><a href="../../README.md">English</a> · <a href="README.zh-CN.md">中文</a> · <a href="README.ja.md">日本語</a> · 한국어 · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <a href="README.pt.md">Português</a> · <a href="README.tl.md">Tagalog</a></sub>
+</p>
+
+<p align="center">
+  <strong>진짜 서명만으로 하는 서명 검증.</strong><br/>
+  명확한 판단과 확인 가능한 근거를 위한 감정 작업 공간.
+</p>
+
+## 시스템 기능
+
+<table>
+<tr>
+<td width="50%" valign="middle">
+
+### 기능 제목
+
+기능에 대한 짧은 설명.
+
+</td>
+<td width="50%" align="center">
+  <sub><i>스크린샷 준비 중</i></sub>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### 기능 제목
+
+기능에 대한 짧은 설명.
+
+</td>
+<td width="50%" align="center">
+  <sub><i>스크린샷 준비 중</i></sub>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### 기능 제목
+
+기능에 대한 짧은 설명.
+
+</td>
+<td width="50%" align="center">
+  <sub><i>스크린샷 준비 중</i></sub>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### 기능 제목
+
+기능에 대한 짧은 설명.
+
+</td>
+<td width="50%" align="center">
+  <sub><i>스크린샷 준비 중</i></sub>
+</td>
+</tr>
+</table>
+
+---
+
+## 모델 기능
+
+작성자 종속 오프라인 서명 검증. 각 작성자는 **진짜 서명 12개만으로, 위조 서명 없이** 등록됩니다.
+
+### 파이프라인
+
+| 단계 | 방법 | 세부 사항 |
+|---|---|---|
+| 전처리 | 반전 → Otsu 배경 제거 → 자르기 → 패딩 → 크기 조정 | 100 × 100 px |
+| 기술자 | HOG | 서명당 2,916차원 |
+| 표현 | 쌍별 차이 | 쌍마다 17개의 차이 척도, 작성자당 진짜 쌍 66개 |
+| 정규화 | 척도별 스케일 | 개발 작성자 전체의 전형적 크기 기준 |
+| 거리 척도 | 랭크 1 작성자 적응 공분산 (J) | 공유 화이트닝(G)을 주방향을 따라 적응 |
+| 분류기 | One-class SVM | 진짜 쌍으로만 학습, 모든 작성자에 동일한 설정 |
+| 점수 | SVM 출력의 평균 | 테스트 서명을 12개 참조 서명 모두와 쌍으로 비교 |
+
+### 거리 척도
+
+공유 척도 `W_G`는 작성자 전체에서 합친 작성자 내 공분산으로 17개 척도를 화이트닝합니다. J는 주방향 `u₁`을 따라 합친 분산 대신 작성자 자신의 분산 `σ`를 사용하며, 나머지 방향은 모두 공유됩니다.
+
+```math
+W_J = W_G + \left(\sigma^{-1} - \lambda_1^{-1/2}\right) u_1 u_1^{\top}
+```
+
+작성자당 파라미터가 하나뿐이므로 참조 서명 12개로 충분히 추정할 수 있습니다.
+
+| 코드 | 거리 척도 | 작성자당 파라미터 |
+|---|---|---|
+| B | 전역 대각 | 0 |
+| G | 통합 전체 공분산 | 0 |
+| **J** | **랭크 1 작성자 적응** | **1** |
+
+### 데이터셋
+
+| 데이터셋 | 문자 | 개발 작성자 |
+|---|---|---|
+| CEDAR | 라틴 문자 | 25 |
+| BHSig260 Bengali | 벵골 문자 | 45 |
+| BHSig260 Hindi | 데바나가리 | 72 |
+
+등록: 진짜 1–12. 테스트: 진짜 13–24와 위조 1–12. 172명의 작성자는 단 한 번의 최종 평가를 위해 보류되어 있습니다.
+
+### 결과 (개발 세트, 작성자 142명)
+
+| 거리 척도 | AUC | EER |
+|---|---|---|
+| B — 전역 대각 | 0.772 | 25.8% |
+| G — 통합 전체 공분산 | 0.831 | 22.0% |
+| **J — 랭크 1 작성자 적응** | **0.837** | **21.3%** |
+
+| 데이터셋 | J AUC | J EER |
+|---|---|---|
+| CEDAR | 0.839 | 21.3% |
+| BHSig260 Bengali | 0.801 | 25.4% |
+| BHSig260 Hindi | 0.858 | 18.8% |
+
+작성자 단위 대응 비교로 Wilcoxon 검정, Holm 보정, 부트스트랩 구간을 사용. J 대비 G: AUC +0.006 (개선 53명, 악화 13명, 변화 없음 76명).
+
+> **상태:** 초안. 결과는 개발 작성자에 대한 것뿐이며, 보류 세트 평가는 아직 수행하지 않았습니다. 벵골어에서는 이미지 통계 대조군이 모델과 비슷한 성능을 보이므로 벵골어 결과는 서명 검증으로 보고하지 않습니다.
+
+---
+
+## 라이선스
+
+4buwan은 [MIT 라이선스](../../LICENSE)에 따른 무료 오픈 소스입니다.
+
+![4buwan footer](../image/footer.png)
