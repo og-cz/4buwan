@@ -11,8 +11,8 @@ import { formatDate, pad2 } from "../format";
 import type { Go } from "../navigation";
 import useAsync from "../state/useAsync";
 import { useSettings, useTerms } from "../state/settings";
+import { LIMITATIONS } from "../limitations";
 
-export const LIMITATIONS = "At the research decision rule it rejected 53% of genuine signatures and accepted 10% of forgeries (equal error rate 21%). The app's decision line is a provisional per-person rule chosen on development writers and not yet independently validated. All results are on development writers; a one-time check on 172 held-back writers has not been run. The tool supports, not replaces, human judgement.";
 
 export default function EvidenceReport({ caseId, go }: { caseId?: string; go: Go }) {
   const settings = useSettings();

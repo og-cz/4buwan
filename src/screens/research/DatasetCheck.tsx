@@ -1,11 +1,32 @@
 import { useState } from "react";
 import Icon from "../../components/Icon";
-import Button from "../../components/Button";
-import Tag from "../../components/Tag";
 import PageHeader from "../../components/PageHeader";
+import Tag from "../../components/Tag";
+import type { PerformanceRow } from "../../types";
+import { CONDITIONS, corpora, find, type Corpus } from "./corpora";
 
-export default function DatasetCheck() {
-  const [stage, setStage] = useState(0);
-  const facts = [["Brightness", .87], ["Amount of ink", .78], ["Image dimensions", .91]];
-  return <div className="page"><PageHeader title="Dataset check" description="Can this dataset be solved without reading the handwriting at all?" action={<Tag tone="neutral">RESEARCHER VIEW</Tag>} /><div className="dataset-toolbar"><label><span>DATASET</span><select><option>BHSig260 Bengali</option><option>BHSig260 Hindi</option><option>CEDAR</option></select></label><div><span>IMAGE CLEANING STAGE</span><section>{["Original", "Gray", "Cleaned", "Cropped", "Resized"].map((s, i) => <button className={stage === i ? "active" : ""} onClick={() => setStage(i)} key={s}>{s}</button>)}</section></div><Button icon="audit">Run dataset check</Button></div><div className="facts-grid">{facts.map((f, i) => { const v = Math.max(.51, Number(f[1]) - [0,.03,.24,.3,.38][stage]); return <section className="panel fact-card" key={f[0]}><span>SIMPLE IMAGE FACT {i + 1}</span><h2>{f[0]}</h2><strong>{v.toFixed(2)}</strong><small>SEPARATION SCORE</small><div className="fact-meter"><i /><em style={{ width: `${(v - .5) * 200}%` }} /></div><div><span>0.50 guessing</span><span>1.00 perfect</span></div><Tag tone={v > .65 ? "bad" : "ready"}>{v > .65 ? "SHORTCUT PRESENT" : "NEAR GUESSING"}</Tag></section>})}</div><section className="panel plain-verdict"><div><Icon name="audit" size={24} /></div><section><span>PLAIN VERDICT</span><h2>{stage < 3 ? "The shortcut does too well at this stage." : "Our method clearly does better after full image cleaning."}</h2><p>{stage < 3 ? "Simple facts about the image can separate genuine and forged samples without reading the handwriting. Do not trust handwriting results at this stage." : "After resizing, the simple image facts fall close to guessing while the handwriting method remains useful."}</p></section><div><span>OUR METHOD</span><strong>0.918</strong><small>vs simple facts {Math.max(.51, .91 - [0,.03,.24,.3,.38][stage]).toFixed(2)}</small></div></section></div>;
+/** The paired-test reading of our method against the shortcut, per corpus (from the notebook; do not reword). */
+const reading: Record<Corpus, { title: string; tone: "ready" | "warn" | "bad" | "neutral" }> = {
+  ALL: { title: "No difference overall.", tone: "neutral" },
+  Hindi: { title: "Our method is better than the shortcut.", tone: "ready" },
+  CEDAR: { title: "No reliable difference.", tone: "warn" },
+  Bengali: { title: "The shortcut is better.", tone: "bad" },
+};
+
+export default function DatasetCheck({ rows }: { rows: PerformanceRow[] }) {
+  const [corpus, setCorpus] = useState<Corpus>("ALL");
+  const ours = find(rows, CONDITIONS.ours, corpus), shortcut = find(rows, CONDITIONS.shortcut, corpus);
+  const read = reading[corpus];
+  const meter = (auc: number) => `${Math.max(0, (auc - 0.5) * 200)}%`;
+  return <div className="page"><PageHeader title="Dataset check" description="Can this dataset be solved without reading the handwriting at all?" />
+    <div className="dataset-tabs">{corpora.map(([k, label]) => <button className={corpus === k ? "active" : ""} onClick={() => setCorpus(k)} key={k}>{label}</button>)}</div>
+    {ours && shortcut ? <>
+      <div className="facts-grid">
+        <section className="panel fact-card"><span>OUR METHOD</span><h2>Reads the handwriting</h2><strong>{ours.AUC.toFixed(3)}</strong><small>SEPARATION SCORE (AUC)</small><div className="fact-meter"><i /><em className="ours-meter" style={{ width: meter(ours.AUC) }} /></div><div><span>0.50 guessing</span><span>1.00 perfect</span></div></section>
+        <section className="panel fact-card"><span>SHORTCUT CONTROL</span><h2>Simple image facts only (no handwriting)</h2><strong>{shortcut.AUC.toFixed(3)}</strong><small>SEPARATION SCORE (AUC)</small><div className="fact-meter"><i /><em style={{ width: meter(shortcut.AUC) }} /></div><div><span>0.50 guessing</span><span>1.00 perfect</span></div></section>
+        <section className="panel fact-card"><span>READING</span><h2>{corpora.find(c => c[0] === corpus)?.[1]} · {ours.writers} writers</h2><strong>{shortcut.AUC > ours.AUC ? "+" : ""}{(shortcut.AUC - ours.AUC).toFixed(3)}</strong><small>SHORTCUT MINUS OUR METHOD</small><div className="fact-reading"><Tag tone={read.tone}>{read.title.replace(".", "").toUpperCase()}</Tag></div></section>
+      </div>
+      <section className="panel plain-verdict"><div><Icon name="audit" size={24} /></div><section><span>PLAIN VERDICT</span><h2>{read.title}</h2><p>These public datasets contain cues unrelated to handwriting. Bengali results should not be read as signature verification.</p></section><div><span>OUR METHOD</span><strong>{ours.AUC.toFixed(3)}</strong><small>vs simple facts {shortcut.AUC.toFixed(3)}</small></div></section>
+    </> : <p className="input-hint">No result for this corpus.</p>}
+  </div>;
 }

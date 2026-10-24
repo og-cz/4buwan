@@ -55,7 +55,7 @@ export default function App() {
     case "Reference Library": page = <ReferenceLibrary go={go} />; break;
     case "Batch Check": page = <BatchCheck go={go} />; break;
     case "Reports": page = <Reports />; break;
-    case "Research Lab": page = <ResearchLab />; break;
+    case "Research Lab": page = <ResearchLab model={health.model} />; break;
     case "Settings": page = <Settings notify={notify} />; break;
     default: page = <Help />;
   }
