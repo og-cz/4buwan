@@ -210,7 +210,8 @@ def stats(date_from: str = Query("", alias="from"), date_to: str = Query("", ali
         people = Counter(r["status"] for r in c.execute("SELECT status FROM persons").fetchall())
     per_day = Counter(r["created"][:10] for r in rows)
     verdicts = Counter(r["verdict"] for r in rows)
-    decided = [r for r in rows if r["decision"] in AGREES]
+    # Agreement is only defined for clear verdicts: an Uncertain verdict has nothing to agree with.
+    decided = [r for r in rows if r["decision"] in AGREES and r["verdict"] != "UNCERTAIN"]
     n = len(rows)
     return dict(checks=n, per_day=[dict(date=d, checks=per_day[d]) for d in sorted(per_day)],
                 verdicts={v: verdicts.get(v, 0) for v in ("LIKELY GENUINE", "LIKELY FORGED", "UNCERTAIN")},
