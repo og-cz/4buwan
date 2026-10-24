@@ -23,25 +23,25 @@
 <tr>
 <td width="50%" valign="middle">
 
-### Feature Title
+### Examiner Workspace
 
-Short description of the feature.
+Find a person, add a questioned signature and get an advisory verdict with the evidence behind it.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>Screenshot coming soon</i></sub>
+<td width="50%">
+  <img src="docs/image/preset-examiner.png" alt="Examiner workspace" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Feature Title
+### Supervisor Overview
 
-Short description of the feature.
+Follow checks, uncertain results and human decisions, and review the model's research results.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>Screenshot coming soon</i></sub>
+<td width="50%">
+  <img src="docs/image/preset-supervisor.png" alt="Supervisor dashboard" width="100%" />
 </td>
 </tr>
 <tr>
