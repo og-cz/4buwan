@@ -1,0 +1,11 @@
+{
+  "title": "Signature Desk",
+  "description": "Verifies a signature using only the person's own genuine samples.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

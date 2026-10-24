@@ -1,0 +1,2 @@
+/** Fixed wording agreed for the Model card and every Evidence Report. */
+export const LIMITATIONS = "At the research decision rule it rejected 53% of genuine signatures and accepted 10% of forgeries (equal error rate 21%). The app's decision line is a provisional per-person rule chosen on development writers and not yet independently validated. All results are on development writers; a one-time check on 172 held-back writers has not been run. The tool supports, not replaces, human judgement.";
