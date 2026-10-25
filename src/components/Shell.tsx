@@ -2,6 +2,7 @@ import { useState, type ReactNode } from "react";
 import Brand from "./Brand";
 import Icon from "./Icon";
 import { useSettings } from "../state/settings";
+import { useTheme } from "../state/theme";
 import { navIcons, parentScreen, presetScreens, type Go, type Preset, type Screen } from "../navigation";
 
 type Props = {
@@ -14,6 +15,7 @@ const crumb: Partial<Record<Screen, string>> = { CaseDetail: "Case", "Person Pro
 export default function Shell({ preset, user, screen, go, logout, expert, setExpert, banner, children }: Props) {
   const [collapsed, setCollapsed] = useState(false);
   const settings = useSettings();
+  const [theme, setTheme] = useTheme();
   const active = parentScreen[screen] ?? screen;
   const initials = user.split(/\s+/).map(n => n[0] ?? "").join("").slice(0, 2).toUpperCase();
   return <div className={`app-shell ${collapsed ? "sidebar-collapsed" : ""}`}>
@@ -25,7 +27,7 @@ export default function Shell({ preset, user, screen, go, logout, expert, setExp
       <div className="privacy-side"><Icon name="audit" size={15} /><p><strong>Private office system</strong>Access and changes are logged.</p></div>
     </aside>
     <main className="main">
-      <header className="topbar"><div><span>Signature Desk</span><b>/</b><strong>{crumb[screen] ?? screen}</strong></div><div className="top-tools"><div className="view-switch"><button className={!expert ? "active" : ""} onClick={() => setExpert(false)}>Simple view</button><button className={expert ? "active" : ""} onClick={() => setExpert(true)}>Expert view</button></div><div className="staff-menu"><span>{initials || "SD"}</span><div><strong>{user}</strong><small>Signed in</small></div><button onClick={logout} title="Log out"><Icon name="logout" size={16} /></button></div></div></header>
+      <header className="topbar"><div><span>Signature Desk</span><b>/</b><strong>{crumb[screen] ?? screen}</strong></div><div className="top-tools"><div className="view-switch"><button className={!expert ? "active" : ""} onClick={() => setExpert(false)}>Simple view</button><button className={expert ? "active" : ""} onClick={() => setExpert(true)}>Expert view</button></div><button className="icon-button" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"} title={theme === "dark" ? "Light theme" : "Dark theme"}><Icon name={theme === "dark" ? "sun" : "moon"} size={18} /></button><div className="staff-menu"><span>{initials || "SD"}</span><div><strong>{user}</strong><small>Signed in</small></div><button className="icon-button" onClick={logout} title="Log out" aria-label="Log out"><Icon name="logout" size={16} /></button></div></div></header>
       {banner}
       <div className="content">{children}</div>
       <footer>Signatures are stored on this computer only. Every check is logged.</footer>

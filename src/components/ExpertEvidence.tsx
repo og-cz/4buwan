@@ -50,7 +50,7 @@ export default function ExpertEvidence({ result, person, questioned }: Props) {
       <p className="chart-note">{result.consistency.text}</p><p className="chart-note policy-line">Policy: {result.policy}</p>
     </Card>
     <Card code="H" title="METHOD COMPARISON" what="The same check scored by the three methods">
-      <table><thead><tr><th>METHOD</th><th>CODE</th><th>SCORE</th><th>MATCHES</th></tr></thead><tbody>{methods.map(m => { const r = result.method_comparison[m]; return r ? <tr key={m}><td>{m}</td><td>{r.code}</td><td>{signed(r.score)}</td><td>{r.matches} of 12</td></tr> : null; })}</tbody></table>
+      <div className="table-scroll"><table><thead><tr><th>METHOD</th><th>CODE</th><th>SCORE</th><th>MATCHES</th></tr></thead><tbody>{methods.map(m => { const r = result.method_comparison[m]; return r ? <tr key={m}><td>{m}</td><td>{r.code}</td><td>{signed(r.score)}</td><td>{r.matches} of 12</td></tr> : null; })}</tbody></table></div>
       <p className="chart-note">Scores are on different scales; compare verdicts, not raw numbers.</p>
     </Card>
   </div></section>;
