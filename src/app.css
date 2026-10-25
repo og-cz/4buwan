@@ -38,3 +38,6 @@
   .panel{box-shadow:none;border:0;padding:0}.evidence-report h2{break-after:avoid}.chart-svg,.comparison-bars,.measure-profile{break-inside:avoid}
 }
 .fact-meter em.ours-meter{background:var(--blue)}.fact-reading{margin-top:14px}
+.brand-mark{display:flex;align-items:center;gap:10px;min-width:0}.brand-mark img{flex:none;border-radius:22%}.brand-mark>div{display:flex;flex-direction:column;min-width:0}.brand-mark strong{font-size:18px;line-height:22px;font-weight:600;letter-spacing:-.01em;color:var(--text)}.brand-mark span{font-size:12px;line-height:16px;color:var(--quiet);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sidebar .brand{height:56px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}.sidebar .brand .brand-mark img{width:32px;height:32px}.sidebar.collapsed .brand{padding:0;justify-content:center}.sidebar.collapsed .brand .brand-mark{display:none}
+.login-brand .brand-mark strong{font-size:28px;line-height:34px}

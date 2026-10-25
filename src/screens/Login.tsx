@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "../components/Button";
+import Brand from "../components/Brand";
 import Icon from "../components/Icon";
 import type { Preset } from "../navigation";
 
@@ -9,7 +10,7 @@ export default function Login({ onDemo, onSignIn }: Props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   return <div className="login-shell">
-    <section className="login-brand"><img src="/assets/7e738.svg" alt="4buwan" /><div><span>SIGNATURE DESK</span><h1>Verifies a signature using only the person&apos;s own genuine samples.</h1><p>An examination workspace for clear decisions and inspectable evidence.</p></div><small>Signatures are stored on this computer only. Every check is logged.</small></section>
+    <section className="login-brand"><Brand size={56} /><div><span>SIGNATURE DESK</span><h1>Verifies a signature using only the person&apos;s own genuine samples.</h1><p>An examination workspace for clear decisions and inspectable evidence.</p></div><small>Signatures are stored on this computer only. Every check is logged.</small></section>
     <section className="login-panel">
       <div className="office-name">SIGNATURE DESK</div><h2>Sign in</h2><p>Use your workspace account to continue.</p>
       <label><span>USERNAME</span><input value={username} onChange={e => setUsername(e.target.value)} /></label>

@@ -1,4 +1,4 @@
-import { useCallback, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 import Shell from "./components/Shell";
 import ServiceBanner from "./components/ServiceBanner";
 import Toast from "./components/Toast";
@@ -18,7 +18,7 @@ import Settings from "./screens/Settings";
 import Help from "./screens/Help";
 import useHealth from "./state/useHealth";
 import { getSettings } from "./state/settings";
-import { presetScreens, type Go, type Preset, type Route } from "./navigation";
+import { pageTitle, presetScreens, type Go, type Preset, type Route } from "./navigation";
 
 type Session = { user: string; preset: Preset };
 
@@ -32,6 +32,8 @@ export default function App() {
   const go: Go = (screen, params) => { setRoute({ screen, ...params }); window.scrollTo(0, 0); };
   const notify = useCallback((m: string) => setToast(m), []);
   const closeToast = useCallback(() => setToast(null), []);
+
+  useEffect(() => { document.title = pageTitle(session ? route : null); }, [session, route]);
 
   function start(user: string, preset: Preset) {
     setSession({ user, preset });

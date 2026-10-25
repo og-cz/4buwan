@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from "react";
+import Brand from "./Brand";
 import Icon from "./Icon";
 import { useSettings } from "../state/settings";
 import { navIcons, parentScreen, presetScreens, type Go, type Preset, type Screen } from "../navigation";
@@ -17,7 +18,7 @@ export default function Shell({ preset, user, screen, go, logout, expert, setExp
   const initials = user.split(/\s+/).map(n => n[0] ?? "").join("").slice(0, 2).toUpperCase();
   return <div className={`app-shell ${collapsed ? "sidebar-collapsed" : ""}`}>
     <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
-      <div className="brand"><img src={settings.orgLogo || "/assets/7e738.svg"} alt={settings.orgName || "4buwan"} /><button className="brand-toggle" onClick={() => setCollapsed(!collapsed)} aria-label={collapsed ? "Expand menu" : "Collapse menu"} title={collapsed ? "Expand menu" : "Collapse menu"}><Icon name="menu" size={18} /></button></div>
+      <div className="brand"><Brand size={32} label={settings.orgName || "Signature Desk"} logo={settings.orgLogo} /><button className="brand-toggle" onClick={() => setCollapsed(!collapsed)} aria-label={collapsed ? "Expand menu" : "Collapse menu"} title={collapsed ? "Expand menu" : "Collapse menu"}><Icon name="menu" size={18} /></button></div>
       <div className="office"><span>{(settings.orgName || "Signature Desk").toUpperCase()}</span><strong>{preset} demo</strong></div>
       <div className="nav-label">MODULES</div>
       <nav>{presetScreens[preset].map(item => <button className={active === item ? "active" : ""} onClick={() => go(item)} key={item}><Icon name={navIcons[item]} /><span>{item}</span></button>)}</nav>

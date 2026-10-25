@@ -6,8 +6,9 @@ export type Screen =
   | "Verify" | "Cases" | "CaseDetail" | "Review Queue" | "Reference Library" | "Person Profile"
   | "Enrol" | "Batch Check" | "Dashboard" | "Reports" | "Research Lab" | "Settings" | "Help" | "Evidence Report";
 
-export type Route = { screen: Screen; personId?: string; caseId?: string };
-export type Go = (screen: Screen, params?: { personId?: string; caseId?: string }) => void;
+export type RouteParams = { personId?: string; caseId?: string; label?: string };
+export type Route = { screen: Screen } & RouteParams;
+export type Go = (screen: Screen, params?: RouteParams) => void;
 
 export type NavScreen = Exclude<Screen, "CaseDetail" | "Person Profile" | "Evidence Report">;
 
@@ -25,3 +26,14 @@ export const presetScreens: Record<Preset, NavScreen[]> = {
 export const parentScreen: Partial<Record<Screen, NavScreen>> = {
   CaseDetail: "Cases", "Evidence Report": "Cases", "Person Profile": "Reference Library",
 };
+
+/** Browser tab title for a route: "4buwan | <Page>". `label` carries a person's name when the caller knows it. */
+export function pageTitle(route: Route | null): string {
+  if (!route) return "4buwan | Sign in";
+  const { screen, caseId, label } = route;
+  const page = screen === "CaseDetail" ? `Case ${caseId ?? ""}`.trim()
+    : screen === "Evidence Report" ? `Evidence Report ${caseId ?? ""}`.trim()
+    : screen === "Person Profile" ? label ?? "Profile"
+    : screen;
+  return `4buwan | ${page}`;
+}
