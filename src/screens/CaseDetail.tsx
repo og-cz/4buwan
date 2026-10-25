@@ -39,7 +39,7 @@ export default function CaseDetail({ caseId, expert, go, notify }: Props) {
   }
 
   const name = person.data?.name ?? (person.loading ? "…" : "Deleted profile");
-  return <div className="page"><PageHeader title={c.case_title || `Case ${c.id}`} description={`${c.id} · ${name} · ${formatDate(c.created, true)}`} action={<div className="header-actions"><Tag tone={decisionTone(c.decision)}>{c.decision.toUpperCase()}</Tag><Button secondary icon="print" onClick={() => go("Evidence Report", { caseId: c.id })}>Evidence Report</Button>{person.data && <Button secondary icon="user" onClick={() => go("Person Profile", { personId: c.person_id })}>Open {t.lower}</Button>}</div>} />
+  return <div className="page"><PageHeader title={c.case_title || `Case ${c.id}`} description={`${c.id} · ${name} · ${formatDate(c.created, true)}`} action={<div className="header-actions"><Tag tone={decisionTone(c.decision)}>{c.decision.toUpperCase()}</Tag><Button secondary icon="print" onClick={() => go("Evidence Report", { caseId: c.id })}>Evidence Report</Button>{person.data && <Button secondary icon="user" onClick={() => go("Person Profile", { personId: c.person_id, label: person.data?.name })}>Open {t.lower}</Button>}</div>} />
     <div className="case-grid">
       <section className="panel"><div className="panel-head"><div><span>QUESTIONED SIGNATURE</span><h2>As submitted</h2></div></div><div className="case-image"><SignatureImage src={checkImageUrl(c.id)} alt="Questioned signature" /></div>{c.notes && <p className="case-notes">{c.notes}</p>}</section>
       <section className={`panel result-card ${c.result.verdict.toLowerCase().replace(" ", "-")}`}><VerdictCard result={c.result} /></section>
