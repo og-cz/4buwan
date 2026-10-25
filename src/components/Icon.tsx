@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-export type IconName = "verify" | "enrol" | "history" | "review" | "settings" | "compare" | "audit" | "search" | "upload" | "check" | "alert" | "help" | "print" | "save" | "logout" | "chevron" | "user" | "scan" | "menu";
+export type IconName = "verify" | "enrol" | "history" | "review" | "settings" | "compare" | "audit" | "search" | "upload" | "check" | "alert" | "help" | "print" | "save" | "logout" | "chevron" | "user" | "scan" | "menu" | "sun" | "moon" | "close" | "eye" | "eyeOff" | "plus" | "minus" | "rotate" | "fit" | "invert" | "layers" | "swipe" | "pin" | "ruler" | "paperclip" | "home" | "file" | "keyboard";
 
 const paths: Record<IconName, ReactNode> = {
   verify: <><path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4" /><path d="M7 13c2-4 3 4 5-2s3 5 5-1" /></>,
@@ -22,6 +22,24 @@ const paths: Record<IconName, ReactNode> = {
   user: <><circle cx="12" cy="8" r="4" /><path d="M4 21c1-4.5 3.5-7 8-7s7 2.5 8 7" /></>,
   scan: <><path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4" /><path d="M8 12h8" /></>,
   menu: <path d="M4 6h16M4 12h16M4 18h16" />,
+  sun: <><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></>,
+  moon: <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" />,
+  close: <path d="M6 6l12 12M18 6 6 18" />,
+  eye: <><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" /><circle cx="12" cy="12" r="3" /></>,
+  eyeOff: <><path d="M3 3l18 18M10.6 5.1A10 10 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3.2 4.2M6.6 6.6A17 17 0 0 0 2 12s3.5 7 10 7a9.7 9.7 0 0 0 5.4-1.6" /><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2" /></>,
+  plus: <path d="M12 5v14M5 12h14" />,
+  minus: <path d="M5 12h14" />,
+  rotate: <><path d="M20 11a8 8 0 1 0-2.3 5.7" /><path d="M20 4v7h-7" /></>,
+  fit: <path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" />,
+  invert: <><circle cx="12" cy="12" r="9" /><path d="M12 3v18a9 9 0 0 0 0-18Z" fill="currentColor" /></>,
+  layers: <><path d="m12 3 9 5-9 5-9-5 9-5Z" /><path d="m3 13 9 5 9-5" /></>,
+  swipe: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M12 3v18" /></>,
+  pin: <><path d="M12 21s-6-5.6-6-11a6 6 0 1 1 12 0c0 5.4-6 11-6 11Z" /><circle cx="12" cy="10" r="2" /></>,
+  ruler: <><path d="M3 17 17 3l4 4L7 21l-4-4Z" /><path d="m7 13 2 2M10 10l2 2M13 7l2 2" /></>,
+  paperclip: <path d="m21 11-8.5 8.5a5 5 0 0 1-7-7L14 4a3.5 3.5 0 0 1 5 5l-8.5 8.5a2 2 0 0 1-3-3L15 7" />,
+  home: <><path d="M3 11 12 4l9 7" /><path d="M5 10v10h14V10" /></>,
+  file: <><path d="M6 3h8l4 4v14H6z" /><path d="M14 3v4h4M9 13h6M9 17h4" /></>,
+  keyboard: <><rect x="2" y="6" width="20" height="12" rx="2" /><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10" /></>,
 };
 
 export default function Icon({ name, size = 18 }: { name: IconName; size?: number }) {
