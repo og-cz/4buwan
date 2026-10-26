@@ -22,6 +22,20 @@ export const presetScreens: Record<Preset, NavScreen[]> = {
   Supervisor: ["Dashboard", "Review Queue", "Cases", "Reference Library", "Verify", "Enrol", "Batch Check", "Reports", "Research Lab", "Settings", "Help"],
 };
 
+export type NavGroup = { label: string; items: NavScreen[] };
+
+/** Sidebar sections. Items not in the preset are left out; empty sections are dropped. */
+export function navGroups(preset: Preset): NavGroup[] {
+  const allowed = new Set(presetScreens[preset]);
+  const groups: NavGroup[] = [
+    { label: "Examine", items: ["Dashboard", "Verify", "Review Queue", "Cases"] },
+    { label: "Library", items: ["Reference Library", "Enrol", "Batch Check"] },
+    { label: "Evidence", items: ["Research Lab", "Reports"] },
+    { label: "System", items: ["Settings", "Help"] },
+  ];
+  return groups.map(g => ({ ...g, items: g.items.filter(i => allowed.has(i)) })).filter(g => g.items.length > 0);
+}
+
 /** Which sidebar item stays highlighted while a detail page is open. */
 export const parentScreen: Partial<Record<Screen, NavScreen>> = {
   CaseDetail: "Cases", "Evidence Report": "Cases", "Person Profile": "Reference Library",
