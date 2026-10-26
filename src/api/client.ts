@@ -70,12 +70,15 @@ export const getCheck = (id: string) => request<CheckDetail>(`/api/checks/${id}`
 export const checkImageUrl = (id: string) => `/api/checks/${id}/image`;
 export const recordDecision = (id: string, decision: Exclude<Decision, "Pending">, note: string) =>
   post<{ ok: boolean }>(`/api/checks/${id}/decision`, { decision, note });
-/** The stored questioned image, as a Blob (used to rebuild the preprocessing trace of a saved Case). */
-export const getCheckImage = async (id: string): Promise<Blob> => {
-  const res = await fetch(checkImageUrl(id));
+/** Any image served by the API (samples, questioned images), as a Blob for preprocessing or measuring. */
+export const getImageBlob = async (url: string): Promise<Blob> => {
+  let res: Response;
+  try { res = await fetch(url); } catch { throw new ApiError("The analysis service is not running.", 0); }
   if (!res.ok) throw new ApiError("Image not found.", res.status);
   return res.blob();
 };
+/** The stored questioned image, as a Blob (used to rebuild the preprocessing trace of a saved Case). */
+export const getCheckImage = (id: string): Promise<Blob> => getImageBlob(checkImageUrl(id));
 
 export const getResearchResults = () => request<ResearchResults>("/api/research/results");
 export const getPerformance = () => request<PerformanceRow[]>("/api/research/performance");

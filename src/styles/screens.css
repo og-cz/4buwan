@@ -25,11 +25,6 @@
 .evidence-viewer > div { min-width: 0; display: flex; flex-direction: column; gap: var(--s2); }
 .evidence-viewer > div > span { font: var(--t-label); letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--text-3); }
 .evidence-empty { aspect-ratio: 3 / 1; border: 1px dashed var(--border-strong); border-radius: var(--r-sm); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s1); color: var(--text-3); font: var(--t-small); }
-.reference-strip { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: var(--s2); }
-.reference-strip button { position: relative; padding: 0; border: 0; background: transparent; border-radius: var(--r-sm); }
-.reference-strip button .signature { aspect-ratio: 5 / 2; min-height: 48px; }
-.reference-strip button > span { position: absolute; left: 6px; top: 6px; padding: 0 6px; border-radius: var(--r-pill); background: var(--elevated); color: var(--text-2); font: var(--t-label); box-shadow: var(--shadow-1); }
-.reference-strip button.active .signature { box-shadow: 0 0 0 2px var(--accent), var(--paper-shadow); }
 .result-card { display: flex; flex-direction: column; gap: var(--s4); min-height: 0; }
 .result-top { display: flex; align-items: center; gap: var(--s4); padding-bottom: var(--s4); border-bottom: 1px solid var(--border); }
 .verdict-icon { width: 52px; height: 52px; flex: none; border-radius: 50%; display: grid; place-items: center; border: 1px solid; }
@@ -233,9 +228,7 @@
 }
 
 @media (max-width: 899px) {
-  .reference-strip { display: flex; overflow-x: auto; padding-bottom: var(--s1); }
-  .reference-strip button { flex: 0 0 132px; }
-  .comparison-signatures, .second-layout, .report-images { grid-template-columns: minmax(0, 1fr); }
+    .comparison-signatures, .second-layout, .report-images { grid-template-columns: minmax(0, 1fr); }
   .sample-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .cleaning-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .plain-verdict { grid-template-columns: 44px minmax(0, 1fr); }

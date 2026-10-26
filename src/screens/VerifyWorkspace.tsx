@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { checkQuality, sampleUrl, verify } from "../api/client";
+import { checkQuality, getImageBlob, sampleUrl, verify } from "../api/client";
 import Button from "../components/Button";
 import Dropzone from "../components/Dropzone";
 import ExpertEvidence from "../components/ExpertEvidence";
 import Icon from "../components/Icon";
 import PageHeader from "../components/PageHeader";
-import SignatureImage from "../components/SignatureImage";
+import CompareViewer, { type CompareMode } from "../components/viewer/CompareViewer";
+import ReferenceStrip from "../components/viewer/ReferenceStrip";
+import SignatureViewer, { type ViewerSource } from "../components/viewer/SignatureViewer";
 import Tag from "../components/Tag";
 import VerdictCard from "../components/VerdictCard";
 import { initials, pad2 } from "../format";
@@ -45,6 +47,9 @@ export default function VerifyWorkspace({ person, expert, go, changePerson }: Pr
   const [error, setError] = useState<string | null>(null);
   const [ref, setRef] = useState(1);
   const secondInput = useRef<HTMLInputElement>(null);
+  const [mode, setMode] = useState<CompareMode>("side");
+  const [simple, setSimple] = useState<"most" | "least">("most");
+  const reference = (n: number): ViewerSource => ({ src: sampleUrl(person.id, n), label: `Reference ${pad2(n)}`, fileName: `Reference sample ${n} of 12`, load: () => getImageBlob(sampleUrl(person.id, n)) });
 
   const up = first.upload;
   const ready = !!up && !!up.quality?.ok;
@@ -91,8 +96,8 @@ export default function VerifyWorkspace({ person, expert, go, changePerson }: Pr
         <p className="input-hint">Strictness: {settings.strictness} · Uncertain Zone: {settings.uncertain}</p>
       </section>
       <section className="panel evidence-panel"><div className="panel-head"><div><span>EVIDENCE</span><h2>Questioned and Reference Samples</h2></div><Tag tone={up ? "ready" : "neutral"}>{up ? "IMAGE READY" : "AWAITING IMAGE"}</Tag></div>
-        <div className="evidence-viewer"><div><span>QUESTIONED SIGNATURE</span>{up ? <SignatureImage src={up.url} alt="Questioned signature" /> : <div className="evidence-empty"><Icon name="upload" /><small>Add an image in the Case panel</small></div>}</div><div><span>SELECTED REFERENCE · {pad2(ref)}</span><SignatureImage src={sampleUrl(person.id, ref)} alt={`Reference ${ref}`} /></div></div>
-        <div className="reference-strip">{Array.from({ length: 12 }, (_, i) => <button className={ref === i + 1 ? "active" : ""} onClick={() => setRef(i + 1)} key={i}><SignatureImage src={sampleUrl(person.id, i + 1)} alt={`Reference ${i + 1}`} /><span>R{pad2(i + 1)}</span></button>)}</div>
+        {up ? <CompareViewer mode={mode} onMode={setMode} a={{ src: up.url, label: "Questioned signature", fileName: up.file.name, quality: up.quality, load: () => Promise.resolve(up.file) }} b={reference(ref)} />
+          : <div className="evidence-viewer"><div><span>QUESTIONED SIGNATURE</span><div className="evidence-empty"><Icon name="upload" /><small>Add an image in the Case panel</small></div></div><SignatureViewer {...reference(ref)} /></div>}
       </section>
       <section className={`panel result-card ${result ? result.verdict.toLowerCase().replace(" ", "-") : ""}`}>
         {state === "running" ? <div className="loading"><i /><strong>Comparing with 12 Reference Samples</strong><span>Measuring this {t.person}&apos;s natural variation.</span></div>
@@ -101,8 +106,11 @@ export default function VerifyWorkspace({ person, expert, go, changePerson }: Pr
           : <div className="empty-result"><Icon name="verify" size={30} /><strong>No Verdict yet</strong><span>Run verification to see Confidence, reason, and next step.</span></div>}
       </section>
     </div>
-    {second_ && second.upload && <section className={`panel result-card second-result ${second_.verdict.toLowerCase().replace(" ", "-")}`}><div className="second-layout"><div><span className="mini-label">SECOND SAMPLE</span><SignatureImage src={second.upload.url} alt="Second sample" /></div><div><VerdictCard result={second_} label="SECOND SAMPLE · ADVISORY VERDICT" actions={actions(second_)} /></div></div></section>}
-    {result && extremes && up && <section className="panel comparison"><div className="panel-head"><div><span>SIMPLE EVIDENCE</span><h2>Most and least similar Reference Samples</h2></div></div><div className="comparison-signatures"><div><span>QUESTIONED SIGNATURE</span><SignatureImage src={up.url} alt="Questioned signature" /></div><div className="similar"><span>MOST SIMILAR · REFERENCE {pad2(extremes.most.reference)}</span><SignatureImage src={sampleUrl(person.id, extremes.most.reference)} alt="Most similar reference" /></div><div className="different"><span>LEAST SIMILAR · REFERENCE {pad2(extremes.least.reference)}</span><SignatureImage src={sampleUrl(person.id, extremes.least.reference)} alt="Least similar reference" /></div></div></section>}
-    {expert && result && <ExpertEvidence result={result} person={person} questioned={up?.file ?? null} />}
+    <section className="panel reference-panel"><div className="panel-head"><div><span>REFERENCE SAMPLES</span><h2>12 genuine signatures of {person.name}</h2></div>{expert && result && <span className="chart-note">Bars: model value per comparison (green ≥ 0, red &lt; 0)</span>}</div>
+      <ReferenceStrip personId={person.id} selected={ref} onSelect={setRef} comparisons={expert ? result?.comparisons : undefined} /></section>
+    {second_ && second.upload && <section className={`panel result-card second-result ${second_.verdict.toLowerCase().replace(" ", "-")}`}><div className="second-layout"><div><span className="mini-label">SECOND SAMPLE</span><SignatureViewer src={second.upload.url} label="Second sample" fileName={second.upload.file.name} quality={second.upload.quality} /></div><div><VerdictCard result={second_} label="SECOND SAMPLE · ADVISORY VERDICT" actions={actions(second_)} /></div></div></section>}
+    {!expert && result && extremes && up && <section className="panel comparison"><div className="panel-head"><div><span>SIMPLE EVIDENCE</span><h2>Questioned signature against its most and least similar Reference Samples</h2></div><div className="segmented" role="group" aria-label="Reference"><button className={simple === "most" ? "active" : ""} aria-pressed={simple === "most"} onClick={() => setSimple("most")}>Most similar · R{pad2(extremes.most.reference)}</button><button className={simple === "least" ? "active" : ""} aria-pressed={simple === "least"} onClick={() => setSimple("least")}>Least similar · R{pad2(extremes.least.reference)}</button></div></div>
+      <CompareViewer a={{ src: up.url, label: "Questioned signature", fileName: up.file.name, quality: up.quality, load: () => Promise.resolve(up.file) }} b={reference(simple === "most" ? extremes.most.reference : extremes.least.reference)} /></section>}
+    {expert && result && <ExpertEvidence result={result} person={person} questioned={up?.file ?? null} reference={ref} />}
   </div>;
 }
