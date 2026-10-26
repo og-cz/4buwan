@@ -3,7 +3,7 @@ import { checkImageUrl, getCheck, getCheckImage, getPerson, recordDecision } fro
 import Button from "../components/Button";
 import ExpertEvidence from "../components/ExpertEvidence";
 import PageHeader from "../components/PageHeader";
-import SignatureImage from "../components/SignatureImage";
+import SignatureViewer from "../components/viewer/SignatureViewer";
 import Tag from "../components/Tag";
 import VerdictCard from "../components/VerdictCard";
 import { ErrorState, Loading } from "../components/States";
@@ -41,7 +41,7 @@ export default function CaseDetail({ caseId, expert, go, notify }: Props) {
   const name = person.data?.name ?? (person.loading ? "…" : "Deleted profile");
   return <div className="page"><PageHeader title={c.case_title || `Case ${c.id}`} description={`${c.id} · ${name} · ${formatDate(c.created, true)}`} action={<div className="header-actions"><Tag tone={decisionTone(c.decision)}>{c.decision.toUpperCase()}</Tag><Button secondary icon="print" onClick={() => go("Evidence Report", { caseId: c.id })}>Evidence Report</Button>{person.data && <Button secondary icon="user" onClick={() => go("Person Profile", { personId: c.person_id, label: person.data?.name })}>Open {t.lower}</Button>}</div>} />
     <div className="case-grid">
-      <section className="panel"><div className="panel-head"><div><span>QUESTIONED SIGNATURE</span><h2>As submitted</h2></div></div><div className="case-image"><SignatureImage src={checkImageUrl(c.id)} alt="Questioned signature" /></div>{c.notes && <p className="case-notes">{c.notes}</p>}</section>
+      <section className="panel"><div className="panel-head"><div><span>QUESTIONED SIGNATURE</span><h2>As submitted</h2></div></div><SignatureViewer src={checkImageUrl(c.id)} label="Questioned signature" fileName={c.id} quality={c.result.quality} load={() => getCheckImage(c.id)} />{c.notes && <p className="case-notes">{c.notes}</p>}</section>
       <section className={`panel result-card ${c.result.verdict.toLowerCase().replace(" ", "-")}`}><VerdictCard result={c.result} /></section>
       <section className="panel"><div className="panel-head"><div><span>HUMAN DECISION</span><h2>Record decision</h2></div></div>
         <label className="compact-field"><span>DECISION</span><select value={choice} onChange={e => setChoice(e.target.value as Choice)}><option>Accepted</option><option>Rejected</option><option>Needs more evidence</option></select></label>

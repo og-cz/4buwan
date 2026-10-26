@@ -5,7 +5,8 @@
 .page-header p { margin-top: var(--s1); color: var(--text-2); font: var(--t-body); max-width: 72ch; }
 .header-actions { display: flex; gap: var(--s2); flex-wrap: wrap; align-items: center; }
 .panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--shadow-1); padding: var(--s5); min-width: 0; }
-.panel-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s3); margin-bottom: var(--s4); }
+.panel-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s3); margin-bottom: var(--s4); flex-wrap: wrap; }
+.segmented { flex-wrap: nowrap; }
 .panel-head > div { display: flex; flex-direction: column; gap: var(--s1); min-width: 0; }
 .panel-head h2 { font: var(--t-h3); }
 

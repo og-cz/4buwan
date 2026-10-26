@@ -9,5 +9,6 @@
 @import "./styles/components.css";
 @import "./styles/layout.css";
 @import "./styles/screens.css";
+@import "./styles/viewer.css";
 @import "./styles/charts.css";
 @import "./styles/login.css";

@@ -38,9 +38,4 @@
 .parameters-list > div { padding: var(--s3) 0; border-bottom: 1px solid var(--border); padding-right: var(--s3); }
 .parameters-list dt { color: var(--text-2); font: var(--t-small); }
 .parameters-list dd { margin: 2px 0 0; word-break: break-word; }
-.trace { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--s3); }
-.trace > div { display: flex; flex-direction: column; gap: var(--s1); min-width: 0; }
-.trace span { font: var(--t-small); color: var(--text-3); }
-.hog-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.hog-pair .signature { aspect-ratio: 1; }
-@media (max-width: 899px) { .measure-card { grid-row: auto; } .trace { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 899px) { .measure-card { grid-row: auto; } }
