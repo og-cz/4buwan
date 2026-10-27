@@ -39,3 +39,6 @@
 .parameters-list dt { color: var(--text-2); font: var(--t-small); }
 .parameters-list dd { margin: 2px 0 0; word-break: break-word; }
 @media (max-width: 899px) { .measure-card { grid-row: auto; } }
+.heatmap-wrap { display: flex; flex-direction: column; align-items: center; gap: var(--s2); }
+.heat-scale { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--s2); font: var(--t-small); color: var(--text-2); }
+.heat-scale i { display: inline-block; width: 120px; height: 10px; border-radius: var(--r-pill); background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 12%, var(--surface))); }
