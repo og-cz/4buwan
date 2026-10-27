@@ -10,11 +10,8 @@ import base64
 import csv
 import io
 import json
-import os
-import sqlite3
 import uuid
 from collections import Counter
-from datetime import datetime, timezone
 from pathlib import Path
 
 from fastapi import FastAPI, File, Form, HTTPException, Query, UploadFile
@@ -24,37 +21,12 @@ from PIL import Image
 
 from sigdesk_engine import engine as E
 
-DATA = Path(os.environ.get("SIGDESK_DATA", Path(__file__).resolve().parents[1] / "data"))
-(DATA / "images").mkdir(parents=True, exist_ok=True); (DATA / "profiles").mkdir(exist_ok=True)
-DB = DATA / "sigdesk.db"
+from .storage import DATA, db, log, now, save_upload
+
 K = E.Constants.load()
 
 app = FastAPI(title="Signature Desk API", version="0.1")
 app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:8443", "http://localhost:5173"], allow_methods=["*"], allow_headers=["*"])
-
-
-def db() -> sqlite3.Connection:
-    c = sqlite3.connect(DB); c.row_factory = sqlite3.Row
-    c.executescript("""
-    CREATE TABLE IF NOT EXISTS persons(id TEXT PRIMARY KEY, name TEXT, external_id TEXT, status TEXT,
-        consistency REAL, created TEXT, details TEXT);
-    CREATE TABLE IF NOT EXISTS samples(id TEXT PRIMARY KEY, person_id TEXT, idx INTEGER, path TEXT);
-    CREATE TABLE IF NOT EXISTS checks(id TEXT PRIMARY KEY, person_id TEXT, created TEXT, verdict TEXT,
-        confidence REAL, score REAL, image TEXT, case_title TEXT, notes TEXT, decision TEXT, result TEXT);
-    CREATE TABLE IF NOT EXISTS events(id INTEGER PRIMARY KEY AUTOINCREMENT, at TEXT, kind TEXT, ref TEXT, detail TEXT);
-    """)
-    return c
-
-
-def now() -> str: return datetime.now(timezone.utc).isoformat(timespec="seconds")
-
-
-def log(c, kind, ref, detail=""): c.execute("INSERT INTO events(at,kind,ref,detail) VALUES(?,?,?,?)", (now(), kind, ref, detail))
-
-
-def save_upload(data: bytes, name: str) -> str:
-    p = DATA / "images" / f"{uuid.uuid4().hex}{Path(name or 'x.png').suffix.lower() or '.png'}"
-    p.write_bytes(data); return str(p)
 
 
 @app.get("/api/health")
@@ -241,3 +213,8 @@ def delete_person(pid: str):
         c.execute("DELETE FROM samples WHERE person_id=?", (pid,)); c.execute("DELETE FROM persons WHERE id=?", (pid,))
         log(c, "delete", pid)
     return dict(ok=True)
+
+
+from .cases import router as cases_router  # noqa: E402  (routes for notes, attachments and evidence reports)
+
+app.include_router(cases_router)
