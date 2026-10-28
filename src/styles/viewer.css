@@ -67,3 +67,29 @@
   .hog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s2); }
   .compare-slider input { width: 120px; }
 }
+
+/* ---------- compare tool ---------- */
+.compare-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--s3); }
+.compare-item { margin: 0; display: flex; flex-direction: column; gap: var(--s2); padding: var(--s2); border: 1px solid var(--border); border-radius: var(--r-lg); background: var(--surface-2); min-width: 0; }
+.compare-item figcaption { display: flex; flex-direction: column; font: var(--t-small); color: var(--text-3); min-width: 0; }
+.compare-item figcaption strong { color: var(--text); }
+.compare-item-actions { display: flex; gap: var(--s1); }
+.model-views { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s4); }
+.model-view { margin: 0; display: flex; flex-direction: column; gap: var(--s2); }
+.model-view > div { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s2); }
+.model-view figcaption { font: var(--t-body-strong); }
+.model-view small { font: var(--t-small); color: var(--text-3); }
+.inline-select { width: auto !important; max-width: 100%; }
+.annotator { display: flex; flex-direction: column; gap: var(--s3); }
+.annotator-canvas { height: clamp(220px, 40vw, 420px); display: grid; place-items: center; background: var(--paper); border: 1px solid var(--paper-line); border-radius: var(--r-sm); box-shadow: var(--paper-shadow); overflow: hidden; }
+.annotator-stage { position: relative; }
+.annotator-stage img, .annotator-stage svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.annotator-stage svg { cursor: crosshair; }
+.ruler-line { stroke: var(--accent); }
+.ruler-end { fill: var(--accent); }
+.pin-dot { fill: var(--overlay-r); stroke: var(--paper); stroke-width: 2; }
+.pin-num { fill: var(--paper); font-family: var(--font); font-weight: 600; }
+.pin-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--s2); }
+.pin-list li { display: grid; grid-template-columns: 28px auto minmax(0, 1fr) 40px; gap: var(--s2); align-items: center; }
+.pin-badge { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--overlay-r); color: var(--paper); font: var(--t-label); }
+@media (max-width: 599px) { .pin-list li { grid-template-columns: 28px minmax(0, 1fr) 40px; } .pin-list li > .num { display: none; } }

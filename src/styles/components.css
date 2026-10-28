@@ -140,3 +140,5 @@ td.num, th.num { text-align: right; }
 .wizard-steps button.active i { border-color: var(--accent); }
 .wizard-steps button.done { color: var(--genuine-text); }
 .wizard-steps button.done i { background: var(--genuine-soft); border-color: var(--genuine-line); }
+kbd { display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 5px; border: 1px solid var(--border-strong); border-bottom-width: 2px; border-radius: 5px; background: var(--surface-2); color: var(--text-2); font: var(--t-mono); font-size: 12px; line-height: 1; }
+.shortcut-hint { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }

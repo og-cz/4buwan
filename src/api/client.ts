@@ -1,6 +1,6 @@
 import type {
-  CheckDetail, CheckSummary, Decision, Health, PerformanceRow, PersonDetail, PersonSummary, Preprocessed,
-  Quality, ResearchResults, Stats, Strictness, UncertainZone, Verdict, VerifyResult,
+  Attachment, CheckDetail, CheckSummary, Decision, Health, PerformanceRow, PersonDetail, PersonSummary, Preprocessed,
+  Quality, ReportEntry, ResearchResults, Stats, Strictness, UncertainZone, Verdict, VerifyResult,
 } from "../types";
 
 /** The only place in the app that calls fetch(). */
@@ -83,3 +83,9 @@ export const getCheckImage = (id: string): Promise<Blob> => getImageBlob(checkIm
 export const getResearchResults = () => request<ResearchResults>("/api/research/results");
 export const getPerformance = () => request<PerformanceRow[]>("/api/research/performance");
 export const getStats = (from?: string, to?: string) => request<Stats>(`/api/stats${query({ from, to })}`);
+
+export const addNote = (id: string, text: string) => post<{ ok: boolean }>(`/api/checks/${id}/notes`, { text });
+export const listAttachments = (id: string) => request<Attachment[]>(`/api/checks/${id}/attachments`);
+export const addAttachments = (id: string, files: Blob[], note: string) => post<{ ok: boolean }>(`/api/checks/${id}/attachments`, { files, note });
+export const logReport = (id: string) => post<{ ok: boolean }>(`/api/checks/${id}/report`);
+export const listReports = () => request<ReportEntry[]>("/api/reports");

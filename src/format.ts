@@ -36,3 +36,11 @@ export function downloadCsv(filename: string, header: string[], rows: (string | 
   a.href = url; a.download = filename; a.click();
   URL.revokeObjectURL(url);
 }
+
+/** Compact time for dense tables: "14:32" today, otherwise "18 Oct 14:32". */
+export function shortDate(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  const time = d.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
+  return d.toDateString() === new Date().toDateString() ? time : `${d.toLocaleDateString(undefined, { day: "2-digit", month: "short" })} ${time}`;
+}

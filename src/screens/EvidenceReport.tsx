@@ -1,4 +1,4 @@
-import { checkImageUrl, getCheck, getPerson, sampleUrl } from "../api/client";
+import { checkImageUrl, getCheck, getPerson, logReport, sampleUrl } from "../api/client";
 import Button from "../components/Button";
 import ConfidenceBar from "../components/ConfidenceBar";
 import ComparisonBars from "../components/charts/ComparisonBars";
@@ -26,7 +26,7 @@ export default function EvidenceReport({ caseId, go }: { caseId?: string; go: Go
   const c = check.data, r = c.result, p = person.data;
 
   return <div className="page evidence-report">
-    <div className="no-print"><PageHeader title="Evidence Report" description={`Case ${c.id}. Print or save as PDF from the print dialog.`} action={<div className="header-actions"><Button secondary onClick={() => go("CaseDetail", { caseId: c.id })}>Back to Case</Button><Button icon="print" onClick={() => window.print()}>Print</Button></div>} /></div>
+    <div className="no-print"><PageHeader title="Evidence Report" description={`Case ${c.id}. Print or save as PDF from the print dialog.`} action={<div className="header-actions"><Button secondary onClick={() => go("CaseDetail", { caseId: c.id })}>Back to Case</Button><Button icon="print" onClick={() => { void logReport(c.id).catch(() => undefined); window.print(); }}>Print or save as PDF</Button></div>} /></div>
     <section className="panel report-sheet">
       <header className="report-head">{settings.orgLogo && <img src={settings.orgLogo} alt="" />}<div><span>{(settings.orgName || "Signature Desk").toUpperCase()} · EVIDENCE REPORT</span><h1>{c.case_title || `Case ${c.id}`}</h1></div></header>
       <dl className="parameters-list report-facts">

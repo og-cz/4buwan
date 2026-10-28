@@ -16,6 +16,9 @@ import Reports from "./screens/Reports";
 import ResearchLab from "./screens/research/ResearchLab";
 import Settings from "./screens/Settings";
 import Help from "./screens/Help";
+import Workbench from "./screens/Workbench";
+import Compare from "./screens/Compare";
+import EvidenceReports from "./screens/EvidenceReports";
 import useHealth from "./state/useHealth";
 import { getSettings } from "./state/settings";
 import { pageTitle, presetScreens, type Go, type Preset, type Route } from "./navigation";
@@ -46,8 +49,11 @@ export default function App() {
   const { screen, personId, caseId } = route;
   let page: ReactNode;
   switch (screen) {
+    case "Workbench": page = <Workbench go={go} />; break;
     case "Dashboard": page = <Dashboard go={go} />; break;
-    case "Verify": page = <Verify key={personId ?? "search"} personId={personId} expert={expert} go={go} />; break;
+    case "Compare": page = <Compare go={go} notify={notify} />; break;
+    case "Evidence Reports": page = <EvidenceReports go={go} />; break;
+    case "Verify": page = <Verify key={personId ?? "search"} personId={personId} expert={expert} setExpert={setExpert} go={go} />; break;
     case "Person Profile": page = <PersonProfile personId={personId} expert={expert} go={go} notify={notify} />; break;
     case "Enrol": page = <Enrol go={go} />; break;
     case "Cases": page = <Cases go={go} />; break;
