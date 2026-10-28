@@ -12,7 +12,6 @@ import io
 import json
 import uuid
 from collections import Counter
-from pathlib import Path
 
 from fastapi import FastAPI, File, Form, HTTPException, Query, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
@@ -21,7 +20,7 @@ from PIL import Image
 
 from sigdesk_engine import engine as E
 
-from .storage import DATA, db, log, now, save_upload
+from .storage import DATA, db, log, now, resolve, save_upload
 
 K = E.Constants.load()
 
@@ -79,7 +78,7 @@ def sample(pid: str, idx: int):
     with db() as c:
         r = c.execute("SELECT path FROM samples WHERE person_id=? AND idx=?", (pid, idx)).fetchone()
     if not r: raise HTTPException(404, "Sample not found.")
-    return FileResponse(r["path"])
+    return FileResponse(resolve(r["path"]))
 
 
 @app.post("/api/verify")
@@ -148,8 +147,8 @@ def data_url(a) -> str:
 def check_image(cid: str):
     with db() as c:
         r = c.execute("SELECT image FROM checks WHERE id=?", (cid,)).fetchone()
-    if not r or not Path(r["image"]).exists(): raise HTTPException(404, "Image not found.")
-    return FileResponse(r["image"])
+    if not r or not resolve(r["image"]).exists(): raise HTTPException(404, "Image not found.")
+    return FileResponse(resolve(r["image"]))
 
 
 @app.post("/api/preprocess")
@@ -208,7 +207,7 @@ def delete_person(pid: str):
     with db() as c:
         if not c.execute("SELECT 1 FROM persons WHERE id=?", (pid,)).fetchone(): raise HTTPException(404, "Person not found.")
         for r in c.execute("SELECT path FROM samples WHERE person_id=?", (pid,)).fetchall():
-            Path(r["path"]).unlink(missing_ok=True)
+            resolve(r["path"]).unlink(missing_ok=True)
         (DATA / "profiles" / f"{pid}.npz").unlink(missing_ok=True)
         c.execute("DELETE FROM samples WHERE person_id=?", (pid,)); c.execute("DELETE FROM persons WHERE id=?", (pid,))
         log(c, "delete", pid)
