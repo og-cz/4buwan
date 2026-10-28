@@ -2,12 +2,10 @@
 from __future__ import annotations
 
 import uuid
-from pathlib import Path
-
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 
-from .storage import db, log, now, save_upload
+from .storage import db, log, now, resolve, save_upload
 
 router = APIRouter(prefix="/api")
 
@@ -52,8 +50,8 @@ def list_attachments(cid: str):
 def attachment_image(aid: str):
     with db() as c:
         r = c.execute("SELECT path FROM attachments WHERE id=?", (aid,)).fetchone()
-    if not r or not Path(r["path"]).exists(): raise HTTPException(404, "Attachment not found.")
-    return FileResponse(r["path"])
+    if not r or not resolve(r["path"]).exists(): raise HTTPException(404, "Attachment not found.")
+    return FileResponse(resolve(r["path"]))
 
 
 @router.post("/checks/{cid}/report")
