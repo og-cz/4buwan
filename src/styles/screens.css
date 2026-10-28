@@ -243,3 +243,17 @@
   .signature-line { grid-template-columns: 1fr; gap: var(--s5); }
   .wizard-actions { flex-wrap: wrap; }
 }
+
+/* ---------- workbench ---------- */
+.workbench-hero { display: flex; align-items: center; gap: var(--s4); flex-wrap: wrap; background: linear-gradient(120deg, var(--accent-soft), transparent 60%), var(--surface); }
+.workbench-hero > div { flex: 1 1 320px; display: flex; flex-direction: column; gap: var(--s1); }
+.workbench-hero h2 { font: var(--t-h2); }
+.workbench-hero p { color: var(--text-2); }
+.workbench-icon { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-text); flex: none; }
+.workbench-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: var(--s5); }
+.panel-empty { padding: 0 var(--s5) var(--s5); margin: 0; }
+@media (max-width: 599px) { .workbench-grid { grid-template-columns: minmax(0, 1fr); } }
+.note-row { display: flex; gap: var(--s2); }
+.attachment-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: var(--s2); }
+.attachment-grid figure { margin: 0; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.attachment-grid figcaption { font: var(--t-small); color: var(--text-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
