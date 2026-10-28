@@ -8,9 +8,10 @@ import SimilarityHeatmap from "./charts/SimilarityHeatmap";
 import HogPanel from "./viewer/HogPanel";
 import TracePanel from "./viewer/TracePanel";
 import { signed } from "../format";
+import { OUR_METHOD } from "../methods";
 import type { MethodName, PersonDetail, VerifyResult } from "../types";
 
-const methods: MethodName[] = ["Standard method", "Shared yardstick", "Our method"];
+const methods: [MethodName, string][] = [["Our method", OUR_METHOD], ["Shared yardstick", "Shared yardstick"], ["Standard method", "Standard method"]];
 
 function Card({ code, title, what, span, children }: { code: string; title: string; what: string; span?: "rows" | "cols"; children: ReactNode }) {
   return <article className={`panel analysis-card ${span === "rows" ? "measure-card" : span === "cols" ? "span-cols" : ""}`}><div className="panel-head"><div><span>{code} · {title}</span><h2>{what}</h2></div></div>{children}</article>;
@@ -46,12 +47,12 @@ export default function ExpertEvidence({ result, person, questioned, reference }
         <div><dt>Signature Consistency</dt><dd>{result.consistency.value.toFixed(3)}× population · {result.consistency.label}</dd></div>
         <div><dt>nu</dt><dd>{result.settings.nu}</dd></div><div><dt>gamma</dt><dd>{result.settings.gamma}</dd></div>
         <div><dt>rank</dt><dd>{result.settings.rank}</dd></div><div><dt>Reference pairs</dt><dd>{result.settings.pairs}</dd></div>
-        <div><dt>Model</dt><dd>{result.settings.model_version}</dd></div>
+        <div><dt>Model</dt><dd>R1-WAW, model version {result.settings.model_version}</dd></div>
       </dl>
       <p className="chart-note">{result.consistency.text}</p><p className="chart-note policy-line">Policy: {result.policy}</p>
     </Card>
     <Card code="H" title="METHOD COMPARISON" what="The same check scored by the three methods">
-      <div className="table-scroll"><table><thead><tr><th>METHOD</th><th>CODE</th><th>SCORE</th><th>MATCHES</th></tr></thead><tbody>{methods.map(m => { const r = result.method_comparison[m]; return r ? <tr key={m}><td>{m}</td><td>{r.code}</td><td>{signed(r.score)}</td><td>{r.matches} of 12</td></tr> : null; })}</tbody></table></div>
+      <div className="table-scroll"><table><thead><tr><th>METHOD</th><th>CODE</th><th>SCORE</th><th>MATCHES</th></tr></thead><tbody>{methods.map(([m, label], i) => { const r = result.method_comparison[m]; return r ? <tr key={m}><td><span className="num">0{i + 1}</span> {label}</td><td>{r.code}</td><td className="num">{signed(r.score)}</td><td className="num">{r.matches} of 12</td></tr> : null; })}</tbody></table></div>
       <p className="chart-note">Scores are on different scales; compare verdicts, not raw numbers.</p>
     </Card>
   </div></section>;

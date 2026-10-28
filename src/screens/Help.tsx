@@ -11,6 +11,7 @@ export default function Help() {
     ["04", "Decide", "check", "A human reviews the Verdict and the evidence, then records the decision."],
   ];
   const glossary: [string, string][] = [
+    ["R1-WAW", "Our method: Rank-One Writer-Adaptive Whitening. It uses a yardstick shared by many writers and adapts it to the person along one direction, the one where people differ most."],
     ["Reference Sample", "One of the 12 genuine signatures stored for a person."],
     ["Signature Consistency", "The person's spread along the main direction divided by the population's spread. Below 1 means more consistent, so checks are stricter."],
     ["Verdict", "Likely genuine, Likely forged or Uncertain. It is advice, not a decision."],
