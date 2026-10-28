@@ -148,7 +148,7 @@
 .method-card { display: flex; flex-direction: column; gap: var(--s4); }
 .method-card.ours { border-top: 3px solid var(--accent); }
 .method-title { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: var(--s3); align-items: start; }
-.method-title > span { width: 36px; height: 36px; border: 1px solid var(--border-strong); border-radius: var(--r-sm); display: grid; place-items: center; font: var(--t-mono); }
+.method-title > span:first-child { width: 36px; height: 36px; border: 1px solid var(--border-strong); border-radius: var(--r-sm); display: grid; place-items: center; font: var(--t-mono); }
 .method-title h2 { font: var(--t-h3); }
 .method-title p { color: var(--text-2); font: var(--t-small); }
 .method-title .tag { grid-column: 2; justify-self: start; }
@@ -257,3 +257,9 @@
 .attachment-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: var(--s2); }
 .attachment-grid figure { margin: 0; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .attachment-grid figcaption { font: var(--t-small); color: var(--text-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.r1waw { display: flex; flex-direction: column; gap: var(--s3); }
+.r1waw p { color: var(--text-2); max-width: 80ch; }
+.r1waw-diagram { max-width: 560px; }
+.chart-svg .bar-own { fill: var(--accent); }
+.chart-svg .bar-shared { fill: var(--chart-band); }
+.formula { align-self: flex-start; padding: var(--s2) var(--s3); border: 1px solid var(--border); border-radius: var(--r-sm); background: var(--surface-2); font: var(--t-mono); }
