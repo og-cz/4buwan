@@ -1,0 +1,20 @@
+/** Full names and definitions of the 17 Difference Measures (from the engine's pair descriptor). a, b = HOG vectors, d = |a − b|. */
+export const MEASURE_INFO: Record<string, [string, string]> = {
+  L1: ["Mean absolute difference", "Average of d over the 2,916 HOG values."],
+  L2: ["Euclidean distance", "Square root of the sum of d²."],
+  Linf: ["Largest difference", "The maximum of d."],
+  cosine: ["Cosine distance", "1 − cosine of the angle between a and b."],
+  correlation: ["Correlation distance", "1 − Pearson correlation of a and b."],
+  canberra: ["Canberra distance", "Sum of d / (|a| + |b|)."],
+  braycurtis: ["Bray–Curtis distance", "Sum of d divided by the sum of |a + b|."],
+  absdiff_std: ["Spread of differences", "Standard deviation of d."],
+  absdiff_median: ["Median difference", "Median of d."],
+  absdiff_p90: ["90th-percentile difference", "90th percentile of d."],
+  d_mean: ["Difference in mean", "|mean(a) − mean(b)|."],
+  d_std: ["Difference in spread", "|std(a) − std(b)|."],
+  d_max: ["Difference in maximum", "|max(a) − max(b)|."],
+  d_energy: ["Difference in energy", "|Σa² − Σb²|."],
+  chi2: ["Chi-square distance", "Sum of d² / (|a| + |b|)."],
+  hist_inter: ["Histogram intersection distance", "1 − Σ min(|a|, |b|) / max(Σ|a|, Σ|b|)."],
+  d_sum: ["Difference in total", "|Σa − Σb|."],
+};

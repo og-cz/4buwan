@@ -72,14 +72,14 @@ export default function BatchCheck({ go }: { go: Go }) {
     <section className="panel batch-upload"><div><Icon name="upload" size={26} /><h2>Upload signatures and an optional mapping CSV</h2><p>Choose image files first, then assign {t.people.toLowerCase()} automatically from the CSV or in the table.</p><div className="header-actions"><Button onClick={() => images.current?.click()}>Choose images</Button><Button secondary disabled={!rows.length} onClick={() => csv.current?.click()}>Apply CSV</Button>{rows.length > 0 && <Button secondary disabled={running} onClick={() => { setRows([]); setDone(0); setNote(null); }}>Clear</Button>}</div>{note && <p className="input-hint">{note}</p>}</div></section>
     {rows.length > 0 && <section className="panel table-panel">
       <div className="batch-progress"><span>{done} of {rows.length} {running ? "checked" : finished ? "complete" : "queued"}</span><i><em style={{ width: `${rows.length ? done / rows.length * 100 : 0}%` }} /></i><div className="header-actions"><label className="inline-check"><input type="checkbox" checked={onlyUncertain} onChange={e => setOnlyUncertain(e.target.checked)} /> Uncertain only</label><Button icon="scan" disabled={running || !rows.some(r => r.personId)} onClick={() => void run()}>{running ? "Running…" : "Run batch"}</Button></div></div>
-      <table><thead><tr><th>FILE</th><th>{t.person.toUpperCase()}</th><th>VERDICT</th><th>CONFIDENCE</th><th>FLAGS</th><th /></tr></thead><tbody>{visible.map(({ r, i }) => <tr key={`${r.file.name}-${i}`} className={r.result ? "clickable-row" : ""} onClick={r.result ? () => go("CaseDetail", { caseId: r.result!.case_id }) : undefined}>
+      <div className="table-scroll"><table><thead><tr><th>FILE</th><th>{t.person.toUpperCase()}</th><th>VERDICT</th><th>CONFIDENCE</th><th>FLAGS</th><th /></tr></thead><tbody>{visible.map(({ r, i }) => <tr key={`${r.file.name}-${i}`} className={r.result ? "clickable-row" : ""} onClick={r.result ? () => go("CaseDetail", { caseId: r.result!.case_id }) : undefined}>
         <td>{r.file.name}</td>
         <td onClick={e => e.stopPropagation()}><select className="table-select" value={r.personId} disabled={running} onChange={e => { const v = e.target.value; setRows(rs => rs.map((x, j) => j === i ? { ...x, personId: v } : x)); }}><option value="">Assign…</option>{ready.map(p => <option key={p.id} value={p.id}>{p.name}{p.external_id ? ` · ${p.external_id}` : ""}</option>)}</select></td>
         <td>{r.result ? <VerdictBadge verdict={r.result.verdict} /> : "—"}</td>
         <td>{r.result ? r.result.confidence : "—"}</td>
         <td>{r.error ? <Tag tone="bad">{r.error}</Tag> : "—"}</td>
         <td>{r.result && <Icon name="chevron" size={14} />}</td>
-      </tr>)}</tbody></table>
+      </tr>)}</tbody></table></div>
     </section>}
   </div>;
 }

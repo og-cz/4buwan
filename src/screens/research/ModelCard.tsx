@@ -1,5 +1,6 @@
 import PageHeader from "../../components/PageHeader";
 import { LIMITATIONS } from "../../limitations";
+import { OUR_METHOD_LONG } from "../../methods";
 import type { ModelMeta, ResearchResults } from "../../types";
 
 export default function ModelCard({ model, results }: { model: ModelMeta | null; results: ResearchResults }) {
@@ -7,9 +8,10 @@ export default function ModelCard({ model, results }: { model: ModelMeta | null;
   const s = model?.settings;
   return <div className="page"><PageHeader title="Model card" description="What the model does, how it was built, and where it can fail." />
     <section className="panel model-card">
-      <h2>Writer-adaptive one-class signature verification</h2>
+      <h2>{OUR_METHOD_LONG}</h2>
       <p>Enrol 12 genuine signatures; the tool learns how much this person&apos;s signature naturally varies. A questioned signature is compared with each of the 12 using 17 kinds of difference and scored by a model trained only on genuine signatures. A human decides.</p>
       <dl>
+        <div><dt>Method</dt><dd>Our method · R1-WAW: shared whitening of the 17 Difference Measures, adapted to the person along its main direction, then a one-class SVM trained on genuine pairs only</dd></div>
         <div><dt>Model version</dt><dd>{model?.model_version ?? "Service not running"}</dd></div>
         <div><dt>Built from</dt><dd>{dev.TOTAL} development writers (CEDAR {dev.CEDAR}, Bengali {dev.Bengali}, Hindi {dev.Hindi}){model ? ` · ${model.built_from}` : ""}</dd></div>
         <div><dt>Held-back writers</dt><dd>{held.TOTAL}, kept for one final check that has not been run</dd></div>

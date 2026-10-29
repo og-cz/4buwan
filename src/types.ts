@@ -83,3 +83,6 @@ export type Stats = {
   uncertain_rate: number | null; pending: number; decided: number; human_agreement: number | null;
   average_confidence: number | null; persons: Record<string, number>;
 };
+
+export type Attachment = { id: string; created: string; name: string; note: string; url: string };
+export type ReportEntry = { at: string; case_id: string; case_title: string; verdict: Verdict; decision: Decision; name: string | null };

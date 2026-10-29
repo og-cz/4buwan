@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { getPerformance, getResearchResults } from "../../api/client";
-import { ErrorState, Loading } from "../../components/States";
+import { ErrorState, SkeletonPanel } from "../../components/States";
 import useAsync from "../../state/useAsync";
 import type { ModelMeta } from "../../types";
 import DatasetCheck from "./DatasetCheck";
@@ -17,7 +17,7 @@ export default function ResearchLab({ model }: { model: ModelMeta | null }) {
   const error = perf.error ?? results.error;
   return <div className="research-lab">
     <div className="research-tabs">{tabs.map(([k, label]) => <button key={k} className={tab === k ? "active" : ""} onClick={() => setTab(k)}>{label}</button>)}</div>
-    {perf.loading || results.loading ? <Loading title="Loading research results" />
+    {perf.loading || results.loading ? <SkeletonPanel />
       : error || !perf.data || !results.data ? <ErrorState message={error ?? "No research results."} retry={() => { perf.reload(); results.reload(); }} />
       : tab === "methods" ? <MethodComparison rows={perf.data} />
       : tab === "dataset" ? <DatasetCheck rows={perf.data} />

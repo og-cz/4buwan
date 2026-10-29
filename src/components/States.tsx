@@ -13,3 +13,8 @@ export function ErrorState({ message, retry }: { message: string; retry?: () => 
 export function Loading({ title = "Loading", text }: { title?: string; text?: string }) {
   return <section className="panel result-card loading-state"><div className="loading"><i /><strong>{title}</strong>{text && <span>{text}</span>}</div></section>;
 }
+
+/** Placeholder shaped like a panel with a table, shown while data loads. */
+export function SkeletonPanel({ rows = 5 }: { rows?: number }) {
+  return <section className="panel skeleton-block" aria-busy="true" aria-label="Loading"><span className="skeleton skeleton-title" />{Array.from({ length: rows }, (_, i) => <span key={i} className="skeleton skeleton-row" />)}</section>;
+}
