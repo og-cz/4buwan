@@ -10,7 +10,7 @@ import SignatureImage from "../components/SignatureImage";
 import SimilarityHeatmap from "../components/charts/SimilarityHeatmap";
 import Tag from "../components/Tag";
 import VerdictBadge from "../components/VerdictBadge";
-import { ErrorState, Loading } from "../components/States";
+import { ErrorState, SkeletonPanel } from "../components/States";
 import { decisionTone, formatDate, pad2, statusTone } from "../format";
 import type { Go } from "../navigation";
 import useAsync from "../state/useAsync";
@@ -26,7 +26,7 @@ export default function PersonProfile({ personId, expert, go, notify }: Props) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  if (person.loading) return <div className="page"><Loading title="Loading Signature Profile" /></div>;
+  if (person.loading) return <div className="page"><SkeletonPanel /></div>;
   if (person.error || !person.data) return <div className="page"><PageHeader title="Signature Profile" description="" /><ErrorState message={person.error ?? "Not found."} retry={person.reload} /></div>;
   const p = person.data;
 

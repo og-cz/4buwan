@@ -6,7 +6,7 @@ import MeasureProfile from "../components/charts/MeasureProfile";
 import ScoreDistribution from "../components/charts/ScoreDistribution";
 import PageHeader from "../components/PageHeader";
 import SignatureImage from "../components/SignatureImage";
-import { ErrorState, Loading } from "../components/States";
+import { ErrorState, SkeletonPanel } from "../components/States";
 import { formatDate, pad2 } from "../format";
 import type { Go } from "../navigation";
 import useAsync from "../state/useAsync";
@@ -21,7 +21,7 @@ export default function EvidenceReport({ caseId, go }: { caseId?: string; go: Go
   const personId = check.data?.person_id;
   const person = useAsync(() => personId ? getPerson(personId) : Promise.resolve(null), [personId]);
 
-  if (check.loading) return <div className="page"><Loading title="Preparing Evidence Report" /></div>;
+  if (check.loading) return <div className="page"><SkeletonPanel /></div>;
   if (check.error || !check.data) return <div className="page"><ErrorState message={check.error ?? "Not found."} retry={check.reload} /></div>;
   const c = check.data, r = c.result, p = person.data;
 
