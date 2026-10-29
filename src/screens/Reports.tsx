@@ -2,7 +2,7 @@ import { useState } from "react";
 import { getStats } from "../api/client";
 import Button from "../components/Button";
 import PageHeader from "../components/PageHeader";
-import { EmptyState, ErrorState, Loading } from "../components/States";
+import { EmptyState, ErrorState, SkeletonPanel } from "../components/States";
 import { downloadCsv, percent } from "../format";
 import useAsync from "../state/useAsync";
 
@@ -31,7 +31,7 @@ export default function Reports() {
 
   return <div className="page"><PageHeader title="Reports" description="Check volume, Verdict mix, uncertainty, human agreement, and average Confidence." action={<Button secondary icon="save" disabled={!s?.checks} onClick={exportReport}>Export report</Button>} />
     <div className="filters"><label><span>FROM</span><input type="date" value={from} max={to} onChange={e => setFrom(e.target.value)} /></label><label><span>TO</span><input type="date" value={to} min={from} onChange={e => setTo(e.target.value)} /></label></div>
-    {stats.loading ? <Loading title="Loading report" />
+    {stats.loading ? <SkeletonPanel />
       : stats.error || !s ? <ErrorState message={stats.error ?? "No data."} retry={stats.reload} />
       : s.checks === 0 ? <EmptyState title="No checks yet" text="No checks were recorded in this period." />
       : <>

@@ -4,7 +4,7 @@ import DataTable from "../components/DataTable";
 import PageHeader from "../components/PageHeader";
 import Tag from "../components/Tag";
 import VerdictBadge from "../components/VerdictBadge";
-import { EmptyState, ErrorState, Loading } from "../components/States";
+import { EmptyState, ErrorState, SkeletonPanel } from "../components/States";
 import { decisionTone, formatDate, percent } from "../format";
 import type { Go } from "../navigation";
 import useAsync from "../state/useAsync";
@@ -13,7 +13,7 @@ export default function Dashboard({ go }: { go: Go }) {
   const stats = useAsync(() => getStats(), []);
   const checks = useAsync(() => listChecks(), []);
   const header = <PageHeader title="Dashboard" description="Verification activity and items waiting for a human decision." />;
-  if (stats.loading) return <div className="page">{header}<Loading title="Loading activity" /></div>;
+  if (stats.loading) return <div className="page">{header}<SkeletonPanel /></div>;
   if (stats.error || !stats.data) return <div className="page">{header}<ErrorState message={stats.error ?? "No data."} retry={stats.reload} /></div>;
   const s = stats.data;
   const waiting = (checks.data ?? []).filter(c => c.verdict === "UNCERTAIN" || c.decision === "Pending").length;

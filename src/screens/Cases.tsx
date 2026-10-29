@@ -6,7 +6,7 @@ import Icon from "../components/Icon";
 import PageHeader from "../components/PageHeader";
 import Tag from "../components/Tag";
 import VerdictBadge from "../components/VerdictBadge";
-import { EmptyState, ErrorState, Loading } from "../components/States";
+import { EmptyState, ErrorState, SkeletonPanel } from "../components/States";
 import { decisionTone, downloadCsv, formatDate } from "../format";
 import type { Go } from "../navigation";
 import useAsync from "../state/useAsync";
@@ -39,7 +39,7 @@ export default function Cases({ queue = false, go }: { queue?: boolean; go: Go }
       <label><span>DECISION</span><select value={decision} onChange={e => setDecision(e.target.value as Decision | "")}><option value="">All decisions</option>{decisions.map(d => <option key={d}>{d}</option>)}</select></label>
       <div><Icon name="search" /><input value={search} onChange={e => setSearch(e.target.value)} placeholder={`Search ${t.lower} or case`} /></div>
     </div>
-    {checks.loading ? <Loading title="Loading Cases" />
+    {checks.loading ? <SkeletonPanel />
       : checks.error ? <ErrorState message={checks.error} retry={checks.reload} />
       : rows.length === 0 ? <EmptyState title={queue ? "Nothing waiting for review" : "No checks yet"} text={queue ? "Uncertain Checks and Checks without a decision appear here." : "Every verification is saved here as a Case."} />
       : <section className="panel table-panel"><DataTable rows={rows} rowKey={r => r.id} onOpen={r => go("CaseDetail", { caseId: r.id })} columns={[
