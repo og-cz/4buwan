@@ -25,11 +25,12 @@
 
 ### Examiner Workspace
 
-Find a person, add a questioned signature and get an advisory verdict with the evidence behind it.
+A workbench of today's checks and open cases, Verify with an inspectable verdict, and a manual Compare tool for any set of images.
 
 </td>
 <td width="50%">
-  <img src="docs/image/preset-examiner.png" alt="Examiner workspace" width="100%" />
+  <img src="docs/image/preset-examiner.png" alt="Examiner workspace on desktop" width="74%" valign="top" />
+  <img src="docs/image/preset-examiner-phone.png" alt="Examiner workspace on a phone" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
@@ -37,11 +38,12 @@ Find a person, add a questioned signature and get an advisory verdict with the e
 
 ### Supervisor Overview
 
-Follow checks, uncertain results and human decisions, and review the model's research results.
+Oversee checks, uncertain results and human decisions, with reports over time and the model's research results.
 
 </td>
 <td width="50%">
-  <img src="docs/image/preset-supervisor.png" alt="Supervisor dashboard" width="100%" />
+  <img src="docs/image/preset-supervisor.png" alt="Supervisor dashboard on desktop" width="74%" valign="top" />
+  <img src="docs/image/preset-supervisor-phone.png" alt="Supervisor dashboard on a phone" width="22%" valign="top" />
 </td>
 </tr>
 <tr>

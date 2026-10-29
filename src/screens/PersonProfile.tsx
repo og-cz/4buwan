@@ -10,7 +10,7 @@ import SignatureImage from "../components/SignatureImage";
 import SimilarityHeatmap from "../components/charts/SimilarityHeatmap";
 import Tag from "../components/Tag";
 import VerdictBadge from "../components/VerdictBadge";
-import { ErrorState, Loading } from "../components/States";
+import { ErrorState, SkeletonPanel } from "../components/States";
 import { decisionTone, formatDate, pad2, statusTone } from "../format";
 import type { Go } from "../navigation";
 import useAsync from "../state/useAsync";
@@ -26,7 +26,7 @@ export default function PersonProfile({ personId, expert, go, notify }: Props) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  if (person.loading) return <div className="page"><Loading title="Loading Signature Profile" /></div>;
+  if (person.loading) return <div className="page"><SkeletonPanel /></div>;
   if (person.error || !person.data) return <div className="page"><PageHeader title="Signature Profile" description="" /><ErrorState message={person.error ?? "Not found."} retry={person.reload} /></div>;
   const p = person.data;
 
@@ -47,7 +47,7 @@ export default function PersonProfile({ personId, expert, go, notify }: Props) {
       <section className="panel profile-summary"><div className="panel-head"><div><span>SIGNATURE CONSISTENCY</span><h2>How much {p.name}&apos;s signature naturally changes</h2></div></div><ConsistencyGauge consistency={p.consistency} name={p.name} /><div className="plain-explanation"><Icon name="help" /><p>{p.consistency.text}</p></div><dl><div><dt>Enrolled</dt><dd>{formatDate(p.created)}</dd></div><div><dt>Reference Samples</dt><dd>{p.samples?.length ?? 0}</dd></div><div><dt>Checks</dt><dd>{checks.data ? rows.length : "…"}</dd></div><div><dt>Profile status</dt><dd><Tag tone={statusTone(p.status)}>{p.status.toUpperCase()}</Tag></dd></div>{expert && <><div><dt>Reference pairs</dt><dd>{p.pairs}</dd></div><div><dt>Consistency value</dt><dd>{p.consistency.value.toFixed(4)}</dd></div><div><dt>Population middle half</dt><dd>{p.consistency.population.p25.toFixed(3)} – {p.consistency.population.p75.toFixed(3)}</dd></div></>}</dl></section></div>
     {expert && <section className="expert-section"><div className="expert-heading"><div><span>EXPERT VIEW</span><h2>Profile evidence</h2></div><p>Measured on this {t.lower}&apos;s 12 Reference Samples and their 66 pairs.</p></div><div className="expert-grid">
       <article className="panel analysis-card"><div className="panel-head"><div><span>SIMILARITY MATRIX</span><h2>12 Reference Samples</h2></div></div><SimilarityHeatmap matrix={p.reference_similarity} /></article>
-      <article className="panel analysis-card table-panel"><div className="panel-head"><div><span>17 DIFFERENCE MEASURES</span><h2>Spread across the 66 genuine pairs (standardised units)</h2></div></div><table><thead><tr><th>MEASURE</th><th>MIN</th><th>Q25</th><th>MEDIAN</th><th>Q75</th><th>MAX</th></tr></thead><tbody>{Object.entries(p.pair_stats).map(([m, s]) => <tr key={m}><td>{m}</td><td>{s.min.toFixed(2)}</td><td>{s.q25.toFixed(2)}</td><td>{s.median.toFixed(2)}</td><td>{s.q75.toFixed(2)}</td><td>{s.max.toFixed(2)}</td></tr>)}</tbody></table></article>
+      <article className="panel analysis-card table-panel"><div className="panel-head"><div><span>17 DIFFERENCE MEASURES</span><h2>Spread across the 66 genuine pairs (standardised units)</h2></div></div><div className="table-scroll"><table><thead><tr><th>MEASURE</th><th>MIN</th><th>Q25</th><th>MEDIAN</th><th>Q75</th><th>MAX</th></tr></thead><tbody>{Object.entries(p.pair_stats).map(([m, s]) => <tr key={m}><td>{m}</td><td>{s.min.toFixed(2)}</td><td>{s.q25.toFixed(2)}</td><td>{s.median.toFixed(2)}</td><td>{s.q75.toFixed(2)}</td><td>{s.max.toFixed(2)}</td></tr>)}</tbody></table></div></article>
     </div></section>}
     <section className="panel table-panel"><div className="panel-head"><div><span>CHECKS</span><h2>Checks for this {t.lower}</h2></div></div>{rows.length === 0 ? <p className="input-hint">No checks yet.</p> : <DataTable rows={rows} rowKey={r => r.id} onOpen={r => go("CaseDetail", { caseId: r.id })} columns={[{ header: "DATE & TIME", cell: r => formatDate(r.created, true) }, { header: "CASE", cell: r => r.case_title || r.id }, { header: "VERDICT", cell: r => <VerdictBadge verdict={r.verdict} /> }, { header: "CONFIDENCE", cell: r => r.confidence }, { header: "DECISION", cell: r => <Tag tone={decisionTone(r.decision)}>{r.decision.toUpperCase()}</Tag> }]} />}</section>
     {confirm && <ConfirmDialog title={confirm === "archive" ? `Archive ${p.name}?` : `Delete ${p.name}?`} text={confirm === "archive" ? "The profile is kept for existing Cases but cannot be used for new checks." : "This removes the Signature Profile and its 12 Reference Samples from this computer. Saved Cases stay in the log. This cannot be undone."} confirm={confirm === "archive" ? "Archive" : "Delete"} danger={confirm === "delete"} busy={busy} onConfirm={() => void act(confirm)} onCancel={() => setConfirm(null)} />}
