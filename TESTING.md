@@ -51,18 +51,18 @@ pnpm test:ui
 
 | # | Do this | You should see |
 |---|---|---|
-| 1 | Login → **Examiner demo** | Workbench first; sidebar groups Examine, Library, Evidence, System |
-| 2 | Log out → **Supervisor demo** | Dashboard first, plus Reports and Settings |
+| 1 | Login → **Examiner demo** | Workbench first; top bar says REAL DATA; one MODULES list |
+| 2 | Log out → **Supervisor demo** | Dashboard first; top bar says SAMPLE DATA. This preset is a display preview with fixed sample data and does not use the service |
 | 3 | Reference Library | 8 "Demo Person" entries, each with a consistency label |
 | 4 | Verify → Demo Person 05 → upload `full_org/original_5_14.png` | A verdict for a genuine sample *not* used for enrolment |
 | 5 | Same person → upload `full_forg/forgeries_5_3.png` | A verdict for a forgery |
-| 6 | Switch to **Expert view** (or press E) | Panels A–H with real numbers; the policy line says *provisional* |
+| 6 | Scroll below the verdict | Expert panels A–H with real numbers; the policy line says *provisional* |
 | 7 | Upload a blank white image | "Blank or almost blank" message, Run verification is disabled |
 | 8 | Enrol a new person with only 11 images | Create profile is blocked with the reason |
 | 9 | Cases → open the check from step 4 → Record decision "Accepted" | Decision and timeline saved |
 | 10 | Stop uvicorn (Ctrl+C) and wait a few seconds | "The analysis service is not running" banner |
-| 11 | Research Lab → Method comparison → All | Our method · R1-WAW 0.837, shared yardstick 0.831, standard 0.772 |
-| 12 | Research Lab → Dataset check → Bengali | Shortcut 0.936 is higher than our method, with the warning text |
+| 11 | Examiner → Research Lab → Method comparison → All | Our method · R1-WAW 0.837, shared yardstick 0.831, standard 0.772 |
+| 12 | Examiner → Research Lab → Dataset check → Bengali | Shortcut 0.936 is higher than our method, with the warning text |
 
 Use images numbered **13–24** and the forgeries for testing: images 1–12 are the enrolment samples.
 Expect some wrong verdicts: the model's equal error rate is about 21%. That is the honest behaviour of the
