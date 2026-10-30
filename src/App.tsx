@@ -19,6 +19,7 @@ import Help from "./screens/Help";
 import Workbench from "./screens/Workbench";
 import Compare from "./screens/Compare";
 import EvidenceReports from "./screens/EvidenceReports";
+import SupervisorDemo from "./supervisor/SupervisorDemo";
 import useHealth from "./state/useHealth";
 import { pageTitle, presetScreens, type Go, type Preset, type Route } from "./navigation";
 
@@ -44,6 +45,9 @@ export default function App() {
   }
 
   if (!session) return <>{banner}<Login onDemo={preset => start(`${preset} demo`, preset)} onSignIn={user => start(user, "Examiner")} /></>;
+
+  // Supervisor demo is a display preset with fixed sample data; only the Examiner demo uses the analysis service.
+  if (session.preset === "Supervisor") return <SupervisorDemo onLogout={() => setSession(null)} />;
 
   const { screen, personId, caseId } = route;
   let page: ReactNode;
