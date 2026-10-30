@@ -25,7 +25,7 @@
 
 ### Examiner Workspace
 
-A workbench of today's checks and open cases, Verify with an inspectable verdict, and a manual Compare tool for any set of images.
+Works on your own data: enrol people, verify a signature and inspect the evidence behind the verdict, with a manual Compare tool and saved cases.
 
 </td>
 <td width="50%">
@@ -38,7 +38,7 @@ A workbench of today's checks and open cases, Verify with an inspectable verdict
 
 ### Supervisor Overview
 
-Oversee checks, uncertain results and human decisions, with reports over time and the model's research results.
+A preview of the oversight screens (dashboard, review queue, reports, research results) filled with sample data from the research datasets.
 
 </td>
 <td width="50%">

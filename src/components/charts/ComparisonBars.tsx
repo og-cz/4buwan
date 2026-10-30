@@ -23,7 +23,7 @@ export default function ComparisonBars({ comparisons, matches, majorityAccept }:
         return <g key={c.reference} onMouseMove={e => tip.show(e, `R${pad2(c.reference)} ${fmt(c.value)}`, c.value >= 0 ? "Genuine-like: inside this person's genuine region." : "Outside this person's genuine region for this pair.")} onMouseLeave={tip.hide}>
           <rect x={cx - slot / 2} y={0} width={slot} height={H} fill="transparent" />
           <rect className={c.value >= 0 ? "bar-pos" : "bar-neg"} x={cx - bw / 2} y={y} width={bw} height={h} rx={3} />
-          {slot >= 34 && <text className="value" x={cx} y={c.value >= 0 ? y - 5 : y + h + 14} textAnchor="middle">{fmt(c.value, 2)}</text>}
+          {slot >= 34 && <text className="value" x={cx} y={c.value >= 0 ? Math.max(12, y - 5) : Math.min(H - 26, y + h + 14)} textAnchor="middle">{fmt(c.value, 2)}</text>}
           <text x={cx} y={H - 8} textAnchor="middle">R{pad2(c.reference)}</text>
         </g>;
       })}

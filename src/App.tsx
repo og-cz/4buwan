@@ -19,8 +19,8 @@ import Help from "./screens/Help";
 import Workbench from "./screens/Workbench";
 import Compare from "./screens/Compare";
 import EvidenceReports from "./screens/EvidenceReports";
+import SupervisorDemo from "./supervisor/SupervisorDemo";
 import useHealth from "./state/useHealth";
-import { getSettings } from "./state/settings";
 import { pageTitle, presetScreens, type Go, type Preset, type Route } from "./navigation";
 
 type Session = { user: string; preset: Preset };
@@ -28,7 +28,8 @@ type Session = { user: string; preset: Preset };
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
   const [route, setRoute] = useState<Route>({ screen: "Verify" });
-  const [expert, setExpert] = useState(false);
+  // The Examiner demo always shows the Expert view; there is no Simple / Expert switch.
+  const expert = true;
   const [toast, setToast] = useState<string | null>(null);
   const health = useHealth();
   const banner = health.status === "down" ? <ServiceBanner /> : null;
@@ -40,11 +41,13 @@ export default function App() {
 
   function start(user: string, preset: Preset) {
     setSession({ user, preset });
-    setExpert(getSettings().defaultView === "Expert");
     setRoute({ screen: presetScreens[preset][0] });
   }
 
   if (!session) return <>{banner}<Login onDemo={preset => start(`${preset} demo`, preset)} onSignIn={user => start(user, "Examiner")} /></>;
+
+  // Supervisor demo is a display preset with fixed sample data; only the Examiner demo uses the analysis service.
+  if (session.preset === "Supervisor") return <SupervisorDemo onLogout={() => setSession(null)} />;
 
   const { screen, personId, caseId } = route;
   let page: ReactNode;
@@ -53,7 +56,7 @@ export default function App() {
     case "Dashboard": page = <Dashboard go={go} />; break;
     case "Compare": page = <Compare go={go} notify={notify} />; break;
     case "Evidence Reports": page = <EvidenceReports go={go} />; break;
-    case "Verify": page = <Verify key={personId ?? "search"} personId={personId} expert={expert} setExpert={setExpert} go={go} />; break;
+    case "Verify": page = <Verify key={personId ?? "search"} personId={personId} expert={expert} go={go} />; break;
     case "Person Profile": page = <PersonProfile personId={personId} expert={expert} go={go} notify={notify} />; break;
     case "Enrol": page = <Enrol go={go} />; break;
     case "Cases": page = <Cases go={go} />; break;
@@ -67,5 +70,5 @@ export default function App() {
     case "Settings": page = <Settings notify={notify} />; break;
     default: page = <Help />;
   }
-  return <Shell preset={session.preset} user={session.user} expert={expert} setExpert={setExpert} screen={screen} go={go} logout={() => setSession(null)} banner={banner}>{page}<Toast message={toast} onClose={closeToast} /></Shell>;
+  return <Shell preset={session.preset} user={session.user} screen={screen} go={go} logout={() => setSession(null)} banner={banner}>{page}<Toast message={toast} onClose={closeToast} /></Shell>;
 }
