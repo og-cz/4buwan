@@ -56,7 +56,24 @@ function Tag({ children, tone = "neutral" }: { children: ReactNode; tone?: "neut
 const navIcons: Record<Exclude<Screen, "Client Profile">, IconName> = {
   Workbench: "audit", Dashboard: "audit", Verify: "verify", Compare: "compare", "Review Queue": "review", Cases: "history", "Reference Library": "user", Enrol: "enrol", "Batch Check": "compare", "Evidence Reports": "print", Reports: "audit", "Research Lab": "compare", Settings: "staff", Help: "help",
 };
-const supervisorScreens: Exclude<Screen, "Client Profile" | "Workbench">[] = ["Dashboard", "Review Queue", "Cases", "Verify", "Compare", "Reference Library", "Enrol", "Batch Check", "Evidence Reports", "Reports", "Research Lab", "Settings", "Help"];
+type NavScreen = Exclude<Screen, "Client Profile">;
+const supervisorGroups: { label: string; items: NavScreen[] }[] = [
+  { label: "OVERVIEW", items: ["Dashboard", "Reports"] },
+  { label: "EXAMINE", items: ["Verify", "Compare", "Batch Check"] },
+  { label: "RECORDS", items: ["Cases", "Reference Library"] },
+  { label: "REFERENCE", items: ["Research Lab", "Help"] },
+  { label: "SYSTEM", items: ["Settings"] },
+];
+const parentOf: Partial<Record<Screen, NavScreen>> = { "Review Queue": "Cases", "Evidence Reports": "Cases", "Client Profile": "Reference Library", Enrol: "Reference Library" };
+const hubTabs: Partial<Record<NavScreen, [Screen, string][]>> = {
+  Cases: [["Cases", "All cases"], ["Review Queue", "Review queue"], ["Evidence Reports", "Evidence reports"]],
+  "Reference Library": [["Reference Library", "People"], ["Enrol", "Enrol a person"]],
+};
+function HubTabs({ screen, setScreen }: { screen: Screen; setScreen: (s: Screen) => void }) {
+  const tabs = hubTabs[(parentOf[screen] ?? screen) as NavScreen];
+  if (!tabs || !tabs.some(([t]) => t === screen)) return null;
+  return <div className="research-tabs hub-tabs" role="tablist">{tabs.map(([t, label]) => <button key={t} role="tab" aria-selected={screen === t} className={screen === t ? "active" : ""} onClick={() => setScreen(t)}>{label}</button>)}</div>;
+}
 
 function Shell({ screen, setScreen, logout, children }: { screen: Screen; setScreen: (s: Screen) => void; logout: () => void; children: ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
@@ -69,8 +86,7 @@ function Shell({ screen, setScreen, logout, children }: { screen: Screen; setScr
     <aside className={`sidebar ${collapsed ? "collapsed" : ""} ${drawerOpen ? "drawer-open" : ""}`}>
       <div className="brand"><img src="/assets/7e738.svg" alt="4buwan" /><button className="brand-toggle" onClick={() => setCollapsed(!collapsed)} aria-label={collapsed ? "Expand menu" : "Collapse menu"}><Icon name="menu" size={18} /></button></div>
       <div className="office"><span>SIGNATURE DESK</span><strong>Supervisor demo</strong></div>
-      <div className="nav-label">MODULES</div>
-      <nav aria-label="Modules">{supervisorScreens.map(item => <button className={screen === item || (screen === "Client Profile" && item === "Reference Library") ? "active" : ""} onClick={() => { setScreen(item); setDrawerOpen(false); }} key={item} aria-label={item} title={item}><Icon name={navIcons[item]} /><span>{item}</span></button>)}</nav>
+      <nav aria-label="Modules">{supervisorGroups.map(g => <div className="nav-group" key={g.label}><div className="nav-label">{g.label}</div>{g.items.map(item => <button className={(parentOf[screen] ?? screen) === item ? "active" : ""} onClick={() => { setScreen(item); setDrawerOpen(false); }} key={item} aria-label={item} title={item}><Icon name={navIcons[item]} /><span>{item}</span></button>)}</div>)}</nav>
       <div className="drawer-controls"><span>DATA</span>{label}</div>
       <div className="privacy-side"><Icon name="audit" size={15} /><p><strong>Private office system</strong>Access and changes are logged.</p></div>
     </aside>
@@ -78,7 +94,7 @@ function Shell({ screen, setScreen, logout, children }: { screen: Screen; setScr
     <main className={`main ${light ? "light-theme" : ""}`}>
       <header className="topbar"><div><button className="mobile-menu" onClick={() => setDrawerOpen(true)} aria-label="Open menu"><Icon name="menu" size={18} /></button><span>Signature Desk</span><b>/</b><strong>{screen}</strong></div><div className="top-tools">{label}<button className="top-search" onClick={() => setTheme(light ? "dark" : "light")} title={light ? "Dark theme" : "Light theme"} aria-label={light ? "Dark theme" : "Light theme"}><Icon name={light ? "sun" : "moon"} size={15} /></button><div className="staff-menu"><span>SD</span><div><strong>Supervisor demo</strong><small>Signed in</small></div><button onClick={logout} title="Log out" aria-label="Log out"><Icon name="logout" size={16} /></button></div></div></header>
       <div className="sample-strip">Sample data - signatures from the public CEDAR dataset used in the research. Not real clients.</div>
-      <div className="content">{children}</div>
+      <div className="content"><HubTabs screen={screen} setScreen={setScreen} />{children}</div>
       <footer>Signatures are stored on this computer only. Every check is logged.</footer>
     </main>
   </div>;

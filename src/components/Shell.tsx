@@ -27,8 +27,7 @@ export default function Shell({ preset, user, screen, go, logout, banner, childr
     <aside className={`sidebar ${collapsed ? "collapsed" : ""} ${drawerOpen ? "drawer-open" : ""}`}>
       <div className="brand"><img src={settings.orgLogo || "/assets/7e738.svg"} alt={settings.orgName || "4buwan"} /><button className="brand-toggle" onClick={() => setCollapsed(!collapsed)} aria-label={collapsed ? "Expand menu" : "Collapse menu"}><Icon name="menu" size={18} /></button></div>
       <div className="office"><span>{office}</span><strong>{preset} demo</strong></div>
-      <div className="nav-label">MODULES</div>
-      <NavList preset={preset} screen={screen} go={go} onNavigate={() => setDrawerOpen(false)} />
+      <NavList screen={screen} go={go} onNavigate={() => setDrawerOpen(false)} />
       <div className="drawer-controls"><span>DATA</span><DataLabel sample={false} /></div>
       <div className="privacy-side"><Icon name="audit" size={15} /><p><strong>Private office system</strong>Access and changes are logged.</p></div>
     </aside>

@@ -20,6 +20,7 @@ import Workbench from "./screens/Workbench";
 import Compare from "./screens/Compare";
 import EvidenceReports from "./screens/EvidenceReports";
 import SupervisorDemo from "./supervisor/SupervisorDemo";
+import HubTabs from "./components/HubTabs";
 import useHealth from "./state/useHealth";
 import { pageTitle, presetScreens, type Go, type Preset, type Route } from "./navigation";
 
@@ -70,5 +71,5 @@ export default function App() {
     case "Settings": page = <Settings notify={notify} />; break;
     default: page = <Help />;
   }
-  return <Shell preset={session.preset} user={session.user} screen={screen} go={go} logout={() => setSession(null)} banner={banner}>{page}<Toast message={toast} onClose={closeToast} /></Shell>;
+  return <Shell preset={session.preset} user={session.user} screen={screen} go={go} logout={() => setSession(null)} banner={banner}><HubTabs screen={screen} go={go} />{page}<Toast message={toast} onClose={closeToast} /></Shell>;
 }
