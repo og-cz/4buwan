@@ -84,7 +84,7 @@ function Shell({ screen, setScreen, logout, children }: { screen: Screen; setScr
   const label = <div className="data-label sample"><strong>SAMPLE DATA</strong><small>Example data from the research datasets.</small></div>;
   return <div className={`app-shell ${collapsed ? "sidebar-collapsed" : ""}`}>
     <aside className={`sidebar ${collapsed ? "collapsed" : ""} ${drawerOpen ? "drawer-open" : ""}`}>
-      <div className="brand"><img src="/assets/7e738.svg" alt="4buwan" /><button className="brand-toggle" onClick={() => setCollapsed(!collapsed)} aria-label={collapsed ? "Expand menu" : "Collapse menu"}><Icon name="menu" size={18} /></button></div>
+      <div className="brand"><img src="/assets/7e738.svg" alt="4buwan" /><button className="brand-toggle" onClick={() => { if (window.matchMedia("(max-width: 1199px)").matches) setDrawerOpen(!drawerOpen); else setCollapsed(!collapsed); }} aria-label={collapsed || !drawerOpen ? "Expand menu" : "Collapse menu"} title="Menu"><Icon name="menu" size={18} /></button></div>
       <div className="office"><span>SIGNATURE DESK</span><strong>Supervisor demo</strong></div>
       <nav aria-label="Modules">{supervisorGroups.map(g => <div className="nav-group" key={g.label}><div className="nav-label">{g.label}</div>{g.items.map(item => <button className={(parentOf[screen] ?? screen) === item ? "active" : ""} onClick={() => { setScreen(item); setDrawerOpen(false); }} key={item} aria-label={item} title={item}><Icon name={navIcons[item]} /><span>{item}</span></button>)}</div>)}</nav>
       <div className="drawer-controls"><span>DATA</span>{label}</div>
