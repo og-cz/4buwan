@@ -229,3 +229,16 @@ th,.tag,.panel-head>div>span,.step-title>span,.expert-heading>div>span,.method-v
 .method-title>.tag i{position:static;flex:none}
 .hub-tabs button,.research-tabs button{font-size:11px}
 .sidebar .office{border-bottom:1px solid #29343a;padding-bottom:12px;margin-bottom:2px}
+
+/* icon rail (900–1199px): the menu button opens the full sidebar over the page */
+@media(min-width:900px) and (max-width:1199px){
+  .sidebar.drawer-open{width:248px;z-index:40;box-shadow:12px 0 35px rgba(0,0,0,.35)}
+  .sidebar.drawer-open .brand{padding:9px 12px 9px 18px;justify-content:space-between}
+  .sidebar.drawer-open .brand img{display:block;width:126px;height:72px}
+  .sidebar.drawer-open .office,.sidebar.drawer-open .privacy-side{display:flex}
+  .sidebar.drawer-open nav span{display:block}
+  .sidebar.drawer-open nav button{justify-content:flex-start}
+  .sidebar.drawer-open nav .nav-label{display:block;height:auto;margin:0;background:none;font-size:11px;padding:16px 9px 6px}
+  .sidebar.drawer-open nav button:hover::after{display:none}
+  .drawer-backdrop{display:block;position:fixed;inset:0;border:0;background:rgba(0,0,0,.45);z-index:35}
+}

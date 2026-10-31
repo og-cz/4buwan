@@ -25,7 +25,7 @@ export default function Shell({ preset, user, screen, go, logout, banner, childr
   const office = settings.orgName ? settings.orgName.toUpperCase() : "SIGNATURE DESK";
   return <div className={`app-shell ${collapsed ? "sidebar-collapsed" : ""}`}>
     <aside className={`sidebar ${collapsed ? "collapsed" : ""} ${drawerOpen ? "drawer-open" : ""}`}>
-      <div className="brand"><img src={settings.orgLogo || "/assets/7e738.svg"} alt={settings.orgName || "4buwan"} /><button className="brand-toggle" onClick={() => setCollapsed(!collapsed)} aria-label={collapsed ? "Expand menu" : "Collapse menu"}><Icon name="menu" size={18} /></button></div>
+      <div className="brand"><img src={settings.orgLogo || "/assets/7e738.svg"} alt={settings.orgName || "4buwan"} /><button className="brand-toggle" onClick={() => { if (window.matchMedia("(max-width: 1199px)").matches) setDrawerOpen(!drawerOpen); else setCollapsed(!collapsed); }} aria-label={collapsed || !drawerOpen ? "Expand menu" : "Collapse menu"} title="Menu"><Icon name="menu" size={18} /></button></div>
       <div className="office"><span>{office}</span><strong>{preset} demo</strong></div>
       <NavList screen={screen} go={go} onNavigate={() => setDrawerOpen(false)} />
       <div className="drawer-controls"><span>DATA</span><DataLabel sample={false} /></div>
