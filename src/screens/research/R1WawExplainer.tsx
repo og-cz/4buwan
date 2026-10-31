@@ -1,15 +1,13 @@
 import { OUR_METHOD_LONG } from "../../methods";
 
-/** Mini diagram: the shared yardstick keeps 16 directions; the person's own spread replaces the main one. */
+/** Mini diagram: the person's own spread on the main direction u₁, the shared yardstick on the other 16. */
 export default function R1WawExplainer() {
-  const bars = Array.from({ length: 17 }, (_, i) => i);
-  return <section className="panel r1waw"><div className="panel-head"><div><span>What R1-WAW does</span><h2>{OUR_METHOD_LONG}</h2></div></div>
-    <p>It keeps the shared yardstick learned from many writers for 16 of the 17 directions, and along the one main direction it uses this person&apos;s own spread, so a consistent signer gets a stricter check and a variable signer a more tolerant one.</p>
-    <svg className="chart-svg r1waw-diagram" viewBox="0 0 520 120" role="img" aria-label="Shared yardstick for 16 directions, the person's own spread on the main direction">
-      {bars.map(i => <g key={i}><rect x={20 + i * 29} y={i === 0 ? 18 : 48} width={20} height={i === 0 ? 70 : 40} rx={3} className={i === 0 ? "bar-own" : "bar-shared"} /></g>)}
-      <text x={20} y={108}>u₁ · own spread σ_w</text>
-      <text x={320} y={108}>16 directions · shared</text>
-    </svg>
+  return <section className="panel r1waw"><div className="panel-head"><div><span>WHAT R1-WAW DOES</span><h2>{OUR_METHOD_LONG}</h2></div></div>
+    <p>It keeps the shared yardstick learned from many writers for 16 of the 17 directions, and along the one main direction it uses this person&apos;s own spread. A consistent signer gets a stricter check; a variable signer a more tolerant one.</p>
+    <div className="r1waw-diagram" role="img" aria-label="One direction uses the person's own spread, sixteen use the shared yardstick">
+      <div className="r1waw-own"><i /><small>u₁ · own spread σ_w</small></div>
+      <div className="r1waw-shared"><div>{Array.from({ length: 16 }, (_, k) => <i key={k} />)}</div><small>16 directions · shared yardstick</small></div>
+    </div>
     <code className="formula">W = W_G + (σ_w⁻¹ − λ₁^(−½)) u₁u₁ᵀ</code>
     <p className="chart-note">W_G whitens the 17 difference measures with the pooled within-writer covariance; u₁ is its main direction and λ₁ the pooled spread along it. One number per person, so 12 references are enough to estimate it.</p>
   </section>;

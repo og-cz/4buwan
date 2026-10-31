@@ -19,14 +19,30 @@ export const navIcons: Record<NavScreen, IconName> = {
   "Research Lab": "ruler", Reports: "audit", Settings: "settings", Help: "help",
 };
 
+export type NavGroup = { label: string; items: NavScreen[] };
+
+/** Examiner sidebar: grouped modules. Review Queue and Evidence Reports live as tabs inside Cases; Enrol is a tab of Reference Library. */
+export const examinerGroups: NavGroup[] = [
+  { label: "EXAMINE", items: ["Workbench", "Verify", "Compare", "Batch Check"] },
+  { label: "RECORDS", items: ["Cases", "Reference Library"] },
+  { label: "REFERENCE", items: ["Research Lab", "Help"] },
+];
+
 export const presetScreens: Record<Preset, NavScreen[]> = {
-  Examiner: ["Workbench", "Verify", "Compare", "Review Queue", "Cases", "Reference Library", "Enrol", "Batch Check", "Evidence Reports", "Research Lab", "Help"],
-  Supervisor: ["Dashboard", "Verify", "Compare", "Review Queue", "Cases", "Reference Library", "Enrol", "Batch Check", "Evidence Reports", "Research Lab", "Reports", "Settings", "Help"],
+  Examiner: examinerGroups.flatMap(g => g.items),
+  Supervisor: ["Dashboard", "Verify", "Compare", "Cases", "Reference Library", "Batch Check", "Research Lab", "Reports", "Settings", "Help"],
 };
 
-/** Which sidebar item stays highlighted while a detail page is open. */
+/** Tabs shown at the top of a module that groups several screens. */
+export const hubTabs: Partial<Record<NavScreen, [NavScreen, string][]>> = {
+  Cases: [["Cases", "All cases"], ["Review Queue", "Review queue"], ["Evidence Reports", "Evidence reports"]],
+  "Reference Library": [["Reference Library", "People"], ["Enrol", "Enrol a person"]],
+};
+
+/** Which sidebar item stays highlighted while a sub-screen or detail page is open. */
 export const parentScreen: Partial<Record<Screen, NavScreen>> = {
-  CaseDetail: "Cases", "Evidence Report": "Evidence Reports", "Person Profile": "Reference Library",
+  CaseDetail: "Cases", "Review Queue": "Cases", "Evidence Reports": "Cases", "Evidence Report": "Cases",
+  "Person Profile": "Reference Library", Enrol: "Reference Library",
 };
 
 /** Browser tab title for a route: "4buwan | <Page>". `label` carries a person's name when the caller knows it. */
