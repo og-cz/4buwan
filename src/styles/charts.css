@@ -1,0 +1,44 @@
+/* One chart style: 12px labels, 1px gridlines in the border colour, numbers in mono. */
+.analysis-card { display: flex; flex-direction: column; min-width: 0; }
+.analysis-card .panel-head h2 { font: var(--t-body-strong); color: var(--text); }
+.measure-card { grid-row: span 2; }
+.chart-svg { width: 100%; height: auto; display: block; overflow: visible; }
+.chart-svg text { font: var(--t-label); font-weight: 400; fill: var(--text-3); }
+.chart-svg .tick { font: var(--t-tick); }
+.chart-svg .grid, .chart-svg .axis { stroke: var(--border); stroke-width: 1; fill: none; }
+.chart-svg .zone { fill: var(--uncertain-soft); }
+.chart-svg .decision { stroke: var(--uncertain); stroke-width: 2; }
+.chart-svg .dot { fill: var(--chart-dot); }
+.chart-svg .density { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+.chart-svg .marker { stroke: var(--accent-2); stroke-width: 3; }
+.chart-svg .label-q, .chart-svg .q { fill: var(--accent-text); font-weight: 600; }
+.chart-svg .cell { fill: var(--accent); }
+.chart-svg .bar-pos { fill: var(--genuine); }
+.chart-svg .bar-neg { fill: var(--forged); }
+.chart-svg .zero { stroke: var(--border-strong); stroke-width: 1; }
+.chart-svg .value { font: var(--t-mono); font-size: 12px; fill: var(--text-2); }
+.chart-svg .outline { fill: none; stroke: var(--accent-2); stroke-width: 1.5; }
+.chart-svg .band { fill: var(--chart-band); }
+.chart-svg .whisker { stroke: var(--chart-band); stroke-width: 2; }
+.chart-svg .qdot { fill: var(--accent); opacity: .8; }
+.chart-svg .row-flag { fill: var(--uncertain-soft); }
+.chart-svg .flag-text { fill: var(--uncertain-text); font-weight: 600; }
+.chart-toolbar { margin-bottom: var(--s3); }
+.chart-note { margin-top: var(--s3); color: var(--text-3); font: var(--t-small); }
+.chart-note.policy-line { color: var(--uncertain-text); }
+.chart-legend { display: flex; flex-wrap: wrap; gap: var(--s4); margin-top: var(--s2); font: var(--t-small); color: var(--text-2); }
+.chart-legend i { display: inline-block; width: 18px; height: 8px; margin-right: var(--s1); border-radius: 2px; vertical-align: middle; }
+.chart-tip { position: fixed; z-index: 70; pointer-events: none; max-width: 280px; padding: var(--s2) var(--s3); border: 1px solid var(--border-strong); border-radius: var(--r-sm); background: var(--elevated); box-shadow: var(--shadow-2); font: var(--t-small); color: var(--text-2); }
+.chart-tip strong { display: block; font: var(--t-mono); color: var(--text); }
+.exact-values { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--border); margin-top: var(--s3); }
+.exact-values > div { padding: var(--s3) var(--s2) 0; display: flex; flex-direction: column; gap: 2px; }
+.exact-values span { font: var(--t-label); letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--text-3); }
+.exact-values strong, .parameters-list dd { font: var(--t-mono); font-variant-numeric: tabular-nums; color: var(--text); }
+.parameters-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; }
+.parameters-list > div { padding: var(--s3) 0; border-bottom: 1px solid var(--border); padding-right: var(--s3); }
+.parameters-list dt { color: var(--text-2); font: var(--t-small); }
+.parameters-list dd { margin: 2px 0 0; word-break: break-word; }
+@media (max-width: 899px) { .measure-card { grid-row: auto; } }
+.heatmap-wrap { display: flex; flex-direction: column; align-items: center; gap: var(--s2); }
+.heat-scale { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--s2); font: var(--t-small); color: var(--text-2); }
+.heat-scale i { display: inline-block; width: 120px; height: 10px; border-radius: var(--r-pill); background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 12%, var(--surface))); }

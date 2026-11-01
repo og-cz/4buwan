@@ -18,8 +18,7 @@ type ListProps = { title: string; eyebrow: string; rows: CheckSummary[]; empty: 
 function CaseList({ title, eyebrow, rows, empty, go, more, decision = true }: ListProps) {
   return <section className="panel workbench-list"><div className="panel-head"><div><span>{eyebrow}</span><h2>{title}</h2></div><Tag tone={rows.length ? "accent" : "neutral"}>{rows.length}</Tag></div>
     {rows.length === 0 ? <p className="input-hint">{empty}</p> : <ul className="case-rows">{rows.slice(0, 6).map(r => <li key={r.id}><button onClick={() => go("CaseDetail", { caseId: r.id })}>
-      <span className="num case-time">{shortDate(r.created)}</span>
-      <span className="case-person"><strong>{r.name ?? "Deleted profile"}</strong><small>{r.case_title || r.id}</small></span>
+      <span className="case-person"><strong>{r.name ?? "Deleted profile"}</strong><small><span className="num">{shortDate(r.created)}</span> · {r.case_title || r.id}</small></span>
       <span className="case-tags"><VerdictBadge verdict={r.verdict} />{decision && r.decision !== "Pending" && <Tag tone={decisionTone(r.decision)}>{r.decision.toUpperCase()}</Tag>}</span>
       <Icon name="chevron" size={14} />
     </button></li>)}</ul>}
