@@ -33,7 +33,7 @@ export default function Workbench({ go }: { go: Go }) {
   const today = rows.filter(r => isToday(r.created));
   const open = rows.filter(r => r.decision === "Pending").sort((a, b) => a.created.localeCompare(b.created));
   const recheck = rows.filter(r => r.verdict === "UNCERTAIN" && r.decision !== "Accepted" && r.decision !== "Rejected");
-  return <div className="page"><PageHeader title="Workbench" description="Today's checks, open cases and uncertain results to look at again." action={<div className="header-actions"><Button secondary icon="layers" onClick={() => go("Compare")}>Compare images</Button><Button icon="verify" onClick={() => go("Verify")}>Verify a signature</Button></div>} />
+  return <div className="page"><PageHeader title="Workbench" description="Today's checks, open cases and uncertain results to look at again." action={<div className="header-actions"><Button secondary icon="layers" onClick={() => go("Compare")}>Compare images</Button></div>} />
     <section className="panel workbench-hero"><span className="workbench-icon"><Icon name="verify" size={22} /></span><div><h2>Start a check</h2><p>Find the person, add the questioned signature and get an advisory Verdict with its evidence. Shortcuts in Verify: V run, 1–9 reference, O overlay.</p></div><Button icon="verify" onClick={() => go("Verify")}>Verify a signature</Button></section>
     {checks.loading ? <div className="workbench-grid"><SkeletonPanel /><SkeletonPanel /></div>
       : checks.error ? <ErrorState message={checks.error} retry={checks.reload} />
