@@ -1,7 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
-import Brand from "../components/Brand";
-import Drawer from "../components/Drawer";
-import { DataLabel } from "../components/Shell";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useTheme } from "../state/theme";
 import { caseMethodResults, checks, datasetResults, decision, differenceMeasures, limitations, methodExplanation, methodFormula, profileParameters, reliableFinding, researchResults, samplePeople } from "./sampleData";
 
@@ -80,35 +77,26 @@ function HubTabs({ screen, setScreen }: { screen: Screen; setScreen: (s: Screen)
 
 function Shell({ screen, setScreen, logout, children }: { screen: Screen; setScreen: (s: Screen) => void; logout: () => void; children: ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
-  const [drawer, setDrawer] = useState(false);
-  const closeDrawer = useCallback(() => setDrawer(false), []);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [theme, setTheme] = useTheme();
+  const light = theme === "light";
   useEffect(() => { document.title = `4buwan | ${screen}`; }, [screen]);
-  const active = parentOf[screen] ?? screen;
-  const nav = (after?: () => void) => <nav aria-label="Modules">{supervisorGroups.map(g => <div className="nav-group" key={g.label}><div className="nav-label">{g.label}</div>{g.items.map(item => <button className={active === item ? "active" : ""} aria-current={active === item ? "page" : undefined} onClick={() => { setScreen(item); after?.(); }} key={item} aria-label={item} title={item} data-label={item}><Icon name={navIcons[item]} /><span>{item}</span></button>)}</div>)}</nav>;
+  const label = <div className="data-label sample"><strong>SAMPLE DATA</strong><small>Example data from the research datasets.</small></div>;
   return <div className={`app-shell ${collapsed ? "sidebar-collapsed" : ""}`}>
-    <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
-      <div className="brand"><Brand size={32} label="Signature Desk" /><button className="brand-toggle" onClick={() => setCollapsed(!collapsed)} aria-label={collapsed ? "Expand menu" : "Collapse menu"} title={collapsed ? "Expand menu" : "Collapse menu"}><Icon name="menu" size={18} /></button></div>
-      <div className="office"><span>Workspace</span><strong>Supervisor demo</strong></div>
-      {nav()}
-      <div className="privacy-side"><Icon name="audit" size={18} /><p><strong>Private office system</strong>Access and changes are logged.</p></div>
+    <aside className={`sidebar ${collapsed ? "collapsed" : ""} ${drawerOpen ? "drawer-open" : ""}`}>
+      <div className="brand"><img src="/assets/7e738.svg" alt="4buwan" /><button className="brand-toggle" onClick={() => { if (window.matchMedia("(max-width: 1199px)").matches) setDrawerOpen(!drawerOpen); else setCollapsed(!collapsed); }} aria-label={collapsed || !drawerOpen ? "Expand menu" : "Collapse menu"} title="Menu"><Icon name="menu" size={18} /></button></div>
+      <div className="office"><span>SIGNATURE DESK</span><strong>Supervisor demo</strong></div>
+      <nav aria-label="Modules">{supervisorGroups.map(g => <div className="nav-group" key={g.label}><div className="nav-label">{g.label}</div>{g.items.map(item => <button className={(parentOf[screen] ?? screen) === item ? "active" : ""} onClick={() => { setScreen(item); setDrawerOpen(false); }} key={item} aria-label={item} title={item}><Icon name={navIcons[item]} /><span>{item}</span></button>)}</div>)}</nav>
+      <div className="drawer-controls"><span>DATA</span>{label}</div>
+      <div className="privacy-side"><Icon name="audit" size={15} /><p><strong>Private office system</strong>Access and changes are logged.</p></div>
     </aside>
-    <main className="main">
-      <header className="topbar">
-        <button className="icon-button mobile-only" onClick={() => setDrawer(true)} aria-label="Open menu" aria-expanded={drawer}><Icon name="menu" size={18} /></button>
-        <div className="crumbs"><span className="desktop-only">Signature Desk</span><b className="desktop-only">/</b><strong>{screen}</strong></div>
-        <div className="top-tools"><div className="desktop-only"><DataLabel sample /></div><button className="icon-button" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"} title={theme === "dark" ? "Light theme" : "Dark theme"}><Icon name={theme === "dark" ? "sun" : "moon"} size={18} /></button><div className="staff-menu"><span aria-hidden="true">SD</span><div className="desktop-only"><strong>Supervisor demo</strong><small>Signed in</small></div><button className="icon-button" onClick={logout} title="Log out" aria-label="Log out"><Icon name="logout" size={18} /></button></div></div>
-      </header>
-      <div className="sample-strip">Sample data — signatures from the public CEDAR dataset used in the research. Not real clients.</div>
+    {drawerOpen && <button className="drawer-backdrop" onClick={() => setDrawerOpen(false)} aria-label="Close menu" />}
+    <main className={`main ${light ? "light-theme" : ""}`}>
+      <header className="topbar"><div><button className="mobile-menu" onClick={() => setDrawerOpen(true)} aria-label="Open menu"><Icon name="menu" size={18} /></button><span>Signature Desk</span><b>/</b><strong>{screen}</strong></div><div className="top-tools">{label}<button className="top-search" onClick={() => setTheme(light ? "dark" : "light")} title={light ? "Dark theme" : "Light theme"} aria-label={light ? "Dark theme" : "Light theme"}><Icon name={light ? "sun" : "moon"} size={15} /></button><div className="staff-menu"><span>SD</span><div><strong>Supervisor demo</strong><small>Signed in</small></div><button onClick={logout} title="Log out" aria-label="Log out"><Icon name="logout" size={16} /></button></div></div></header>
+      <div className="sample-strip">Sample data - signatures from the public CEDAR dataset used in the research. Not real clients.</div>
       <div className="content"><HubTabs screen={screen} setScreen={setScreen} />{children}</div>
       <footer>Signatures are stored on this computer only. Every check is logged.</footer>
     </main>
-    <Drawer open={drawer} onClose={closeDrawer} label="Menu">
-      <Brand size={32} label="Signature Desk" />
-      <div className="drawer-section"><span className="nav-label">Data</span><DataLabel sample /></div>
-      <div className="drawer-section"><span className="nav-label">Workspace</span><strong>Supervisor demo</strong></div>
-      {nav(closeDrawer)}
-    </Drawer>
   </div>;
 }
 
