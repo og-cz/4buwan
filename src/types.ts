@@ -17,7 +17,7 @@ export type ModelMeta = {
   constants_sha1: string; exported: string; settings: ModelSettings; consistency_percentiles: Percentiles;
 };
 
-export type Health = { ok: boolean; model: ModelMeta };
+export type Health = { ok: boolean; model: ModelMeta; mode: "real" | "sample"; persons: number; checks: number };
 
 export type QualityIssue = { code: string; message: string };
 export type Quality = { ok: boolean; ink_fraction: number; issues: QualityIssue[] };

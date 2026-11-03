@@ -2,6 +2,7 @@ import type {
   Attachment, CheckDetail, CheckSummary, Decision, Health, PerformanceRow, PersonDetail, PersonSummary, Preprocessed,
   Quality, ReportEntry, ResearchResults, Stats, Strictness, UncertainZone, Verdict, VerifyResult,
 } from "../types";
+import { getDataMode } from "../state/dataMode";
 
 /** The only place in the app that calls fetch(). */
 
@@ -13,10 +14,15 @@ export class ApiError extends Error {
   }
 }
 
+/** Every request names its data folder: the office's own data or the sample data. */
+const withMode = (init?: RequestInit): RequestInit => ({ ...init, headers: { ...(init?.headers ?? {}), "X-Data-Mode": getDataMode() } });
+/** Plain links (img src) cannot send headers, so they carry the mode in the query string. */
+const modeUrl = (url: string) => `${url}${url.includes("?") ? "&" : "?"}mode=${getDataMode()}`;
+
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   let res: Response;
   try {
-    res = await fetch(path, init);
+    res = await fetch(path, withMode(init));
   } catch {
     throw new ApiError("The analysis service is not running.", 0);
   }
@@ -58,7 +64,7 @@ export const enrolPerson = (name: string, externalId: string, files: File[]) =>
   post<PersonDetail>("/api/persons", { name, external_id: externalId, files });
 export const archivePerson = (id: string) => post<{ ok: boolean }>(`/api/persons/${id}/archive`);
 export const deletePerson = (id: string) => request<{ ok: boolean }>(`/api/persons/${id}`, { method: "DELETE" });
-export const sampleUrl = (id: string, index: number) => `/api/persons/${id}/samples/${index}`;
+export const sampleUrl = (id: string, index: number) => modeUrl(`/api/persons/${id}/samples/${index}`);
 
 export type VerifyInput = { personId: string; file: File; strictness: Strictness; uncertain: UncertainZone; caseTitle: string; notes: string };
 export const verify = (v: VerifyInput) => post<VerifyResult>("/api/verify", {
@@ -67,13 +73,13 @@ export const verify = (v: VerifyInput) => post<VerifyResult>("/api/verify", {
 
 export const listChecks = (personId?: string, verdict?: Verdict) => request<CheckSummary[]>(`/api/checks${query({ person_id: personId, verdict })}`);
 export const getCheck = (id: string) => request<CheckDetail>(`/api/checks/${id}`);
-export const checkImageUrl = (id: string) => `/api/checks/${id}/image`;
+export const checkImageUrl = (id: string) => modeUrl(`/api/checks/${id}/image`);
 export const recordDecision = (id: string, decision: Exclude<Decision, "Pending">, note: string) =>
   post<{ ok: boolean }>(`/api/checks/${id}/decision`, { decision, note });
 /** Any image served by the API (samples, questioned images), as a Blob for preprocessing or measuring. */
 export const getImageBlob = async (url: string): Promise<Blob> => {
   let res: Response;
-  try { res = await fetch(url); } catch { throw new ApiError("The analysis service is not running.", 0); }
+  try { res = await fetch(url, withMode()); } catch { throw new ApiError("The analysis service is not running.", 0); }
   if (!res.ok) throw new ApiError("Image not found.", res.status);
   return res.blob();
 };
@@ -89,3 +95,5 @@ export const listAttachments = (id: string) => request<Attachment[]>(`/api/check
 export const addAttachments = (id: string, files: Blob[], note: string) => post<{ ok: boolean }>(`/api/checks/${id}/attachments`, { files, note });
 export const logReport = (id: string) => post<{ ok: boolean }>(`/api/checks/${id}/report`);
 export const listReports = () => request<ReportEntry[]>("/api/reports");
+
+export const resetSampleData = () => post<{ ok: boolean; persons: number; checks: number }>("/api/sample/reset");
