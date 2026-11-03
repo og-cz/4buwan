@@ -13,12 +13,12 @@ def test_relative_handles_old_windows_and_posix_paths():
     assert storage.relative(r"C:\Users\someone\4buwan\backend\data\images\abc.png") == "images/abc.png"
     assert storage.relative("/home/someone/backend/data/images/abc.png") == "images/abc.png"
     assert storage.relative("images/abc.png") == "images/abc.png"
-    assert storage.resolve("images/abc.png") == storage.DATA / "images" / "abc.png"
+    assert storage.resolve("images/abc.png") == storage.data_dir() / "images" / "abc.png"
 
 
 def test_new_uploads_are_relative():
     rel = storage.save_upload(b"x", "q.png")
-    assert rel.startswith("images/") and (storage.DATA / rel).read_bytes() == b"x"
+    assert rel.startswith("images/") and (storage.data_dir() / rel).read_bytes() == b"x"
 
 
 def test_migration_rewrites_absolute_rows(tmp_path):

@@ -1,19 +1,58 @@
-"""Local storage for the Signature Desk API: one SQLite file plus folders of images and profiles under DATA."""
+"""Local storage for the Signature Desk API.
+
+Two separate data folders under ROOT, one per data mode:
+    real/    the office's own enrolled people and checks (starts empty)
+    sample/  example people and checks seeded from the public CEDAR development writers
+Each holds its own sigdesk.db, images/ and profiles/. The mode of a request comes from the
+X-Data-Mode header (or ?mode= on image links) and is kept in a context variable for that request.
+"""
 from __future__ import annotations
 
 import os
+import shutil
 import sqlite3
 import uuid
+from contextvars import ContextVar
 from datetime import datetime, timezone
 from pathlib import Path
 
-DATA = Path(os.environ.get("SIGDESK_DATA", Path(__file__).resolve().parents[1] / "data"))
-(DATA / "images").mkdir(parents=True, exist_ok=True); (DATA / "profiles").mkdir(exist_ok=True)
-DB = DATA / "sigdesk.db"
+ROOT = Path(os.environ.get("SIGDESK_DATA", Path(__file__).resolve().parents[1] / "data"))
+MODES = ("real", "sample")
+current_mode: ContextVar[str] = ContextVar("data_mode", default="real")
+
+
+def migrate_flat_layout(root: Path = ROOT) -> bool:
+    """One-time move of the old single-folder layout (ROOT/sigdesk.db, images/, profiles/) into ROOT/real/."""
+    old = [root / n for n in ("sigdesk.db", "images", "profiles") if (root / n).exists()]
+    if not old or (root / "real" / "sigdesk.db").exists(): return False
+    (root / "real").mkdir(parents=True, exist_ok=True)
+    for p in old: shutil.move(str(p), str(root / "real" / p.name))
+    return True
+
+
+def data_dir(mode: str | None = None) -> Path:
+    """Folder of the given (or the current request's) data mode, created on first use."""
+    m = mode or current_mode.get()
+    if m not in MODES: m = "real"
+    d = ROOT / m
+    (d / "images").mkdir(parents=True, exist_ok=True); (d / "profiles").mkdir(exist_ok=True)
+    return d
+
+
+migrate_flat_layout()
+
+
+class Connection(sqlite3.Connection):
+    """`with db() as c:` commits (or rolls back) and then closes, so no file stays locked on Windows."""
+    def __exit__(self, *exc):
+        try:
+            return super().__exit__(*exc)
+        finally:
+            self.close()
 
 
 def db() -> sqlite3.Connection:
-    c = sqlite3.connect(DB); c.row_factory = sqlite3.Row
+    c = sqlite3.connect(data_dir() / "sigdesk.db", factory=Connection); c.row_factory = sqlite3.Row
     c.executescript("""
     CREATE TABLE IF NOT EXISTS persons(id TEXT PRIMARY KEY, name TEXT, external_id TEXT, status TEXT,
         consistency REAL, created TEXT, details TEXT);
@@ -28,7 +67,7 @@ def db() -> sqlite3.Connection:
     return c
 
 
-# Image paths are stored relative to DATA ("images/<file>"), so the data folder can be moved or copied.
+# Image paths are stored relative to the mode folder ("images/<file>"), so the data folder can be moved or copied.
 PATH_COLUMNS = (("samples", "path"), ("checks", "image"), ("attachments", "path"))
 
 
@@ -42,7 +81,7 @@ def relative(p: str) -> str:
 
 def resolve(p: str) -> Path:
     """Absolute file path for a stored image path."""
-    return DATA / relative(p)
+    return data_dir() / relative(p)
 
 
 def migrate_relative_paths(c) -> int:
@@ -64,4 +103,4 @@ def log(c, kind, ref, detail=""): c.execute("INSERT INTO events(at,kind,ref,deta
 
 def save_upload(data: bytes, name: str) -> str:
     rel = f"images/{uuid.uuid4().hex}{Path(name or 'x.png').suffix.lower() or '.png'}"
-    (DATA / rel).write_bytes(data); return rel
+    (data_dir() / rel).write_bytes(data); return rel
