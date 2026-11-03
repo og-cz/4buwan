@@ -122,7 +122,7 @@ kbd{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 
 /* ---------- charts (SVG, original colours) ---------- */
 .chart-svg{width:100%;height:auto;display:block;overflow:visible}
 .chart-svg text{font-family:var(--font);font-size:11px;fill:var(--quiet)}
-.chart-svg .tick{font-size:10px}
+.chart-svg .tick{font-size:11px}
 .chart-svg .grid,.chart-svg .axis{stroke:var(--line);stroke-width:1;fill:none}
 .chart-svg .zone{fill:rgba(209,173,98,.14)}
 .chart-svg .decision{stroke:var(--amber);stroke-width:1.5}
@@ -245,3 +245,14 @@ th,.tag,.panel-head>div>span,.step-title>span,.expert-heading>div>span,.method-v
 .case-person small .num{color:var(--muted)}
 .compare-side .viewer-caption{min-height:62px;align-content:flex-start}
 .help-steps+.model-card{max-width:none}
+/* Real / Sample data switch, in the original control style */
+.top-switches{display:flex}.data-switch button.active.sample{background:var(--amber);color:#1b160b}
+.settings-sub{margin-top:18px}
+.mode-frame{display:contents}
+@media(max-width:899px){.top-switches{display:none}}
+.top-switches .switch-stack{width:250px;min-width:0}.switch-stack small{white-space:normal}
+.switch-stack .view-switch button{height:24px;padding:0 8px}
+/* Light content theme: same hues, darker text shades so verdict words keep AA contrast on white */
+.main.light-theme{--green:#23714c;--amber:#835d10;--red:#b23a35;--blue:#0b7fb0}
+.main.light-theme .button:not(.secondary):not(.danger){background:#0f8fc4;border-color:#0f8fc4}
+.main.light-theme .sample-strip{border-bottom-color:#e2cf9f}

@@ -15,7 +15,7 @@ import type { Go } from "../navigation";
 import { useSettings, useTerms } from "../state/settings";
 import type { PersonDetail, Quality, VerifyResult } from "../types";
 
-type Props = { person: PersonDetail; expert: boolean; go: Go; changePerson: () => void };
+type Props = { person: PersonDetail; expert: boolean; setExpert: (v: boolean) => void; go: Go; changePerson: () => void };
 type Upload = { file: File; url: string; quality: Quality | null; error: string | null };
 
 function useUpload() {
@@ -35,7 +35,7 @@ function useUpload() {
   return { upload, choose, clear: () => { release(); setUpload(null); } };
 }
 
-export default function VerifyWorkspace({ person, expert, go, changePerson }: Props) {
+export default function VerifyWorkspace({ person, expert, setExpert, go, changePerson }: Props) {
   const settings = useSettings();
   const t = useTerms();
   const first = useUpload(), second = useUpload();
@@ -74,21 +74,22 @@ export default function VerifyWorkspace({ person, expert, go, changePerson }: Pr
   }
   function reset() { first.clear(); second.clear(); setResult(null); setSecond(null); setState("idle"); setError(null); setCaseTitle(""); setNotes(""); }
 
-  // Shortcuts: V run verification, 1–9 select a reference, O overlay. Ignored while typing.
-  const keys = useRef({ start, mode });
-  keys.current = { start, mode };
+  // Shortcuts: V run verification, E expert view, 1–9 select a reference, O overlay. Ignored while typing.
+  const keys = useRef({ start, mode, expert });
+  keys.current = { start, mode, expert };
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       const el = e.target as HTMLElement;
       if (e.ctrlKey || e.metaKey || e.altKey || el.closest("input, textarea, select, [contenteditable]")) return;
       const k = e.key.toLowerCase(), cur = keys.current;
       if (k === "v") { e.preventDefault(); void cur.start(); }
+      else if (k === "e") { e.preventDefault(); setExpert(!cur.expert); }
       else if (k === "o") { e.preventDefault(); setMode(cur.mode === "overlay" ? "side" : "overlay"); }
       else if (/^[1-9]$/.test(k)) { e.preventDefault(); setRef(+k); }
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [setExpert]);
 
   const extremes = useMemo(() => {
     if (!result) return null;
@@ -110,7 +111,7 @@ export default function VerifyWorkspace({ person, expert, go, changePerson }: Pr
         <Button icon="scan" disabled={!ready || state === "running"} title={blockReason ?? undefined} onClick={start}>{state === "running" ? "Running verification…" : "Run verification"}</Button>
         {blockReason && <p className="input-hint">{blockReason}</p>}
         <p className="input-hint">Strictness: {settings.strictness} · Uncertain Zone: {settings.uncertain}</p>
-        <p className="input-hint shortcut-hint"><Icon name="keyboard" size={14} /> <kbd>V</kbd> verify <kbd>1</kbd>–<kbd>9</kbd> reference <kbd>O</kbd> overlay</p>
+        <p className="input-hint shortcut-hint"><Icon name="keyboard" size={14} /> <kbd>V</kbd> verify <kbd>E</kbd> expert <kbd>1</kbd>–<kbd>9</kbd> reference <kbd>O</kbd> overlay</p>
       </section>
       <section className="panel evidence-panel"><div className="panel-head"><div><span>EVIDENCE</span><h2>Questioned and Reference Samples</h2></div><Tag tone={up ? "ready" : "neutral"}>{up ? "IMAGE READY" : "AWAITING IMAGE"}</Tag></div>
         {up ? <CompareViewer mode={mode} onMode={setMode} a={{ src: up.url, label: "Questioned signature", fileName: up.file.name, quality: up.quality, load: () => Promise.resolve(up.file) }} b={reference(ref)} />
