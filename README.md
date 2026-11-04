@@ -134,6 +134,10 @@ Paired over writers with Wilcoxon tests, Holm correction and bootstrap intervals
 
 > **Status:** draft. Results are on development writers only; the held-back evaluation has not been run. An image-statistics control matches the model on Bengali, so Bengali results are not reported as signature verification.
 
+### Sample data
+
+The app keeps two separate data folders: **Real data** (your own enrolled people and checks, empty on a fresh install) and **Sample data** (example people and checks for demonstration). Sample data uses only the CEDAR subset of the 142 development writers: the 25 CEDAR development writers, each enrolled with `original_<n>_1..12` as in the notebook, plus one held-out genuine and one forged example check, all scored by the engine. The 172 held-back writers are reserved for the one-time confirmation of the research results and must not be loaded into the app.
+
 ---
 
 ## License

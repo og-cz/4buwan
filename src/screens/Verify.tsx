@@ -11,9 +11,9 @@ import { useTerms } from "../state/settings";
 import type { Go } from "../navigation";
 import VerifyWorkspace from "./VerifyWorkspace";
 
-type Props = { personId?: string; expert: boolean; go: Go };
+type Props = { personId?: string; expert: boolean; setExpert: (v: boolean) => void; go: Go };
 
-export default function Verify({ personId, expert, go }: Props) {
+export default function Verify({ personId, expert, setExpert, go }: Props) {
   const t = useTerms();
   const [selected, setSelected] = useState<string | undefined>(personId);
   const person = useAsync(() => selected ? getPerson(selected) : Promise.resolve(null), [selected]);
@@ -25,5 +25,5 @@ export default function Verify({ personId, expert, go }: Props) {
   const p = person.data;
   if (p.status !== "Ready") return <div className="page"><PageHeader title="Verify a signature" description={`This ${t.person} cannot be checked.`} /><section className="panel blocked-verify"><span><Icon name="alert" size={24} /></span><div><Tag tone="warn">PROFILE {p.status.toUpperCase()}</Tag><h2>{p.name} has no ready Signature Profile</h2><p>{p.status === "Archived" ? "This profile is archived. Archived profiles cannot be used for new checks." : "Verification needs 12 accepted genuine Reference Samples. No forged samples are required."}</p><div><Button secondary onClick={() => setSelected(undefined)}>Choose another {t.person}</Button><Button icon="enrol" onClick={() => go("Enrol")}>Enrol</Button></div></div></section></div>;
 
-  return <VerifyWorkspace key={p.id} person={p} expert={expert} go={go} changePerson={() => setSelected(undefined)} />;
+  return <VerifyWorkspace key={p.id} person={p} expert={expert} setExpert={setExpert} go={go} changePerson={() => setSelected(undefined)} />;
 }

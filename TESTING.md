@@ -13,20 +13,21 @@ pip install -r requirements.txt
 pytest -q
 ```
 
-Expected: **28 passed**. The tests check that:
+Expected: **35 passed**. The tests check that:
 - the service gives the **same AUC as the research notebook** for the reference writers (B, G, J match exactly);
 - real CEDAR images turn into the same features and scores as the notebook (difference = 0);
 - enrol → verify → record decision works through the API, plus the preprocessing, stats, performance,
   archive, delete, notes, attachments and report-log endpoints;
-- stored image paths are relative to the data folder, and older absolute paths are migrated once.
+- stored image paths are relative to the data folder, and older absolute paths are migrated once;
+- Real data and Sample data are separate folders, a fresh Real folder is empty, and the sample seed only uses CEDAR development writers.
 
 The engine constants (`backend/sigdesk_engine/artifacts/`) and the test images (`backend/tests/fixtures/`)
 are distributed separately and must be in place before the tests or the service can run.
 
-Fill the app with demo people (CEDAR development writers only) and start the service:
+Fill **Sample data** with the 25 CEDAR development writers and 50 example checks (Real data stays empty), then start the service:
 
 ```
-python tools/seed_demo.py --cedar "<path to cedar-dataset>/signatures" --n 8
+python tools/seed_sample.py --cedar "<path to cedar-dataset>/signatures"
 uvicorn app.main:app --reload --port 8000
 ```
 
@@ -53,8 +54,8 @@ pnpm test:ui
 |---|---|---|
 | 1 | Login → **Examiner demo** | Workbench first; top bar says REAL DATA; one MODULES list |
 | 2 | Log out → **Supervisor demo** | Dashboard first; top bar says SAMPLE DATA. This preset is a display preview with fixed sample data and does not use the service |
-| 3 | Reference Library | 8 "Demo Person" entries, each with a consistency label |
-| 4 | Verify → Demo Person 05 → upload `full_org/original_5_14.png` | A verdict for a genuine sample *not* used for enrolment |
+| 3 | Switch to **Sample data** → Reference Library | 25 "Sample Person" entries; the amber strip says it is sample data; Real data shows "Enrol your first person" |
+| 4 | Verify → Sample Person 05 → upload `full_org/original_5_14.png` | A verdict for a genuine sample *not* used for enrolment |
 | 5 | Same person → upload `full_forg/forgeries_5_3.png` | A verdict for a forgery |
 | 6 | Scroll below the verdict | Expert panels A–H with real numbers; the policy line says *provisional* |
 | 7 | Upload a blank white image | "Blank or almost blank" message, Run verification is disabled |

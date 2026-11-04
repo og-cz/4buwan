@@ -5,7 +5,7 @@ import uuid
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 
-from .storage import db, log, now, resolve, save_upload
+from .storage import current_mode, db, log, now, resolve, save_upload
 
 router = APIRouter(prefix="/api")
 
@@ -33,7 +33,7 @@ async def add_attachments(cid: str, files: list[UploadFile] = File(...), note: s
         for f in files:
             aid = uuid.uuid4().hex[:12]
             c.execute("INSERT INTO attachments VALUES(?,?,?,?,?,?)", (aid, cid, now(), f.filename or "image", save_upload(await f.read(), f.filename), note))
-            out.append(dict(id=aid, name=f.filename, url=f"/api/attachments/{aid}/image"))
+            out.append(dict(id=aid, name=f.filename, url=f"/api/attachments/{aid}/image?mode={current_mode.get()}"))
         log(c, "attachment", cid, f"{len(out)} image(s) from Compare" + (f": {note}" if note else ""))
     return dict(ok=True, attachments=out)
 
@@ -43,7 +43,7 @@ def list_attachments(cid: str):
     with db() as c:
         _require_case(c, cid)
         rows = c.execute("SELECT id,created,name,note FROM attachments WHERE check_id=? ORDER BY created", (cid,)).fetchall()
-    return [dict(r, url=f"/api/attachments/{r['id']}/image") for r in rows]
+    return [dict(r, url=f"/api/attachments/{r['id']}/image?mode={current_mode.get()}") for r in rows]
 
 
 @router.get("/attachments/{aid}/image")

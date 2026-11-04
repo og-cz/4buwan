@@ -20,7 +20,7 @@ from PIL import Image
 
 from sigdesk_engine import engine as E
 
-from .storage import DATA, db, log, now, resolve, save_upload
+from .storage import MODES, current_mode, data_dir, db, log, now, resolve, save_upload
 
 K = E.Constants.load()
 
@@ -28,9 +28,24 @@ app = FastAPI(title="Signature Desk API", version="0.1")
 app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:8443", "http://localhost:5173"], allow_methods=["*"], allow_headers=["*"])
 
 
+@app.middleware("http")
+async def data_mode(request, call_next):
+    """Opens the data folder of the request's mode: header X-Data-Mode, or ?mode= for plain image links."""
+    mode = (request.headers.get("x-data-mode") or request.query_params.get("mode") or "real").lower()
+    token = current_mode.set(mode if mode in MODES else "real")
+    try:
+        return await call_next(request)
+    finally:
+        current_mode.reset(token)
+
+
 @app.get("/api/health")
 def health():
-    return dict(ok=True, model=K.meta)
+    """Service status plus the current data mode and its counts (for the Real / Sample switch)."""
+    with db() as c:
+        persons = c.execute("SELECT COUNT(*) FROM persons").fetchone()[0]
+        checks = c.execute("SELECT COUNT(*) FROM checks").fetchone()[0]
+    return dict(ok=True, model=K.meta, mode=current_mode.get(), persons=persons, checks=checks)
 
 
 @app.post("/api/quality")
@@ -38,20 +53,25 @@ async def quality(file: UploadFile = File(...)):
     return E.quality_check(await file.read())
 
 
-@app.post("/api/persons")
-async def enrol(name: str = Form(...), external_id: str = Form(""), files: list[UploadFile] = File(...)):
-    blobs = [await f.read() for f in files]
+def enrol_person(name: str, external_id: str, blobs: list[bytes], filenames: list[str]) -> dict:
+    """Builds and stores a Signature Profile from 12 genuine samples (used by the API and by the sample seed)."""
     bad = [i + 1 for i, b in enumerate(blobs) if not E.quality_check(b)["ok"]]
     if len(blobs) != E.N_ENROL: raise HTTPException(400, f"Exactly {E.N_ENROL} reference samples are needed, got {len(blobs)}.")
     if bad: raise HTTPException(400, f"Samples {bad} failed the quality check.")
     prof, details = E.build_profile(blobs, K)
-    pid = uuid.uuid4().hex[:12]; prof.save(DATA / "profiles" / f"{pid}.npz")
+    pid = uuid.uuid4().hex[:12]; prof.save(data_dir() / "profiles" / f"{pid}.npz")
     with db() as c:
         c.execute("INSERT INTO persons VALUES(?,?,?,?,?,?,?)", (pid, name, external_id, "Ready", prof.consistency, now(), json.dumps(details)))
-        for i, (b, f) in enumerate(zip(blobs, files)):
-            c.execute("INSERT INTO samples VALUES(?,?,?,?)", (uuid.uuid4().hex, pid, i + 1, save_upload(b, f.filename)))
+        for i, (b, fn) in enumerate(zip(blobs, filenames)):
+            c.execute("INSERT INTO samples VALUES(?,?,?,?)", (uuid.uuid4().hex, pid, i + 1, save_upload(b, fn)))
         log(c, "enrol", pid, name)
     return dict(id=pid, name=name, external_id=external_id, status="Ready", **details)
+
+
+@app.post("/api/persons")
+async def enrol(name: str = Form(...), external_id: str = Form(""), files: list[UploadFile] = File(...)):
+    blobs = [await f.read() for f in files]
+    return enrol_person(name, external_id, blobs, [f.filename or "sample.png" for f in files])
 
 
 @app.get("/api/persons")
@@ -70,7 +90,7 @@ def person(pid: str):
         if not r: raise HTTPException(404, "Person not found.")
         samples = c.execute("SELECT idx FROM samples WHERE person_id=? ORDER BY idx", (pid,)).fetchall()
     return dict(id=r["id"], name=r["name"], external_id=r["external_id"], status=r["status"], created=r["created"],
-                samples=[f"/api/persons/{pid}/samples/{s['idx']}" for s in samples], **json.loads(r["details"]))
+                samples=[f"/api/persons/{pid}/samples/{s['idx']}?mode={current_mode.get()}" for s in samples], **json.loads(r["details"]))
 
 
 @app.get("/api/persons/{pid}/samples/{idx}")
@@ -81,14 +101,13 @@ def sample(pid: str, idx: int):
     return FileResponse(resolve(r["path"]))
 
 
-@app.post("/api/verify")
-async def verify(person_id: str = Form(...), file: UploadFile = File(...), strictness: str = Form("Standard"),
-                 uncertain: str = Form("Standard"), case_title: str = Form(""), notes: str = Form("")):
-    pf = DATA / "profiles" / f"{person_id}.npz"
+def run_check(person_id: str, blob: bytes, filename: str, strictness: str = "Standard", uncertain: str = "Standard",
+              case_title: str = "", notes: str = "") -> dict:
+    """Scores one questioned signature and saves it as a case (used by the API and by the sample seed)."""
+    pf = data_dir() / "profiles" / f"{person_id}.npz"
     with db() as c:
         p = c.execute("SELECT status FROM persons WHERE id=?", (person_id,)).fetchone()
     if not p or p["status"] != "Ready" or not pf.exists(): raise HTTPException(404, "This person has no ready Signature Profile.")
-    blob = await file.read()
     qc = E.quality_check(blob)
     if not qc["ok"]: raise HTTPException(400, qc["issues"][0]["message"])
     res = E.verify(E.Profile.load(pf), blob, K, strictness, uncertain)
@@ -96,9 +115,15 @@ async def verify(person_id: str = Form(...), file: UploadFile = File(...), stric
     out = dict(case_id=cid, quality=qc, **res)
     with db() as c:
         c.execute("INSERT INTO checks VALUES(?,?,?,?,?,?,?,?,?,?,?)", (cid, person_id, now(), res["verdict"], res["confidence"],
-                  res["score"], save_upload(blob, file.filename), case_title, notes, "Pending", json.dumps(out)))
+                  res["score"], save_upload(blob, filename), case_title, notes, "Pending", json.dumps(out)))
         log(c, "verify", cid, res["verdict"])
     return out
+
+
+@app.post("/api/verify")
+async def verify(person_id: str = Form(...), file: UploadFile = File(...), strictness: str = Form("Standard"),
+                 uncertain: str = Form("Standard"), case_title: str = Form(""), notes: str = Form("")):
+    return run_check(person_id, await file.read(), file.filename or "questioned.png", strictness, uncertain, case_title, notes)
 
 
 @app.get("/api/checks")
@@ -208,12 +233,14 @@ def delete_person(pid: str):
         if not c.execute("SELECT 1 FROM persons WHERE id=?", (pid,)).fetchone(): raise HTTPException(404, "Person not found.")
         for r in c.execute("SELECT path FROM samples WHERE person_id=?", (pid,)).fetchall():
             resolve(r["path"]).unlink(missing_ok=True)
-        (DATA / "profiles" / f"{pid}.npz").unlink(missing_ok=True)
+        (data_dir() / "profiles" / f"{pid}.npz").unlink(missing_ok=True)
         c.execute("DELETE FROM samples WHERE person_id=?", (pid,)); c.execute("DELETE FROM persons WHERE id=?", (pid,))
         log(c, "delete", pid)
     return dict(ok=True)
 
 
 from .cases import router as cases_router  # noqa: E402  (routes for notes, attachments and evidence reports)
+from .sample import router as sample_router  # noqa: E402  (sample data seed and reset)
 
 app.include_router(cases_router)
+app.include_router(sample_router)
