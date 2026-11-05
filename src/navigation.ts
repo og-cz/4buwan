@@ -19,13 +19,26 @@ export const navIcons: Record<NavScreen, IconName> = {
   "Research Lab": "ruler", Reports: "audit", Settings: "settings", Help: "help",
 };
 
-/** Sidebar modules, one MODULES list as in the original design. Both presets have every core module. */
 export const presetScreens: Record<Preset, NavScreen[]> = {
   Examiner: ["Workbench", "Verify", "Compare", "Review Queue", "Cases", "Reference Library", "Enrol", "Batch Check", "Evidence Reports", "Research Lab", "Help"],
   Supervisor: ["Dashboard", "Verify", "Compare", "Review Queue", "Cases", "Reference Library", "Enrol", "Batch Check", "Evidence Reports", "Research Lab", "Reports", "Settings", "Help"],
 };
 
-/** Which sidebar item stays highlighted while a sub-screen or detail page is open. */
+export type NavGroup = { label: string; items: NavScreen[] };
+
+/** Sidebar sections. Items not in the preset are left out; empty sections are dropped. */
+export function navGroups(preset: Preset): NavGroup[] {
+  const allowed = new Set(presetScreens[preset]);
+  const groups: NavGroup[] = [
+    { label: "Examine", items: ["Workbench", "Dashboard", "Verify", "Compare", "Review Queue", "Cases"] },
+    { label: "Library", items: ["Reference Library", "Enrol", "Batch Check"] },
+    { label: "Evidence", items: ["Evidence Reports", "Research Lab", "Reports"] },
+    { label: "System", items: ["Settings", "Help"] },
+  ];
+  return groups.map(g => ({ ...g, items: g.items.filter(i => allowed.has(i)) })).filter(g => g.items.length > 0);
+}
+
+/** Which sidebar item stays highlighted while a detail page is open. */
 export const parentScreen: Partial<Record<Screen, NavScreen>> = {
   CaseDetail: "Cases", "Evidence Report": "Evidence Reports", "Person Profile": "Reference Library",
 };

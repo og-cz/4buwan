@@ -75,8 +75,8 @@ export default function VerifyWorkspace({ person, expert, setExpert, go, changeP
   function reset() { first.clear(); second.clear(); setResult(null); setSecond(null); setState("idle"); setError(null); setCaseTitle(""); setNotes(""); }
 
   // Shortcuts: V run verification, E expert view, 1–9 select a reference, O overlay. Ignored while typing.
-  const keys = useRef({ start, mode, expert });
-  keys.current = { start, mode, expert };
+  const keys = useRef({ start, expert, mode });
+  keys.current = { start, expert, mode };
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       const el = e.target as HTMLElement;
@@ -124,7 +124,7 @@ export default function VerifyWorkspace({ person, expert, setExpert, go, changeP
           : <div className="empty-result"><Icon name="verify" size={30} /><strong>No Verdict yet</strong><span>Run verification to see Confidence, reason, and next step.</span></div>}
       </section>
     </div>
-    <section className="panel reference-panel"><div className="panel-head"><div><span>REFERENCE SAMPLES</span><h2>12 genuine signatures of {person.name}</h2></div>{expert && result && <small className="chart-note">Bars: model value per comparison (green ≥ 0, red &lt; 0)</small>}</div>
+    <section className="panel reference-panel"><div className="panel-head"><div><span>REFERENCE SAMPLES</span><h2>12 genuine signatures of {person.name}</h2></div>{expert && result && <span className="chart-note">Bars: model value per comparison (green ≥ 0, red &lt; 0)</span>}</div>
       <ReferenceStrip personId={person.id} selected={ref} onSelect={setRef} comparisons={expert ? result?.comparisons : undefined} /></section>
     {second_ && second.upload && <section className={`panel result-card second-result ${second_.verdict.toLowerCase().replace(" ", "-")}`}><div className="second-layout"><div><span className="mini-label">SECOND SAMPLE</span><SignatureViewer src={second.upload.url} label="Second sample" fileName={second.upload.file.name} quality={second.upload.quality} /></div><div><VerdictCard result={second_} label="SECOND SAMPLE · ADVISORY VERDICT" actions={actions(second_)} /></div></div></section>}
     {!expert && result && extremes && up && <section className="panel comparison"><div className="panel-head"><div><span>SIMPLE EVIDENCE</span><h2>Questioned signature against its most and least similar Reference Samples</h2></div><div className="segmented" role="group" aria-label="Reference"><button className={simple === "most" ? "active" : ""} aria-pressed={simple === "most"} onClick={() => setSimple("most")}>Most similar · R{pad2(extremes.most.reference)}</button><button className={simple === "least" ? "active" : ""} aria-pressed={simple === "least"} onClick={() => setSimple("least")}>Least similar · R{pad2(extremes.least.reference)}</button></div></div>

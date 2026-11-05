@@ -20,8 +20,8 @@ import Workbench from "./screens/Workbench";
 import Compare from "./screens/Compare";
 import EvidenceReports from "./screens/EvidenceReports";
 import useHealth from "./state/useHealth";
-import { getSettings } from "./state/settings";
 import { useDataMode } from "./state/dataMode";
+import { getSettings } from "./state/settings";
 import { pageTitle, presetScreens, type Go, type Preset, type Route } from "./navigation";
 
 type Session = { user: string; preset: Preset };
@@ -30,8 +30,8 @@ export default function App() {
   const [session, setSession] = useState<Session | null>(null);
   const [route, setRoute] = useState<Route>({ screen: "Verify" });
   const [expert, setExpert] = useState(false);
-  const [mode] = useDataMode();
   const [toast, setToast] = useState<string | null>(null);
+  const [mode] = useDataMode();
   const health = useHealth();
   const banner = health.status === "down" ? <ServiceBanner /> : null;
   const go: Go = (screen, params) => { setRoute({ screen, ...params }); window.scrollTo(0, 0); };
@@ -70,5 +70,5 @@ export default function App() {
     default: page = <Help />;
   }
   // Switching Real / Sample data remounts the screen so it loads from the other data folder.
-  return <Shell preset={session.preset} user={session.user} screen={screen} go={go} logout={() => setSession(null)} expert={expert} setExpert={setExpert} counts={health.counts} banner={banner}><div key={mode} className="mode-frame">{page}</div><Toast message={toast} onClose={closeToast} /></Shell>;
+  return <Shell preset={session.preset} user={session.user} expert={expert} setExpert={setExpert} counts={health.counts} screen={screen} go={go} logout={() => setSession(null)} banner={banner}><div key={mode} className="mode-frame">{page}</div><Toast message={toast} onClose={closeToast} /></Shell>;
 }

@@ -1,3 +1,9 @@
 @import "tailwindcss";
-@import "./styles/ui.css";
-@import "./styles/features.css";
+@import "./styles/tokens.css";
+@import "./styles/base.css";
+@import "./styles/components.css";
+@import "./styles/layout.css";
+@import "./styles/screens.css";
+@import "./styles/viewer.css";
+@import "./styles/charts.css";
+@import "./styles/login.css";
