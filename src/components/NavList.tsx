@@ -1,13 +1,14 @@
-import Icon from "./Icon";
-import { navGroups, navIcons, parentScreen, type Go, type Preset, type Screen } from "../navigation";
+import Icon, { type IconName } from "./Icon";
 
-type Props = { preset: Preset; screen: Screen; go: Go; onNavigate?: () => void };
+export type NavItem = { key: string; label: string; icon: IconName; bottom?: boolean };
+type Props = { items: NavItem[]; active: string; onNav: (key: string) => void; onNavigate?: () => void };
 
-/** Sidebar / drawer navigation, grouped with small section labels. */
-export default function NavList({ preset, screen, go, onNavigate }: Props) {
-  const active = parentScreen[screen] ?? screen;
-  return <nav aria-label="Modules">{navGroups(preset).map(group => <div className="nav-group" key={group.label}>
-    <div className="nav-label">{group.label}</div>
-    {group.items.map(item => <button key={item} className={active === item ? "active" : ""} aria-current={active === item ? "page" : undefined} data-label={item} aria-label={item} onClick={() => { go(item); onNavigate?.(); }}><Icon name={navIcons[item]} /><span>{item}</span></button>)}
-  </div>)}</nav>;
+/** The main sidebar list. Items marked `bottom` (Help) sit at the foot of the list. */
+export default function NavList({ items, active, onNav, onNavigate }: Props) {
+  const button = (item: NavItem) => <button key={item.key} className={active === item.key ? "active" : ""} aria-current={active === item.key ? "page" : undefined} data-label={item.label} aria-label={item.label} onClick={() => { onNav(item.key); onNavigate?.(); }}><Icon name={item.icon} /><span>{item.label}</span></button>;
+  return <nav aria-label="Main navigation" className="main-nav">
+    <div className="nav-label">MODULES</div>
+    {items.filter(i => !i.bottom).map(button)}
+    <div className="nav-bottom">{items.filter(i => i.bottom).map(button)}</div>
+  </nav>;
 }
