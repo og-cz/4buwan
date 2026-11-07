@@ -140,6 +140,71 @@ The app keeps two separate data folders: **Real data** (your own enrolled people
 
 ---
 
+## Installation and Running
+
+The app has two parts that run at the same time: the **verification service** (Python, in `backend/`) and the **web interface** (React, in the project root). Open two terminals.
+
+### What you need
+
+- [Python 3.10 or newer](https://www.python.org/downloads/) (tick "Add Python to PATH" when installing on Windows)
+- [Node.js 20 or newer](https://nodejs.org/) (includes `npm`)
+- [Git](https://git-scm.com/downloads)
+- The model files `backend/sigdesk_engine/artifacts/`. They are not in this repository; copy them in before starting the service.
+
+### 1. Get the code
+
+```bash
+git clone https://github.com/og-cz/4buwan.git
+cd 4buwan
+```
+
+### 2. Start the verification service (terminal 1)
+
+Windows:
+
+```bash
+cd backend
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --port 8000
+```
+
+macOS / Linux: the same, but activate with `source .venv/bin/activate`.
+
+Leave this terminal open. The service is ready when it prints `Uvicorn running on http://127.0.0.1:8000`. The next time, you only need `cd backend`, the activate line and the `uvicorn` line.
+
+### 3. Start the web interface (terminal 2)
+
+From the project root (`4buwan`):
+
+```bash
+npm install
+npm run dev
+```
+
+Open **http://localhost:8443** in your browser. The next time, `npm run dev` is enough.
+
+### 4. Use it
+
+- **Examiner demo**: the working system. Start in *Profiles & Library → Enrol a person* with 12 genuine signatures, then use *Examination → Verify against a profile*.
+- **Supervisor demo**: a showcase with fictional data only. It does not need any enrolled people.
+
+If the page shows "The analysis service is not running", terminal 1 is closed or stopped: start step 2 again.
+
+### Optional
+
+| Task | Command |
+|---|---|
+| Fill the separate sample-data folder with the 25 CEDAR development writers | `python tools/seed_sample.py --cedar "<path to cedar-dataset>/signatures"` (in `backend`, venv active) |
+| Run the service tests | `pytest -q` (in `backend`, venv active) |
+| Check the layout at phone to desktop widths | `npm run test:ui` (uses the installed Microsoft Edge) |
+| Build the web interface for production | `npm run build` |
+
+See [TESTING.md](TESTING.md) for a step-by-step manual test.
+
+---
+
 ## License
 
 4buwan is free and open source under the [MIT License](LICENSE).
