@@ -5,24 +5,24 @@
   --mono: ui-monospace, SFMono-Regular, Consolas, monospace;
 
   /* type scale: weight size/line-height family */
-  --t-display: 600 28px/36px var(--font);
-  --t-h2: 600 18px/26px var(--font);
-  --t-h3: 600 15px/22px var(--font);
-  --t-body: 400 13px/20px var(--font);
-  --t-body-strong: 700 13px/20px var(--font);
-  --t-small: 400 12px/18px var(--font);
-  --t-label: 700 11px/16px var(--font);
-  --t-mono: 400 12px/18px var(--mono);
+  --t-display: 600 30px/38px var(--font);
+  --t-h2: 600 20px/28px var(--font);
+  --t-h3: 600 16px/24px var(--font);
+  --t-body: 400 14px/22px var(--font);
+  --t-body-strong: 700 14px/22px var(--font);
+  --t-small: 400 13px/20px var(--font);
+  --t-label: 700 12px/16px var(--font);
+  --t-mono: 400 13px/20px var(--mono);
   --t-mono-lg: 600 20px/28px var(--mono);
-  --t-metric: 650 24px/30px var(--font);
-  --t-verdict: 700 25px/32px var(--font);
+  --t-metric: 650 26px/32px var(--font);
+  --t-verdict: 700 26px/34px var(--font);
   --t-tick: 400 11px/14px var(--font);
-  --label-tracking: .1em;
+  --label-tracking: .08em;
 
   /* spacing, corners, sizes (original: 4px controls, 7px panels, 3px tags) */
   --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 20px; --s6: 28px; --s7: 44px;
   --r-sm: 4px; --r-lg: 7px; --r-pill: 3px;
-  --control-h: 36px;
+  --control-h: 38px;
   --sidebar-w: 232px; --sidebar-w-rail: 68px; --topbar-h: 55px;
   --content-max: 1500px;
 
@@ -38,6 +38,7 @@
   --paper: #EFEEE9;
   --paper-line: #D6D4CC;
   --on-accent: #FFFFFF;
+  --ink: #1D272B;
 
   color-scheme: dark;
   --bg: #101417;
@@ -48,8 +49,8 @@
   --border: #2D383E;
   --border-strong: #435059;
   --text: #F0F3F4;
-  --text-2: #AAB4B8;
-  --text-3: #7D8A90;
+  --text-2: #B9C2C6;
+  --text-3: #93A0A6;
   --accent-text: #52C5EC;
   --accent-soft: #102F3C;
   --accent-ring: #266F89;
@@ -76,8 +77,8 @@
   --side-hover: #171F23;
   --side-border: #29343A;
   --side-text: #E7ECEE;
-  --side-text-2: #98A6AC;
-  --side-text-3: #708087;
+  --side-text-2: #AAB6BB;
+  --side-text-3: #87969C;
   --side-active-bg: #102E3A;
   --side-active-text: #52C5EC;
 }
@@ -92,8 +93,8 @@
   --border: #D7DDE0;
   --border-strong: #BAC4C9;
   --text: #192126;
-  --text-2: #536168;
-  --text-3: #69777E;
+  --text-2: #46535A;
+  --text-3: #5C6A71;
   --accent-text: #0B7FB0;
   --accent-soft: #E3F4FA;
   --accent-ring: #8FCBE2;

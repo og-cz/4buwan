@@ -11,36 +11,30 @@ export type RouteParams = { personId?: string; caseId?: string; label?: string }
 export type Route = { screen: Screen } & RouteParams;
 export type Go = (screen: Screen, params?: RouteParams) => void;
 
-export type NavScreen = Exclude<Screen, "CaseDetail" | "Person Profile" | "Evidence Report">;
+/** One main sidebar item of the Examiner demo. It owns several screens; merged modules show tabs. */
+export type Section = { key: string; label: string; icon: IconName; home: Screen; screens: Screen[]; tabs?: [Screen, string][]; bottom?: boolean };
 
-export const navIcons: Record<NavScreen, IconName> = {
-  Workbench: "home", Dashboard: "audit", Verify: "verify", Compare: "layers", "Review Queue": "review", Cases: "history",
-  "Reference Library": "user", Enrol: "enrol", "Batch Check": "compare", "Evidence Reports": "file",
-  "Research Lab": "ruler", Reports: "audit", Settings: "settings", Help: "help",
-};
+/** Examiner demo: exactly 8 main items. Every earlier screen lives under one of them. */
+export const examinerSections: Section[] = [
+  { key: "workbench", label: "Workbench", icon: "home", home: "Workbench", screens: ["Workbench", "Dashboard", "Reports", "Settings"],
+    tabs: [["Workbench", "Overview"], ["Dashboard", "Statistics"], ["Reports", "Activity over time"], ["Settings", "Settings"]] },
+  { key: "cases", label: "Cases & Review", icon: "history", home: "Cases", screens: ["Cases", "Review Queue", "CaseDetail"],
+    tabs: [["Cases", "All cases"], ["Review Queue", "Review queue"]] },
+  { key: "examination", label: "Examination", icon: "verify", home: "Verify", screens: ["Verify", "Compare"],
+    tabs: [["Verify", "Verify against a profile"], ["Compare", "Compare images"]] },
+  { key: "profiles", label: "Profiles & Library", icon: "user", home: "Reference Library", screens: ["Reference Library", "Person Profile", "Enrol"],
+    tabs: [["Reference Library", "Enrolled profiles"], ["Enrol", "Enrol a person"]] },
+  { key: "batch", label: "Batch Check", icon: "compare", home: "Batch Check", screens: ["Batch Check"] },
+  { key: "reports", label: "Evidence Reports", icon: "file", home: "Evidence Reports", screens: ["Evidence Reports", "Evidence Report"] },
+  { key: "research", label: "Research Lab", icon: "ruler", home: "Research Lab", screens: ["Research Lab"] },
+  { key: "help", label: "Help", icon: "help", home: "Help", screens: ["Help"], bottom: true },
+];
 
-export const presetScreens: Record<Preset, NavScreen[]> = {
-  Examiner: ["Workbench", "Verify", "Compare", "Review Queue", "Cases", "Reference Library", "Enrol", "Batch Check", "Evidence Reports", "Research Lab", "Help"],
-  Supervisor: ["Dashboard", "Verify", "Compare", "Review Queue", "Cases", "Reference Library", "Enrol", "Batch Check", "Evidence Reports", "Research Lab", "Reports", "Settings", "Help"],
-};
+export const sectionOf = (screen: Screen): Section => examinerSections.find(s => s.screens.includes(screen)) ?? examinerSections[0];
 
-export type NavGroup = { label: string; items: NavScreen[] };
-
-/** Sidebar sections. Items not in the preset are left out; empty sections are dropped. */
-export function navGroups(preset: Preset): NavGroup[] {
-  const allowed = new Set(presetScreens[preset]);
-  const groups: NavGroup[] = [
-    { label: "Examine", items: ["Workbench", "Dashboard", "Verify", "Compare", "Review Queue", "Cases"] },
-    { label: "Library", items: ["Reference Library", "Enrol", "Batch Check"] },
-    { label: "Evidence", items: ["Evidence Reports", "Research Lab", "Reports"] },
-    { label: "System", items: ["Settings", "Help"] },
-  ];
-  return groups.map(g => ({ ...g, items: g.items.filter(i => allowed.has(i)) })).filter(g => g.items.length > 0);
-}
-
-/** Which sidebar item stays highlighted while a detail page is open. */
-export const parentScreen: Partial<Record<Screen, NavScreen>> = {
-  CaseDetail: "Cases", "Evidence Report": "Evidence Reports", "Person Profile": "Reference Library",
+const screenNames: Partial<Record<Screen, string>> = {
+  Workbench: "Workbench", Dashboard: "Statistics", Reports: "Activity over time", Settings: "Settings", Cases: "Cases",
+  "Review Queue": "Review queue", Verify: "Verify", Compare: "Compare", "Reference Library": "Profiles", Enrol: "Enrol",
 };
 
 /** Browser tab title for a route: "4buwan | <Page>". `label` carries a person's name when the caller knows it. */
@@ -50,6 +44,6 @@ export function pageTitle(route: Route | null): string {
   const page = screen === "CaseDetail" ? `Case ${caseId ?? ""}`.trim()
     : screen === "Evidence Report" ? `Evidence Report ${caseId ?? ""}`.trim()
     : screen === "Person Profile" ? label ?? "Profile"
-    : screen;
+    : screenNames[screen] ?? screen;
   return `4buwan | ${page}`;
 }

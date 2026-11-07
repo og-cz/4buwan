@@ -8,8 +8,8 @@ type Props = { onDemo: (preset: Preset) => void; onSignIn: (username: string) =>
 
 const steps: [IconName, string][] = [["enrol", "Enrol 12 genuine"], ["user", "Learn the person's variation"], ["verify", "Verify and decide"]];
 const demos: { preset: Preset; icon: IconName; title: string; text: string; shows: string[] }[] = [
-  { preset: "Examiner", icon: "verify", title: "Examiner demo", text: "Examine signatures and see the evidence behind every Verdict.", shows: ["Workbench with today's checks", "Verify and manual Compare", "Cases and Evidence Reports"] },
-  { preset: "Supervisor", icon: "audit", title: "Supervisor demo", text: "Oversee checks, decisions and model results across the office.", shows: ["Dashboard and Review Queue", "Reports over time", "Research Lab and Settings"] },
+  { preset: "Examiner", icon: "verify", title: "Examiner demo", text: "The working system: real records and the real verification model.", shows: ["Cases & Review with the review queue", "Examination: Verify and Compare", "Profiles, Evidence Reports and Research Lab"] },
+  { preset: "Supervisor", icon: "audit", title: "Supervisor demo", text: "An administrative showcase with simulated data only.", shows: ["Dashboard of a fictional office", "Clients, cases and reviews (simulated)", "Reports, research summary and system overview"] },
 ];
 
 export default function Login({ onDemo, onSignIn }: Props) {
@@ -55,7 +55,7 @@ export default function Login({ onDemo, onSignIn }: Props) {
           <Icon name="chevron" size={16} />
         </button>)}</div>
       </form>
-      <p className="login-help"><Icon name="help" size={16} />Demo sign-in needs no password. Both presets use data stored on this computer.</p>
+      <p className="login-help"><Icon name="help" size={16} />Demo sign-in needs no password. The Examiner demo uses the records on this computer; the Supervisor demo uses fictional data only.</p>
     </section>
   </div>;
 }

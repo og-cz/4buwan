@@ -16,7 +16,7 @@ async function signIn(page: Page, preset: 'Examiner demo' | 'Supervisor demo') {
 async function open(page: Page, module: string) {
   const menu = page.getByRole('button', { name: 'Open menu' })
   if (await menu.isVisible()) await menu.click()
-  await page.getByRole('navigation', { name: 'Modules' }).last().getByRole('button', { name: module, exact: true }).click()
+  await page.getByRole('navigation', { name: 'Main navigation' }).last().getByRole('button', { name: module, exact: true }).click()
   await page.waitForTimeout(600)
 }
 
@@ -32,18 +32,24 @@ for (const width of widths) {
 
     test('Verify', async ({ page }) => {
       await signIn(page, 'Examiner demo')
-      await open(page, 'Verify')
+      await open(page, 'Examination')
       await noHorizontalScroll(page)
     })
 
     test('Cases', async ({ page }) => {
       await signIn(page, 'Examiner demo')
-      await open(page, 'Cases')
+      await open(page, 'Cases & Review')
+      await noHorizontalScroll(page)
+    })
+
+    test('Supervisor cases', async ({ page }) => {
+      await signIn(page, 'Supervisor demo')
+      await open(page, 'Cases & Reviews')
       await noHorizontalScroll(page)
     })
 
     test('Research Lab', async ({ page }) => {
-      await signIn(page, 'Supervisor demo')
+      await signIn(page, 'Examiner demo')
       await open(page, 'Research Lab')
       await noHorizontalScroll(page)
     })
