@@ -48,14 +48,16 @@ Layout check (no sideways scrolling at 360–1440 px; uses the installed Microso
 pnpm test:ui
 ```
 
+The same run also checks that the Examiner sidebar has 8 items, the Supervisor sidebar 6, and that the Supervisor demo makes no request to the analysis service.
+
 ## 3. Manual test script
 
 | # | Do this | You should see |
 |---|---|---|
-| 1 | Login → **Examiner demo** | Workbench first; sidebar grouped into Examine, Library, Evidence, System; top bar has Simple/Expert and Real/Sample switches |
-| 2 | Log out → **Supervisor demo** | Dashboard first, plus Reports and Settings; uses the same service and data switch |
-| 3 | Switch to **Sample data** → Reference Library | 25 "Sample Person" entries; the amber strip says it is sample data; Real data shows "Enrol your first person" |
-| 4 | Verify → Sample Person 05 → upload `full_org/original_5_14.png` | A verdict for a genuine sample *not* used for enrolment |
+| 1 | Login → **Examiner demo** | Workbench first; 8 sidebar items: Workbench, Cases & Review, Examination, Profiles & Library, Batch Check, Evidence Reports, Research Lab, Help (at the bottom) |
+| 2 | Log out → **Supervisor demo** | Dashboard first; 6 sidebar items; "Supervisor Demo — Simulated Data" label and strip; fictional clients and cases only |
+| 3 | Examiner → Profiles & Library | Enrolled profiles and an "Enrol a person" tab |
+| 4 | Examination → Verify against a profile → Demo Person 05 → upload `full_org/original_5_14.png` | A verdict for a genuine sample *not* used for enrolment |
 | 5 | Same person → upload `full_forg/forgeries_5_3.png` | A verdict for a forgery |
 | 6 | Switch to **Expert view** (or press E) | Panels A–H with real numbers; the policy line says *provisional* |
 | 7 | Upload a blank white image | "Blank or almost blank" message, Run verification is disabled |
