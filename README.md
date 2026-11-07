@@ -144,13 +144,6 @@ The app keeps two separate data folders: **Real data** (your own enrolled people
 
 The app has two parts that run at the same time: the **verification service** (Python, in `backend/`) and the **web interface** (React, in the project root). Open two terminals.
 
-### What you need
-
-- [Python 3.10 or newer](https://www.python.org/downloads/) (tick "Add Python to PATH" when installing on Windows)
-- [Node.js 20 or newer](https://nodejs.org/) (includes `npm`)
-- [Git](https://git-scm.com/downloads)
-- The model files `backend/sigdesk_engine/artifacts/`. They are not in this repository; copy them in before starting the service.
-
 ### 1. Get the code
 
 ```bash
@@ -160,37 +153,53 @@ cd 4buwan
 
 ### 2. Start the verification service (terminal 1)
 
-Windows:
+**First time only** (creates the Python environment and installs the packages):
 
 ```bash
 cd backend
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
+```
+
+**Every time** (from the `4buwan` folder):
+
+```bash
+cd backend
+.venv\Scripts\activate
 uvicorn app.main:app --port 8000
 ```
 
-macOS / Linux: the same, but activate with `source .venv/bin/activate`.
+On macOS / Linux, activate with `source .venv/bin/activate` instead.
 
-Leave this terminal open. The service is ready when it prints `Uvicorn running on http://127.0.0.1:8000`. The next time, you only need `cd backend`, the activate line and the `uvicorn` line.
+Leave this terminal open. The service is ready when it prints `Uvicorn running on http://127.0.0.1:8000`.
 
 ### 3. Start the web interface (terminal 2)
 
-From the project root (`4buwan`):
+The project uses **pnpm** to install its packages. Plain `npm install` does not work here and stops with `Unsupported URL Type "workspace:"`.
+
+**First time only** (from the `4buwan` folder):
 
 ```bash
-npm install
+npx pnpm install
+```
+
+**Every time** (from the `4buwan` folder):
+
+```bash
 npm run dev
 ```
 
-Open **http://localhost:8443** in your browser. The next time, `npm run dev` is enough.
+Open **http://localhost:8443** in your browser.
 
-### 4. Use it
+### Troubleshooting
 
-- **Examiner demo**: the working system. Start in *Profiles & Library → Enrol a person* with 12 genuine signatures, then use *Examination → Verify against a profile*.
-- **Supervisor demo**: a showcase with fictional data only. It does not need any enrolled people.
-
-If the page shows "The analysis service is not running", terminal 1 is closed or stopped: start step 2 again.
+| Message | What it means | What to do |
+|---|---|---|
+| `The analysis service is not running` (in the app) | Terminal 1 is closed or stopped | Run the "every time" commands of step 2 again |
+| `Port 8443 is already in use`, or `[Errno 10048]` for port 8000 | The app is already running in another window | Use that window, or stop it there (Ctrl+C) and start again |
+| `Unsupported URL Type "workspace:"` | `npm install` was used | Use `npx pnpm install` instead |
+| `Unable to copy ... venvlauncher.exe` | The Python environment already exists | Skip it: `python -m venv .venv` is only for the first time |
 
 ### Optional
 
