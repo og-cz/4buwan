@@ -22,3 +22,6 @@ export function useTheme(): [Theme, (t: Theme) => void] {
   const theme = useSyncExternalStore(cb => { listeners.add(cb); return () => listeners.delete(cb); }, () => current);
   return [theme, applyTheme];
 }
+
+/** The sign-in page is always dark; the saved theme comes back after sign-in. */
+export function showLoginTheme() { document.documentElement.dataset.theme = "dark"; }

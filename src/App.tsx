@@ -1,22 +1,27 @@
 import { useEffect, useState } from "react";
 import ServiceBanner from "./components/ServiceBanner";
 import Login from "./screens/Login";
-import ExaminerApp from "./ExaminerApp";
-import SupervisorApp from "./supervisor/SupervisorApp";
+import VerifierApp from "./VerifierApp";
+import DecoyApp from "./decoy/DecoyApp";
 import useHealth from "./state/useHealth";
-import type { Preset } from "./navigation";
+import { applyTheme, showLoginTheme } from "./state/theme";
+import type { Role } from "./navigation";
 
-type Session = { user: string; preset: Preset };
+type Session = { role: Role; user: string };
 
-/** Sign-in, then one of two separate demos: the Examiner (real system) or the Supervisor (simulated showcase). */
+/** Staff sign-in, then the Verifier (the working system) or a Supervisor / Researcher demonstration. */
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
-  // The Supervisor demo makes no request to the analysis service, not even the health check.
-  const health = useHealth(!session || session.preset === "Examiner");
+  // Only the Verifier talks to the analysis service; the demonstrations make no request at all.
+  const health = useHealth(!session || session.role === "Verifier");
   const banner = health.status === "down" ? <ServiceBanner /> : null;
-  useEffect(() => { if (!session) document.title = "4buwan | Sign in"; }, [session]);
+  useEffect(() => {
+    if (session) applyTheme();
+    else { showLoginTheme(); document.title = "4buwan | Sign in"; }
+  }, [session]);
+  const logout = () => setSession(null);
 
-  if (!session) return <>{banner}<Login onDemo={preset => setSession({ user: `${preset} demo`, preset })} onSignIn={user => setSession({ user, preset: "Examiner" })} /></>;
-  if (session.preset === "Supervisor") return <SupervisorApp user={session.user} logout={() => setSession(null)} />;
-  return <ExaminerApp user={session.user} health={health} banner={banner} logout={() => setSession(null)} />;
+  if (!session) return <>{banner}<Login onLogin={(role, user) => setSession({ role, user })} /></>;
+  if (session.role !== "Verifier") return <DecoyApp role={session.role} user={session.user} logout={logout} />;
+  return <VerifierApp user={session.user} health={health} banner={banner} logout={logout} />;
 }

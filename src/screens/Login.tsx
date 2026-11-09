@@ -1,61 +1,28 @@
-import { useState, type KeyboardEvent } from "react";
-import { getHealth } from "../api/client";
-import Brand from "../components/Brand";
-import Icon, { type IconName } from "../components/Icon";
-import type { Preset } from "../navigation";
+import { useState } from "react";
+import Button from "../components/Button";
+import Icon from "../components/Icon";
+import type { Role } from "../navigation";
 
-type Props = { onDemo: (preset: Preset) => void; onSignIn: (username: string) => void };
+type Props = { onLogin: (role: Role, user: string) => void };
 
-const steps: [IconName, string][] = [["enrol", "Enrol 12 genuine"], ["user", "Learn the person's variation"], ["verify", "Verify and decide"]];
-const demos: { preset: Preset; icon: IconName; title: string; text: string; shows: string[] }[] = [
-  { preset: "Examiner", icon: "verify", title: "Examiner demo", text: "The working system: real records and the real verification model.", shows: ["Cases & Review with the review queue", "Examination: Verify and Compare", "Profiles, Evidence Reports and Research Lab"] },
-  { preset: "Supervisor", icon: "audit", title: "Supervisor demo", text: "An administrative showcase with simulated data only.", shows: ["Dashboard of a fictional office", "Clients, cases and reviews (simulated)", "Reports, research summary and system overview"] },
-];
+const names: Record<string, string> = { "a.lee": "Alex Lee", "m.reyes": "Maria Reyes", "s.tan": "Sam Tan" };
 
-export default function Login({ onDemo, onSignIn }: Props) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+/** Staff sign-in from the 4buwan-ui design, with the demo role chooser. */
+export default function Login({ onLogin }: Props) {
+  const [role, setRole] = useState<Role>("Verifier");
+  const [username, setUsername] = useState("a.lee");
+  const [password, setPassword] = useState("password");
   const [show, setShow] = useState(false);
   const [caps, setCaps] = useState(false);
-  const [busy, setBusy] = useState(false);
-  const ready = !!username.trim() && !busy;
-
-  async function signIn() {
-    if (!ready) return;
-    setBusy(true);
-    await getHealth().catch(() => null);   // warms the service; sign-in itself is a local stub for now
-    onSignIn(username.trim());
-  }
-  const capsCheck = (e: KeyboardEvent<HTMLInputElement>) => setCaps(e.getModifierState("CapsLock"));
-
+  const user = names[username.trim()] ?? (username.trim() || "Staff");
   return <div className="login-shell">
-    <section className="login-brand">
-      <Brand size={120} />
-      <div className="login-copy">
-        <span>Signature Desk</span>
-        <h1>Verifies a signature using only the person&apos;s own genuine samples.</h1>
-        <p>An examination workspace for clear decisions and inspectable evidence.</p>
-        <ol className="login-steps">{steps.map(([icon, label], i) => <li key={label}><span><Icon name={icon} size={18} /></span><small className="num">0{i + 1}</small><strong>{label}</strong></li>)}</ol>
-      </div>
-      <small>Signatures are stored on this computer only. Every check is logged.</small>
-    </section>
-    <section className="login-side">
-      <form className="login-panel" onSubmit={e => { e.preventDefault(); void signIn(); }}>
-        <h2>Sign in</h2><p>Use your workspace account to continue.</p>
-        <label className="field"><span>Username</span><input autoComplete="username" value={username} onChange={e => setUsername(e.target.value)} /></label>
-        <label className="field"><span>Password</span>
-          <div className="password-field"><input type={show ? "text" : "password"} autoComplete="current-password" value={password} onChange={e => setPassword(e.target.value)} onKeyUp={capsCheck} onKeyDown={capsCheck} onBlur={() => setCaps(false)} /><button type="button" className="icon-button" aria-label={show ? "Hide password" : "Show password"} aria-pressed={show} onClick={() => setShow(!show)}><Icon name={show ? "eyeOff" : "eye"} size={18} /></button></div>
-          {caps && <small className="caps-warning" role="status"><Icon name="alert" size={14} /> Caps Lock is on</small>}
-        </label>
-        <button type="submit" className={`button login-submit ${busy ? "busy" : ""}`} disabled={!ready} aria-busy={busy}>{busy ? "Signing in" : <>Sign in <Icon name="chevron" size={18} /></>}</button>
-        <div className="login-separator"><span>or try a demo</span></div>
-        <div className="demo-choice-grid">{demos.map(d => <button type="button" key={d.preset} onClick={() => onDemo(d.preset)}>
-          <span><Icon name={d.icon} /></span>
-          <div><strong>{d.title}</strong><small>{d.text}</small><ul>{d.shows.map(s => <li key={s}><Icon name="check" size={14} />{s}</li>)}</ul></div>
-          <Icon name="chevron" size={16} />
-        </button>)}</div>
-      </form>
-      <p className="login-help"><Icon name="help" size={16} />Demo sign-in needs no password. The Examiner demo uses the records on this computer; the Supervisor demo uses fictional data only.</p>
+    <section className="login-brand"><img src="/assets/7e738.svg" alt="4buwan" /><div><span>SIGNATURE DESK</span><h1>Signature checking for everyday office work.</h1><p>Create a reliable signature profile once, then use it to help check future signatures.</p></div><small>Signatures are stored on this computer only.</small></section>
+    <section className="login-panel"><div className="office-name">RIVERSIDE COMMUNITY COOPERATIVE</div><h2>Staff sign in</h2><p>Use your office account to continue.</p>
+      <label><span>USERNAME</span><input value={username} onChange={e => setUsername(e.target.value)} autoComplete="username" /></label>
+      <label><span>PASSWORD</span><div className="password-field"><input type={show ? "text" : "password"} value={password} onChange={e => setPassword(e.target.value)} onKeyUp={e => setCaps(e.getModifierState("CapsLock"))} autoComplete="current-password" /><button type="button" className="icon-button" aria-label={show ? "Hide password" : "Show password"} onClick={() => setShow(!show)}><Icon name={show ? "eyeOff" : "eye"} size={16} /></button></div>{caps && <small className="caps-warning">Caps Lock is on</small>}</label>
+      <label><span>DEMO ROLE</span><select value={role} onChange={e => setRole(e.target.value as Role)}><option>Verifier</option><option>Supervisor</option><option>Researcher</option></select></label>
+      <Button icon="chevron" onClick={() => onLogin(role, user)}>Sign in</Button>
+      <div className="login-help"><Icon name="help" size={15} />Verifier is the working system. Supervisor and Researcher are demonstrations.</div>
     </section>
   </div>;
 }

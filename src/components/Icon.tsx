@@ -1,13 +1,14 @@
 import type { ReactNode } from "react";
 
-export type IconName = "verify" | "enrol" | "history" | "review" | "settings" | "compare" | "audit" | "search" | "upload" | "check" | "alert" | "help" | "print" | "save" | "logout" | "chevron" | "user" | "scan" | "menu" | "sun" | "moon" | "close" | "eye" | "eyeOff" | "plus" | "minus" | "rotate" | "fit" | "invert" | "layers" | "swipe" | "pin" | "ruler" | "paperclip" | "home" | "file" | "keyboard";
+export type IconName = "verify" | "enrol" | "history" | "review" | "settings" | "staff" | "compare" | "audit" | "search" | "upload" | "check" | "alert" | "help" | "print" | "save" | "logout" | "chevron" | "user" | "scan" | "menu" | "sun" | "moon" | "close" | "eye" | "eyeOff" | "plus" | "minus" | "rotate" | "fit" | "invert" | "layers" | "swipe" | "pin" | "ruler" | "paperclip" | "home" | "file" | "keyboard";
 
 const paths: Record<IconName, ReactNode> = {
   verify: <><path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4" /><path d="M7 13c2-4 3 4 5-2s3 5 5-1" /></>,
   enrol: <><circle cx="10" cy="8" r="4" /><path d="M3 21c1-4.5 3-7 7-7 2 0 3.6.5 4.8 1.5M19 15v7m-3.5-3.5h7" /></>,
   history: <><path d="M4 12a8 8 0 1 0 2-5.7L4 8" /><path d="M4 3v5h5M12 7v5l3 2" /></>,
   review: <><path d="M6 3h12v18H6zM9 8h6m-6 4h6m-6 4h3" /><path d="m15 17 1.5 1.5L20 15" /></>,
-  settings: <><circle cx="9" cy="8" r="4" /><path d="M2 21c.8-4.5 3-7 7-7s6.2 2.5 7 7M17 8h5m-2.5-2.5v5" /></>,
+  staff: <><circle cx="9" cy="8" r="4" /><path d="M2 21c.8-4.5 3-7 7-7s6.2 2.5 7 7M17 8h5m-2.5-2.5v5" /></>,
+  settings: <><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z" /></>,
   compare: <><path d="M8 3 4 7l4 4M4 7h14M16 21l4-4-4-4M20 17H6" /></>,
   audit: <><path d="M12 2 4 5v6c0 5 3 9 8 11 5-2 8-6 8-11V5z" /><path d="m8.5 12 2.2 2.2 4.8-5" /></>,
   search: <><circle cx="10" cy="10" r="6" /><path d="m15 15 6 6" /></>,
