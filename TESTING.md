@@ -54,12 +54,12 @@ The same run also checks that the Examiner sidebar has 8 items, the Supervisor s
 
 | # | Do this | You should see |
 |---|---|---|
-| 1 | Login → **Examiner demo** | Workbench first; 8 sidebar items: Workbench, Cases & Review, Examination, Profiles & Library, Batch Check, Evidence Reports, Research Lab, Help (at the bottom) |
-| 2 | Log out → **Supervisor demo** | Dashboard first; 6 sidebar items; "Supervisor Demo — Simulated Data" label and strip; fictional clients and cases only |
-| 3 | Examiner → Profiles & Library | Enrolled profiles and an "Enrol a person" tab |
-| 4 | Examination → Verify against a profile → Demo Person 05 → upload `full_org/original_5_14.png` | A verdict for a genuine sample *not* used for enrolment |
+| 1 | Sign in with **Demo role: Verifier** | The working system: Dashboard, Verify, Enrol, History, Research Lab, Settings, Help |
+| 2 | Log out → sign in as **Supervisor** or **Researcher** | Yellow DEMO bar; example content only (Staff Accounts, Review Queue, Method Comparison…); no model or stored data is used |
+| 3 | Verifier → Enrol | Enrol a person with 12 genuine signatures (for example `demo_data/Person_A_053/enrol`) |
+| 4 | Verifier → Verify → Demo Person 05 → upload `full_org/original_5_14.png` | A verdict for a genuine sample *not* used for enrolment |
 | 5 | Same person → upload `full_forg/forgeries_5_3.png` | A verdict for a forgery |
-| 6 | Switch to **Expert view** (or press E) | Panels A–H with real numbers; the policy line says *provisional* |
+| 6 | Scroll down the Verify page | Reference samples and panels A–H with real numbers; the policy line says *provisional* |
 | 7 | Upload a blank white image | "Blank or almost blank" message, Run verification is disabled |
 | 8 | Enrol a new person with only 11 images | Create profile is blocked with the reason |
 | 9 | Cases → open the check from step 4 → Record decision "Accepted" | Decision and timeline saved |

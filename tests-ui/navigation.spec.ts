@@ -1,35 +1,34 @@
-import { expect, test } from '@playwright/test'
+import { expect, test, type Page } from '@playwright/test'
 
 test.use({ viewport: { width: 1440, height: 900 } })
 
-const sidebarItems = (page: import('@playwright/test').Page) =>
-  page.locator('aside.sidebar').getByRole('navigation', { name: 'Main navigation' }).getByRole('button')
+const sidebarItems = (page: Page) => page.locator('aside.sidebar').getByRole('navigation', { name: 'Main navigation' }).getByRole('button')
 
-test('Examiner sidebar has exactly the 8 main items, Help last', async ({ page }) => {
+async function signIn(page: Page, role: 'Verifier' | 'Supervisor' | 'Researcher') {
   await page.goto('/')
-  await page.getByRole('button', { name: /Examiner demo/ }).click()
-  await expect(sidebarItems(page)).toHaveText(['Workbench', 'Cases & Review', 'Examination', 'Profiles & Library', 'Batch Check', 'Evidence Reports', 'Research Lab', 'Help'])
-  await sidebarItems(page).filter({ hasText: 'Examination' }).click()
-  await expect(page.getByRole('tab', { name: 'Verify against a profile' })).toBeVisible()
-  await page.getByRole('tab', { name: 'Compare images' }).click()
-  await expect(page.getByRole('heading', { name: 'Compare' })).toBeVisible()
+  await page.getByLabel('DEMO ROLE').selectOption(role)
+  await page.getByRole('button', { name: 'Sign in' }).click()
+}
+
+test('Verifier: the working system with its 7 modules, Help last, no demo bar', async ({ page }) => {
+  await signIn(page, 'Verifier')
+  await expect(sidebarItems(page)).toHaveText(['Dashboard', 'Verify', 'Enrol', 'History', 'Research Lab', 'Settings', 'Help'])
+  await expect(page.locator('.demo-bar')).toHaveCount(0)
+  await expect(page.getByRole('group', { name: 'View' })).toHaveCount(0)   // no Simple / Expert switch
 })
 
-test('Supervisor sidebar has exactly the 6 main items and makes no API request', async ({ page }) => {
-  await page.goto('/')
-  await page.getByRole('button', { name: /Supervisor demo/ }).click()
-  // Count only what the Supervisor demo does after sign-in (the sign-in page itself checks the service once).
-  const api: string[] = []
-  page.on('request', r => { if (new URL(r.url()).pathname.startsWith('/api/')) api.push(r.url()) })
-  await expect(sidebarItems(page)).toHaveText(['Dashboard', 'Clients & Enrollment', 'Cases & Reviews', 'Batch Check', 'Reports & Research', 'System & Help'])
-  await expect(page.getByText('Supervisor Demo — Simulated Data').first()).toBeVisible()
-  for (const item of ['Clients & Enrollment', 'Cases & Reviews', 'Batch Check', 'Reports & Research', 'System & Help', 'Dashboard']) {
-    await sidebarItems(page).filter({ hasText: item }).click()
-    await page.waitForTimeout(300)
-  }
-  await sidebarItems(page).filter({ hasText: 'Cases & Reviews' }).click()
-  await page.getByRole('tab', { name: 'Verify (simulated)' }).click()
-  await page.getByRole('button', { name: 'Run simulated check' }).click()
-  await page.waitForTimeout(6000)   // longer than the 5 s health interval
-  expect(api, 'the Supervisor demo must not call the analysis service').toEqual([])
-})
+for (const [role, modules] of [
+  ['Supervisor', ['Dashboard', 'Verify', 'Enrol', 'History', 'Review Queue', 'Staff Accounts', 'Settings', 'Help']],
+  ['Researcher', ['Dashboard', 'Verify', 'Enrol', 'History', 'Review Queue', 'Staff Accounts', 'Method Comparison', 'Dataset Check', 'Settings', 'Help']],
+] as const) {
+  test(`${role}: demonstration modules, yellow demo bar, no request to the analysis service`, async ({ page }) => {
+    await signIn(page, role)
+    const api: string[] = []
+    page.on('request', r => { if (new URL(r.url()).pathname.startsWith('/api/')) api.push(r.url()) })
+    await expect(sidebarItems(page)).toHaveText([...modules])
+    await expect(page.locator('.demo-bar')).toContainText('does not use the verification model')
+    for (const m of modules) { await sidebarItems(page).filter({ hasText: m }).click(); await page.waitForTimeout(200) }
+    await page.waitForTimeout(5500)   // longer than the 5 s health interval
+    expect(api, `the ${role} demo must not call the analysis service`).toEqual([])
+  })
+}

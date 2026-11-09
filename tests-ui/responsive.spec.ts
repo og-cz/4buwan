@@ -7,9 +7,10 @@ async function noHorizontalScroll(page: Page) {
   expect(scrollWidth, `page is ${scrollWidth}px wide in a ${innerWidth}px window`).toBeLessThanOrEqual(innerWidth)
 }
 
-async function signIn(page: Page, preset: 'Examiner demo' | 'Supervisor demo') {
+async function signIn(page: Page, role: 'Verifier' | 'Supervisor' | 'Researcher') {
   await page.goto('/')
-  await page.getByRole('button', { name: new RegExp(preset) }).click()
+  await page.getByLabel('DEMO ROLE').selectOption(role)
+  await page.getByRole('button', { name: 'Sign in' }).click()
   await expect(page.locator('.topbar')).toBeVisible()
 }
 
@@ -26,31 +27,31 @@ for (const width of widths) {
 
     test('Login', async ({ page }) => {
       await page.goto('/')
-      await expect(page.getByRole('heading', { name: 'Sign in' })).toBeVisible()
+      await expect(page.getByRole('heading', { name: 'Staff sign in' })).toBeVisible()
       await noHorizontalScroll(page)
     })
 
     test('Verify', async ({ page }) => {
-      await signIn(page, 'Examiner demo')
-      await open(page, 'Examination')
+      await signIn(page, 'Verifier')
+      await open(page, 'Verify')
       await noHorizontalScroll(page)
     })
 
     test('Cases', async ({ page }) => {
-      await signIn(page, 'Examiner demo')
-      await open(page, 'Cases & Review')
+      await signIn(page, 'Verifier')
+      await open(page, 'History')
       await noHorizontalScroll(page)
     })
 
-    test('Supervisor cases', async ({ page }) => {
-      await signIn(page, 'Supervisor demo')
-      await open(page, 'Cases & Reviews')
+    test('Supervisor staff', async ({ page }) => {
+      await signIn(page, 'Supervisor')
+      await open(page, 'Staff Accounts')
       await noHorizontalScroll(page)
     })
 
     test('Research Lab', async ({ page }) => {
-      await signIn(page, 'Examiner demo')
-      await open(page, 'Research Lab')
+      await signIn(page, 'Researcher')
+      await open(page, 'Method Comparison')
       await noHorizontalScroll(page)
     })
   })

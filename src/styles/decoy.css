@@ -1,0 +1,77 @@
+/* Supervisor / Researcher demonstrations (4buwan-ui screens) and the 4buwan-ui sign-in page. */
+.demo-bar { background: var(--uncertain-soft); color: var(--uncertain-text); border-bottom: 1px solid var(--uncertain-line); }
+.demo-bar strong { padding: 1px var(--s2); border: 1px solid var(--uncertain-line); border-radius: var(--r-sm); letter-spacing: .08em; }
+
+.mock-sig svg { width: 100%; height: 100%; display: block; }
+.mock-sig path { fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; }
+.mock-sig .under { stroke-width: 1; }
+
+.decoy-verify-grid { display: grid; grid-template-columns: minmax(260px, 320px) minmax(0, 1fr); gap: var(--s5); }
+.demo-outcomes { margin: var(--s3) 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s1); }
+.demo-outcomes > span { grid-column: 1 / -1; font: var(--t-label); letter-spacing: var(--label-tracking); color: var(--text-3); }
+.demo-outcomes button { min-height: 30px; border: 1px solid var(--border); border-radius: var(--r-sm); background: var(--surface-2); color: var(--text-2); font: var(--t-small); }
+.demo-outcomes button.active { border-color: var(--accent); color: var(--accent-text); background: var(--accent-soft); }
+
+.decoy-recent { display: flex; flex-direction: column; margin: var(--s2) 0 var(--s4); }
+.decoy-recent > div { display: grid; grid-template-columns: 80px minmax(0, 1fr) auto; gap: var(--s2); align-items: center; padding: var(--s2) 0; border-bottom: 1px solid var(--border); }
+.decoy-recent span { font: var(--t-mono); color: var(--text-3); }
+.decoy-recent strong { font: var(--t-small); font-weight: 600; }
+
+.review-list { display: flex; flex-direction: column; gap: var(--s4); }
+.review-item { display: flex; flex-direction: column; gap: var(--s3); }
+.review-person { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: var(--s3); align-items: center; }
+.review-person > span { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-text); font: var(--t-label); }
+.review-person > div { display: flex; flex-direction: column; }
+.review-person strong { font: var(--t-body-strong); }
+.review-person small { font: var(--t-small); color: var(--text-3); }
+.review-evidence { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: var(--s4); }
+.review-evidence > div { display: flex; flex-direction: column; gap: var(--s1); }
+.review-evidence > div > span { font: var(--t-label); letter-spacing: var(--label-tracking); color: var(--text-3); }
+.review-evidence p { margin: 0; padding: var(--s3); border-radius: var(--r-sm); background: var(--uncertain-soft); color: var(--text-2); display: flex; align-items: center; gap: var(--s2); }
+.review-item > label { display: flex; flex-direction: column; gap: 6px; }
+.review-item > label > span { font: var(--t-label); letter-spacing: var(--label-tracking); color: var(--text-3); }
+.review-actions { display: flex; gap: var(--s2); flex-wrap: wrap; }
+
+.staff-list { padding: 0 var(--s5); }
+.staff-list > div { min-height: 72px; display: grid; grid-template-columns: 40px minmax(0, 1fr) 100px 120px 160px auto; gap: var(--s3); align-items: center; border-bottom: 1px solid var(--border); }
+.staff-list > div:last-child { border-bottom: 0; }
+.staff-list > div > div { display: flex; flex-direction: column; min-width: 0; }
+.staff-list strong { font: var(--t-small); font-weight: 600; }
+.staff-list small, .staff-list > div > div span { font: var(--t-small); color: var(--text-3); }
+
+.curve { width: 100%; height: 200px; }
+.curve path { fill: none; }
+.curve .grid { stroke: var(--border); }
+.curve .chance { stroke: var(--text-3); stroke-dasharray: 4 4; }
+.curve .line { stroke: var(--accent); stroke-width: 3; }
+
+.dataset-toolbar { padding: var(--s4) var(--s5); border: 1px solid var(--border); border-radius: var(--r-lg); background: var(--surface); display: grid; grid-template-columns: 220px minmax(0, 1fr) auto; gap: var(--s4); align-items: end; }
+.dataset-toolbar label, .dataset-toolbar > div { display: flex; flex-direction: column; gap: 6px; }
+.dataset-toolbar label > span, .dataset-toolbar > div > span { font: var(--t-label); letter-spacing: var(--label-tracking); color: var(--text-3); }
+.dataset-toolbar section { display: flex; }
+.dataset-toolbar section button { min-height: var(--control-h); flex: 1; border: 1px solid var(--border); border-right: 0; background: var(--surface-2); color: var(--text-2); font: var(--t-small); }
+.dataset-toolbar section button:first-child { border-radius: var(--r-sm) 0 0 var(--r-sm); }
+.dataset-toolbar section button:last-child { border-right: 1px solid var(--border); border-radius: 0 var(--r-sm) var(--r-sm) 0; }
+.dataset-toolbar section button.active { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.fact-card .tag { align-self: flex-start; }
+
+/* 4buwan-ui sign-in page */
+.login-brand > img { width: 190px; height: 132px; object-fit: contain; object-position: left center; }
+.login-brand > div { max-width: 580px; display: flex; flex-direction: column; gap: var(--s3); }
+.login-brand > div > span { font: var(--t-label); letter-spacing: var(--label-tracking); color: var(--accent-text); }
+.login-brand h1 { font: 600 40px/1.12 var(--font); letter-spacing: -.03em; margin: 0; }
+.login-brand > div > p { color: var(--text-2); font: var(--t-body); font-size: 16px; line-height: 1.6; }
+.login-panel .office-name { font: var(--t-label); letter-spacing: var(--label-tracking); color: var(--accent-text); }
+.login-panel > .button { width: 100%; margin-top: var(--s2); }
+.login-panel .password-field { position: relative; }
+
+@media (max-width: 899px) {
+  .decoy-verify-grid, .review-evidence, .dataset-toolbar { grid-template-columns: minmax(0, 1fr); }
+  .staff-list > div { grid-template-columns: 40px minmax(0, 1fr) auto; }
+  .staff-list > div > div:not(:first-of-type), .staff-list > div > .tag { display: none; }
+  .login-brand > img, .login-brand > div { display: none; }
+}
+.login-shell > .login-panel { align-self: center; margin: auto; }
+.login-panel label { display: flex; flex-direction: column; gap: 6px; margin-bottom: var(--s4); }
+.login-panel label > span { font: var(--t-label); letter-spacing: var(--label-tracking); color: var(--text-3); }
+.sidebar .office strong { color: var(--side-text); }

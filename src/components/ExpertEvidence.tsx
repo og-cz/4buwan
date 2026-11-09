@@ -23,7 +23,7 @@ export default function ExpertEvidence({ result, person, questioned, reference }
   const trace = useAsync(() => questioned ? preprocess(questioned) : Promise.resolve(null), [questioned]);
   const best = result.comparisons.reduce((a, b) => b.value > a.value ? b : a, result.comparisons[0]);
   const chosen = reference ?? best.reference;
-  return <section className="expert-section"><div className="expert-heading"><div><span>EXPERT VIEW</span><h2>Analysis evidence</h2></div><p>Exact values and technical panels for examination and audit.</p></div><div className="expert-grid">
+  return <section className="expert-section"><div className="expert-heading"><div><span>ANALYSIS</span><h2>Analysis evidence</h2></div><p>Exact values and technical panels for examination and audit.</p></div><div className="expert-grid">
     <Card code="A" title="SCORE VS DECISION LINE" what="This signature's score against the person's own genuine scores">
       <ScoreDistribution looScores={result.loo_scores} score={result.score} line={result.decision_line} low={result.uncertain_low} high={result.uncertain_high} />
     </Card>
