@@ -119,7 +119,6 @@
 .brand-mark > div { display: flex; flex-direction: column; min-width: 0; }
 .brand-mark strong { font: 600 18px/22px var(--font); letter-spacing: -.01em; color: var(--text); }
 .brand-mark span { font: var(--t-label); font-weight: 400; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.login-brand .brand-mark strong { font: 600 28px/34px var(--font); }
 
 /* ---------- original look: wordmark, switches, sample strip ---------- */
 .sidebar .brand { height: 91px; padding: 8px 12px 8px 18px; }

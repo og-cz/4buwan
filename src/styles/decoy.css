@@ -55,23 +55,9 @@
 .dataset-toolbar section button.active { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .fact-card .tag { align-self: flex-start; }
 
-/* 4buwan-ui sign-in page */
-.login-brand > img { width: 190px; height: 132px; object-fit: contain; object-position: left center; }
-.login-brand > div { max-width: 580px; display: flex; flex-direction: column; gap: var(--s3); }
-.login-brand > div > span { font: var(--t-label); letter-spacing: var(--label-tracking); color: var(--accent-text); }
-.login-brand h1 { font: 600 40px/1.12 var(--font); letter-spacing: -.03em; margin: 0; }
-.login-brand > div > p { color: var(--text-2); font: var(--t-body); font-size: 16px; line-height: 1.6; }
-.login-panel .office-name { font: var(--t-label); letter-spacing: var(--label-tracking); color: var(--accent-text); }
-.login-panel > .button { width: 100%; margin-top: var(--s2); }
-.login-panel .password-field { position: relative; }
-
 @media (max-width: 899px) {
   .decoy-verify-grid, .review-evidence, .dataset-toolbar { grid-template-columns: minmax(0, 1fr); }
   .staff-list > div { grid-template-columns: 40px minmax(0, 1fr) auto; }
   .staff-list > div > div:not(:first-of-type), .staff-list > div > .tag { display: none; }
-  .login-brand > img, .login-brand > div { display: none; }
 }
-.login-shell > .login-panel { align-self: center; margin: auto; }
-.login-panel label { display: flex; flex-direction: column; gap: 6px; margin-bottom: var(--s4); }
-.login-panel label > span { font: var(--t-label); letter-spacing: var(--label-tracking); color: var(--text-3); }
 .sidebar .office strong { color: var(--side-text); }
