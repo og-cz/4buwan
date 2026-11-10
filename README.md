@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <strong>A signature verification from genuine samples only.</strong><br/>
+  <strong>Signature verification from genuine samples only.</strong><br/>
   An examination workspace for clear decisions and inspectable evidence.
 </p>
 

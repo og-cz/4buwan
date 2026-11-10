@@ -20,7 +20,7 @@ export default function Shell({ demo, user, items, active, onNav, crumb, control
   const settings = useSettings();
   const [theme, setTheme] = useTheme();
   const initials = user.split(/\s+/).map(n => n[0] ?? "").join("").slice(0, 2).toUpperCase();
-  const org = settings.orgName || "Signature Desk";
+  const org = settings.orgName || "Signature Verification";
   const themeButton = <button className="icon-button" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"} title={theme === "dark" ? "Light theme" : "Dark theme"}><Icon name={theme === "dark" ? "sun" : "moon"} size={18} /></button>;
 
   return <div className={`app-shell ${collapsed ? "sidebar-collapsed" : ""}`}>

@@ -35,7 +35,7 @@ export function DecoySettings() {
 /** Demo: help for staff. */
 export function DecoyHelp() {
   const steps: [string, string, "enrol" | "verify" | "history" | "check", string][] = [["01", "Enrol", "enrol", "Collect 12 genuine signatures from the client."], ["02", "Verify", "verify", "Check a new signature against the client's profile."], ["03", "Review", "history", "Uncertain results go to a supervisor."], ["04", "Decide", "check", "A staff member makes the final decision."]];
-  return <div className="page"><PageHeader title="Help" description="How Signature Desk works." />
+  return <div className="page"><PageHeader title="Help" description="How Signature Verification works." />
     <div className="help-steps">{steps.map(x => <section className="panel" key={x[0]}><span>{x[0]}</span><Icon name={x[2]} size={22} /><h2>{x[1]}</h2><p>{x[3]}</p></section>)}</div>
     <section className="panel limitations"><Icon name="alert" /><div><h2>Good to know</h2><p>The result is advice, not proof. Ask for another signature when the result is uncertain or the scan is unclear.</p></div></section>
   </div>;

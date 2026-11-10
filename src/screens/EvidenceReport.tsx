@@ -28,7 +28,7 @@ export default function EvidenceReport({ caseId, go }: { caseId?: string; go: Go
   return <div className="page evidence-report">
     <div className="no-print"><PageHeader title="Evidence Report" description={`Case ${c.id}. Print or save as PDF from the print dialog.`} action={<div className="header-actions"><Button secondary onClick={() => go("CaseDetail", { caseId: c.id })}>Back to Case</Button><Button icon="print" onClick={() => { void logReport(c.id).catch(() => undefined); window.print(); }}>Print or save as PDF</Button></div>} /></div>
     <section className="panel report-sheet">
-      <header className="report-head">{settings.orgLogo && <img src={settings.orgLogo} alt="" />}<div><span>{(settings.orgName || "Signature Desk").toUpperCase()} · EVIDENCE REPORT</span><h1>{c.case_title || `Case ${c.id}`}</h1></div></header>
+      <header className="report-head">{settings.orgLogo && <img src={settings.orgLogo} alt="" />}<div><span>{(settings.orgName || "Signature Verification").toUpperCase()} · EVIDENCE REPORT</span><h1>{c.case_title || `Case ${c.id}`}</h1></div></header>
       <dl className="parameters-list report-facts">
         <div><dt>Case ID</dt><dd>{c.id}</dd></div><div><dt>Date</dt><dd>{formatDate(c.created, true)}</dd></div>
         <div><dt>{t.person}</dt><dd>{p ? `${p.name} (${p.external_id || "—"})` : "Deleted profile"}</dd></div><div><dt>Recorded decision</dt><dd>{c.decision}</dd></div>

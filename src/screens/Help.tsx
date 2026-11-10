@@ -21,9 +21,9 @@ export default function Help() {
     ["Comparison", "The model output for the questioned signature paired with one Reference Sample."],
     ["Difference Measure", "One of 17 ways two signatures are compared (distances, angle, correlation and summary values)."],
   ];
-  return <div className="page"><PageHeader title="Help" description="How Signature Desk works and how to collect reliable evidence." />
+  return <div className="page"><PageHeader title="Help" description="How Signature Verification works and how to collect reliable evidence." />
     <div className="help-steps">{steps.map(x => <section className="panel" key={x[0]}><span>{x[0]}</span><Icon name={x[2]} size={22} /><h2>{x[1]}</h2><p>{x[3]}</p></section>)}</div>
     <section className="panel model-card"><h2>Glossary</h2><dl>{glossary.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl></section>
-    <section className="panel limitations"><Icon name="alert" /><div><h2>Honest limitations</h2><p>Signature Desk supports, not replaces, human judgement. Skilled forgeries can be close to genuine signatures. Poor scans can hide useful handwriting detail. Expect some wrong Verdicts: use Uncertain and a second sample when the evidence is not clear.</p></div></section>
+    <section className="panel limitations"><Icon name="alert" /><div><h2>Honest limitations</h2><p>Signature Verification supports, not replaces, human judgement. Skilled forgeries can be close to genuine signatures. Poor scans can hide useful handwriting detail. Expect some wrong Verdicts: use Uncertain and a second sample when the evidence is not clear.</p></div></section>
   </div>;
 }
