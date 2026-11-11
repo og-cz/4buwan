@@ -10,9 +10,7 @@ async function noHorizontalScroll(page: Page) {
 async function signIn(page: Page, role: 'Verifier' | 'Supervisor' | 'Researcher') {
   await page.goto('/')
   await page.getByLabel('DEMO ROLE').selectOption(role)
-  await page.getByLabel('USERNAME').fill('a.lee')
-  await page.getByLabel('PASSWORD').fill('demo')
-  await page.getByRole('button', { name: 'Sign in' }).click()
+  await page.getByRole('button', { name: 'Continue to demo' }).click()
   await expect(page.locator('.topbar')).toBeVisible()
 }
 
