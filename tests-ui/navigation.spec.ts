@@ -7,9 +7,7 @@ const sidebarItems = (page: Page) => page.locator('aside.sidebar').getByRole('na
 async function signIn(page: Page, role: 'Verifier' | 'Supervisor' | 'Researcher') {
   await page.goto('/')
   await page.getByLabel('DEMO ROLE').selectOption(role)
-  await page.getByLabel('USERNAME').fill('a.lee')
-  await page.getByLabel('PASSWORD').fill('demo')
-  await page.getByRole('button', { name: 'Sign in' }).click()
+  await page.getByRole('button', { name: 'Continue to demo' }).click()
 }
 
 test('Verifier: the working system with its 7 modules, Help last, no demo bar', async ({ page }) => {
@@ -34,3 +32,14 @@ for (const [role, modules] of [
     expect(api, `the ${role} demo must not call the analysis service`).toEqual([])
   })
 }
+
+test('Sign in needs a username and password and opens the Verifier', async ({ page }) => {
+  await page.goto('/')
+  const signInButton = page.getByRole('button', { name: 'Sign in' })
+  await expect(signInButton).toBeDisabled()
+  await page.getByLabel('USERNAME').fill('a.lee')
+  await page.getByLabel('PASSWORD').fill('demo')
+  await signInButton.click()
+  await expect(sidebarItems(page)).toHaveText(['Dashboard', 'Verify', 'Enrol', 'History', 'Research Lab', 'Settings', 'Help'])
+  await expect(page.getByText('Alex Lee')).toBeVisible()
+})
