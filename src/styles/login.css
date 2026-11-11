@@ -3,16 +3,17 @@
 .login-brand { padding: 70px 7vw; position: relative; display: flex; flex-direction: column; justify-content: center; background: radial-gradient(circle at 25% 45%, var(--login-glow) 0, transparent 42%); }
 .login-brand img { width: 190px; height: 132px; object-fit: contain; object-position: left center; }
 .login-brand > div { max-width: 580px; margin-top: 35px; }
-.login-brand span, .login-panel .office-name { font-size: 11px; font-weight: 700; letter-spacing: .11em; color: var(--accent); }
+.login-brand span { font-size: 11px; font-weight: 700; letter-spacing: .11em; color: var(--accent); }
 .login-brand h1 { font-size: 40px; font-weight: 400; line-height: 1.12; margin: 12px 0; letter-spacing: -.035em; }
 .login-brand p { color: var(--text-2); font-size: 16px; line-height: 1.6; margin: 0; }
 .login-brand > small { position: absolute; bottom: 34px; color: var(--text-3); font-size: 11px; }
 .login-panel { width: min(440px, 90%); margin: auto; padding: 35px; background: var(--surface); border: 1px solid var(--border); border-radius: 9px; box-shadow: var(--shadow-1); }
-.login-panel h2 { font-size: 25px; font-weight: 400; margin: 20px 0 7px; }
+.login-panel h2 { font-size: 25px; font-weight: 400; margin: 0 0 7px; }
 .login-panel > p { color: var(--text-2); font-size: 14px; margin: 0 0 25px; }
 .login-panel label { display: flex; flex-direction: column; gap: 7px; margin: 14px 0; }
 .login-panel label > span { color: var(--text-3); font-size: 11px; font-weight: 700; letter-spacing: .09em; }
 .login-panel input, .login-panel select { height: 41px; min-height: 41px; border: 1px solid var(--border-strong); border-radius: 4px; background: var(--surface-2); color: var(--text); padding: 0 11px; font-size: 14px; }
+.login-panel input::placeholder { color: var(--text-3); }
 .login-panel > .button { width: 100%; height: 36px; margin-top: 8px; border-radius: 4px; font-size: 11px; font-weight: 700; }
 .login-help { display: flex; gap: 8px; align-items: center; color: var(--text-3); font-size: 11px; margin-top: 18px; }
 .login-help svg { flex: none; }
