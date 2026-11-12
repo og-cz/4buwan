@@ -7,7 +7,7 @@ import Tag from "../components/Tag";
 /** Demo: office dashboard with example figures. */
 export function DecoyDashboard({ openReview, openHistory }: { openReview: () => void; openHistory: () => void }) {
   const metrics: [string, string, string, "ready" | "warn" | "neutral"][] = [["Enrolled clients", "164", "READY", "ready"], ["Checks this month", "428", "THIS MONTH", "neutral"], ["Waiting for review", "3", "REVIEW", "warn"], ["Staff accounts", "4", "3 ACTIVE", "neutral"]];
-  const recent = [["14:32", "Amira Rahman", "Likely genuine"], ["11:08", "Leo Villanueva", "Uncertain"], ["Yesterday", "Daniel Cruz", "Likely forged"]];
+  const recent = [["14:32", "Client A", "Likely genuine"], ["11:08", "Client D", "Uncertain"], ["Yesterday", "Client B", "Likely forged"]];
   const bars = [38, 54, 43, 68, 61, 72, 47, 56, 81, 74, 63, 88, 71, 79];
   return <div className="page"><PageHeader title="Dashboard" description="Office activity and items that need attention." />
     <div className="application-metrics">{metrics.map(m => <section className="panel" key={m[0]}><span>{m[0]}</span><strong>{m[1]}</strong><Tag tone={m[3]}>{m[2]}</Tag></section>)}</div>
