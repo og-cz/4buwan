@@ -5,16 +5,14 @@ import type { Role } from "../navigation";
 
 type Props = { onLogin: (role: Role, user: string) => void };
 
-const names: Record<string, string> = { "a.lee": "Alex Lee", "m.reyes": "Maria Reyes", "s.tan": "Sam Tan" };
-
-const demoNames: Record<Role, string> = { Verifier: "Alex Lee", Supervisor: "Maria Reyes", Researcher: "Sam Tan" };
+const demoNames: Record<Role, string> = { Verifier: "Demo Verifier", Supervisor: "Demo Supervisor", Researcher: "Demo Researcher" };
 
 /** Staff sign-in from the 4buwan-ui design. Signing in opens the Verifier; the demo button opens any role without an account. */
 export default function Login({ onLogin }: Props) {
   const [role, setRole] = useState<Role>("Verifier");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const user = names[username.trim()] ?? username.trim();
+  const user = username.trim();
   const ready = username.trim() !== "" && password !== "";
   return <div className="login-shell">
     <section className="login-brand"><img src="/assets/7e738.svg" alt="4buwan" /><div><span>SIGNATURE VERIFICATION</span><h1>Signature verification from genuine samples only.</h1><p>An examination workspace for clear decisions and inspectable evidence.</p></div><small>Signatures are stored on this computer only. Access is logged.</small></section>

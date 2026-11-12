@@ -16,11 +16,13 @@ export function Signature({ seed = 0, faded = false }: { seed?: number; faded?: 
   return <div className={`signature mock-sig ${faded ? "faded" : ""}`}><svg viewBox="0 0 160 86" preserveAspectRatio="none"><path d={d} /><path className="under" d={`M${17 + seed * 3} 69c41-7 82 9 126-3`} /></svg></div>;
 }
 
+export function initials(name: string) { return name.split(" ").map(n => n[0]).join("").slice(0, 2).toUpperCase(); }
+
 export const clients = [
-  { name: "Amira Rahman", id: "CL-0047", status: "Ready", date: "14 Feb 2025" },
-  { name: "Daniel Cruz", id: "CL-0103", status: "Incomplete", date: "10 Feb 2025" },
-  { name: "Maya Santos", id: "CL-0126", status: "No profile", date: "—" },
-  { name: "Leo Villanueva", id: "CL-0138", status: "Ready", date: "06 Feb 2025" },
+  { name: "Client A", id: "CL-0047", status: "Ready", date: "14 Feb 2025" },
+  { name: "Client B", id: "CL-0103", status: "Incomplete", date: "10 Feb 2025" },
+  { name: "Client C", id: "CL-0126", status: "No profile", date: "—" },
+  { name: "Client D", id: "CL-0138", status: "Ready", date: "06 Feb 2025" },
 ];
 
 export function ClientSearch({ onSelect }: { onSelect: (ready: boolean) => void }) {
@@ -28,12 +30,12 @@ export function ClientSearch({ onSelect }: { onSelect: (ready: boolean) => void 
   const visible = clients.filter(c => `${c.name} ${c.id}`.toLowerCase().includes(search.toLowerCase()));
   return <section className="client-search">
     <div className="search-box"><Icon name="search" /><input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search by client name or ID" /><span>{visible.length} clients</span></div>
-    <div className="client-results">{visible.map(c => <button key={c.id} onClick={() => onSelect(c.status === "Ready")}><span className="avatar">{c.name.split(" ").map(n => n[0]).join("")}</span><div><strong>{c.name}</strong><small>{c.id}</small></div><Tag tone={c.status === "Ready" ? "ready" : c.status === "Incomplete" ? "warn" : "neutral"}>{c.status.toUpperCase()}</Tag><div className="enrolled"><span>ENROLLED</span><strong>{c.date}</strong></div><Icon name="chevron" size={15} /></button>)}</div>
+    <div className="client-results">{visible.map(c => <button key={c.id} onClick={() => onSelect(c.status === "Ready")}><span className="avatar">{initials(c.name)}</span><div><strong>{c.name}</strong><small>{c.id}</small></div><Tag tone={c.status === "Ready" ? "ready" : c.status === "Incomplete" ? "warn" : "neutral"}>{c.status.toUpperCase()}</Tag><div className="enrolled"><span>ENROLLED</span><strong>{c.date}</strong></div><Icon name="chevron" size={15} /></button>)}</div>
   </section>;
 }
 
 export function ConsistencyGauge() {
-  return <div className="consistency"><div className="gauge-labels"><span>Very consistent</span><span>Typical range</span><span>Very variable</span></div><div className="gauge"><i style={{ left: "30%", width: "38%" }} /><em style={{ left: "25%" }} /></div><div className="client-marker" style={{ marginLeft: "18%" }}><span>AMIRA</span><strong>Consistent</strong></div></div>;
+  return <div className="consistency"><div className="gauge-labels"><span>Very consistent</span><span>Typical range</span><span>Very variable</span></div><div className="gauge"><i style={{ left: "30%", width: "38%" }} /><em style={{ left: "25%" }} /></div><div className="client-marker" style={{ marginLeft: "18%" }}><span>CLIENT A</span><strong>Consistent</strong></div></div>;
 }
 
 export function Result({ verdict }: { verdict: DemoVerdict }) {

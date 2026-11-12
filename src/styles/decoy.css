@@ -20,7 +20,7 @@
 .review-list { display: flex; flex-direction: column; gap: var(--s4); }
 .review-item { display: flex; flex-direction: column; gap: var(--s3); }
 .review-person { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: var(--s3); align-items: center; }
-.review-person > span { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-text); font: var(--t-label); }
+.review-person > .avatar { width: 40px; height: 40px; }
 .review-person > div { display: flex; flex-direction: column; }
 .review-person strong { font: var(--t-body-strong); }
 .review-person small { font: var(--t-small); color: var(--text-3); }
@@ -33,8 +33,10 @@
 .review-actions { display: flex; gap: var(--s2); flex-wrap: wrap; }
 
 .staff-list { padding: 0 var(--s5); }
-.staff-list > div { min-height: 72px; display: grid; grid-template-columns: 40px minmax(0, 1fr) 100px 120px 160px auto; gap: var(--s3); align-items: center; border-bottom: 1px solid var(--border); }
+.staff-list > div { min-height: 72px; display: grid; grid-template-columns: 40px minmax(0, 1fr) 100px 120px 160px 110px; gap: var(--s3); align-items: center; border-bottom: 1px solid var(--border); }
 .staff-list > div:last-child { border-bottom: 0; }
+.staff-list > div > .button { justify-content: center; }
+.staff-list > div > .tag { justify-self: start; }
 .staff-list > div > div { display: flex; flex-direction: column; min-width: 0; }
 .staff-list strong { font: var(--t-small); font-weight: 600; }
 .staff-list small, .staff-list > div > div span { font: var(--t-small); color: var(--text-3); }
