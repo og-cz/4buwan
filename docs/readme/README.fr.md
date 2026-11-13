@@ -17,55 +17,128 @@
   Un espace d'expertise pour des décisions claires et des preuves vérifiables.
 </p>
 
+<p align="center">
+  <img src="../image/readme-hero.png" alt="4buwan" width="960" />
+</p>
+
 ## Fonctionnalités du système
 
 <table>
 <tr>
 <td width="50%" valign="middle">
 
-### Titre de la fonctionnalité
+### Connexion du personnel et rôles de démo
 
-Courte description de la fonctionnalité.
-
-</td>
-<td width="50%" align="center">
-  <sub><i>Capture d'écran à venir</i></sub>
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Titre de la fonctionnalité
-
-Courte description de la fonctionnalité.
+Le personnel se connecte avec un identifiant et un mot de passe pour ouvrir le Vérificateur réel. Ou choisissez un rôle de démo (Vérificateur, Superviseur ou Chercheur) et continuez sans compte.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>Capture d'écran à venir</i></sub>
+<td width="50%">
+  <img src="../image/feature-signin.png" alt="Connexion du personnel et rôles de démo sur ordinateur" width="74%" valign="top" />
+  <img src="../image/feature-signin-phone.png" alt="Connexion du personnel et rôles de démo sur téléphone" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Titre de la fonctionnalité
+### Tableau de bord
 
-Courte description de la fonctionnalité.
+Profils prêts, vérifications enregistrées, taux d’incertitude et vérifications en attente de décision, avec les dernières vérifications et la file de revue d’un coup d’œil.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>Capture d'écran à venir</i></sub>
+<td width="50%">
+  <img src="../image/feature-dashboard.png" alt="Tableau de bord sur ordinateur" width="74%" valign="top" />
+  <img src="../image/feature-dashboard-phone.png" alt="Tableau de bord sur téléphone" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Titre de la fonctionnalité
+### Vérifier et preuves
 
-Courte description de la fonctionnalité.
+Choisissez une personne inscrite, ajoutez la signature contestée et obtenez un verdict indicatif avec un repère de confiance et la zone incertaine. Toutes les preuves de l’analyse figurent sur la même page défilante, à côté d’un outil de comparaison manuelle.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>Capture d'écran à venir</i></sub>
+<td width="50%">
+  <img src="../image/feature-verify.png" alt="Vérifier et preuves sur ordinateur" width="74%" valign="top" />
+  <img src="../image/feature-verify-phone.png" alt="Vérifier et preuves sur téléphone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Inscrire une personne
+
+Un assistant en quatre étapes : informations sur la personne, 12 signatures authentiques avec un contrôle de qualité immédiat pour chacune, un aperçu du nettoyage de l’image, puis le profil de signature. Aucun échantillon falsifié n’est jamais nécessaire.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-enrol.png" alt="Inscrire une personne sur ordinateur" width="74%" valign="top" />
+  <img src="../image/feature-enrol-phone.png" alt="Inscrire une personne sur téléphone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Historique et file de revue
+
+Chaque vérification enregistrée, avec filtres, recherche et export CSV. Les vérifications incertaines ou non décidées attendent dans la file de revue une décision humaine, un motif et des notes horodatées. La vérification par lot traite de nombreuses signatures d’un coup.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-history.png" alt="Historique et file de revue sur ordinateur" width="74%" valign="top" />
+  <img src="../image/feature-history-phone.png" alt="Historique et file de revue sur téléphone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Rapports de preuves
+
+Un rapport imprimable reconstruit à partir du dossier enregistré : la signature contestée, les 12 références, le verdict, le score par rapport à la ligne de décision et la décision enregistrée. Enregistrez-le en PDF depuis la boîte d’impression.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-report.png" alt="Rapports de preuves sur ordinateur" width="74%" valign="top" />
+  <img src="../image/feature-report-phone.png" alt="Rapports de preuves sur téléphone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Laboratoire de recherche
+
+R1-WAW comparé à l’étalon partagé et à la méthode standard sur CEDAR, le bengali et l’hindi, avec un verdict de fiabilité en langage simple, un contrôle des raccourcis du jeu de données et la fiche du modèle.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-research.png" alt="Laboratoire de recherche sur ordinateur" width="74%" valign="top" />
+  <img src="../image/feature-research-phone.png" alt="Laboratoire de recherche sur téléphone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Paramètres et thèmes
+
+Nom et logo de l’organisation, termes utilisés pour les personnes et les identifiants, sévérité de la vérification, zone incertaine et sauvegardes. Thèmes clair et sombre ; la page de connexion reste toujours sombre.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-settings.png" alt="Paramètres et thèmes sur ordinateur" width="74%" valign="top" />
+  <img src="../image/feature-settings-phone.png" alt="Paramètres et thèmes sur téléphone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Démos Superviseur et Chercheur
+
+Vues de démonstration de la file de revue, des comptes du personnel, de la comparaison des méthodes et du contrôle du jeu de données. Une barre jaune DEMO les signale ; elles n’utilisent ni le modèle ni aucune donnée enregistrée.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-demos.png" alt="Démos Superviseur et Chercheur sur ordinateur" width="74%" valign="top" />
+  <img src="../image/feature-demos-phone.png" alt="Démos Superviseur et Chercheur sur téléphone" width="22%" valign="top" />
 </td>
 </tr>
 </table>

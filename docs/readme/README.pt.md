@@ -17,55 +17,128 @@
   Um espaço de exame para decisões claras e evidências verificáveis.
 </p>
 
+<p align="center">
+  <img src="../image/readme-hero.png" alt="4buwan" width="960" />
+</p>
+
 ## Funcionalidades do sistema
 
 <table>
 <tr>
 <td width="50%" valign="middle">
 
-### Título da funcionalidade
+### Login da equipe e papéis de demonstração
 
-Breve descrição da funcionalidade.
-
-</td>
-<td width="50%" align="center">
-  <sub><i>Captura de tela em breve</i></sub>
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Título da funcionalidade
-
-Breve descrição da funcionalidade.
+A equipe entra com usuário e senha para abrir o Verificador real. Ou escolha um papel de demonstração (Verificador, Supervisor ou Pesquisador) e continue sem conta.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>Captura de tela em breve</i></sub>
+<td width="50%">
+  <img src="../image/feature-signin.png" alt="Login da equipe e papéis de demonstração no computador" width="74%" valign="top" />
+  <img src="../image/feature-signin-phone.png" alt="Login da equipe e papéis de demonstração no celular" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Título da funcionalidade
+### Painel
 
-Breve descrição da funcionalidade.
+Perfis prontos, verificações registradas, a taxa de incertos e as verificações aguardando decisão, com as últimas verificações e a fila de revisão num relance.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>Captura de tela em breve</i></sub>
+<td width="50%">
+  <img src="../image/feature-dashboard.png" alt="Painel no computador" width="74%" valign="top" />
+  <img src="../image/feature-dashboard-phone.png" alt="Painel no celular" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Título da funcionalidade
+### Verificar e evidências
 
-Breve descrição da funcionalidade.
+Escolha uma pessoa cadastrada, adicione a assinatura questionada e receba um veredito consultivo com um marcador de confiança e a zona incerta. Toda a evidência da análise fica na mesma página rolável, ao lado de uma ferramenta de comparação manual.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>Captura de tela em breve</i></sub>
+<td width="50%">
+  <img src="../image/feature-verify.png" alt="Verificar e evidências no computador" width="74%" valign="top" />
+  <img src="../image/feature-verify-phone.png" alt="Verificar e evidências no celular" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Cadastrar uma pessoa
+
+Um assistente de quatro etapas: dados da pessoa, 12 assinaturas genuínas com verificação imediata de qualidade em cada uma, uma prévia da limpeza da imagem e o perfil de assinatura. Amostras falsificadas nunca são necessárias.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-enrol.png" alt="Cadastrar uma pessoa no computador" width="74%" valign="top" />
+  <img src="../image/feature-enrol-phone.png" alt="Cadastrar uma pessoa no celular" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Histórico e fila de revisão
+
+Todas as verificações salvas, com filtros, busca e exportação CSV. As incertas e as não decididas aguardam na fila de revisão uma decisão humana, um motivo e notas com data e hora. A verificação em lote processa muitas assinaturas de uma vez.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-history.png" alt="Histórico e fila de revisão no computador" width="74%" valign="top" />
+  <img src="../image/feature-history-phone.png" alt="Histórico e fila de revisão no celular" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Relatórios de evidências
+
+Um relatório para impressão reconstruído a partir do caso salvo: a assinatura questionada, as 12 referências, o veredito, a pontuação em relação à linha de decisão e a decisão registrada. Salve como PDF pela caixa de impressão.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-report.png" alt="Relatórios de evidências no computador" width="74%" valign="top" />
+  <img src="../image/feature-report-phone.png" alt="Relatórios de evidências no celular" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Laboratório de pesquisa
+
+R1-WAW comparado com a medida compartilhada e o método padrão em CEDAR, bengali e hindi, com um veredito de confiabilidade em linguagem simples, uma checagem de atalhos do conjunto de dados e o cartão do modelo.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-research.png" alt="Laboratório de pesquisa no computador" width="74%" valign="top" />
+  <img src="../image/feature-research-phone.png" alt="Laboratório de pesquisa no celular" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Configurações e temas
+
+Nome e logotipo da organização, os termos para pessoas e IDs, o rigor da verificação, a zona incerta e os backups. Temas claro e escuro; a página de login fica sempre escura.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-settings.png" alt="Configurações e temas no computador" width="74%" valign="top" />
+  <img src="../image/feature-settings-phone.png" alt="Configurações e temas no celular" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Demos de Supervisor e Pesquisador
+
+Telas de demonstração da fila de revisão, contas da equipe, comparação de métodos e checagem do conjunto de dados. Uma barra amarela DEMO as identifica; não usam o modelo nem dados salvos.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-demos.png" alt="Demos de Supervisor e Pesquisador no computador" width="74%" valign="top" />
+  <img src="../image/feature-demos-phone.png" alt="Demos de Supervisor e Pesquisador no celular" width="22%" valign="top" />
 </td>
 </tr>
 </table>
