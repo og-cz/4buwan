@@ -17,55 +17,128 @@
   명확한 판단과 확인 가능한 근거를 위한 감정 작업 공간.
 </p>
 
+<p align="center">
+  <img src="../image/readme-hero.png" alt="4buwan" width="960" />
+</p>
+
 ## 시스템 기능
 
 <table>
 <tr>
 <td width="50%" valign="middle">
 
-### 기능 제목
+### 직원 로그인과 데모 역할
 
-기능에 대한 짧은 설명.
-
-</td>
-<td width="50%" align="center">
-  <sub><i>스크린샷 준비 중</i></sub>
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### 기능 제목
-
-기능에 대한 짧은 설명.
+직원은 사용자 이름과 비밀번호로 로그인해 실제로 작동하는 검증자 화면을 엽니다. 데모 역할(검증자, 감독자, 연구자)을 골라 계정 없이 계속할 수도 있습니다.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>스크린샷 준비 중</i></sub>
+<td width="50%">
+  <img src="../image/feature-signin.png" alt="직원 로그인과 데모 역할 데스크톱" width="74%" valign="top" />
+  <img src="../image/feature-signin-phone.png" alt="직원 로그인과 데모 역할 휴대폰" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### 기능 제목
+### 대시보드
 
-기능에 대한 짧은 설명.
+준비된 프로필, 기록된 검증, 불확실 비율, 결정 대기 중인 검증, 최근 검증과 검토 대기열을 한눈에 봅니다.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>스크린샷 준비 중</i></sub>
+<td width="50%">
+  <img src="../image/feature-dashboard.png" alt="대시보드 데스크톱" width="74%" valign="top" />
+  <img src="../image/feature-dashboard-phone.png" alt="대시보드 휴대폰" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### 기능 제목
+### 검증과 근거
 
-기능에 대한 짧은 설명.
+등록된 사람을 고르고 의심 서명을 추가하면 신뢰도 표시와 불확실 구간이 있는 참고 판정을 받습니다. 전체 분석 근거가 같은 스크롤 페이지에 있고, 수동 비교 도구도 함께 있습니다.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>스크린샷 준비 중</i></sub>
+<td width="50%">
+  <img src="../image/feature-verify.png" alt="검증과 근거 데스크톱" width="74%" valign="top" />
+  <img src="../image/feature-verify-phone.png" alt="검증과 근거 휴대폰" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### 사람 등록
+
+4단계 마법사: 사람 정보, 각각 즉시 품질을 확인하는 진짜 서명 12개, 이미지 정리 미리보기, 그리고 서명 프로필. 위조 샘플은 전혀 필요 없습니다.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-enrol.png" alt="사람 등록 데스크톱" width="74%" valign="top" />
+  <img src="../image/feature-enrol-phone.png" alt="사람 등록 휴대폰" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### 기록과 검토 대기열
+
+저장된 모든 검증을 필터, 검색, CSV 내보내기로 다룹니다. 불확실하거나 결정되지 않은 검증은 사람의 결정, 이유, 시간 기록 메모를 기다리며 검토 대기열에 들어갑니다. 일괄 검사로 여러 서명을 한 번에 처리합니다.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-history.png" alt="기록과 검토 대기열 데스크톱" width="74%" valign="top" />
+  <img src="../image/feature-history-phone.png" alt="기록과 검토 대기열 휴대폰" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### 근거 보고서
+
+저장된 사례로 다시 만드는 인쇄용 보고서: 의심 서명, 참조 12개, 판정, 판정선 대비 점수, 기록된 결정. 인쇄 대화상자에서 PDF로 저장할 수 있습니다.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-report.png" alt="근거 보고서 데스크톱" width="74%" valign="top" />
+  <img src="../image/feature-report-phone.png" alt="근거 보고서 휴대폰" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### 연구실
+
+CEDAR, 벵골어, 힌디어에서 R1-WAW를 공유 기준과 표준 방법과 비교하고, 쉬운 말로 된 신뢰성 결론, 데이터셋 지름길 검사, 모델 카드를 보여 줍니다.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-research.png" alt="연구실 데스크톱" width="74%" valign="top" />
+  <img src="../image/feature-research-phone.png" alt="연구실 휴대폰" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### 설정과 테마
+
+기관 이름과 로고, 사람과 ID를 부르는 말, 검사 엄격도, 불확실 구간, 백업. 라이트와 다크 테마가 있으며, 로그인 화면은 항상 다크입니다.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-settings.png" alt="설정과 테마 데스크톱" width="74%" valign="top" />
+  <img src="../image/feature-settings-phone.png" alt="설정과 테마 휴대폰" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### 감독자와 연구자 데모
+
+검토 대기열, 직원 계정, 방법 비교, 데이터셋 검사의 데모 화면. 노란 DEMO 막대로 표시되며, 모델이나 저장된 데이터를 쓰지 않습니다.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-demos.png" alt="감독자와 연구자 데모 데스크톱" width="74%" valign="top" />
+  <img src="../image/feature-demos-phone.png" alt="감독자와 연구자 데모 휴대폰" width="22%" valign="top" />
 </td>
 </tr>
 </table>

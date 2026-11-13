@@ -17,55 +17,128 @@
   一个让决策清晰、证据可查的鉴定工作台。
 </p>
 
+<p align="center">
+  <img src="../image/readme-hero.png" alt="4buwan" width="960" />
+</p>
+
 ## 系统功能
 
 <table>
 <tr>
 <td width="50%" valign="middle">
 
-### 功能标题
+### 员工登录与演示角色
 
-功能简介。
-
-</td>
-<td width="50%" align="center">
-  <sub><i>截图即将推出</i></sub>
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### 功能标题
-
-功能简介。
+员工使用用户名和密码登录，进入可实际使用的核验员界面。也可以选择一个演示角色（核验员、主管或研究员），无需账号即可继续。
 
 </td>
-<td width="50%" align="center">
-  <sub><i>截图即将推出</i></sub>
+<td width="50%">
+  <img src="../image/feature-signin.png" alt="员工登录与演示角色 桌面端" width="74%" valign="top" />
+  <img src="../image/feature-signin-phone.png" alt="员工登录与演示角色 手机端" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### 功能标题
+### 仪表盘
 
-功能简介。
+一眼查看已就绪的档案、已记录的核验、不确定比例和等待决定的核验，以及最近的核验和复核队列。
 
 </td>
-<td width="50%" align="center">
-  <sub><i>截图即将推出</i></sub>
+<td width="50%">
+  <img src="../image/feature-dashboard.png" alt="仪表盘 桌面端" width="74%" valign="top" />
+  <img src="../image/feature-dashboard-phone.png" alt="仪表盘 手机端" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### 功能标题
+### 核验与证据
 
-功能简介。
+选择已登记的人员，添加待检签名，获得带置信标记和不确定区间的参考结论。完整的分析证据在同一个可滚动页面上，旁边还有手动比对工具。
 
 </td>
-<td width="50%" align="center">
-  <sub><i>截图即将推出</i></sub>
+<td width="50%">
+  <img src="../image/feature-verify.png" alt="核验与证据 桌面端" width="74%" valign="top" />
+  <img src="../image/feature-verify-phone.png" alt="核验与证据 手机端" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### 登记人员
+
+四步向导：人员信息、12 个真实签名（每个立即检查质量）、图像清理预览，最后生成签名档案。从不需要伪造样本。
+
+</td>
+<td width="50%">
+  <img src="../image/feature-enrol.png" alt="登记人员 桌面端" width="74%" valign="top" />
+  <img src="../image/feature-enrol-phone.png" alt="登记人员 手机端" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### 历史记录与复核队列
+
+所有已保存的核验，支持筛选、搜索和导出 CSV。不确定和未决定的核验进入复核队列，等待人工决定、理由和带时间戳的备注。批量核验可一次处理多个签名。
+
+</td>
+<td width="50%">
+  <img src="../image/feature-history.png" alt="历史记录与复核队列 桌面端" width="74%" valign="top" />
+  <img src="../image/feature-history-phone.png" alt="历史记录与复核队列 手机端" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### 证据报告
+
+根据已保存案件重建的可打印报告：待检签名、12 个参考签名、结论、相对决策线的分数以及记录的决定。可在打印对话框中保存为 PDF。
+
+</td>
+<td width="50%">
+  <img src="../image/feature-report.png" alt="证据报告 桌面端" width="74%" valign="top" />
+  <img src="../image/feature-report-phone.png" alt="证据报告 手机端" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### 研究实验室
+
+在 CEDAR、孟加拉语和印地语数据上比较 R1-WAW、共享尺度和标准方法，附通俗的可靠性结论、数据集捷径检查和模型卡。
+
+</td>
+<td width="50%">
+  <img src="../image/feature-research.png" alt="研究实验室 桌面端" width="74%" valign="top" />
+  <img src="../image/feature-research-phone.png" alt="研究实验室 手机端" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### 设置与主题
+
+机构名称和标志、人员与编号的称呼、核验严格程度、不确定区间和备份。支持浅色和深色主题；登录页始终保持深色。
+
+</td>
+<td width="50%">
+  <img src="../image/feature-settings.png" alt="设置与主题 桌面端" width="74%" valign="top" />
+  <img src="../image/feature-settings-phone.png" alt="设置与主题 手机端" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### 主管与研究员演示
+
+复核队列、员工账号、方法比较和数据集检查的演示界面。黄色 DEMO 条标明它们是演示；不使用模型，也不使用任何已存数据。
+
+</td>
+<td width="50%">
+  <img src="../image/feature-demos.png" alt="主管与研究员演示 桌面端" width="74%" valign="top" />
+  <img src="../image/feature-demos-phone.png" alt="主管与研究员演示 手机端" width="22%" valign="top" />
 </td>
 </tr>
 </table>

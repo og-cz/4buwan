@@ -17,55 +17,128 @@
   Un espacio de examen para decisiones claras y evidencia verificable.
 </p>
 
+<p align="center">
+  <img src="../image/readme-hero.png" alt="4buwan" width="960" />
+</p>
+
 ## Funciones del sistema
 
 <table>
 <tr>
 <td width="50%" valign="middle">
 
-### Título de la función
+### Inicio de sesión del personal y roles de demostración
 
-Breve descripción de la función.
-
-</td>
-<td width="50%" align="center">
-  <sub><i>Captura próximamente</i></sub>
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Título de la función
-
-Breve descripción de la función.
+El personal inicia sesión con usuario y contraseña para abrir el Verificador real. O elige un rol de demostración (Verificador, Supervisor o Investigador) y continúa sin cuenta.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>Captura próximamente</i></sub>
+<td width="50%">
+  <img src="../image/feature-signin.png" alt="Inicio de sesión del personal y roles de demostración en escritorio" width="74%" valign="top" />
+  <img src="../image/feature-signin-phone.png" alt="Inicio de sesión del personal y roles de demostración en un teléfono" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Título de la función
+### Panel
 
-Breve descripción de la función.
+Perfiles listos, verificaciones registradas, la tasa de inciertos y las verificaciones pendientes de decisión, con las últimas verificaciones y la cola de revisión de un vistazo.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>Captura próximamente</i></sub>
+<td width="50%">
+  <img src="../image/feature-dashboard.png" alt="Panel en escritorio" width="74%" valign="top" />
+  <img src="../image/feature-dashboard-phone.png" alt="Panel en un teléfono" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Título de la función
+### Verificar y evidencia
 
-Breve descripción de la función.
+Elige una persona inscrita, añade la firma cuestionada y obtén un veredicto orientativo con un marcador de confianza y la zona incierta. Toda la evidencia del análisis está en la misma página desplazable, junto a una herramienta de comparación manual.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>Captura próximamente</i></sub>
+<td width="50%">
+  <img src="../image/feature-verify.png" alt="Verificar y evidencia en escritorio" width="74%" valign="top" />
+  <img src="../image/feature-verify-phone.png" alt="Verificar y evidencia en un teléfono" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Inscribir a una persona
+
+Un asistente de cuatro pasos: datos de la persona, 12 firmas genuinas con un control de calidad inmediato en cada una, una vista previa de la limpieza de imagen y el perfil de firma. Nunca se necesitan muestras falsificadas.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-enrol.png" alt="Inscribir a una persona en escritorio" width="74%" valign="top" />
+  <img src="../image/feature-enrol-phone.png" alt="Inscribir a una persona en un teléfono" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Historial y cola de revisión
+
+Cada verificación guardada con filtros, búsqueda y exportación a CSV. Las inciertas y las no decididas esperan en la cola de revisión una decisión humana, un motivo y notas con fecha y hora. La verificación por lotes procesa muchas firmas a la vez.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-history.png" alt="Historial y cola de revisión en escritorio" width="74%" valign="top" />
+  <img src="../image/feature-history-phone.png" alt="Historial y cola de revisión en un teléfono" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Informes de evidencia
+
+Un informe imprimible reconstruido desde el caso guardado: la firma cuestionada, las 12 referencias, el veredicto, la puntuación frente a la línea de decisión y la decisión registrada. Guárdalo como PDF desde el diálogo de impresión.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-report.png" alt="Informes de evidencia en escritorio" width="74%" valign="top" />
+  <img src="../image/feature-report-phone.png" alt="Informes de evidencia en un teléfono" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Laboratorio de investigación
+
+R1-WAW comparado con la medida compartida y el método estándar en CEDAR, bengalí e hindi, con un veredicto de fiabilidad en lenguaje claro, una comprobación de atajos del conjunto de datos y la ficha del modelo.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-research.png" alt="Laboratorio de investigación en escritorio" width="74%" valign="top" />
+  <img src="../image/feature-research-phone.png" alt="Laboratorio de investigación en un teléfono" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Ajustes y temas
+
+Nombre y logotipo de la organización, los términos para personas e ID, la exigencia de la verificación, la zona incierta y las copias de seguridad. Temas claro y oscuro; la página de inicio de sesión siempre es oscura.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-settings.png" alt="Ajustes y temas en escritorio" width="74%" valign="top" />
+  <img src="../image/feature-settings-phone.png" alt="Ajustes y temas en un teléfono" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Demos de Supervisor e Investigador
+
+Vistas de demostración de la cola de revisión, cuentas del personal, comparación de métodos y comprobación del conjunto de datos. Una barra amarilla DEMO las marca; no usan el modelo ni datos guardados.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-demos.png" alt="Demos de Supervisor e Investigador en escritorio" width="74%" valign="top" />
+  <img src="../image/feature-demos-phone.png" alt="Demos de Supervisor e Investigador en un teléfono" width="22%" valign="top" />
 </td>
 </tr>
 </table>

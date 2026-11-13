@@ -17,55 +17,128 @@
   Isang workspace sa pagsusuri para sa malinaw na desisyon at ebidensiyang masusuri.
 </p>
 
+<p align="center">
+  <img src="../image/readme-hero.png" alt="4buwan" width="960" />
+</p>
+
 ## Mga Feature ng Sistema
 
 <table>
 <tr>
 <td width="50%" valign="middle">
 
-### Pamagat ng Feature
+### Pag-sign in ng Staff at mga Demo Role
 
-Maikling paglalarawan ng feature.
-
-</td>
-<td width="50%" align="center">
-  <sub><i>Paparating ang screenshot</i></sub>
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Pamagat ng Feature
-
-Maikling paglalarawan ng feature.
+Nagsa-sign in ang staff gamit ang username at password para buksan ang gumaganang Verifier. O pumili ng demo role (Verifier, Supervisor o Researcher) at magpatuloy nang walang account.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>Paparating ang screenshot</i></sub>
+<td width="50%">
+  <img src="../image/feature-signin.png" alt="Pag-sign in ng Staff at mga Demo Role sa desktop" width="74%" valign="top" />
+  <img src="../image/feature-signin-phone.png" alt="Pag-sign in ng Staff at mga Demo Role sa phone" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Pamagat ng Feature
+### Dashboard
 
-Maikling paglalarawan ng feature.
+Mga handang profile, mga naitalang pagsusuri, ang uncertain rate at mga pagsusuring naghihintay ng desisyon, kasama ang pinakabagong pagsusuri at ang review queue sa isang tingin.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>Paparating ang screenshot</i></sub>
+<td width="50%">
+  <img src="../image/feature-dashboard.png" alt="Dashboard sa desktop" width="74%" valign="top" />
+  <img src="../image/feature-dashboard-phone.png" alt="Dashboard sa phone" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Pamagat ng Feature
+### Pagpapatunay at Ebidensiya
 
-Maikling paglalarawan ng feature.
+Pumili ng naka-enroll na tao, idagdag ang pirmang sinusuri at makakuha ng payong hatol na may confidence marker at uncertain zone. Nasa iisang scrollable na pahina ang buong ebidensiya ng pagsusuri, katabi ang manual na Compare tool.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>Paparating ang screenshot</i></sub>
+<td width="50%">
+  <img src="../image/feature-verify.png" alt="Pagpapatunay at Ebidensiya sa desktop" width="74%" valign="top" />
+  <img src="../image/feature-verify-phone.png" alt="Pagpapatunay at Ebidensiya sa phone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Pag-enroll ng Tao
+
+Apat na hakbang: detalye ng tao, 12 tunay na pirma na agad sinusuri ang kalidad bawat isa, preview ng paglilinis ng larawan, at ang signature profile. Hindi kailanman kailangan ng pinekeng sample.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-enrol.png" alt="Pag-enroll ng Tao sa desktop" width="74%" valign="top" />
+  <img src="../image/feature-enrol-phone.png" alt="Pag-enroll ng Tao sa phone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### History at Review Queue
+
+Lahat ng naka-save na pagsusuri na may filter, search at CSV export. Ang mga uncertain at wala pang desisyon ay naghihintay sa review queue para sa desisyon ng tao, dahilan at mga talang may oras. Sabay-sabay na sinusuri ng Batch Check ang maraming pirma.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-history.png" alt="History at Review Queue sa desktop" width="74%" valign="top" />
+  <img src="../image/feature-history-phone.png" alt="History at Review Queue sa phone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Mga Evidence Report
+
+Printable na ulat na binubuo mula sa naka-save na kaso: ang pirmang sinusuri, ang 12 reference, ang hatol, ang score laban sa decision line at ang naitalang desisyon. I-save bilang PDF mula sa print dialog.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-report.png" alt="Mga Evidence Report sa desktop" width="74%" valign="top" />
+  <img src="../image/feature-report-phone.png" alt="Mga Evidence Report sa phone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Research Lab
+
+Ikinukumpara ang R1-WAW sa shared yardstick at sa standard na paraan sa CEDAR, Bengali at Hindi, may malinaw na hatol sa pagiging maaasahan, dataset shortcut check at ang model card.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-research.png" alt="Research Lab sa desktop" width="74%" valign="top" />
+  <img src="../image/feature-research-phone.png" alt="Research Lab sa phone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Settings at mga Theme
+
+Pangalan at logo ng organisasyon, mga salitang ginagamit para sa tao at ID, higpit ng pagsusuri, ang uncertain zone at mga backup. May light at dark theme; laging dark ang sign-in na pahina.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-settings.png" alt="Settings at mga Theme sa desktop" width="74%" valign="top" />
+  <img src="../image/feature-settings-phone.png" alt="Settings at mga Theme sa phone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Mga Demo ng Supervisor at Researcher
+
+Mga demo na view ng review queue, staff account, paghahambing ng paraan at dataset check. May dilaw na DEMO bar ang mga ito; walang ginagamit na modelo o naka-save na data.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-demos.png" alt="Mga Demo ng Supervisor at Researcher sa desktop" width="74%" valign="top" />
+  <img src="../image/feature-demos-phone.png" alt="Mga Demo ng Supervisor at Researcher sa phone" width="22%" valign="top" />
 </td>
 </tr>
 </table>
