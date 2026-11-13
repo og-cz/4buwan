@@ -17,57 +17,128 @@
   An examination workspace for clear decisions and inspectable evidence.
 </p>
 
+<p align="center">
+  <img src="docs/image/readme-hero.png" alt="4buwan" width="960" />
+</p>
+
 ## System Features
 
 <table>
 <tr>
 <td width="50%" valign="middle">
 
-### Examiner Workspace
+### Staff Sign-in and Demo Roles
 
-Works on your own data: enrol people, verify a signature and inspect the evidence behind the verdict, with a manual Compare tool and saved cases.
-
-</td>
-<td width="50%">
-  <img src="docs/image/preset-examiner.png" alt="Examiner workspace on desktop" width="74%" valign="top" />
-  <img src="docs/image/preset-examiner-phone.png" alt="Examiner workspace on a phone" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Supervisor Overview
-
-A preview of the oversight screens (dashboard, review queue, reports, research results) filled with sample data from the research datasets.
+Staff sign in with a username and password to open the working Verifier. Or pick a demo role (Verifier, Supervisor or Researcher) and continue without an account.
 
 </td>
 <td width="50%">
-  <img src="docs/image/preset-supervisor.png" alt="Supervisor dashboard on desktop" width="74%" valign="top" />
-  <img src="docs/image/preset-supervisor-phone.png" alt="Supervisor dashboard on a phone" width="22%" valign="top" />
+  <img src="docs/image/feature-signin.png" alt="Staff Sign-in and Demo Roles on desktop" width="74%" valign="top" />
+  <img src="docs/image/feature-signin-phone.png" alt="Staff Sign-in and Demo Roles on a phone" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Feature Title
+### Dashboard
 
-Short description of the feature.
+Ready profiles, recorded checks, the uncertain rate and checks waiting for a decision, with the latest verifications and the review queue at a glance.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>Screenshot coming soon</i></sub>
+<td width="50%">
+  <img src="docs/image/feature-dashboard.png" alt="Dashboard on desktop" width="74%" valign="top" />
+  <img src="docs/image/feature-dashboard-phone.png" alt="Dashboard on a phone" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Feature Title
+### Verify and Evidence
 
-Short description of the feature.
+Choose an enrolled person, add the questioned signature and get an advisory verdict with a confidence marker and the uncertain zone. The full analysis evidence sits on the same scrollable page, and a manual Compare tool sits beside it.
 
 </td>
-<td width="50%" align="center">
-  <sub><i>Screenshot coming soon</i></sub>
+<td width="50%">
+  <img src="docs/image/feature-verify.png" alt="Verify and Evidence on desktop" width="74%" valign="top" />
+  <img src="docs/image/feature-verify-phone.png" alt="Verify and Evidence on a phone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Enrol a Person
+
+A four-step wizard: person details, 12 genuine signatures with an instant quality check on each, a preview of the image cleaning, then the signature profile. Forged samples are never needed.
+
+</td>
+<td width="50%">
+  <img src="docs/image/feature-enrol.png" alt="Enrol a Person on desktop" width="74%" valign="top" />
+  <img src="docs/image/feature-enrol-phone.png" alt="Enrol a Person on a phone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### History and Review Queue
+
+Every saved check with filters, search and CSV export. Uncertain and undecided checks wait in the review queue for a human decision, a reason and timestamped notes. Batch Check runs many signatures at once.
+
+</td>
+<td width="50%">
+  <img src="docs/image/feature-history.png" alt="History and Review Queue on desktop" width="74%" valign="top" />
+  <img src="docs/image/feature-history-phone.png" alt="History and Review Queue on a phone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Evidence Reports
+
+A printable report rebuilt from the saved case: the questioned signature, the 12 references, the verdict, the score against the decision line and the recorded decision. Save it as a PDF from the print dialog.
+
+</td>
+<td width="50%">
+  <img src="docs/image/feature-report.png" alt="Evidence Reports on desktop" width="74%" valign="top" />
+  <img src="docs/image/feature-report-phone.png" alt="Evidence Reports on a phone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Research Lab
+
+R1-WAW compared with the shared yardstick and the standard method on CEDAR, Bengali and Hindi, with a plain-language reliability verdict, a dataset shortcut check and the model card.
+
+</td>
+<td width="50%">
+  <img src="docs/image/feature-research.png" alt="Research Lab on desktop" width="74%" valign="top" />
+  <img src="docs/image/feature-research-phone.png" alt="Research Lab on a phone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Settings and Themes
+
+Organisation name and logo, the words used for people and IDs, checking strictness, the uncertain zone and backups. Light and dark themes; the sign-in page always stays dark.
+
+</td>
+<td width="50%">
+  <img src="docs/image/feature-settings.png" alt="Settings and Themes on desktop" width="74%" valign="top" />
+  <img src="docs/image/feature-settings-phone.png" alt="Settings and Themes on a phone" width="22%" valign="top" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Supervisor and Researcher Demos
+
+Demonstration views of the review queue, staff accounts, method comparison and dataset check. A yellow DEMO bar marks them; they use no model and no stored data.
+
+</td>
+<td width="50%">
+  <img src="docs/image/feature-demos.png" alt="Supervisor and Researcher Demos on desktop" width="74%" valign="top" />
+  <img src="docs/image/feature-demos-phone.png" alt="Supervisor and Researcher Demos on a phone" width="22%" valign="top" />
 </td>
 </tr>
 </table>
@@ -136,7 +207,7 @@ Paired over writers with Wilcoxon tests, Holm correction and bootstrap intervals
 
 ### Sample data
 
-The app keeps two separate data folders: **Real data** (your own enrolled people and checks, empty on a fresh install) and **Sample data** (example people and checks for demonstration). Sample data uses only the CEDAR subset of the 142 development writers: the 25 CEDAR development writers, each enrolled with `original_<n>_1..12` as in the notebook, plus one held-out genuine and one forged example check, all scored by the engine. The 172 held-back writers are reserved for the one-time confirmation of the research results and must not be loaded into the app.
+The service keeps two separate data folders: **Real data** (your own enrolled people and checks, empty on a fresh install) and **Sample data** (example people and checks). The Verifier always works on Real data; the Sample data folder is read only when a request asks for it with the `X-Data-Mode: sample` header, and the screenshots above were taken from it. Sample data uses only the CEDAR subset of the 142 development writers: the 25 CEDAR development writers, each enrolled with `original_<n>_1..12` as in the notebook, plus one held-out genuine and one forged example check, all scored by the engine. The 172 held-back writers are reserved for the one-time confirmation of the research results and must not be loaded into the app.
 
 ---
 
@@ -191,6 +262,15 @@ npm run dev
 ```
 
 Open **http://localhost:8443** in your browser.
+
+### 4. Sign in
+
+| To open | Do this |
+|---|---|
+| The working Verifier | Type any username and password, then **Sign in** |
+| A demo role (Verifier, Supervisor or Researcher) | Pick it under **DEMO ROLE**, then **Continue to demo** |
+
+The Verifier is the working system either way. The Supervisor and Researcher views are demonstrations with example content and a yellow DEMO bar; they use no model and no stored data.
 
 ### Troubleshooting
 
