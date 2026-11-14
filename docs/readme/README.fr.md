@@ -27,14 +27,14 @@
 <tr>
 <td width="50%" valign="middle">
 
-### Connexion du personnel et rôles de démo
+### Connexion du personnel et rôles
 
-Le personnel se connecte avec un identifiant et un mot de passe pour ouvrir le Vérificateur réel. Ou choisissez un rôle de démo (Vérificateur, Superviseur ou Chercheur) et continuez sans compte.
+Le personnel se connecte avec son propre compte du bureau. Chaque rôle a ses propres modules : les Vérificateurs contrôlent les signatures, les Superviseurs revoient les décisions et gèrent le personnel, et les Chercheurs étudient les performances de la méthode.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-signin.png" alt="Connexion du personnel et rôles de démo sur ordinateur" width="74%" valign="top" />
-  <img src="../image/feature-signin-phone.png" alt="Connexion du personnel et rôles de démo sur téléphone" width="22%" valign="top" />
+  <img src="../image/feature-signin.png" alt="Connexion du personnel et rôles sur ordinateur" width="74%" valign="top" />
+  <img src="../image/feature-signin-phone.png" alt="Connexion du personnel et rôles sur téléphone" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
@@ -131,14 +131,14 @@ Nom et logo de l’organisation, termes utilisés pour les personnes et les iden
 <tr>
 <td width="50%" valign="middle">
 
-### Démos Superviseur et Chercheur
+### Comptes du personnel
 
-Vues de démonstration de la file de revue, des comptes du personnel, de la comparaison des méthodes et du contrôle du jeu de données. Une barre jaune DEMO les signale ; elles n’utilisent ni le modèle ni aucune donnée enregistrée.
+Les Superviseurs ajoutent du personnel, attribuent le rôle de Vérificateur, Superviseur ou Chercheur, voient la dernière connexion de chacun et désactivent ou réactivent les comptes.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-demos.png" alt="Démos Superviseur et Chercheur sur ordinateur" width="74%" valign="top" />
-  <img src="../image/feature-demos-phone.png" alt="Démos Superviseur et Chercheur sur téléphone" width="22%" valign="top" />
+  <img src="../image/feature-staff.png" alt="Comptes du personnel sur ordinateur" width="74%" valign="top" />
+  <img src="../image/feature-staff-phone.png" alt="Comptes du personnel sur téléphone" width="22%" valign="top" />
 </td>
 </tr>
 </table>

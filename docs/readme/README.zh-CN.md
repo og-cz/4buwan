@@ -27,14 +27,14 @@
 <tr>
 <td width="50%" valign="middle">
 
-### 员工登录与演示角色
+### 员工登录与角色
 
-员工使用用户名和密码登录，进入可实际使用的核验员界面。也可以选择一个演示角色（核验员、主管或研究员），无需账号即可继续。
+员工使用自己的机构账号登录。每个角色有各自的模块：核验员核验签名，主管复核决定并管理员工，研究员研究方法的表现。
 
 </td>
 <td width="50%">
-  <img src="../image/feature-signin.png" alt="员工登录与演示角色 桌面端" width="74%" valign="top" />
-  <img src="../image/feature-signin-phone.png" alt="员工登录与演示角色 手机端" width="22%" valign="top" />
+  <img src="../image/feature-signin.png" alt="员工登录与角色 桌面端" width="74%" valign="top" />
+  <img src="../image/feature-signin-phone.png" alt="员工登录与角色 手机端" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
@@ -131,14 +131,14 @@
 <tr>
 <td width="50%" valign="middle">
 
-### 主管与研究员演示
+### 员工账号
 
-复核队列、员工账号、方法比较和数据集检查的演示界面。黄色 DEMO 条标明它们是演示；不使用模型，也不使用任何已存数据。
+主管可以添加员工、分配核验员、主管或研究员角色、查看每人的最近登录，并停用或重新启用账号。
 
 </td>
 <td width="50%">
-  <img src="../image/feature-demos.png" alt="主管与研究员演示 桌面端" width="74%" valign="top" />
-  <img src="../image/feature-demos-phone.png" alt="主管与研究员演示 手机端" width="22%" valign="top" />
+  <img src="../image/feature-staff.png" alt="员工账号 桌面端" width="74%" valign="top" />
+  <img src="../image/feature-staff-phone.png" alt="员工账号 手机端" width="22%" valign="top" />
 </td>
 </tr>
 </table>

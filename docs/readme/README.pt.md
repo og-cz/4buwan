@@ -27,14 +27,14 @@
 <tr>
 <td width="50%" valign="middle">
 
-### Login da equipe e papéis de demonstração
+### Login da equipe e papéis
 
-A equipe entra com usuário e senha para abrir o Verificador real. Ou escolha um papel de demonstração (Verificador, Supervisor ou Pesquisador) e continue sem conta.
+A equipe entra com a própria conta do escritório. Cada papel tem seus próprios módulos: Verificadores conferem assinaturas, Supervisores revisam decisões e gerenciam a equipe, e Pesquisadores estudam o desempenho do método.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-signin.png" alt="Login da equipe e papéis de demonstração no computador" width="74%" valign="top" />
-  <img src="../image/feature-signin-phone.png" alt="Login da equipe e papéis de demonstração no celular" width="22%" valign="top" />
+  <img src="../image/feature-signin.png" alt="Login da equipe e papéis no computador" width="74%" valign="top" />
+  <img src="../image/feature-signin-phone.png" alt="Login da equipe e papéis no celular" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
@@ -131,14 +131,14 @@ Nome e logotipo da organização, os termos para pessoas e IDs, o rigor da verif
 <tr>
 <td width="50%" valign="middle">
 
-### Demos de Supervisor e Pesquisador
+### Contas da equipe
 
-Telas de demonstração da fila de revisão, contas da equipe, comparação de métodos e checagem do conjunto de dados. Uma barra amarela DEMO as identifica; não usam o modelo nem dados salvos.
+Supervisores adicionam pessoas à equipe, atribuem o papel de Verificador, Supervisor ou Pesquisador, veem o último acesso de cada um e desativam ou reativam contas.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-demos.png" alt="Demos de Supervisor e Pesquisador no computador" width="74%" valign="top" />
-  <img src="../image/feature-demos-phone.png" alt="Demos de Supervisor e Pesquisador no celular" width="22%" valign="top" />
+  <img src="../image/feature-staff.png" alt="Contas da equipe no computador" width="74%" valign="top" />
+  <img src="../image/feature-staff-phone.png" alt="Contas da equipe no celular" width="22%" valign="top" />
 </td>
 </tr>
 </table>

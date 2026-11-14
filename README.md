@@ -27,14 +27,14 @@
 <tr>
 <td width="50%" valign="middle">
 
-### Staff Sign-in and Demo Roles
+### Staff Sign-in and Roles
 
-Staff sign in with a username and password to open the working Verifier. Or pick a demo role (Verifier, Supervisor or Researcher) and continue without an account.
+Staff sign in with their own office account. Each role gets its own set of modules: Verifiers check signatures, Supervisors review decisions and manage staff, and Researchers study how well the method performs.
 
 </td>
 <td width="50%">
-  <img src="docs/image/feature-signin.png" alt="Staff Sign-in and Demo Roles on desktop" width="74%" valign="top" />
-  <img src="docs/image/feature-signin-phone.png" alt="Staff Sign-in and Demo Roles on a phone" width="22%" valign="top" />
+  <img src="docs/image/feature-signin.png" alt="Staff Sign-in and Roles on desktop" width="74%" valign="top" />
+  <img src="docs/image/feature-signin-phone.png" alt="Staff Sign-in and Roles on a phone" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
@@ -131,14 +131,14 @@ Organisation name and logo, the words used for people and IDs, checking strictne
 <tr>
 <td width="50%" valign="middle">
 
-### Supervisor and Researcher Demos
+### Staff Accounts
 
-Demonstration views of the review queue, staff accounts, method comparison and dataset check. A yellow DEMO bar marks them; they use no model and no stored data.
+Supervisors add staff, assign the Verifier, Supervisor or Researcher role, see each last login, and deactivate or reactivate accounts.
 
 </td>
 <td width="50%">
-  <img src="docs/image/feature-demos.png" alt="Supervisor and Researcher Demos on desktop" width="74%" valign="top" />
-  <img src="docs/image/feature-demos-phone.png" alt="Supervisor and Researcher Demos on a phone" width="22%" valign="top" />
+  <img src="docs/image/feature-staff.png" alt="Staff Accounts on desktop" width="74%" valign="top" />
+  <img src="docs/image/feature-staff-phone.png" alt="Staff Accounts on a phone" width="22%" valign="top" />
 </td>
 </tr>
 </table>
@@ -267,10 +267,8 @@ Open **http://localhost:8443** in your browser.
 
 | To open | Do this |
 |---|---|
-| The working Verifier | Type any username and password, then **Sign in** |
-| A demo role (Verifier, Supervisor or Researcher) | Pick it under **DEMO ROLE**, then **Continue to demo** |
-
-The Verifier is the working system either way. The Supervisor and Researcher views are demonstrations with example content and a yellow DEMO bar; they use no model and no stored data.
+| The Verifier | Type your username and password, then **Sign in** |
+| Another role (Supervisor or Researcher) | Choose it in the role list below the sign-in form, then continue |
 
 ### Troubleshooting
 

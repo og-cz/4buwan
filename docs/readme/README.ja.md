@@ -27,14 +27,14 @@
 <tr>
 <td width="50%" valign="middle">
 
-### スタッフのサインインとデモロール
+### スタッフのサインインとロール
 
-スタッフはユーザー名とパスワードでサインインし、実際に動く検証者画面を開きます。デモロール（検証者・監督者・研究者）を選べば、アカウントなしで続けることもできます。
+スタッフは自分の事務所アカウントでサインインします。ロールごとにモジュールが分かれ、検証者は署名を検証し、監督者は判断をレビューしてスタッフを管理し、研究者は手法の性能を調べます。
 
 </td>
 <td width="50%">
-  <img src="../image/feature-signin.png" alt="スタッフのサインインとデモロール デスクトップ" width="74%" valign="top" />
-  <img src="../image/feature-signin-phone.png" alt="スタッフのサインインとデモロール スマートフォン" width="22%" valign="top" />
+  <img src="../image/feature-signin.png" alt="スタッフのサインインとロール デスクトップ" width="74%" valign="top" />
+  <img src="../image/feature-signin-phone.png" alt="スタッフのサインインとロール スマートフォン" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
@@ -131,14 +131,14 @@ CEDAR・ベンガル語・ヒンディー語で R1-WAW を共有尺度と標準�
 <tr>
 <td width="50%" valign="middle">
 
-### 監督者と研究者のデモ
+### スタッフアカウント
 
-レビューキュー、スタッフアカウント、手法比較、データセットチェックのデモ画面。黄色の DEMO バーで示され、モデルも保存データも使いません。
+監督者はスタッフを追加し、検証者・監督者・研究者のロールを割り当て、各自の最終ログインを確認し、アカウントを無効化または再有効化します。
 
 </td>
 <td width="50%">
-  <img src="../image/feature-demos.png" alt="監督者と研究者のデモ デスクトップ" width="74%" valign="top" />
-  <img src="../image/feature-demos-phone.png" alt="監督者と研究者のデモ スマートフォン" width="22%" valign="top" />
+  <img src="../image/feature-staff.png" alt="スタッフアカウント デスクトップ" width="74%" valign="top" />
+  <img src="../image/feature-staff-phone.png" alt="スタッフアカウント スマートフォン" width="22%" valign="top" />
 </td>
 </tr>
 </table>
