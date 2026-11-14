@@ -27,14 +27,14 @@
 <tr>
 <td width="50%" valign="middle">
 
-### 직원 로그인과 데모 역할
+### 직원 로그인과 역할
 
-직원은 사용자 이름과 비밀번호로 로그인해 실제로 작동하는 검증자 화면을 엽니다. 데모 역할(검증자, 감독자, 연구자)을 골라 계정 없이 계속할 수도 있습니다.
+직원은 자신의 사무실 계정으로 로그인합니다. 역할마다 모듈이 따로 있어 검증자는 서명을 검증하고, 감독자는 결정을 검토하고 직원을 관리하며, 연구자는 방법의 성능을 연구합니다.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-signin.png" alt="직원 로그인과 데모 역할 데스크톱" width="74%" valign="top" />
-  <img src="../image/feature-signin-phone.png" alt="직원 로그인과 데모 역할 휴대폰" width="22%" valign="top" />
+  <img src="../image/feature-signin.png" alt="직원 로그인과 역할 데스크톱" width="74%" valign="top" />
+  <img src="../image/feature-signin-phone.png" alt="직원 로그인과 역할 휴대폰" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
@@ -131,14 +131,14 @@ CEDAR, 벵골어, 힌디어에서 R1-WAW를 공유 기준과 표준 방법과 �
 <tr>
 <td width="50%" valign="middle">
 
-### 감독자와 연구자 데모
+### 직원 계정
 
-검토 대기열, 직원 계정, 방법 비교, 데이터셋 검사의 데모 화면. 노란 DEMO 막대로 표시되며, 모델이나 저장된 데이터를 쓰지 않습니다.
+감독자는 직원을 추가하고, 검증자·감독자·연구자 역할을 지정하고, 각자의 마지막 로그인을 확인하며, 계정을 비활성화하거나 다시 활성화합니다.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-demos.png" alt="감독자와 연구자 데모 데스크톱" width="74%" valign="top" />
-  <img src="../image/feature-demos-phone.png" alt="감독자와 연구자 데모 휴대폰" width="22%" valign="top" />
+  <img src="../image/feature-staff.png" alt="직원 계정 데스크톱" width="74%" valign="top" />
+  <img src="../image/feature-staff-phone.png" alt="직원 계정 휴대폰" width="22%" valign="top" />
 </td>
 </tr>
 </table>

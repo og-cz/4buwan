@@ -27,14 +27,14 @@
 <tr>
 <td width="50%" valign="middle">
 
-### Pag-sign in ng Staff at mga Demo Role
+### Pag-sign in ng Staff at mga Role
 
-Nagsa-sign in ang staff gamit ang username at password para buksan ang gumaganang Verifier. O pumili ng demo role (Verifier, Supervisor o Researcher) at magpatuloy nang walang account.
+Nagsa-sign in ang staff gamit ang sariling office account. May kanya-kanyang module ang bawat role: sinusuri ng Verifier ang mga pirma, nire-review ng Supervisor ang mga desisyon at pinamamahalaan ang staff, at pinag-aaralan ng Researcher ang galing ng paraan.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-signin.png" alt="Pag-sign in ng Staff at mga Demo Role sa desktop" width="74%" valign="top" />
-  <img src="../image/feature-signin-phone.png" alt="Pag-sign in ng Staff at mga Demo Role sa phone" width="22%" valign="top" />
+  <img src="../image/feature-signin.png" alt="Pag-sign in ng Staff at mga Role sa desktop" width="74%" valign="top" />
+  <img src="../image/feature-signin-phone.png" alt="Pag-sign in ng Staff at mga Role sa phone" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
@@ -131,14 +131,14 @@ Pangalan at logo ng organisasyon, mga salitang ginagamit para sa tao at ID, higp
 <tr>
 <td width="50%" valign="middle">
 
-### Mga Demo ng Supervisor at Researcher
+### Mga Staff Account
 
-Mga demo na view ng review queue, staff account, paghahambing ng paraan at dataset check. May dilaw na DEMO bar ang mga ito; walang ginagamit na modelo o naka-save na data.
+Nagdadagdag ang Supervisor ng staff, nagtatalaga ng role na Verifier, Supervisor o Researcher, nakikita ang huling login ng bawat isa, at nagde-deactivate o nagre-reactivate ng account.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-demos.png" alt="Mga Demo ng Supervisor at Researcher sa desktop" width="74%" valign="top" />
-  <img src="../image/feature-demos-phone.png" alt="Mga Demo ng Supervisor at Researcher sa phone" width="22%" valign="top" />
+  <img src="../image/feature-staff.png" alt="Mga Staff Account sa desktop" width="74%" valign="top" />
+  <img src="../image/feature-staff-phone.png" alt="Mga Staff Account sa phone" width="22%" valign="top" />
 </td>
 </tr>
 </table>

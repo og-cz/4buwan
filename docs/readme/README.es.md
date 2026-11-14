@@ -27,14 +27,14 @@
 <tr>
 <td width="50%" valign="middle">
 
-### Inicio de sesión del personal y roles de demostración
+### Inicio de sesión del personal y roles
 
-El personal inicia sesión con usuario y contraseña para abrir el Verificador real. O elige un rol de demostración (Verificador, Supervisor o Investigador) y continúa sin cuenta.
+El personal inicia sesión con su propia cuenta de la oficina. Cada rol tiene sus propios módulos: los Verificadores revisan firmas, los Supervisores revisan decisiones y gestionan al personal, y los Investigadores estudian el rendimiento del método.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-signin.png" alt="Inicio de sesión del personal y roles de demostración en escritorio" width="74%" valign="top" />
-  <img src="../image/feature-signin-phone.png" alt="Inicio de sesión del personal y roles de demostración en un teléfono" width="22%" valign="top" />
+  <img src="../image/feature-signin.png" alt="Inicio de sesión del personal y roles en escritorio" width="74%" valign="top" />
+  <img src="../image/feature-signin-phone.png" alt="Inicio de sesión del personal y roles en un teléfono" width="22%" valign="top" />
 </td>
 </tr>
 <tr>
@@ -131,14 +131,14 @@ Nombre y logotipo de la organización, los términos para personas e ID, la exig
 <tr>
 <td width="50%" valign="middle">
 
-### Demos de Supervisor e Investigador
+### Cuentas del personal
 
-Vistas de demostración de la cola de revisión, cuentas del personal, comparación de métodos y comprobación del conjunto de datos. Una barra amarilla DEMO las marca; no usan el modelo ni datos guardados.
+Los Supervisores añaden personal, asignan el rol de Verificador, Supervisor o Investigador, ven el último acceso de cada uno y desactivan o reactivan cuentas.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-demos.png" alt="Demos de Supervisor e Investigador en escritorio" width="74%" valign="top" />
-  <img src="../image/feature-demos-phone.png" alt="Demos de Supervisor e Investigador en un teléfono" width="22%" valign="top" />
+  <img src="../image/feature-staff.png" alt="Cuentas del personal en escritorio" width="74%" valign="top" />
+  <img src="../image/feature-staff-phone.png" alt="Cuentas del personal en un teléfono" width="22%" valign="top" />
 </td>
 </tr>
 </table>
