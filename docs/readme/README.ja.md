@@ -27,79 +27,49 @@
 <tr>
 <td width="50%" valign="middle">
 
-### スタッフのサインインとロール
+### 本物の署名だけで登録
 
-スタッフは自分の事務所アカウントでサインインします。ロールごとにモジュールが分かれ、検証者は署名を検証し、監督者は判断をレビューしてスタッフを管理し、研究者は手法の性能を調べます。
+本物の署名 12 件でプロファイルを作成し、届いたものから品質をチェックします。偽造サンプルは一切不要です。
 
 </td>
 <td width="50%">
-  <img src="../image/feature-signin.png" alt="スタッフのサインインとロール デスクトップ" width="74%" valign="top" />
-  <img src="../image/feature-signin-phone.png" alt="スタッフのサインインとロール スマートフォン" width="22%" valign="top" />
+  <img src="../image/feature-profile.png" alt="本物の署名だけで登録" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### ダッシュボード
+### 書き手に適応する検証
 
-準備済みのプロファイル、記録済みの検証、不確実の割合、判断待ちの検証、最新の検証とレビューキューをひと目で確認できます。
+R1-WAW が共有の物差しを一人ひとりの筆跡のばらつきに合わせ、不確実ゾーン付きの参考判定を出します。
 
 </td>
 <td width="50%">
-  <img src="../image/feature-dashboard.png" alt="ダッシュボード デスクトップ" width="74%" valign="top" />
-  <img src="../image/feature-dashboard-phone.png" alt="ダッシュボード スマートフォン" width="22%" valign="top" />
+  <img src="../image/feature-verify.png" alt="書き手に適応する検証" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### 検証と根拠
+### 確認できる根拠
 
-登録済みの人を選び、疑問の署名を追加すると、信頼度マーカーと不確実ゾーン付きの参考判定が出ます。詳しい分析の根拠は同じスクロールページにあり、手動の比較ツールも用意しています。
+すべての判定が根拠を示します：判定線に対するスコア、12 件すべての比較、17 の指標、類似度マトリクス。
 
 </td>
 <td width="50%">
-  <img src="../image/feature-verify.png" alt="検証と根拠 デスクトップ" width="74%" valign="top" />
-  <img src="../image/feature-verify-phone.png" alt="検証と根拠 スマートフォン" width="22%" valign="top" />
+  <img src="../image/feature-evidence.png" alt="確認できる根拠" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### 人の登録
+### 人による判断のレビュー
 
-4 ステップのウィザード：人の情報、各署名をすぐ品質チェックする 12 件の本物の署名、画像クリーニングのプレビュー、そして署名プロファイル。偽造サンプルは一切不要です。
-
-</td>
-<td width="50%">
-  <img src="../image/feature-enrol.png" alt="人の登録 デスクトップ" width="74%" valign="top" />
-  <img src="../image/feature-enrol-phone.png" alt="人の登録 スマートフォン" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### 履歴とレビューキュー
-
-保存したすべての検証を絞り込み・検索・CSV 出力できます。不確実または未判断の検証は、人による判断・理由・タイムスタンプ付きメモを待ってレビューキューに入ります。一括チェックで多数の署名を一度に処理できます。
+ツールは助言し、人が決めます。不確実な検証はレビューキューに入り、どの判断にも理由が必要です。
 
 </td>
 <td width="50%">
-  <img src="../image/feature-history.png" alt="履歴とレビューキュー デスクトップ" width="74%" valign="top" />
-  <img src="../image/feature-history-phone.png" alt="履歴とレビューキュー スマートフォン" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### 根拠レポート
-
-保存したケースから再構成する印刷用レポート：疑問の署名、12 件の参照、判定、判定線に対するスコア、記録された判断。印刷ダイアログから PDF として保存できます。
-
-</td>
-<td width="50%">
-  <img src="../image/feature-report.png" alt="根拠レポート デスクトップ" width="74%" valign="top" />
-  <img src="../image/feature-report-phone.png" alt="根拠レポート スマートフォン" width="22%" valign="top" />
+  <img src="../image/feature-review.png" alt="人による判断のレビュー" width="100%" />
 </td>
 </tr>
 <tr>
@@ -107,41 +77,36 @@
 
 ### リサーチラボ
 
-CEDAR・ベンガル語・ヒンディー語で R1-WAW を共有尺度と標準手法と比較し、わかりやすい信頼性の結論、データセットの近道チェック、モデルカードを示します。
+論文をアプリの中に：手法比較、データセットの近道チェック、モデルカード。
 
 </td>
 <td width="50%">
-  <img src="../image/feature-research.png" alt="リサーチラボ デスクトップ" width="74%" valign="top" />
-  <img src="../image/feature-research-phone.png" alt="リサーチラボ スマートフォン" width="22%" valign="top" />
+  <img src="../image/feature-research.png" alt="リサーチラボ" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### 設定とテーマ
+### 事務所ダッシュボード
 
-組織名とロゴ、人と ID の呼び方、チェックの厳しさ、不確実ゾーン、バックアップ。ライトとダークのテーマがあり、サインイン画面は常にダークです。
-
-</td>
-<td width="50%">
-  <img src="../image/feature-settings.png" alt="設定とテーマ デスクトップ" width="74%" valign="top" />
-  <img src="../image/feature-settings-phone.png" alt="設定とテーマ スマートフォン" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### スタッフアカウント
-
-監督者はスタッフを追加し、検証者・監督者・研究者のロールを割り当て、各自の最終ログインを確認し、アカウントを無効化または再有効化します。
+プロファイル、検証、不確実の割合、判断待ちをひと目で。
 
 </td>
 <td width="50%">
-  <img src="../image/feature-staff.png" alt="スタッフアカウント デスクトップ" width="74%" valign="top" />
-  <img src="../image/feature-staff-phone.png" alt="スタッフアカウント スマートフォン" width="22%" valign="top" />
+  <img src="../image/feature-dashboard.png" alt="事務所ダッシュボード" width="100%" />
 </td>
 </tr>
 </table>
+
+**その他の機能：**
+
+- **根拠レポート** — PDF として保存できる印刷用のケースレポート。
+- **比較** — 2〜6 件の署名を並べて確認。
+- **一括チェック** — 多数の署名を一度に検証。
+- **スタッフアカウントとロール** — 検証者・監督者・研究者、それぞれ専用のモジュール。
+- **履歴と CSV 出力** — すべての検証・判断・メモを検索可能。
+- **ライト／ダークテーマ** — スマートフォンからデスクトップまで使えるレイアウト。
+- **プライバシー重視** — 署名はこのコンピューターの中だけに保存。
 
 ---
 

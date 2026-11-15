@@ -27,79 +27,49 @@
 <tr>
 <td width="50%" valign="middle">
 
-### Connexion du personnel et rôles
+### Inscription avec des signatures authentiques uniquement
 
-Le personnel se connecte avec son propre compte du bureau. Chaque rôle a ses propres modules : les Vérificateurs contrôlent les signatures, les Superviseurs revoient les décisions et gèrent le personnel, et les Chercheurs étudient les performances de la méthode.
+Douze signatures authentiques forment un profil, chacune contrôlée dès son arrivée. Aucune contrefaçon nécessaire, jamais.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-signin.png" alt="Connexion du personnel et rôles sur ordinateur" width="74%" valign="top" />
-  <img src="../image/feature-signin-phone.png" alt="Connexion du personnel et rôles sur téléphone" width="22%" valign="top" />
+  <img src="../image/feature-profile.png" alt="Inscription avec des signatures authentiques uniquement" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Tableau de bord
+### Vérification adaptée à chaque personne
 
-Profils prêts, vérifications enregistrées, taux d’incertitude et vérifications en attente de décision, avec les dernières vérifications et la file de revue d’un coup d’œil.
+R1-WAW ajuste un étalon partagé à la variation propre de chaque personne, puis donne un verdict indicatif avec une zone incertaine.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-dashboard.png" alt="Tableau de bord sur ordinateur" width="74%" valign="top" />
-  <img src="../image/feature-dashboard-phone.png" alt="Tableau de bord sur téléphone" width="22%" valign="top" />
+  <img src="../image/feature-verify.png" alt="Vérification adaptée à chaque personne" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Vérifier et preuves
+### Preuves vérifiables
 
-Choisissez une personne inscrite, ajoutez la signature contestée et obtenez un verdict indicatif avec un repère de confiance et la zone incertaine. Toutes les preuves de l’analyse figurent sur la même page défilante, à côté d’un outil de comparaison manuelle.
+Chaque verdict montre son raisonnement : le score face à la ligne de décision, les 12 comparaisons, les 17 mesures et la matrice de similarité.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-verify.png" alt="Vérifier et preuves sur ordinateur" width="74%" valign="top" />
-  <img src="../image/feature-verify-phone.png" alt="Vérifier et preuves sur téléphone" width="22%" valign="top" />
+  <img src="../image/feature-evidence.png" alt="Preuves vérifiables" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Inscrire une personne
+### Revue par décision humaine
 
-Un assistant en quatre étapes : informations sur la personne, 12 signatures authentiques avec un contrôle de qualité immédiat pour chacune, un aperçu du nettoyage de l’image, puis le profil de signature. Aucun échantillon falsifié n’est jamais nécessaire.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-enrol.png" alt="Inscrire une personne sur ordinateur" width="74%" valign="top" />
-  <img src="../image/feature-enrol-phone.png" alt="Inscrire une personne sur téléphone" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Historique et file de revue
-
-Chaque vérification enregistrée, avec filtres, recherche et export CSV. Les vérifications incertaines ou non décidées attendent dans la file de revue une décision humaine, un motif et des notes horodatées. La vérification par lot traite de nombreuses signatures d’un coup.
+L’outil conseille, une personne décide. Les vérifications incertaines attendent dans une file de revue, et chaque décision exige un motif.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-history.png" alt="Historique et file de revue sur ordinateur" width="74%" valign="top" />
-  <img src="../image/feature-history-phone.png" alt="Historique et file de revue sur téléphone" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Rapports de preuves
-
-Un rapport imprimable reconstruit à partir du dossier enregistré : la signature contestée, les 12 références, le verdict, le score par rapport à la ligne de décision et la décision enregistrée. Enregistrez-le en PDF depuis la boîte d’impression.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-report.png" alt="Rapports de preuves sur ordinateur" width="74%" valign="top" />
-  <img src="../image/feature-report-phone.png" alt="Rapports de preuves sur téléphone" width="22%" valign="top" />
+  <img src="../image/feature-review.png" alt="Revue par décision humaine" width="100%" />
 </td>
 </tr>
 <tr>
@@ -107,41 +77,36 @@ Un rapport imprimable reconstruit à partir du dossier enregistré : la signatur
 
 ### Laboratoire de recherche
 
-R1-WAW comparé à l’étalon partagé et à la méthode standard sur CEDAR, le bengali et l’hindi, avec un verdict de fiabilité en langage simple, un contrôle des raccourcis du jeu de données et la fiche du modèle.
+La thèse dans l’application : comparaison des méthodes, contrôle des raccourcis du jeu de données et fiche du modèle.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-research.png" alt="Laboratoire de recherche sur ordinateur" width="74%" valign="top" />
-  <img src="../image/feature-research-phone.png" alt="Laboratoire de recherche sur téléphone" width="22%" valign="top" />
+  <img src="../image/feature-research.png" alt="Laboratoire de recherche" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Paramètres et thèmes
+### Tableau de bord du bureau
 
-Nom et logo de l’organisation, termes utilisés pour les personnes et les identifiants, sévérité de la vérification, zone incertaine et sauvegardes. Thèmes clair et sombre ; la page de connexion reste toujours sombre.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-settings.png" alt="Paramètres et thèmes sur ordinateur" width="74%" valign="top" />
-  <img src="../image/feature-settings-phone.png" alt="Paramètres et thèmes sur téléphone" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Comptes du personnel
-
-Les Superviseurs ajoutent du personnel, attribuent le rôle de Vérificateur, Superviseur ou Chercheur, voient la dernière connexion de chacun et désactivent ou réactivent les comptes.
+Profils, vérifications, taux d’incertitude et décisions en attente d’un coup d’œil.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-staff.png" alt="Comptes du personnel sur ordinateur" width="74%" valign="top" />
-  <img src="../image/feature-staff-phone.png" alt="Comptes du personnel sur téléphone" width="22%" valign="top" />
+  <img src="../image/feature-dashboard.png" alt="Tableau de bord du bureau" width="100%" />
 </td>
 </tr>
 </table>
+
+**Également inclus :**
+
+- **Rapports de preuves** — Rapports de dossier imprimables, à enregistrer en PDF.
+- **Comparer** — Examinez de deux à six signatures côte à côte.
+- **Vérification par lot** — Vérifiez de nombreuses signatures en une fois.
+- **Comptes et rôles du personnel** — Vérificateur, Superviseur et Chercheur, chacun avec ses modules.
+- **Historique et export CSV** — Chaque vérification, décision et note, consultable.
+- **Thèmes clair et sombre** — Avec une mise en page qui va du téléphone à l’ordinateur.
+- **Confidentiel par conception** — Les signatures restent sur cet ordinateur.
 
 ---
 
