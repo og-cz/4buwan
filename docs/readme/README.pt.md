@@ -27,79 +27,49 @@
 <tr>
 <td width="50%" valign="middle">
 
-### Login da equipe e papéis
+### Cadastro só com assinaturas genuínas
 
-A equipe entra com a própria conta do escritório. Cada papel tem seus próprios módulos: Verificadores conferem assinaturas, Supervisores revisam decisões e gerenciam a equipe, e Pesquisadores estudam o desempenho do método.
+Doze assinaturas genuínas formam um perfil, cada uma conferida assim que chega. Falsificações nunca são necessárias.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-signin.png" alt="Login da equipe e papéis no computador" width="74%" valign="top" />
-  <img src="../image/feature-signin-phone.png" alt="Login da equipe e papéis no celular" width="22%" valign="top" />
+  <img src="../image/feature-profile.png" alt="Cadastro só com assinaturas genuínas" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Painel
+### Verificação adaptada a cada pessoa
 
-Perfis prontos, verificações registradas, a taxa de incertos e as verificações aguardando decisão, com as últimas verificações e a fila de revisão num relance.
+O R1-WAW ajusta uma medida compartilhada à variação própria de cada pessoa e dá um veredito consultivo com zona incerta.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-dashboard.png" alt="Painel no computador" width="74%" valign="top" />
-  <img src="../image/feature-dashboard-phone.png" alt="Painel no celular" width="22%" valign="top" />
+  <img src="../image/feature-verify.png" alt="Verificação adaptada a cada pessoa" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Verificar e evidências
+### Evidência inspecionável
 
-Escolha uma pessoa cadastrada, adicione a assinatura questionada e receba um veredito consultivo com um marcador de confiança e a zona incerta. Toda a evidência da análise fica na mesma página rolável, ao lado de uma ferramenta de comparação manual.
+Cada veredito mostra o raciocínio: a pontuação diante da linha de decisão, as 12 comparações, as 17 medidas e a matriz de similaridade.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-verify.png" alt="Verificar e evidências no computador" width="74%" valign="top" />
-  <img src="../image/feature-verify-phone.png" alt="Verificar e evidências no celular" width="22%" valign="top" />
+  <img src="../image/feature-evidence.png" alt="Evidência inspecionável" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Cadastrar uma pessoa
+### Revisão com decisão humana
 
-Um assistente de quatro etapas: dados da pessoa, 12 assinaturas genuínas com verificação imediata de qualidade em cada uma, uma prévia da limpeza da imagem e o perfil de assinatura. Amostras falsificadas nunca são necessárias.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-enrol.png" alt="Cadastrar uma pessoa no computador" width="74%" valign="top" />
-  <img src="../image/feature-enrol-phone.png" alt="Cadastrar uma pessoa no celular" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Histórico e fila de revisão
-
-Todas as verificações salvas, com filtros, busca e exportação CSV. As incertas e as não decididas aguardam na fila de revisão uma decisão humana, um motivo e notas com data e hora. A verificação em lote processa muitas assinaturas de uma vez.
+A ferramenta aconselha, uma pessoa decide. Verificações incertas aguardam numa fila de revisão, e toda decisão exige um motivo.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-history.png" alt="Histórico e fila de revisão no computador" width="74%" valign="top" />
-  <img src="../image/feature-history-phone.png" alt="Histórico e fila de revisão no celular" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Relatórios de evidências
-
-Um relatório para impressão reconstruído a partir do caso salvo: a assinatura questionada, as 12 referências, o veredito, a pontuação em relação à linha de decisão e a decisão registrada. Salve como PDF pela caixa de impressão.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-report.png" alt="Relatórios de evidências no computador" width="74%" valign="top" />
-  <img src="../image/feature-report-phone.png" alt="Relatórios de evidências no celular" width="22%" valign="top" />
+  <img src="../image/feature-review.png" alt="Revisão com decisão humana" width="100%" />
 </td>
 </tr>
 <tr>
@@ -107,41 +77,36 @@ Um relatório para impressão reconstruído a partir do caso salvo: a assinatura
 
 ### Laboratório de pesquisa
 
-R1-WAW comparado com a medida compartilhada e o método padrão em CEDAR, bengali e hindi, com um veredito de confiabilidade em linguagem simples, uma checagem de atalhos do conjunto de dados e o cartão do modelo.
+A tese dentro do app: comparação de métodos, checagem de atalhos do conjunto de dados e o cartão do modelo.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-research.png" alt="Laboratório de pesquisa no computador" width="74%" valign="top" />
-  <img src="../image/feature-research-phone.png" alt="Laboratório de pesquisa no celular" width="22%" valign="top" />
+  <img src="../image/feature-research.png" alt="Laboratório de pesquisa" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Configurações e temas
+### Painel do escritório
 
-Nome e logotipo da organização, os termos para pessoas e IDs, o rigor da verificação, a zona incerta e os backups. Temas claro e escuro; a página de login fica sempre escura.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-settings.png" alt="Configurações e temas no computador" width="74%" valign="top" />
-  <img src="../image/feature-settings-phone.png" alt="Configurações e temas no celular" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Contas da equipe
-
-Supervisores adicionam pessoas à equipe, atribuem o papel de Verificador, Supervisor ou Pesquisador, veem o último acesso de cada um e desativam ou reativam contas.
+Perfis, verificações, taxa de incertos e decisões pendentes num relance.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-staff.png" alt="Contas da equipe no computador" width="74%" valign="top" />
-  <img src="../image/feature-staff-phone.png" alt="Contas da equipe no celular" width="22%" valign="top" />
+  <img src="../image/feature-dashboard.png" alt="Painel do escritório" width="100%" />
 </td>
 </tr>
 </table>
+
+**Também incluído:**
+
+- **Relatórios de evidências** — Relatórios de caso para impressão que você pode salvar em PDF.
+- **Comparar** — Examine de duas a seis assinaturas lado a lado.
+- **Verificação em lote** — Verifique muitas assinaturas de uma vez.
+- **Contas e papéis da equipe** — Verificador, Supervisor e Pesquisador, cada um com seus módulos.
+- **Histórico e exportação CSV** — Cada verificação, decisão e nota, pesquisável.
+- **Temas claro e escuro** — Com um layout que funciona do celular ao computador.
+- **Privado por padrão** — As assinaturas ficam neste computador.
 
 ---
 

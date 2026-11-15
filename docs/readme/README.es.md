@@ -27,79 +27,49 @@
 <tr>
 <td width="50%" valign="middle">
 
-### Inicio de sesión del personal y roles
+### Inscripción solo con firmas genuinas
 
-El personal inicia sesión con su propia cuenta de la oficina. Cada rol tiene sus propios módulos: los Verificadores revisan firmas, los Supervisores revisan decisiones y gestionan al personal, y los Investigadores estudian el rendimiento del método.
+Doce firmas genuinas crean un perfil, y cada una pasa un control de calidad al llegar. Nunca hacen falta falsificaciones.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-signin.png" alt="Inicio de sesión del personal y roles en escritorio" width="74%" valign="top" />
-  <img src="../image/feature-signin-phone.png" alt="Inicio de sesión del personal y roles en un teléfono" width="22%" valign="top" />
+  <img src="../image/feature-profile.png" alt="Inscripción solo con firmas genuinas" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Panel
+### Verificación adaptada a cada persona
 
-Perfiles listos, verificaciones registradas, la tasa de inciertos y las verificaciones pendientes de decisión, con las últimas verificaciones y la cola de revisión de un vistazo.
+R1-WAW ajusta una medida compartida a la variación propia de cada persona y da un veredicto orientativo con zona incierta.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-dashboard.png" alt="Panel en escritorio" width="74%" valign="top" />
-  <img src="../image/feature-dashboard-phone.png" alt="Panel en un teléfono" width="22%" valign="top" />
+  <img src="../image/feature-verify.png" alt="Verificación adaptada a cada persona" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Verificar y evidencia
+### Evidencia inspeccionable
 
-Elige una persona inscrita, añade la firma cuestionada y obtén un veredicto orientativo con un marcador de confianza y la zona incierta. Toda la evidencia del análisis está en la misma página desplazable, junto a una herramienta de comparación manual.
+Cada veredicto muestra su razonamiento: la puntuación frente a la línea de decisión, las 12 comparaciones, las 17 medidas y la matriz de similitud.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-verify.png" alt="Verificar y evidencia en escritorio" width="74%" valign="top" />
-  <img src="../image/feature-verify-phone.png" alt="Verificar y evidencia en un teléfono" width="22%" valign="top" />
+  <img src="../image/feature-evidence.png" alt="Evidencia inspeccionable" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Inscribir a una persona
+### Revisión con decisión humana
 
-Un asistente de cuatro pasos: datos de la persona, 12 firmas genuinas con un control de calidad inmediato en cada una, una vista previa de la limpieza de imagen y el perfil de firma. Nunca se necesitan muestras falsificadas.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-enrol.png" alt="Inscribir a una persona en escritorio" width="74%" valign="top" />
-  <img src="../image/feature-enrol-phone.png" alt="Inscribir a una persona en un teléfono" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Historial y cola de revisión
-
-Cada verificación guardada con filtros, búsqueda y exportación a CSV. Las inciertas y las no decididas esperan en la cola de revisión una decisión humana, un motivo y notas con fecha y hora. La verificación por lotes procesa muchas firmas a la vez.
+La herramienta aconseja, una persona decide. Las verificaciones inciertas esperan en una cola de revisión y cada decisión necesita un motivo.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-history.png" alt="Historial y cola de revisión en escritorio" width="74%" valign="top" />
-  <img src="../image/feature-history-phone.png" alt="Historial y cola de revisión en un teléfono" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Informes de evidencia
-
-Un informe imprimible reconstruido desde el caso guardado: la firma cuestionada, las 12 referencias, el veredicto, la puntuación frente a la línea de decisión y la decisión registrada. Guárdalo como PDF desde el diálogo de impresión.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-report.png" alt="Informes de evidencia en escritorio" width="74%" valign="top" />
-  <img src="../image/feature-report-phone.png" alt="Informes de evidencia en un teléfono" width="22%" valign="top" />
+  <img src="../image/feature-review.png" alt="Revisión con decisión humana" width="100%" />
 </td>
 </tr>
 <tr>
@@ -107,41 +77,36 @@ Un informe imprimible reconstruido desde el caso guardado: la firma cuestionada,
 
 ### Laboratorio de investigación
 
-R1-WAW comparado con la medida compartida y el método estándar en CEDAR, bengalí e hindi, con un veredicto de fiabilidad en lenguaje claro, una comprobación de atajos del conjunto de datos y la ficha del modelo.
+La tesis dentro de la app: comparación de métodos, comprobación de atajos del conjunto de datos y la ficha del modelo.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-research.png" alt="Laboratorio de investigación en escritorio" width="74%" valign="top" />
-  <img src="../image/feature-research-phone.png" alt="Laboratorio de investigación en un teléfono" width="22%" valign="top" />
+  <img src="../image/feature-research.png" alt="Laboratorio de investigación" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Ajustes y temas
+### Panel de la oficina
 
-Nombre y logotipo de la organización, los términos para personas e ID, la exigencia de la verificación, la zona incierta y las copias de seguridad. Temas claro y oscuro; la página de inicio de sesión siempre es oscura.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-settings.png" alt="Ajustes y temas en escritorio" width="74%" valign="top" />
-  <img src="../image/feature-settings-phone.png" alt="Ajustes y temas en un teléfono" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Cuentas del personal
-
-Los Supervisores añaden personal, asignan el rol de Verificador, Supervisor o Investigador, ven el último acceso de cada uno y desactivan o reactivan cuentas.
+Perfiles, verificaciones, tasa de inciertos y decisiones pendientes de un vistazo.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-staff.png" alt="Cuentas del personal en escritorio" width="74%" valign="top" />
-  <img src="../image/feature-staff-phone.png" alt="Cuentas del personal en un teléfono" width="22%" valign="top" />
+  <img src="../image/feature-dashboard.png" alt="Panel de la oficina" width="100%" />
 </td>
 </tr>
 </table>
+
+**También incluye:**
+
+- **Informes de evidencia** — Informes de caso imprimibles que puedes guardar como PDF.
+- **Comparar** — Examina de dos a seis firmas lado a lado.
+- **Verificación por lotes** — Verifica muchas firmas de una vez.
+- **Cuentas y roles del personal** — Verificador, Supervisor e Investigador, cada uno con sus módulos.
+- **Historial y exportación CSV** — Cada verificación, decisión y nota, con búsqueda.
+- **Temas claro y oscuro** — Con un diseño que funciona del teléfono al escritorio.
+- **Privado por diseño** — Las firmas se quedan en este ordenador.
 
 ---
 

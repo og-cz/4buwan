@@ -27,79 +27,49 @@
 <tr>
 <td width="50%" valign="middle">
 
-### 직원 로그인과 역할
+### 진짜 서명만으로 등록
 
-직원은 자신의 사무실 계정으로 로그인합니다. 역할마다 모듈이 따로 있어 검증자는 서명을 검증하고, 감독자는 결정을 검토하고 직원을 관리하며, 연구자는 방법의 성능을 연구합니다.
+진짜 서명 12개로 프로필을 만들고, 들어오는 즉시 품질을 확인합니다. 위조 샘플은 절대 필요 없습니다.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-signin.png" alt="직원 로그인과 역할 데스크톱" width="74%" valign="top" />
-  <img src="../image/feature-signin-phone.png" alt="직원 로그인과 역할 휴대폰" width="22%" valign="top" />
+  <img src="../image/feature-profile.png" alt="진짜 서명만으로 등록" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### 대시보드
+### 작성자 적응형 검증
 
-준비된 프로필, 기록된 검증, 불확실 비율, 결정 대기 중인 검증, 최근 검증과 검토 대기열을 한눈에 봅니다.
+R1-WAW가 하나의 공유 기준을 각 사람의 서명 변화에 맞춘 뒤, 불확실 구간이 있는 참고 판정을 냅니다.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-dashboard.png" alt="대시보드 데스크톱" width="74%" valign="top" />
-  <img src="../image/feature-dashboard-phone.png" alt="대시보드 휴대폰" width="22%" valign="top" />
+  <img src="../image/feature-verify.png" alt="작성자 적응형 검증" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### 검증과 근거
+### 확인 가능한 근거
 
-등록된 사람을 고르고 의심 서명을 추가하면 신뢰도 표시와 불확실 구간이 있는 참고 판정을 받습니다. 전체 분석 근거가 같은 스크롤 페이지에 있고, 수동 비교 도구도 함께 있습니다.
+모든 판정이 근거를 보여 줍니다: 판정선 대비 점수, 12번의 비교 전체, 17가지 측정값과 유사도 행렬.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-verify.png" alt="검증과 근거 데스크톱" width="74%" valign="top" />
-  <img src="../image/feature-verify-phone.png" alt="검증과 근거 휴대폰" width="22%" valign="top" />
+  <img src="../image/feature-evidence.png" alt="확인 가능한 근거" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### 사람 등록
+### 사람의 결정 검토
 
-4단계 마법사: 사람 정보, 각각 즉시 품질을 확인하는 진짜 서명 12개, 이미지 정리 미리보기, 그리고 서명 프로필. 위조 샘플은 전혀 필요 없습니다.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-enrol.png" alt="사람 등록 데스크톱" width="74%" valign="top" />
-  <img src="../image/feature-enrol-phone.png" alt="사람 등록 휴대폰" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### 기록과 검토 대기열
-
-저장된 모든 검증을 필터, 검색, CSV 내보내기로 다룹니다. 불확실하거나 결정되지 않은 검증은 사람의 결정, 이유, 시간 기록 메모를 기다리며 검토 대기열에 들어갑니다. 일괄 검사로 여러 서명을 한 번에 처리합니다.
+도구는 조언하고 사람이 결정합니다. 불확실한 검증은 검토 대기열에 들어가며, 모든 결정에는 이유가 필요합니다.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-history.png" alt="기록과 검토 대기열 데스크톱" width="74%" valign="top" />
-  <img src="../image/feature-history-phone.png" alt="기록과 검토 대기열 휴대폰" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### 근거 보고서
-
-저장된 사례로 다시 만드는 인쇄용 보고서: 의심 서명, 참조 12개, 판정, 판정선 대비 점수, 기록된 결정. 인쇄 대화상자에서 PDF로 저장할 수 있습니다.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-report.png" alt="근거 보고서 데스크톱" width="74%" valign="top" />
-  <img src="../image/feature-report-phone.png" alt="근거 보고서 휴대폰" width="22%" valign="top" />
+  <img src="../image/feature-review.png" alt="사람의 결정 검토" width="100%" />
 </td>
 </tr>
 <tr>
@@ -107,41 +77,36 @@
 
 ### 연구실
 
-CEDAR, 벵골어, 힌디어에서 R1-WAW를 공유 기준과 표준 방법과 비교하고, 쉬운 말로 된 신뢰성 결론, 데이터셋 지름길 검사, 모델 카드를 보여 줍니다.
+앱 안의 논문: 방법 비교, 데이터셋 지름길 검사, 모델 카드.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-research.png" alt="연구실 데스크톱" width="74%" valign="top" />
-  <img src="../image/feature-research-phone.png" alt="연구실 휴대폰" width="22%" valign="top" />
+  <img src="../image/feature-research.png" alt="연구실" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### 설정과 테마
+### 사무실 대시보드
 
-기관 이름과 로고, 사람과 ID를 부르는 말, 검사 엄격도, 불확실 구간, 백업. 라이트와 다크 테마가 있으며, 로그인 화면은 항상 다크입니다.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-settings.png" alt="설정과 테마 데스크톱" width="74%" valign="top" />
-  <img src="../image/feature-settings-phone.png" alt="설정과 테마 휴대폰" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### 직원 계정
-
-감독자는 직원을 추가하고, 검증자·감독자·연구자 역할을 지정하고, 각자의 마지막 로그인을 확인하며, 계정을 비활성화하거나 다시 활성화합니다.
+프로필, 검증, 불확실 비율, 대기 중인 결정을 한눈에.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-staff.png" alt="직원 계정 데스크톱" width="74%" valign="top" />
-  <img src="../image/feature-staff-phone.png" alt="직원 계정 휴대폰" width="22%" valign="top" />
+  <img src="../image/feature-dashboard.png" alt="사무실 대시보드" width="100%" />
 </td>
 </tr>
 </table>
+
+**그 밖에도:**
+
+- **근거 보고서** — PDF로 저장할 수 있는 인쇄용 사례 보고서.
+- **비교** — 서명 2~6개를 나란히 살펴봅니다.
+- **일괄 검사** — 여러 서명을 한 번에 검증합니다.
+- **직원 계정과 역할** — 검증자, 감독자, 연구자마다 전용 모듈.
+- **기록과 CSV 내보내기** — 모든 검증, 결정, 메모를 검색할 수 있습니다.
+- **라이트와 다크 테마** — 휴대폰부터 데스크톱까지 맞는 레이아웃.
+- **개인정보 우선 설계** — 서명은 이 컴퓨터에만 저장됩니다.
 
 ---
 

@@ -27,79 +27,49 @@
 <tr>
 <td width="50%" valign="middle">
 
-### Staff Sign-in and Roles
+### Genuine-Only Enrolment
 
-Staff sign in with their own office account. Each role gets its own set of modules: Verifiers check signatures, Supervisors review decisions and manage staff, and Researchers study how well the method performs.
+Twelve genuine signatures build a profile, each quality-checked as it arrives. No forgeries needed, ever.
 
 </td>
 <td width="50%">
-  <img src="docs/image/feature-signin.png" alt="Staff Sign-in and Roles on desktop" width="74%" valign="top" />
-  <img src="docs/image/feature-signin-phone.png" alt="Staff Sign-in and Roles on a phone" width="22%" valign="top" />
+  <img src="docs/image/feature-profile.png" alt="Genuine-Only Enrolment" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Dashboard
+### Writer-Adaptive Verification
 
-Ready profiles, recorded checks, the uncertain rate and checks waiting for a decision, with the latest verifications and the review queue at a glance.
+R1-WAW tunes one shared yardstick to each person's own variation, then gives an advisory verdict with an uncertain zone.
 
 </td>
 <td width="50%">
-  <img src="docs/image/feature-dashboard.png" alt="Dashboard on desktop" width="74%" valign="top" />
-  <img src="docs/image/feature-dashboard-phone.png" alt="Dashboard on a phone" width="22%" valign="top" />
+  <img src="docs/image/feature-verify.png" alt="Writer-Adaptive Verification" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Verify and Evidence
+### Inspectable Evidence
 
-Choose an enrolled person, add the questioned signature and get an advisory verdict with a confidence marker and the uncertain zone. The full analysis evidence sits on the same scrollable page, and a manual Compare tool sits beside it.
+Every verdict shows its working: the score against the decision line, all 12 comparisons, the 17 measures and the similarity matrix.
 
 </td>
 <td width="50%">
-  <img src="docs/image/feature-verify.png" alt="Verify and Evidence on desktop" width="74%" valign="top" />
-  <img src="docs/image/feature-verify-phone.png" alt="Verify and Evidence on a phone" width="22%" valign="top" />
+  <img src="docs/image/feature-evidence.png" alt="Inspectable Evidence" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Enrol a Person
+### Human Decision Review
 
-A four-step wizard: person details, 12 genuine signatures with an instant quality check on each, a preview of the image cleaning, then the signature profile. Forged samples are never needed.
-
-</td>
-<td width="50%">
-  <img src="docs/image/feature-enrol.png" alt="Enrol a Person on desktop" width="74%" valign="top" />
-  <img src="docs/image/feature-enrol-phone.png" alt="Enrol a Person on a phone" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### History and Review Queue
-
-Every saved check with filters, search and CSV export. Uncertain and undecided checks wait in the review queue for a human decision, a reason and timestamped notes. Batch Check runs many signatures at once.
+The tool advises, a person decides. Uncertain checks wait in a review queue, and every decision needs a reason.
 
 </td>
 <td width="50%">
-  <img src="docs/image/feature-history.png" alt="History and Review Queue on desktop" width="74%" valign="top" />
-  <img src="docs/image/feature-history-phone.png" alt="History and Review Queue on a phone" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Evidence Reports
-
-A printable report rebuilt from the saved case: the questioned signature, the 12 references, the verdict, the score against the decision line and the recorded decision. Save it as a PDF from the print dialog.
-
-</td>
-<td width="50%">
-  <img src="docs/image/feature-report.png" alt="Evidence Reports on desktop" width="74%" valign="top" />
-  <img src="docs/image/feature-report-phone.png" alt="Evidence Reports on a phone" width="22%" valign="top" />
+  <img src="docs/image/feature-review.png" alt="Human Decision Review" width="100%" />
 </td>
 </tr>
 <tr>
@@ -107,41 +77,36 @@ A printable report rebuilt from the saved case: the questioned signature, the 12
 
 ### Research Lab
 
-R1-WAW compared with the shared yardstick and the standard method on CEDAR, Bengali and Hindi, with a plain-language reliability verdict, a dataset shortcut check and the model card.
+The thesis inside the app: method comparison, a dataset shortcut check and the model card.
 
 </td>
 <td width="50%">
-  <img src="docs/image/feature-research.png" alt="Research Lab on desktop" width="74%" valign="top" />
-  <img src="docs/image/feature-research-phone.png" alt="Research Lab on a phone" width="22%" valign="top" />
+  <img src="docs/image/feature-research.png" alt="Research Lab" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Settings and Themes
+### Office Dashboard
 
-Organisation name and logo, the words used for people and IDs, checking strictness, the uncertain zone and backups. Light and dark themes; the sign-in page always stays dark.
-
-</td>
-<td width="50%">
-  <img src="docs/image/feature-settings.png" alt="Settings and Themes on desktop" width="74%" valign="top" />
-  <img src="docs/image/feature-settings-phone.png" alt="Settings and Themes on a phone" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Staff Accounts
-
-Supervisors add staff, assign the Verifier, Supervisor or Researcher role, see each last login, and deactivate or reactivate accounts.
+Profiles, checks, the uncertain rate and pending decisions at a glance.
 
 </td>
 <td width="50%">
-  <img src="docs/image/feature-staff.png" alt="Staff Accounts on desktop" width="74%" valign="top" />
-  <img src="docs/image/feature-staff-phone.png" alt="Staff Accounts on a phone" width="22%" valign="top" />
+  <img src="docs/image/feature-dashboard.png" alt="Office Dashboard" width="100%" />
 </td>
 </tr>
 </table>
+
+**Also in the box:**
+
+- **Evidence reports** — Printable case reports you can save as PDF.
+- **Compare** — Examine two to six signatures side by side.
+- **Batch Check** — Verify many signatures in one run.
+- **Staff accounts and roles** — Verifier, Supervisor and Researcher, each with its own modules.
+- **History and CSV export** — Every check, decision and note, searchable.
+- **Light and dark themes** — With a layout that works from phone to desktop.
+- **Private by design** — Signatures stay on this computer.
 
 ---
 

@@ -27,79 +27,49 @@
 <tr>
 <td width="50%" valign="middle">
 
-### Pag-sign in ng Staff at mga Role
+### Pag-enroll Gamit ang Tunay na Pirma Lamang
 
-Nagsa-sign in ang staff gamit ang sariling office account. May kanya-kanyang module ang bawat role: sinusuri ng Verifier ang mga pirma, nire-review ng Supervisor ang mga desisyon at pinamamahalaan ang staff, at pinag-aaralan ng Researcher ang galing ng paraan.
+Labindalawang tunay na pirma ang bumubuo ng profile, at sinusuri ang kalidad ng bawat isa pagdating. Hindi kailanman kailangan ng pineke.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-signin.png" alt="Pag-sign in ng Staff at mga Role sa desktop" width="74%" valign="top" />
-  <img src="../image/feature-signin-phone.png" alt="Pag-sign in ng Staff at mga Role sa phone" width="22%" valign="top" />
+  <img src="../image/feature-profile.png" alt="Pag-enroll Gamit ang Tunay na Pirma Lamang" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Dashboard
+### Pagpapatunay na Umaangkop sa Sumulat
 
-Mga handang profile, mga naitalang pagsusuri, ang uncertain rate at mga pagsusuring naghihintay ng desisyon, kasama ang pinakabagong pagsusuri at ang review queue sa isang tingin.
+Iniaangkop ng R1-WAW ang iisang shared na panukat sa sariling pagbabago ng pirma ng bawat tao, saka nagbibigay ng payong hatol na may uncertain zone.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-dashboard.png" alt="Dashboard sa desktop" width="74%" valign="top" />
-  <img src="../image/feature-dashboard-phone.png" alt="Dashboard sa phone" width="22%" valign="top" />
+  <img src="../image/feature-verify.png" alt="Pagpapatunay na Umaangkop sa Sumulat" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Pagpapatunay at Ebidensiya
+### Ebidensiyang Masusuri
 
-Pumili ng naka-enroll na tao, idagdag ang pirmang sinusuri at makakuha ng payong hatol na may confidence marker at uncertain zone. Nasa iisang scrollable na pahina ang buong ebidensiya ng pagsusuri, katabi ang manual na Compare tool.
+Ipinapakita ng bawat hatol ang batayan nito: ang score laban sa decision line, lahat ng 12 paghahambing, ang 17 sukat at ang similarity matrix.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-verify.png" alt="Pagpapatunay at Ebidensiya sa desktop" width="74%" valign="top" />
-  <img src="../image/feature-verify-phone.png" alt="Pagpapatunay at Ebidensiya sa phone" width="22%" valign="top" />
+  <img src="../image/feature-evidence.png" alt="Ebidensiyang Masusuri" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Pag-enroll ng Tao
+### Review ng Desisyon ng Tao
 
-Apat na hakbang: detalye ng tao, 12 tunay na pirma na agad sinusuri ang kalidad bawat isa, preview ng paglilinis ng larawan, at ang signature profile. Hindi kailanman kailangan ng pinekeng sample.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-enrol.png" alt="Pag-enroll ng Tao sa desktop" width="74%" valign="top" />
-  <img src="../image/feature-enrol-phone.png" alt="Pag-enroll ng Tao sa phone" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### History at Review Queue
-
-Lahat ng naka-save na pagsusuri na may filter, search at CSV export. Ang mga uncertain at wala pang desisyon ay naghihintay sa review queue para sa desisyon ng tao, dahilan at mga talang may oras. Sabay-sabay na sinusuri ng Batch Check ang maraming pirma.
+Nagpapayo ang tool, tao ang nagdedesisyon. Naghihintay sa review queue ang mga uncertain na pagsusuri, at kailangan ng dahilan ang bawat desisyon.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-history.png" alt="History at Review Queue sa desktop" width="74%" valign="top" />
-  <img src="../image/feature-history-phone.png" alt="History at Review Queue sa phone" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Mga Evidence Report
-
-Printable na ulat na binubuo mula sa naka-save na kaso: ang pirmang sinusuri, ang 12 reference, ang hatol, ang score laban sa decision line at ang naitalang desisyon. I-save bilang PDF mula sa print dialog.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-report.png" alt="Mga Evidence Report sa desktop" width="74%" valign="top" />
-  <img src="../image/feature-report-phone.png" alt="Mga Evidence Report sa phone" width="22%" valign="top" />
+  <img src="../image/feature-review.png" alt="Review ng Desisyon ng Tao" width="100%" />
 </td>
 </tr>
 <tr>
@@ -107,41 +77,36 @@ Printable na ulat na binubuo mula sa naka-save na kaso: ang pirmang sinusuri, an
 
 ### Research Lab
 
-Ikinukumpara ang R1-WAW sa shared yardstick at sa standard na paraan sa CEDAR, Bengali at Hindi, may malinaw na hatol sa pagiging maaasahan, dataset shortcut check at ang model card.
+Ang thesis sa loob ng app: paghahambing ng paraan, dataset shortcut check at ang model card.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-research.png" alt="Research Lab sa desktop" width="74%" valign="top" />
-  <img src="../image/feature-research-phone.png" alt="Research Lab sa phone" width="22%" valign="top" />
+  <img src="../image/feature-research.png" alt="Research Lab" width="100%" />
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Settings at mga Theme
+### Dashboard ng Opisina
 
-Pangalan at logo ng organisasyon, mga salitang ginagamit para sa tao at ID, higpit ng pagsusuri, ang uncertain zone at mga backup. May light at dark theme; laging dark ang sign-in na pahina.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-settings.png" alt="Settings at mga Theme sa desktop" width="74%" valign="top" />
-  <img src="../image/feature-settings-phone.png" alt="Settings at mga Theme sa phone" width="22%" valign="top" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Mga Staff Account
-
-Nagdadagdag ang Supervisor ng staff, nagtatalaga ng role na Verifier, Supervisor o Researcher, nakikita ang huling login ng bawat isa, at nagde-deactivate o nagre-reactivate ng account.
+Mga profile, pagsusuri, uncertain rate at mga nakabinbing desisyon sa isang tingin.
 
 </td>
 <td width="50%">
-  <img src="../image/feature-staff.png" alt="Mga Staff Account sa desktop" width="74%" valign="top" />
-  <img src="../image/feature-staff-phone.png" alt="Mga Staff Account sa phone" width="22%" valign="top" />
+  <img src="../image/feature-dashboard.png" alt="Dashboard ng Opisina" width="100%" />
 </td>
 </tr>
 </table>
+
+**Kasama rin:**
+
+- **Mga Evidence Report** — Printable na ulat ng kaso na maise-save bilang PDF.
+- **Compare** — Suriin ang dalawa hanggang anim na pirma nang magkatabi.
+- **Batch Check** — Patunayan ang maraming pirma nang sabay-sabay.
+- **Mga Staff Account at Role** — Verifier, Supervisor at Researcher, may kanya-kanyang module.
+- **History at CSV Export** — Bawat pagsusuri, desisyon at tala, nahahanap.
+- **Light at Dark na Theme** — May layout na gumagana mula phone hanggang desktop.
+- **Pribado sa Disenyo** — Nananatili sa computer na ito ang mga pirma.
 
 ---
 
