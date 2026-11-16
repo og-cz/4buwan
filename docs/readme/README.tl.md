@@ -63,6 +63,18 @@ Ipinapakita ng bawat hatol ang batayan nito: ang score laban sa decision line, l
 <tr>
 <td width="50%" valign="middle">
 
+### Printable na Evidence Report
+
+Isang click lang, nagiging ulat ang isang kaso: ang pirmang sinusuri, lahat ng 12 reference, ang hatol at ang scoring. I-print o i-save bilang PDF.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-report.png" alt="Printable na Evidence Report" width="100%" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
 ### Review ng Desisyon ng Tao
 
 Nagpapayo ang tool, tao ang nagdedesisyon. Naghihintay sa review queue ang mga uncertain na pagsusuri, at kailangan ng dahilan ang bawat desisyon.
@@ -87,6 +99,30 @@ Ang thesis sa loob ng app: paghahambing ng paraan, dataset shortcut check at ang
 <tr>
 <td width="50%" valign="middle">
 
+### Shortcut Check
+
+Pinatutunayan na sulat-kamay ang binabasa ng paraan, hindi ang scanner. Sinusubok ang bawat resulta laban sa control na simpleng detalye lang ng larawan ang nakikita.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-shortcut.png" alt="Shortcut Check" width="100%" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Mga Role at Staff Account
+
+Nagsusuri ang Verifier, nagdedesisyon at namamahala ng staff ang Supervisor, pinag-aaralan ng Researcher ang paraan. Tanging kailangang module lang ang nakikita ng bawat role.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-staff.png" alt="Mga Role at Staff Account" width="100%" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
 ### Dashboard ng Opisina
 
 Mga profile, pagsusuri, uncertain rate at mga nakabinbing desisyon sa isang tingin.
@@ -100,10 +136,8 @@ Mga profile, pagsusuri, uncertain rate at mga nakabinbing desisyon sa isang ting
 
 **Kasama rin:**
 
-- **Mga Evidence Report** — Printable na ulat ng kaso na maise-save bilang PDF.
 - **Compare** — Suriin ang dalawa hanggang anim na pirma nang magkatabi.
 - **Batch Check** — Patunayan ang maraming pirma nang sabay-sabay.
-- **Mga Staff Account at Role** — Verifier, Supervisor at Researcher, may kanya-kanyang module.
 - **History at CSV Export** — Bawat pagsusuri, desisyon at tala, nahahanap.
 - **Light at Dark na Theme** — May layout na gumagana mula phone hanggang desktop.
 - **Pribado sa Disenyo** — Nananatili sa computer na ito ang mga pirma.

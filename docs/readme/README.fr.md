@@ -63,6 +63,18 @@ Chaque verdict montre son raisonnement : le score face à la ligne de décision,
 <tr>
 <td width="50%" valign="middle">
 
+### Rapports de preuves imprimables
+
+Un clic transforme un dossier en rapport prêt à archiver : la signature contestée, les 12 références, le verdict et le score. Imprimez-le ou enregistrez-le en PDF.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-report.png" alt="Rapports de preuves imprimables" width="100%" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
 ### Revue par décision humaine
 
 L’outil conseille, une personne décide. Les vérifications incertaines attendent dans une file de revue, et chaque décision exige un motif.
@@ -87,6 +99,30 @@ La thèse dans l’application : comparaison des méthodes, contrôle des raccou
 <tr>
 <td width="50%" valign="middle">
 
+### Contrôle des raccourcis
+
+Prouve que la méthode lit l’écriture, pas le scanner. Chaque résultat est confronté à un contrôle qui ne voit que des caractéristiques simples de l’image.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-shortcut.png" alt="Contrôle des raccourcis" width="100%" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Rôles et comptes du personnel
+
+Les Vérificateurs contrôlent, les Superviseurs décident et gèrent le personnel, les Chercheurs étudient la méthode. Chaque rôle ne voit que les modules utiles.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-staff.png" alt="Rôles et comptes du personnel" width="100%" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
 ### Tableau de bord du bureau
 
 Profils, vérifications, taux d’incertitude et décisions en attente d’un coup d’œil.
@@ -100,10 +136,8 @@ Profils, vérifications, taux d’incertitude et décisions en attente d’un co
 
 **Également inclus :**
 
-- **Rapports de preuves** — Rapports de dossier imprimables, à enregistrer en PDF.
 - **Comparer** — Examinez de deux à six signatures côte à côte.
 - **Vérification par lot** — Vérifiez de nombreuses signatures en une fois.
-- **Comptes et rôles du personnel** — Vérificateur, Superviseur et Chercheur, chacun avec ses modules.
 - **Historique et export CSV** — Chaque vérification, décision et note, consultable.
 - **Thèmes clair et sombre** — Avec une mise en page qui va du téléphone à l’ordinateur.
 - **Confidentiel par conception** — Les signatures restent sur cet ordinateur.

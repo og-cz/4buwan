@@ -63,6 +63,18 @@ Every verdict shows its working: the score against the decision line, all 12 com
 <tr>
 <td width="50%" valign="middle">
 
+### Printable Evidence Reports
+
+One click turns a case into a report ready to file: the questioned signature, all 12 references, the verdict and the scoring. Print it or save it as PDF.
+
+</td>
+<td width="50%">
+  <img src="docs/image/feature-report.png" alt="Printable Evidence Reports" width="100%" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
 ### Human Decision Review
 
 The tool advises, a person decides. Uncertain checks wait in a review queue, and every decision needs a reason.
@@ -87,6 +99,30 @@ The thesis inside the app: method comparison, a dataset shortcut check and the m
 <tr>
 <td width="50%" valign="middle">
 
+### Shortcut Check
+
+Proves the method reads the handwriting, not the scanner. Each result is tested against a control that only sees simple image facts.
+
+</td>
+<td width="50%">
+  <img src="docs/image/feature-shortcut.png" alt="Shortcut Check" width="100%" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Roles and Staff Accounts
+
+Verifiers check, Supervisors decide and manage staff, Researchers study the method. Each role gets only the modules it needs.
+
+</td>
+<td width="50%">
+  <img src="docs/image/feature-staff.png" alt="Roles and Staff Accounts" width="100%" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
 ### Office Dashboard
 
 Profiles, checks, the uncertain rate and pending decisions at a glance.
@@ -100,10 +136,8 @@ Profiles, checks, the uncertain rate and pending decisions at a glance.
 
 **Also in the box:**
 
-- **Evidence reports** — Printable case reports you can save as PDF.
 - **Compare** — Examine two to six signatures side by side.
 - **Batch Check** — Verify many signatures in one run.
-- **Staff accounts and roles** — Verifier, Supervisor and Researcher, each with its own modules.
 - **History and CSV export** — Every check, decision and note, searchable.
 - **Light and dark themes** — With a layout that works from phone to desktop.
 - **Private by design** — Signatures stay on this computer.
