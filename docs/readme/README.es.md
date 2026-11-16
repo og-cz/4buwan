@@ -63,6 +63,18 @@ Cada veredicto muestra su razonamiento: la puntuación frente a la línea de dec
 <tr>
 <td width="50%" valign="middle">
 
+### Informes de evidencia imprimibles
+
+Con un clic, un caso se convierte en un informe listo para archivar: la firma cuestionada, las 12 referencias, el veredicto y la puntuación. Imprímelo o guárdalo como PDF.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-report.png" alt="Informes de evidencia imprimibles" width="100%" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
 ### Revisión con decisión humana
 
 La herramienta aconseja, una persona decide. Las verificaciones inciertas esperan en una cola de revisión y cada decisión necesita un motivo.
@@ -87,6 +99,30 @@ La tesis dentro de la app: comparación de métodos, comprobación de atajos del
 <tr>
 <td width="50%" valign="middle">
 
+### Comprobación de atajos
+
+Demuestra que el método lee la escritura y no el escáner. Cada resultado se contrasta con un control que solo ve datos simples de la imagen.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-shortcut.png" alt="Comprobación de atajos" width="100%" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Roles y cuentas del personal
+
+Los Verificadores revisan, los Supervisores deciden y gestionan al personal, y los Investigadores estudian el método. Cada rol ve solo los módulos que necesita.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-staff.png" alt="Roles y cuentas del personal" width="100%" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
 ### Panel de la oficina
 
 Perfiles, verificaciones, tasa de inciertos y decisiones pendientes de un vistazo.
@@ -100,10 +136,8 @@ Perfiles, verificaciones, tasa de inciertos y decisiones pendientes de un vistaz
 
 **También incluye:**
 
-- **Informes de evidencia** — Informes de caso imprimibles que puedes guardar como PDF.
 - **Comparar** — Examina de dos a seis firmas lado a lado.
 - **Verificación por lotes** — Verifica muchas firmas de una vez.
-- **Cuentas y roles del personal** — Verificador, Supervisor e Investigador, cada uno con sus módulos.
 - **Historial y exportación CSV** — Cada verificación, decisión y nota, con búsqueda.
 - **Temas claro y oscuro** — Con un diseño que funciona del teléfono al escritorio.
 - **Privado por diseño** — Las firmas se quedan en este ordenador.

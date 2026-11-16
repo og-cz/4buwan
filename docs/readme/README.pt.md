@@ -63,6 +63,18 @@ Cada veredito mostra o raciocínio: a pontuação diante da linha de decisão, a
 <tr>
 <td width="50%" valign="middle">
 
+### Relatórios de evidências para impressão
+
+Com um clique, um caso vira um relatório pronto para arquivo: a assinatura questionada, as 12 referências, o veredito e a pontuação. Imprima ou salve em PDF.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-report.png" alt="Relatórios de evidências para impressão" width="100%" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
 ### Revisão com decisão humana
 
 A ferramenta aconselha, uma pessoa decide. Verificações incertas aguardam numa fila de revisão, e toda decisão exige um motivo.
@@ -87,6 +99,30 @@ A tese dentro do app: comparação de métodos, checagem de atalhos do conjunto 
 <tr>
 <td width="50%" valign="middle">
 
+### Checagem de atalhos
+
+Prova que o método lê a escrita, e não o scanner. Cada resultado é comparado a um controle que só vê características simples da imagem.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-shortcut.png" alt="Checagem de atalhos" width="100%" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
+### Papéis e contas da equipe
+
+Verificadores conferem, Supervisores decidem e gerenciam a equipe, Pesquisadores estudam o método. Cada papel vê só os módulos de que precisa.
+
+</td>
+<td width="50%">
+  <img src="../image/feature-staff.png" alt="Papéis e contas da equipe" width="100%" />
+</td>
+</tr>
+<tr>
+<td width="50%" valign="middle">
+
 ### Painel do escritório
 
 Perfis, verificações, taxa de incertos e decisões pendentes num relance.
@@ -100,10 +136,8 @@ Perfis, verificações, taxa de incertos e decisões pendentes num relance.
 
 **Também incluído:**
 
-- **Relatórios de evidências** — Relatórios de caso para impressão que você pode salvar em PDF.
 - **Comparar** — Examine de duas a seis assinaturas lado a lado.
 - **Verificação em lote** — Verifique muitas assinaturas de uma vez.
-- **Contas e papéis da equipe** — Verificador, Supervisor e Pesquisador, cada um com seus módulos.
 - **Histórico e exportação CSV** — Cada verificação, decisão e nota, pesquisável.
 - **Temas claro e escuro** — Com um layout que funciona do celular ao computador.
 - **Privado por padrão** — As assinaturas ficam neste computador.
