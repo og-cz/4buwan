@@ -1,9 +1,12 @@
 """Case extras: examination notes, attachments from the Compare tool, and the Evidence Report log."""
 from __future__ import annotations
 
+import io
 import uuid
+
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse
+from PIL import Image
 
 from .storage import current_mode, db, log, now, resolve, save_upload
 
@@ -27,12 +30,18 @@ def add_note(cid: str, text: str = Form(...)):
 async def add_attachments(cid: str, files: list[UploadFile] = File(...), note: str = Form("")):
     """Images and notes from a manual comparison, attached to an existing case."""
     if not files: raise HTTPException(400, "Attach at least one image.")
+    blobs = [await f.read() for f in files]
+    for f, b in zip(files, blobs):
+        try:
+            with Image.open(io.BytesIO(b)) as im: im.verify()
+        except Exception:
+            raise HTTPException(400, f"{f.filename or 'A file'} is not a readable image.")
     with db() as c:
         _require_case(c, cid)
         out = []
-        for f in files:
+        for f, b in zip(files, blobs):
             aid = uuid.uuid4().hex[:12]
-            c.execute("INSERT INTO attachments VALUES(?,?,?,?,?,?)", (aid, cid, now(), f.filename or "image", save_upload(await f.read(), f.filename), note))
+            c.execute("INSERT INTO attachments VALUES(?,?,?,?,?,?)", (aid, cid, now(), f.filename or "image", save_upload(b, f.filename), note))
             out.append(dict(id=aid, name=f.filename, url=f"/api/attachments/{aid}/image?mode={current_mode.get()}"))
         log(c, "attachment", cid, f"{len(out)} image(s) from Compare" + (f": {note}" if note else ""))
     return dict(ok=True, attachments=out)

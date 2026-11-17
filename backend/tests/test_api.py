@@ -88,3 +88,26 @@ def test_archive_blocks_verify_and_delete_removes():
     assert client.delete(f"/api/persons/{pid}").json()["ok"]
     assert client.get(f"/api/persons/{pid}").status_code == 404
     assert client.delete(f"/api/persons/{pid}").status_code == 404
+
+
+def test_unreadable_upload_is_a_400_not_a_crash():
+    junk = ("notes.txt", b"not an image", "text/plain")
+    assert client.post("/api/quality", files={"file": junk}).status_code == 400
+    assert client.post("/api/preprocess", files={"file": junk}).status_code == 400
+    r = client.post("/api/persons", data={"name": "x"}, files=[("files", junk)] * 12)
+    assert r.status_code == 400 and "readable image" in r.json()["detail"]
+
+
+def test_verify_rejects_unknown_settings():
+    pid = _enrol("Settings Person")
+    q = {"file": ("q.png", (FIX / "original_10_13.png").read_bytes(), "image/png")}
+    assert client.post("/api/verify", data={"person_id": pid, "strictness": "Extreme"}, files=q).status_code == 400
+    assert client.post("/api/verify", data={"person_id": pid, "uncertain": "Huge"}, files=q).status_code == 400
+
+
+def test_attachments_must_be_images():
+    case = _verify(_enrol("Attach Person"))["case_id"]
+    bad = client.post(f"/api/checks/{case}/attachments", files=[("files", ("x.html", b"<script></script>", "text/html"))])
+    assert bad.status_code == 400
+    ok = client.post(f"/api/checks/{case}/attachments", files=[("files", ("a.png", (FIX / "original_10_2.png").read_bytes(), "image/png"))])
+    assert ok.status_code == 200 and len(client.get(f"/api/checks/{case}/attachments").json()) == 1
