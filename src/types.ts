@@ -1,4 +1,4 @@
-/** Response types of the Signature Desk API (backend/app/main.py). */
+/** Response types of the 4buwan Signature Verification API (backend/app/main.py, cases.py, sample.py). */
 
 export type Verdict = "LIKELY GENUINE" | "LIKELY FORGED" | "UNCERTAIN";
 export type Decision = "Pending" | "Accepted" | "Rejected" | "Needs more evidence";

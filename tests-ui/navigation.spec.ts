@@ -43,3 +43,16 @@ test('Sign in needs a username and password and opens the Verifier', async ({ pa
   await expect(sidebarItems(page)).toHaveText(['Dashboard', 'Verify', 'Enrol', 'History', 'Research Lab', 'Settings', 'Help'])
   await expect(page.getByText('staff01')).toBeVisible()
 })
+
+test('Verifier never reads Sample data, even with a leftover sample setting in the browser', async ({ page }) => {
+  await page.goto('/')
+  await page.evaluate(() => localStorage.setItem('signature-desk.data-mode', 'sample'))
+  await page.reload()
+  const modes: string[] = []
+  page.on('request', r => { if (new URL(r.url()).pathname.startsWith('/api/')) modes.push(r.headers()['x-data-mode'] ?? new URL(r.url()).searchParams.get('mode') ?? '') })
+  await signIn(page, 'Verifier')
+  await expect(sidebarItems(page)).toHaveCount(7)
+  await page.waitForTimeout(1500)
+  expect(modes.length).toBeGreaterThan(0)
+  expect(modes.filter(m => m !== 'real'), 'every Verifier request must use Real data').toEqual([])
+})

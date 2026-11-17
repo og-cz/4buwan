@@ -17,7 +17,6 @@ import Settings from "./screens/Settings";
 import Help from "./screens/Help";
 import Workbench from "./screens/Workbench";
 import Compare from "./screens/Compare";
-import { setDataMode } from "./state/dataMode";
 import type { HealthState } from "./state/useHealth";
 import { moduleOf, pageTitle, verifierModules, type Go, type Route } from "./navigation";
 
@@ -30,7 +29,6 @@ export default function VerifierApp({ user, health, banner, logout }: Props) {
   const go: Go = (screen, params) => { setRoute({ screen, ...params }); window.scrollTo(0, 0); };
   const notify = useCallback((m: string) => setToast(m), []);
   const closeToast = useCallback(() => setToast(null), []);
-  useEffect(() => { setDataMode("real"); }, []);
   useEffect(() => { document.title = pageTitle(route); }, [route]);
 
   const { screen, personId, caseId } = route;

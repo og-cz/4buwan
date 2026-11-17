@@ -1,8 +1,9 @@
-"""Signature Desk API (reference skeleton). Run:  uvicorn app.main:app --reload --port 8000   (from backend/)
+"""4buwan Signature Verification API. Run:  uvicorn app.main:app --port 8000   (from backend/)
 
-This file is the bridge between the React UI and the engine. It may be extended (cases, batch, reports,
-settings). It must never re-implement the model: always call sigdesk_engine.engine.build_profile / verify.
-Storage: one SQLite file + one folder of images and profiles under backend/data/ (local only).
+This file is the bridge between the React UI and the engine. It must never re-implement the model:
+it always calls sigdesk_engine.engine (quality_check, build_profile, verify).
+Storage: one SQLite file plus folders of images and profiles per data mode, under backend/data/real and
+backend/data/sample (local only; see storage.py).
 """
 from __future__ import annotations
 
@@ -15,8 +16,8 @@ from collections import Counter
 
 from fastapi import FastAPI, File, Form, HTTPException, Query, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
-from PIL import Image
+from fastapi.responses import FileResponse, JSONResponse
+from PIL import Image, UnidentifiedImageError
 
 from sigdesk_engine import engine as E
 
@@ -24,8 +25,14 @@ from .storage import MODES, current_mode, data_dir, db, log, now, resolve, save_
 
 K = E.Constants.load()
 
-app = FastAPI(title="Signature Desk API", version="0.1")
+app = FastAPI(title="4buwan Signature Verification API", version="0.1")
 app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:8443", "http://localhost:5173"], allow_methods=["*"], allow_headers=["*"])
+
+
+@app.exception_handler(UnidentifiedImageError)
+async def unreadable_image(request, exc):
+    """An upload that is not an image (or is damaged) is the user's error, not a server failure."""
+    return JSONResponse(status_code=400, content={"detail": "This file is not a readable image. Use PNG, JPG or TIFF."})
 
 
 @app.middleware("http")
@@ -104,6 +111,8 @@ def sample(pid: str, idx: int):
 def run_check(person_id: str, blob: bytes, filename: str, strictness: str = "Standard", uncertain: str = "Standard",
               case_title: str = "", notes: str = "") -> dict:
     """Scores one questioned signature and saves it as a case (used by the API and by the sample seed)."""
+    if strictness not in E.STRICTNESS: raise HTTPException(400, f"Unknown strictness '{strictness}'.")
+    if uncertain not in E.UNCERTAIN: raise HTTPException(400, f"Unknown uncertain zone '{uncertain}'.")
     pf = data_dir() / "profiles" / f"{person_id}.npz"
     with db() as c:
         p = c.execute("SELECT status FROM persons WHERE id=?", (person_id,)).fetchone()
