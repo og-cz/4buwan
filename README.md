@@ -210,6 +210,21 @@ The service keeps two separate data folders: **Real data** (your own enrolled pe
 
 ---
 
+## Architecture
+
+| Part | Where | What it does |
+|---|---|---|
+| Web interface | `src/` (React, Vite) | Sign-in, the Verifier modules (`src/screens`), the Supervisor and Researcher views (`src/decoy`). All requests go through `src/api/client.ts`. |
+| Verification service | `backend/app/` (FastAPI) | Enrolment, verification, cases, decisions, notes, attachments, reports and statistics. Calls the engine; never re-implements it. |
+| Engine | `backend/sigdesk_engine/engine.py` | Frozen copy of the research pipeline: preprocessing, HOG, 17 pair measures, metric J, one-class SVM, provisional decision policy. |
+| Model constants | `backend/sigdesk_engine/artifacts/` | Private, distributed separately: the shared yardstick from the 142 development writers and the Research Lab results. |
+| Local data | `backend/data/real/`, `backend/data/sample/` | One SQLite database plus image and profile folders per data mode. Nothing leaves the computer. |
+| Research | `notebook/`, `result/` | The notebooks and their outputs behind the model and the numbers above. |
+
+The Verifier always works on **Real data**. The service has no accounts of its own: it runs on localhost and trusts the local user.
+
+---
+
 ## Installation and Running
 
 The app has two parts that run at the same time: the **verification service** (Python, in `backend/`) and the **web interface** (React, in the project root). Open two terminals.

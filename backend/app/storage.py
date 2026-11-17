@@ -1,4 +1,4 @@
-"""Local storage for the Signature Desk API.
+"""Local storage for the 4buwan Signature Verification API.
 
 Two separate data folders under ROOT, one per data mode:
     real/    the office's own enrolled people and checks (starts empty)
