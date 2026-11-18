@@ -77,3 +77,18 @@ def test_fresh_real_folder_is_empty(tmp_path, monkeypatch):
     with storage.db() as c:
         assert c.execute("SELECT COUNT(*) FROM persons").fetchone()[0] == 0
     assert (tmp_path / "real" / "sigdesk.db").exists()
+
+
+def test_demo_session_is_a_throwaway_copy(tmp_path):
+    files = [(FIX / f"original_10_{i}.png") for i in range(1, 13)]
+    real_before = client.get("/api/health").json()
+    started = client.post("/api/demo/start").json()
+    demo = {"X-Data-Mode": "demo"}
+    assert client.get("/api/health", headers=demo).json()["persons"] == started["persons"]
+    r = client.post("/api/persons", headers=demo, data={"name": "Demo Only"},
+                    files=[("files", (f.name, f.read_bytes(), "image/png")) for f in files])
+    assert r.status_code == 200, r.text
+    assert client.get("/api/health", headers=demo).json()["persons"] == started["persons"] + 1
+    assert client.get("/api/health").json()["persons"] == real_before["persons"]          # real data untouched
+    client.post("/api/demo/start")                                                       # next demo starts fresh
+    assert client.get("/api/health", headers=demo).json()["persons"] == started["persons"]

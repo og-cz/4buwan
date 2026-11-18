@@ -1,8 +1,10 @@
 """Local storage for the 4buwan Signature Verification API.
 
-Two separate data folders under ROOT, one per data mode:
+Separate data folders under ROOT, one per data mode:
     real/    the office's own enrolled people and checks (starts empty)
     sample/  example people and checks seeded from the public CEDAR development writers
+    demo/    a throwaway copy of sample/ for one demo session; rebuilt by POST /api/demo/start and
+             cleared when the service starts, so nothing done in a demo is kept
 Each holds its own sigdesk.db, images/ and profiles/. The mode of a request comes from the
 X-Data-Mode header (or ?mode= on image links) and is kept in a context variable for that request.
 """
@@ -17,7 +19,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(os.environ.get("SIGDESK_DATA", Path(__file__).resolve().parents[1] / "data"))
-MODES = ("real", "sample")
+MODES = ("real", "sample", "demo")
 current_mode: ContextVar[str] = ContextVar("data_mode", default="real")
 
 
@@ -40,6 +42,7 @@ def data_dir(mode: str | None = None) -> Path:
 
 
 migrate_flat_layout()
+shutil.rmtree(ROOT / "demo", ignore_errors=True)   # a demo never outlives the service run
 
 
 class Connection(sqlite3.Connection):
