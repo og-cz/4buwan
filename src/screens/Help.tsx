@@ -1,5 +1,6 @@
 import Icon, { type IconName } from "../components/Icon";
 import PageHeader from "../components/PageHeader";
+import { DemoNotice } from "../components/DemoBar";
 import { useTerms } from "../state/settings";
 
 export default function Help() {
@@ -22,8 +23,23 @@ export default function Help() {
     ["Difference Measure", "One of 17 ways two signatures are compared (distances, angle, correlation and summary values)."],
   ];
   return <div className="page"><PageHeader title="Help" description="How Signature Verification works and how to collect reliable evidence." />
+    <DemoNotice />
     <div className="help-steps">{steps.map(x => <section className="panel" key={x[0]}><span>{x[0]}</span><Icon name={x[2]} size={22} /><h2>{x[1]}</h2><p>{x[3]}</p></section>)}</div>
-    <section className="panel model-card"><h2>Glossary</h2><dl>{glossary.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl></section>
+    <div className="model-card-layout"><section className="panel model-card"><h2>Glossary</h2><dl>{glossary.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl></section>
+      <aside className="model-card-side">
+        <section className="panel side-facts"><span>Good evidence</span><h2>Tips for reliable checks</h2><ul>
+          <li>Scan at 300 dpi or more, dark ink on plain paper.</li>
+          <li>Crop to the signature; leave out stamps, lines and printed text.</li>
+          <li>Enrol 12 signatures written on different occasions where possible.</li>
+          <li>Never test with a signature that was used for enrolment.</li>
+          <li>When the Verdict is Uncertain, ask for a second sample.</li>
+        </ul></section>
+        <section className="panel side-facts"><span>Verify page</span><h2>Keyboard shortcuts</h2><dl>
+          <div><dt><kbd>V</kbd></dt><dd>Run the verification</dd></div>
+          <div><dt><kbd>1</kbd>–<kbd>9</kbd></dt><dd>Show that Reference Sample</dd></div>
+          <div><dt><kbd>O</kbd></dt><dd>Switch side by side and overlay</dd></div>
+        </dl></section>
+      </aside></div>
     <section className="panel limitations"><Icon name="alert" /><div><h2>Honest limitations</h2><p>Signature Verification supports, not replaces, human judgement. Skilled forgeries can be close to genuine signatures. Poor scans can hide useful handwriting detail. Expect some wrong Verdicts: use Uncertain and a second sample when the evidence is not clear.</p></div></section>
   </div>;
 }

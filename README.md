@@ -218,10 +218,10 @@ The service keeps two separate data folders: **Real data** (your own enrolled pe
 | Verification service | `backend/app/` (FastAPI) | Enrolment, verification, cases, decisions, notes, attachments, reports and statistics. Calls the engine; never re-implements it. |
 | Engine | `backend/sigdesk_engine/engine.py` | Frozen copy of the research pipeline: preprocessing, HOG, 17 pair measures, metric J, one-class SVM, provisional decision policy. |
 | Model constants | `backend/sigdesk_engine/artifacts/` | Private, distributed separately: the shared yardstick from the 142 development writers and the Research Lab results. |
-| Local data | `backend/data/real/`, `backend/data/sample/` | One SQLite database plus image and profile folders per data mode. Nothing leaves the computer. |
+| Local data | `backend/data/real/`, `backend/data/sample/`, `backend/data/demo/` | One SQLite database plus image and profile folders per data mode. `demo/` is a throwaway copy of the sample data for a session started with **Continue to demo**; it is rebuilt each time and cleared when the service restarts. Nothing leaves the computer. |
 | Research | `notebook/`, `result/` | The notebooks and their outputs behind the model and the numbers above. |
 
-The Verifier always works on **Real data**. The service has no accounts of its own: it runs on localhost and trusts the local user.
+Signed in with a username and password, the Verifier works on **Real data**; entered with **Continue to demo**, it works on the throwaway demo copy, so nothing done in a demo is kept. The service has no accounts of its own: it runs on localhost and trusts the local user.
 
 ---
 
@@ -281,7 +281,8 @@ Open **http://localhost:8443** in your browser.
 
 | To open | Do this |
 |---|---|
-| The Verifier | Type your username and password, then **Sign in** |
+| The Verifier on your real data | Type your username and password, then **Sign in** |
+| The Verifier on sample people, keeping nothing | Choose **Verifier** in the role list, then continue |
 | Another role (Supervisor or Researcher) | Choose it in the role list below the sign-in form, then continue |
 
 ### Troubleshooting

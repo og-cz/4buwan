@@ -10,6 +10,5 @@ vite.config.*.timestamp-*
 logs/
 *.log
 .tmp-*
-/.figma/design-context/
 test-results/
 playwright-report/

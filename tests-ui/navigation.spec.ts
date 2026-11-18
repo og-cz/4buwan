@@ -10,10 +10,11 @@ async function signIn(page: Page, role: 'Verifier' | 'Supervisor' | 'Researcher'
   await page.getByRole('button', { name: 'Continue to demo' }).click()
 }
 
-test('Verifier: the working system with its 7 modules, Help last, no demo bar', async ({ page }) => {
+test('Verifier: the working system with its 7 modules, Help last, demo bar naming the real model', async ({ page }) => {
   await signIn(page, 'Verifier')
   await expect(sidebarItems(page)).toHaveText(['Dashboard', 'Verify', 'Enrol', 'History', 'Research Lab', 'Settings', 'Help'])
-  await expect(page.locator('.demo-bar')).toHaveCount(0)
+  await expect(page.locator('.demo-bar')).toContainText('real verification model')
+  await expect(page.locator('.demo-bar')).toContainText('Nothing you do here is kept')
   await expect(page.getByRole('group', { name: 'View' })).toHaveCount(0)   // no Simple / Expert switch
 })
 
@@ -42,17 +43,49 @@ test('Sign in needs a username and password and opens the Verifier', async ({ pa
   await signInButton.click()
   await expect(sidebarItems(page)).toHaveText(['Dashboard', 'Verify', 'Enrol', 'History', 'Research Lab', 'Settings', 'Help'])
   await expect(page.getByText('staff01')).toBeVisible()
+  await expect(page.locator('.demo-bar')).toContainText('real data stored on this computer')
 })
 
-test('Verifier never reads Sample data, even with a leftover sample setting in the browser', async ({ page }) => {
+const apiModes = (page: Page) => {
+  const modes: string[] = []
+  page.on('request', r => { if (new URL(r.url()).pathname.startsWith('/api/')) modes.push(r.headers()['x-data-mode'] ?? new URL(r.url()).searchParams.get('mode') ?? '') })
+  return modes
+}
+
+test('A Verifier demo works only on its throwaway demo data, even with a leftover sample setting', async ({ page }) => {
   await page.goto('/')
   await page.evaluate(() => localStorage.setItem('signature-desk.data-mode', 'sample'))
   await page.reload()
-  const modes: string[] = []
-  page.on('request', r => { if (new URL(r.url()).pathname.startsWith('/api/')) modes.push(r.headers()['x-data-mode'] ?? new URL(r.url()).searchParams.get('mode') ?? '') })
-  await signIn(page, 'Verifier')
+  await page.getByLabel('DEMO ROLE').selectOption('Verifier')
+  const modes = apiModes(page)
+  await page.getByRole('button', { name: 'Continue to demo' }).click()
+  await expect(sidebarItems(page)).toHaveCount(7)
+  await page.waitForTimeout(1500)
+  expect(modes.length).toBeGreaterThan(1)
+  expect(modes.filter(m => m !== 'demo'), 'every request of a Verifier demo must use the demo copy').toEqual([])
+})
+
+test('A signed-in Verifier works only on Real data', async ({ page }) => {
+  await page.goto('/')
+  await page.getByLabel('USERNAME').fill('staff01')
+  await page.getByLabel('PASSWORD').fill('demo')
+  const modes = apiModes(page)
+  await page.getByRole('button', { name: 'Sign in' }).click()
   await expect(sidebarItems(page)).toHaveCount(7)
   await page.waitForTimeout(1500)
   expect(modes.length).toBeGreaterThan(0)
-  expect(modes.filter(m => m !== 'real'), 'every Verifier request must use Real data').toEqual([])
+  expect(modes.filter(m => m !== 'real'), 'every request of a signed-in Verifier must use Real data').toEqual([])
+})
+
+test('The demo bar can be turned off in Settings and stays off in every role', async ({ page }) => {
+  await signIn(page, 'Verifier')
+  await sidebarItems(page).filter({ hasText: 'Settings' }).click()
+  await page.getByLabel('Show the yellow DEMO bar at the top of every page').uncheck()
+  await expect(page.locator('.demo-bar')).toHaveCount(0)
+  await page.getByRole('button', { name: 'Log out' }).click()
+  await signIn(page, 'Supervisor')
+  await expect(page.locator('.demo-bar')).toHaveCount(0)
+  await sidebarItems(page).filter({ hasText: 'Settings' }).click()
+  await page.getByLabel('Show the yellow DEMO bar at the top of every page').check()
+  await expect(page.locator('.demo-bar')).toContainText('decoy')
 })

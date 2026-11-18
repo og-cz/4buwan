@@ -19,9 +19,11 @@ tests/                           pytest: engine == notebook, API end to end, dat
 
 Run (with the virtual environment active): `pip install -r requirements.txt`, `pytest -q`, `uvicorn app.main:app --port 8000`.
 
-**Data modes.** Every request names its data folder with the `X-Data-Mode` header (`real` or `sample`, default
-`real`), or `?mode=` on image links. Any other value falls back to `real`. The web interface's Verifier always
-uses `real`; the Supervisor and Researcher views send no requests at all.
+**Data modes.** Every request names its data folder with the `X-Data-Mode` header (`real`, `sample` or `demo`,
+default `real`), or `?mode=` on image links. Any other value falls back to `real`. `POST /api/demo/start` rebuilds
+`data/demo` as a fresh copy of `data/sample`, and the service clears `data/demo` every time it starts, so nothing
+done in a demo is kept. The web interface's Verifier uses `real` when signed in and `demo` when entered with
+Continue to demo; the Supervisor and Researcher views send no requests at all.
 
 **Access.** The service has no accounts or passwords of its own. It listens on localhost only and trusts the
 local user; the sign-in page is part of the web interface.

@@ -1,4 +1,4 @@
-"""Sample data: example people and checks from the public CEDAR development writers.
+"""Sample data: example people and checks from the public CEDAR development writers, and the throwaway demo copy.
 
 Only the 25 CEDAR writers of the notebook's development split are used. The held-back writers are reserved for
 the one-time confirmation of the research results and must never be loaded into the app.
@@ -13,7 +13,7 @@ from pathlib import Path
 
 from fastapi import APIRouter, Form, HTTPException
 
-from .storage import ROOT, current_mode, data_dir
+from .storage import ROOT, current_mode, data_dir, db
 
 # The 25 CEDAR writers in the notebook's development split (SPLIT_SEED 20261014). Do not add others.
 CEDAR_DEV = [5, 10, 12, 16, 17, 18, 20, 21, 22, 23, 24, 26, 27, 29, 34, 35, 36, 40, 42, 45, 46, 47, 49, 53, 54]
@@ -52,6 +52,22 @@ def seed(cedar: Path, writers: list[int] = CEDAR_DEV) -> dict:
         return dict(ok=True, persons=people, checks=checks)
     finally:
         current_mode.reset(token)
+
+
+@router.post("/demo/start")
+def start_demo():
+    """Starts a fresh demo session: the demo folder becomes a new copy of the sample data (or empty if none).
+    Everything enrolled, verified or decided in the demo stays in that copy and is discarded at the next start."""
+    demo, src = ROOT / "demo", ROOT / "sample"
+    shutil.rmtree(demo, ignore_errors=True)
+    if (src / "sigdesk.db").exists(): shutil.copytree(src, demo, ignore=shutil.ignore_patterns(SEED_FILE))
+    token = current_mode.set("demo")
+    try:
+        with db() as c:
+            persons, checks = (c.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0] for t in ("persons", "checks"))
+    finally:
+        current_mode.reset(token)
+    return dict(ok=True, persons=persons, checks=checks)
 
 
 @router.post("/sample/reset")

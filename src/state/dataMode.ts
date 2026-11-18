@@ -1,11 +1,11 @@
 import { useSyncExternalStore } from "react";
 
-export type DataMode = "real" | "sample";
+export type DataMode = "real" | "sample" | "demo";
 const KEY = "signature-desk.data-mode";
 const listeners = new Set<() => void>();
 
 function read(): DataMode {
-  try { return window.localStorage.getItem(KEY) === "sample" ? "sample" : "real"; } catch { return "real"; }
+  try { const v = window.localStorage.getItem(KEY); return v === "sample" || v === "demo" ? v : "real"; } catch { return "real"; }
 }
 
 let current: DataMode = read();

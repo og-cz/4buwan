@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { resetSampleData } from "../api/client";
 import Button from "../components/Button";
+import { DemoBarSwitch, DemoNotice } from "../components/DemoBar";
 import { useDataMode } from "../state/dataMode";
 import PageHeader from "../components/PageHeader";
 import { saveSettings, strictnessHelp, uncertainHelp, useSettings, type Settings as S, type Term, type View } from "../state/settings";
@@ -11,14 +11,6 @@ const terms: Term[] = ["Person", "Client", "Member", "Student", "Employee", "Cus
 export default function Settings({ notify }: { notify: (m: string) => void }) {
   const saved = useSettings();
   const [mode] = useDataMode();
-  const [resetting, setResetting] = useState(false);
-  const [resetError, setResetError] = useState<string | null>(null);
-  async function reset() {
-    setResetting(true); setResetError(null);
-    try { const r = await resetSampleData(); notify(`Sample data rebuilt: ${r.persons} people, ${r.checks} checks.`); }
-    catch (e) { setResetError(e instanceof Error ? e.message : String(e)); }
-    finally { setResetting(false); }
-  }
   const [s, setS] = useState<S>(saved);
   const set = <K extends keyof S>(k: K, v: S[K]) => setS(cur => ({ ...cur, [k]: v }));
   function logo(file: File) {
@@ -26,7 +18,7 @@ export default function Settings({ notify }: { notify: (m: string) => void }) {
     r.onload = () => typeof r.result === "string" && set("orgLogo", r.result);
     r.readAsDataURL(file);
   }
-  return <div className="page"><PageHeader title="Settings" description={`Organisation, terminology and decision behaviour for ${mode === "sample" ? "Sample data" : "Real data"}. Each data mode keeps its own settings on this computer.`} action={<Button icon="save" onClick={() => { saveSettings(s); notify("Settings saved."); }}>Save Settings</Button>} />
+  return <div className="page"><PageHeader title="Settings" description={mode === "demo" ? "Organisation, terminology and decision behaviour for this demo session. Demo settings are kept apart from the real workspace." : "Organisation, terminology and decision behaviour for Real data. Settings are kept on this computer."} action={<Button icon="save" onClick={() => { saveSettings(s); notify("Settings saved."); }}>Save Settings</Button>} />
     <div className="settings-grid">
       <section className="panel"><div className="panel-head"><div><span>ORGANISATION</span><h2>Workspace identity</h2></div></div>
         <label className="compact-field"><span>ORGANISATION NAME</span><input value={s.orgName} onChange={e => set("orgName", e.target.value)} placeholder="Shown on Evidence Reports" /></label>
@@ -45,7 +37,11 @@ export default function Settings({ notify }: { notify: (m: string) => void }) {
       <section className="panel"><div className="panel-head"><div><span>DATA & PRIVACY</span><h2>Retention and backup</h2></div></div>
         <label className="compact-field"><span>RETENTION PERIOD · COMING SOON</span><select disabled><option>Until manually deleted</option></select></label>
         <div className="settings-actions"><Button secondary disabled title="Coming soon">Back up data</Button><Button secondary disabled title="Coming soon">Restore backup</Button></div>
-        {mode === "sample" && <><div className="panel-head settings-sub"><div><span>SAMPLE DATA</span><h2>Reset sample data</h2></div></div><p className="input-hint">Rebuilds the 25 sample people from the CEDAR development writers and computes their 50 example checks again. Real data is not touched.</p><div className="settings-actions"><Button secondary icon="history" disabled={resetting} onClick={() => void reset()}>{resetting ? "Rebuilding… (about 20 seconds)" : "Reset sample data"}</Button></div>{resetError && <p className="input-hint error-text">{resetError}</p>}</>}
       </section>
-    </div></div>;
+      <section className="panel"><div className="panel-head"><div><span>DEMONSTRATION</span><h2>Demo bar</h2></div></div>
+        <DemoBarSwitch />
+        <p className="input-hint">The bar says which role you are in and whether it uses the real model and data. It applies at once to every role.</p>
+      </section>
+    </div>
+    <DemoNotice /></div>;
 }
