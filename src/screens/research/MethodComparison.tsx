@@ -32,6 +32,6 @@ export default function MethodComparison({ rows }: { rows: PerformanceRow[] }) {
     })}</div>
     {gain !== null && ours && <section className="reliability panel"><Icon name="help" /><div><span>Is the improvement reliable?</span><h2>Our method&apos;s gain over the shared yardstick is small ({gain >= 0 ? "+" : ""}{gain.toFixed(3)}) but statistically reliable on the {ours.writers} development writers.</h2><p>Paired over writers (Wilcoxon test, Holm correction).{fromShared !== null && <> {Math.round(fromShared * 100)}% of the improvement over the standard method comes from the shared yardstick, an existing technique; R1-WAW adds the rest.</>}</p></div></section>}
     <R1WawExplainer />
-    {tested.length > 0 && <section className="tested panel"><span>Tested — did not help</span><div>{tested.map(r => <Tag key={r.condition}>{r.condition} · AUC {r.AUC.toFixed(3)}</Tag>)}</div></section>}
+    {tested.length > 0 && <section className="tested panel"><span>Tested — did not help</span><div>{tested.map(r => <Tag key={r.condition}>{r.condition.replace(/\s*\(v\d+\)/, "")} · AUC {r.AUC.toFixed(3)}</Tag>)}</div></section>}
   </div>;
 }
