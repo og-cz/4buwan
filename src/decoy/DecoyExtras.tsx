@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "../components/Button";
 import Icon from "../components/Icon";
 import PageHeader from "../components/PageHeader";
+import { DemoBarSwitch, DemoNotice } from "../components/DemoBar";
 import Tag from "../components/Tag";
 
 /** Demo: office dashboard with example figures. */
@@ -28,7 +29,9 @@ export function DecoySettings() {
       <section className="panel"><div className="panel-head"><div><span>OFFICE</span><h2>Workspace identity</h2></div></div><div className="form-grid"><label><span>OFFICE NAME</span><input placeholder="Your office name" /></label><label><span>CALL PEOPLE</span><select><option>Client</option><option>Member</option><option>Person</option></select></label></div></section>
       <section className="panel"><div className="panel-head"><div><span>CHECKING</span><h2>Default behaviour</h2></div></div><div className="form-grid"><label><span>STRICTNESS</span><select><option>Standard</option><option>Lenient</option><option>Strict</option></select></label><label><span>UNCERTAIN ZONE</span><select><option>Standard</option><option>Narrow</option><option>Wide</option></select></label></div></section>
       <section className="panel"><div className="panel-head"><div><span>DATA</span><h2>Retention and backup</h2></div></div><div className="form-grid"><label><span>KEEP RECORDS FOR</span><select><option>7 years</option><option>5 years</option></select></label><label><span>BACKUP</span><select><option>Every night</option><option>Every week</option></select></label></div></section>
+      <section className="panel"><div className="panel-head"><div><span>DEMONSTRATION</span><h2>Demo bar</h2></div></div><DemoBarSwitch /><p className="input-hint">This switch works: it shows or hides the yellow bar in every role.</p></section>
     </div>
+    <DemoNotice />
   </div>;
 }
 
@@ -36,6 +39,7 @@ export function DecoySettings() {
 export function DecoyHelp() {
   const steps: [string, string, "enrol" | "verify" | "history" | "check", string][] = [["01", "Enrol", "enrol", "Collect 12 genuine signatures from the client."], ["02", "Verify", "verify", "Check a new signature against the client's profile."], ["03", "Review", "history", "Uncertain results go to a supervisor."], ["04", "Decide", "check", "A staff member makes the final decision."]];
   return <div className="page"><PageHeader title="Help" description="How Signature Verification works." />
+    <DemoNotice />
     <div className="help-steps">{steps.map(x => <section className="panel" key={x[0]}><span>{x[0]}</span><Icon name={x[2]} size={22} /><h2>{x[1]}</h2><p>{x[3]}</p></section>)}</div>
     <section className="panel limitations"><Icon name="alert" /><div><h2>Good to know</h2><p>The result is advice, not proof. Ask for another signature when the result is uncertain or the scan is unclear.</p></div></section>
   </div>;

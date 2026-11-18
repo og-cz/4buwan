@@ -1,4 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
+import DemoBar from "../components/DemoBar";
 import Shell from "../components/Shell";
 import type { NavItem } from "../components/NavList";
 import type { IconName } from "../components/Icon";
@@ -43,7 +44,7 @@ export default function DecoyApp({ role, user, logout }: { role: Exclude<Role, "
   }
   const items: NavItem[] = roleScreens[role].map(s => ({ key: s, label: s, icon: icons[s], bottom: s === "Help" }));
   return <Shell demo={role} user={user} items={items} active={active} onNav={key => go(key as DecoyScreen)} crumb={screen}
-    strip={<div className="sample-strip demo-bar" role="note"><strong>DEMO</strong><span>This {role} view is a demonstration. It does not use the verification model or any stored data; everything shown is example content.</span></div>}
+    strip={<DemoBar>This {role} view is a decoy for demonstration. It does not use the verification model or any stored data; everything shown is example content.</DemoBar>}
     note={{ title: "Demonstration", text: "Example content only. Nothing is saved." }}
     footer="Demonstration view. No model or stored data is used." logout={logout}>
     {page}
