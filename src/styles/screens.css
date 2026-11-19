@@ -261,7 +261,10 @@
 .r1waw-diagram { max-width: 560px; }
 .chart-svg .bar-own { fill: var(--accent); }
 .chart-svg .bar-shared { fill: var(--chart-band); }
-.formula { align-self: flex-start; padding: var(--s2) var(--s3); border: 1px solid var(--border); border-radius: var(--r-sm); background: var(--surface-2); font: var(--t-mono); }
+.formula { align-self: flex-start; padding: var(--s3) var(--s5); border: 1px solid var(--border); border-radius: var(--r-sm); background: var(--surface-2); color: var(--text); }
+.formula math { font-size: 24px; }
+math { font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", math; }
+.chart-note math { font-size: 1.1em; }
 
 /* ---------- main navigation: Help at the foot ---------- */
 .sidebar .main-nav { flex: 1; min-height: 0; }
