@@ -181,7 +181,7 @@
 .plain-verdict p { color: var(--text-2); }
 .plain-verdict > div:last-child { border-left: 1px solid var(--border); padding-left: var(--s4); display: flex; flex-direction: column; gap: var(--s1); }
 .plain-verdict > div small { font: var(--t-small); color: var(--text-2); }
-.model-card { max-width: 900px; }
+.model-card { max-width: none; }
 .model-card h2 { font: var(--t-h2); margin-bottom: var(--s2); }
 .model-card > p { color: var(--text-2); }
 .model-card dl { margin: var(--s4) 0 0; }
@@ -257,7 +257,8 @@
 .attachment-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: var(--s2); }
 .attachment-grid figure { margin: 0; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .attachment-grid figcaption { font: var(--t-small); color: var(--text-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.r1waw-main p { color: var(--text-2); max-width: 80ch; }
+.r1waw { display: flex; flex-direction: column; gap: var(--s3); }
+.r1waw p { color: var(--text-2); max-width: 80ch; }
 .r1waw-diagram { max-width: 560px; }
 .chart-svg .bar-own { fill: var(--accent); }
 .chart-svg .bar-shared { fill: var(--chart-band); }
@@ -275,29 +276,5 @@ math { font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", math; 
 
 .nav-bottom:empty { display: none; }
 
-/* Two-column pages: main card on the left, short facts on the right (Model card, Help, R1-WAW). */
-.model-card-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); gap: var(--s5); align-items: start; }
-.model-card-layout .model-card { max-width: none; }
-.model-card-side { display: flex; flex-direction: column; gap: var(--s5); }
-.side-facts { display: flex; flex-direction: column; gap: var(--s2); }
-.side-facts > span { font: var(--t-label); letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--accent-text); }
-.side-facts h2 { font: var(--t-h3); }
-.side-facts p, .side-facts li { color: var(--text-2); font: var(--t-small); }
-.side-facts ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: var(--s1); }
-.side-facts dl { margin: 0; }
-.side-facts dl > div { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: var(--s2); padding: var(--s2) 0; border-top: 1px solid var(--border); }
-.side-facts dt { color: var(--text-2); font: var(--t-small); }
-.side-facts dd { margin: 0; font: var(--t-small); }
-.side-facts kbd { font: var(--t-mono); padding: 0 5px; border: 1px solid var(--border-strong); border-radius: var(--r-sm); }
-.mini-table { width: 100%; border-collapse: collapse; font: var(--t-small); }
-.mini-table th { text-align: left; font: var(--t-label); letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--text-3); padding: var(--s1) 0; }
-.mini-table td { padding: var(--s2) 0; border-top: 1px solid var(--border); font-variant-numeric: tabular-nums; }
-.r1waw { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 340px); gap: var(--s6); align-items: start; }
-.r1waw-main { display: flex; flex-direction: column; gap: var(--s3); min-width: 0; }
-.r1waw .side-facts { padding-left: var(--s5); border-left: 1px solid var(--border); }
 .demo-switch { display: flex; align-items: center; gap: var(--s2); font: var(--t-body); }
 .demo-loading { padding: var(--s6); }
-@media (max-width: 1100px) {
-  .model-card-layout, .r1waw { grid-template-columns: minmax(0, 1fr); }
-  .r1waw .side-facts { padding-left: 0; border-left: 0; border-top: 1px solid var(--border); padding-top: var(--s4); }
-}

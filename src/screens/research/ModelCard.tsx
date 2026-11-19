@@ -1,15 +1,13 @@
 import PageHeader from "../../components/PageHeader";
 import { LIMITATIONS } from "../../limitations";
 import { OUR_METHOD_LONG } from "../../methods";
-import { percent } from "../../format";
-import type { ModelMeta, PerformanceRow, ResearchResults } from "../../types";
-import { CONDITIONS, corpora, find } from "./corpora";
+import type { ModelMeta, ResearchResults } from "../../types";
 
-export default function ModelCard({ model, results, rows }: { model: ModelMeta | null; results: ResearchResults; rows: PerformanceRow[] }) {
+export default function ModelCard({ model, results }: { model: ModelMeta | null; results: ResearchResults }) {
   const dev = results.split.development, held = results.split.reserved;
   const s = model?.settings;
   return <div className="page"><PageHeader title="Model card" description="What the model does, how it was built, and where it can fail." />
-    <div className="model-card-layout"><section className="panel model-card">
+    <section className="panel model-card">
       <h2>{OUR_METHOD_LONG}</h2>
       <p>Enrol 12 genuine signatures; the tool learns how much this person&apos;s signature naturally varies. A questioned signature is compared with each of the 12 using 17 kinds of difference and scored by a model trained only on genuine signatures. A human decides.</p>
       <dl>
@@ -25,17 +23,6 @@ export default function ModelCard({ model, results, rows }: { model: ModelMeta |
         {model && <div><dt>Exported</dt><dd>{model.exported} · constants {model.constants_sha1}</dd></div>}
       </dl>
     </section>
-    <aside className="model-card-side">
-      <section className="panel side-facts"><span>Results · development writers</span><h2>Our method, by dataset</h2>
-        <table className="mini-table"><thead><tr><th>Dataset</th><th>Writers</th><th>AUC</th><th>EER</th></tr></thead><tbody>
-          {corpora.map(([k, label]) => { const r = find(rows, CONDITIONS.ours, k); return r && <tr key={k}><td>{label}</td><td>{r.writers}</td><td>{r.AUC.toFixed(3)}</td><td>{percent(r.EER)}</td></tr>; })}
-        </tbody></table>
-        <p className="chart-note">AUC: 1.0 perfect, 0.5 guessing. EER: the error rate where false accepts equal false rejects.</p>
-      </section>
-      <section className="panel side-facts"><span>Decision rule · provisional</span><h2>How a score becomes a verdict</h2>
-        <p>The Decision Line sits one spread below the mean of the person&apos;s 12 leave-one-out genuine scores; scores within one spread of it are Uncertain. Strictness and the Uncertain Zone in Settings move the line; they never retrain the model.</p>
-      </section>
-    </aside></div>
     <section className="panel limitations"><div><h2>Limitations</h2><p>{LIMITATIONS}</p></div></section>
   </div>;
 }

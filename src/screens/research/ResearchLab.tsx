@@ -21,6 +21,6 @@ export default function ResearchLab({ model }: { model: ModelMeta | null }) {
       : error || !perf.data || !results.data ? <ErrorState message={error ?? "No research results."} retry={() => { perf.reload(); results.reload(); }} />
       : tab === "methods" ? <MethodComparison rows={perf.data} />
       : tab === "dataset" ? <DatasetCheck rows={perf.data} />
-      : <ModelCard model={model} results={results.data} rows={perf.data} />}
+      : <ModelCard model={model} results={results.data} />}
   </div>;
 }
