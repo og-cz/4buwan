@@ -16,5 +16,5 @@ export function DemoBarSwitch() {
 
 /** Plain notice used on Help and Settings: this build is a demonstration, not the full application. */
 export function DemoNotice() {
-  return <section className="panel limitations demo-notice"><div><h2>Demonstration build</h2><p>This system is a demonstration of 4buwan, not the full application. The Verifier runs the real verification model; the Supervisor and Researcher views are decoys with example content. Accounts, backups and other office features of a full release are not included.</p></div></section>;
+  return <section className="panel limitations demo-notice"><div><h2>Demonstration build</h2><p>A demonstration of 4buwan, not the full application.</p></div></section>;
 }
