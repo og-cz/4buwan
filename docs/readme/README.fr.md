@@ -148,33 +148,11 @@ Profils, vérifications, taux d’incertitude et décisions en attente d’un co
 
 Vérification hors ligne de signatures dépendante du scripteur. Chaque scripteur est enrôlé avec **12 signatures authentiques et aucune contrefaçon**.
 
-### Chaîne de traitement
+### Méthode (résumé)
 
-| Étape | Méthode | Détail |
-|---|---|---|
-| Prétraitement | Inversion → suppression du fond (Otsu) → recadrage → marges → redimensionnement | 100 × 100 px |
-| Descripteur | HOG | 2 916 dimensions par signature |
-| Représentation | Dissimilarité par paires | 17 mesures de différence par paire ; 66 paires authentiques par scripteur |
-| Normalisation | Mise à l'échelle par mesure | Taille typique sur les scripteurs de développement |
-| Métrique | Covariance adaptée au scripteur de rang 1 (J) | Blanchiment partagé (G) adapté selon sa direction principale |
-| Classifieur | SVM à une classe | Entraîné sur les paires authentiques uniquement ; mêmes réglages pour tous |
-| Score | Moyenne des sorties SVM | La signature testée est appariée aux 12 références |
+Les signatures sont comparées par paires. Un modèle appris uniquement sur les paires authentiques du scripteur note une signature contestée face aux 12 références. Le cœur de la méthode, **R1-WAW** (blanchiment adaptatif au scripteur de rang un), ajuste à chaque scripteur un étalon partagé par de nombreux scripteurs avec un seul paramètre ; 12 références suffisent donc à l’estimer.
 
-### Métrique
-
-La métrique partagée `W_G` blanchit les 17 mesures avec la covariance intra-scripteur mise en commun. J remplace la dispersion commune selon la direction principale `u₁` par la dispersion propre du scripteur `σ` ; toutes les autres directions restent partagées.
-
-```math
-W_J = W_G + \left(\sigma^{-1} - \lambda_1^{-1/2}\right) u_1 u_1^{\top}
-```
-
-Un seul paramètre par scripteur : 12 références suffisent pour l'estimer.
-
-| Code | Métrique | Paramètres par scripteur |
-|---|---|---|
-| B | Diagonale globale | 0 |
-| G | Covariance complète commune | 0 |
-| **J** | **Adaptée au scripteur, rang 1** | **1** |
+L’implémentation n’est pas publiée : le moteur de vérification est fourni sous forme compilée (`backend/sigdesk_engine/engine.pyc`, Python 3.14).
 
 ### Jeux de données
 

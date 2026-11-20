@@ -1,6 +1,6 @@
 # Testing 4buwan Signature Verification
 
-You need **Python 3.10+** and **Node.js 20+**. Use two terminals, both opened in the repository root.
+You need **Python 3.14** (the engine is compiled for it) and **Node.js 20+**. Use two terminals, both opened in the repository root.
 
 ## 1. Verification service (terminal 1)
 

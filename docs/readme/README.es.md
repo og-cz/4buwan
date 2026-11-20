@@ -148,33 +148,11 @@ Perfiles, verificaciones, tasa de inciertos y decisiones pendientes de un vistaz
 
 Verificación offline de firmas dependiente del escritor. Cada escritor se registra con **12 firmas genuinas y ninguna falsificación**.
 
-### Flujo de procesamiento
+### Método (resumen)
 
-| Etapa | Método | Detalle |
-|---|---|---|
-| Preprocesamiento | Inversión → eliminación de fondo (Otsu) → recorte → relleno → redimensionado | 100 × 100 px |
-| Descriptor | HOG | 2.916 dimensiones por firma |
-| Representación | Disimilitud por pares | 17 medidas de diferencia por par; 66 pares genuinos por escritor |
-| Normalización | Escala por medida | Tamaño típico entre los escritores de desarrollo |
-| Métrica | Covarianza adaptativa al escritor de rango 1 (J) | Blanqueo compartido (G) adaptado en su dirección principal |
-| Clasificador | SVM de una clase | Entrenado solo con pares genuinos; misma configuración para todos |
-| Puntuación | Media de la salida del SVM | La firma de prueba se empareja con las 12 referencias |
+Las firmas se comparan por pares. Un modelo aprendido solo con los pares genuinos del escritor puntúa una firma cuestionada frente a las 12 referencias. El núcleo del método, **R1-WAW** (blanqueamiento adaptativo al escritor de rango uno), adapta a cada escritor una medida compartida por muchos escritores con un solo parámetro, de modo que 12 referencias bastan para ajustarlo.
 
-### Métrica
-
-La métrica compartida `W_G` blanquea las 17 medidas con la covarianza intra-escritor agrupada. J sustituye la dispersión agrupada en la dirección principal `u₁` por la dispersión propia del escritor `σ`; todas las demás direcciones siguen siendo compartidas.
-
-```math
-W_J = W_G + \left(\sigma^{-1} - \lambda_1^{-1/2}\right) u_1 u_1^{\top}
-```
-
-Un solo parámetro por escritor, por lo que 12 referencias bastan para estimarlo.
-
-| Código | Métrica | Parámetros por escritor |
-|---|---|---|
-| B | Diagonal global | 0 |
-| G | Covarianza completa agrupada | 0 |
-| **J** | **Adaptativa al escritor de rango 1** | **1** |
+La implementación no se publica: el motor de verificación se distribuye compilado (`backend/sigdesk_engine/engine.pyc`, Python 3.14).
 
 ### Conjuntos de datos
 
