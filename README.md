@@ -285,6 +285,18 @@ Open **http://localhost:8443** in your browser.
 
 See [TESTING.md](TESTING.md) for a step-by-step manual test.
 
+### Portable app (no installation)
+
+`4buwan.exe` runs the whole system on any Windows 10 or 11 computer without Python, Node or npm. Double-click it: a small window opens, and the app opens in the browser a few seconds later. Close that window to stop it. Data is kept in a `4buwan-data` folder next to the exe.
+
+To build it (in `backend`, venv active, after `pip install pyinstaller`):
+
+```bash
+python tools/build_portable.py
+```
+
+The result is `release/4buwan.exe`. It contains the private model constants, so share it privately and never attach it to a public release.
+
 ---
 
 ## License
