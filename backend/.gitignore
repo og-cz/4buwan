@@ -4,3 +4,6 @@ __pycache__/
 .pytest_cache/
 sigdesk_engine/artifacts/
 tests/fixtures/
+# The engine source and the constants exporter are private; the repository ships engine.pyc instead.
+sigdesk_engine/engine.py
+tools/export_constants.py
