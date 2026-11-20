@@ -148,33 +148,11 @@ Mga profile, pagsusuri, uncertain rate at mga nakabinbing desisyon sa isang ting
 
 Offline na pagpapatunay ng pirma na nakadepende sa sumulat. Ang bawat sumulat ay ini-enroll gamit ang **12 tunay na pirma at walang pineke**.
 
-### Pipeline
+### Paraan (buod)
 
-| Yugto | Paraan | Detalye |
-|---|---|---|
-| Preprocessing | Invert → pag-alis ng background (Otsu) → crop → pad → resize | 100 × 100 px |
-| Descriptor | HOG | 2,916 dimensyon bawat pirma |
-| Representasyon | Pairwise na pagkakaiba | 17 sukat ng pagkakaiba bawat pares; 66 tunay na pares bawat sumulat |
-| Normalisasyon | Scale bawat sukat | Karaniwang laki sa mga development na sumulat |
-| Metric | Rank-1 writer-adaptive na covariance (J) | Shared whitening (G) na inaangkop sa pangunahing direksyon nito |
-| Classifier | One-class SVM | Sinanay sa tunay na pares lamang; parehong setting para sa lahat |
-| Pag-score | Average ng SVM output | Ipinapares ang test na pirma sa lahat ng 12 reference |
+Pinaghahambing ang mga pirma nang dala-dalawa. Isang modelong natuto lamang sa tunay na mga pares ng sumulat ang nagbibigay ng score sa pirmang sinusuri laban sa lahat ng 12 reference. Ang ubod ng paraan, ang **R1-WAW** (rank-one writer-adaptive whitening), ay iniaangkop sa bawat sumulat ang panukat na pinagsasaluhan ng maraming sumulat gamit ang iisang parameter, kaya sapat ang 12 reference para tantiyahin ito.
 
-### Metric
-
-Ang shared na metric na `W_G` ay nagwa-whiten sa 17 sukat gamit ang pinagsamang within-writer covariance. Pinapalitan ng J ang pinagsamang spread sa pangunahing direksyong `u₁` ng sariling spread ng sumulat na `σ`; nananatiling shared ang lahat ng iba pang direksyon.
-
-```math
-W_J = W_G + \left(\sigma^{-1} - \lambda_1^{-1/2}\right) u_1 u_1^{\top}
-```
-
-Isang parameter lamang bawat sumulat, kaya sapat ang 12 reference para tantiyahin ito.
-
-| Code | Metric | Parameter bawat sumulat |
-|---|---|---|
-| B | Global diagonal | 0 |
-| G | Pinagsamang full covariance | 0 |
-| **J** | **Rank-1 writer-adaptive** | **1** |
+Hindi inilalathala ang implementasyon: naka-compile ang verification engine (`backend/sigdesk_engine/engine.pyc`, Python 3.14).
 
 ### Mga Dataset
 

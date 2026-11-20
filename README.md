@@ -148,33 +148,11 @@ Profiles, checks, the uncertain rate and pending decisions at a glance.
 
 Writer-dependent offline signature verification. Each writer is enrolled with **12 genuine signatures and no forgeries**.
 
-### Pipeline
+### Method (abstract)
 
-| Stage | Method | Detail |
-|---|---|---|
-| Preprocessing | Invert → Otsu background removal → crop → pad → resize | 100 × 100 px |
-| Descriptor | HOG | 2,916 dimensions per signature |
-| Representation | Pairwise dissimilarity | 17 difference measures per pair; 66 genuine pairs per writer |
-| Normalisation | Per-measure scale | Typical size across development writers |
-| Metric | Rank-1 writer-adaptive covariance (J) | Shared whitening (G) adapted along its principal direction |
-| Classifier | One-class SVM | Trained on genuine pairs only; identical settings for every writer |
-| Scoring | Mean SVM output | Test signature paired with all 12 references |
+Signatures are compared in pairs. A model learned only from the writer's genuine pairs scores a questioned signature against all 12 references. The core of the method, **R1-WAW** (rank-one writer-adaptive whitening), adapts a yardstick shared across many writers to each writer with a single parameter, so 12 references are enough to fit it.
 
-### Metric
-
-The shared metric `W_G` whitens the 17 measures with the pooled within-writer covariance. J replaces the pooled spread along the principal direction `u₁` with the writer's own spread `σ`; every other direction stays shared.
-
-```math
-W_J = W_G + \left(\sigma^{-1} - \lambda_1^{-1/2}\right) u_1 u_1^{\top}
-```
-
-One parameter per writer, so 12 references are enough to estimate it.
-
-| Code | Metric | Per-writer parameters |
-|---|---|---|
-| B | Global diagonal | 0 |
-| G | Pooled full covariance | 0 |
-| **J** | **Rank-1 writer-adaptive** | **1** |
+The implementation is not published: the verification engine ships in compiled form (`backend/sigdesk_engine/engine.pyc`, Python 3.14).
 
 ### Datasets
 
@@ -216,7 +194,7 @@ The service keeps two separate data folders: **Real data** (your own enrolled pe
 |---|---|---|
 | Web interface | `src/` (React, Vite) | Sign-in, the Verifier modules (`src/screens`), the Supervisor and Researcher views (`src/decoy`). All requests go through `src/api/client.ts`. |
 | Verification service | `backend/app/` (FastAPI) | Enrolment, verification, cases, decisions, notes, attachments, reports and statistics. Calls the engine; never re-implements it. |
-| Engine | `backend/sigdesk_engine/engine.py` | Frozen copy of the research pipeline: preprocessing, HOG, 17 pair measures, metric J, one-class SVM, provisional decision policy. |
+| Engine | `backend/sigdesk_engine/engine.pyc` | The verification model, shipped compiled for Python 3.14. The source is kept private. |
 | Model constants | `backend/sigdesk_engine/artifacts/` | Private, distributed separately: the shared yardstick from the 142 development writers and the Research Lab results. |
 | Local data | `backend/data/real/`, `backend/data/sample/`, `backend/data/demo/` | One SQLite database plus image and profile folders per data mode. `demo/` is a throwaway copy of the sample data for a session started with **Continue to demo**; it is rebuilt each time and cleared when the service restarts. Nothing leaves the computer. |
 | Research | `notebook/`, `result/` | The notebooks and their outputs behind the model and the numbers above. |
@@ -237,6 +215,8 @@ cd 4buwan
 ```
 
 ### 2. Start the verification service (terminal 1)
+
+The engine is compiled for **Python 3.14**, so the virtual environment must be made with Python 3.14.
 
 **First time only** (creates the Python environment and installs the packages):
 
