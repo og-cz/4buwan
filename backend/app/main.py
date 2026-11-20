@@ -11,6 +11,7 @@ import base64
 import csv
 import io
 import json
+import os
 import uuid
 from collections import Counter
 
@@ -253,3 +254,8 @@ from .sample import router as sample_router  # noqa: E402  (sample data seed and
 
 app.include_router(cases_router)
 app.include_router(sample_router)
+
+# Portable build (portable.py): the built web interface is served from the same address as the API.
+if os.environ.get("SIGDESK_STATIC") and os.path.isdir(os.environ["SIGDESK_STATIC"]):
+    from fastapi.staticfiles import StaticFiles
+    app.mount("/", StaticFiles(directory=os.environ["SIGDESK_STATIC"], html=True), name="web")
