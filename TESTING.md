@@ -21,7 +21,7 @@ Expected: **39 passed**. The tests check that:
 - uploads that are not images, unknown strictness or uncertain-zone values, and non-image attachments are refused with a clear message (400), not a crash;
 - stored image paths are relative to the data folder, and older absolute paths are migrated once;
 - Real data and Sample data are separate folders, a fresh Real folder is empty, and the sample seed only uses CEDAR development writers;
-- a demo session works on its own copy of the sample data, leaves Real data untouched, and starts fresh every time.
+- a demo session starts empty, leaves Real data untouched, and keeps nothing for the next demo.
 
 The engine constants (`backend/sigdesk_engine/artifacts/`) and the test images (`backend/tests/fixtures/`)
 are distributed separately and must be in place before the tests or the service can run.
@@ -50,7 +50,7 @@ Layout check (no sideways scrolling at 360–1440 px; uses the installed Microso
 npm run test:ui
 ```
 
-The same run also checks the sidebars (Verifier 7 items, Supervisor 8, Researcher 10), the yellow DEMO bar text of each role and its on/off switch in Settings, that Sign in stays disabled until a username and password are typed, that a signed-in Verifier only uses Real data and a Verifier demo only its throwaway copy, and that the Supervisor and Researcher demos make no request to the analysis service. Run it with both servers started; to test a server on another address, set `APP_URL` (for example `APP_URL=http://localhost:8443`).
+The same run also checks the sidebars (Verifier 7 items, Supervisor 8, Researcher 10), the DEMO bar text of each role (yellow for the Verifier, red for the Supervisor and Researcher decoys) and its on/off switch in Settings, that Sign in stays disabled until a username and password are typed, that a signed-in Verifier only uses Real data and a Verifier demo only its throwaway copy, and that the Supervisor and Researcher demos make no request to the analysis service. Run it with both servers started; to test a server on another address, set `APP_URL` (for example `APP_URL=http://localhost:8443`).
 
 ## 3. Manual test script
 
@@ -58,7 +58,7 @@ The same run also checks the sidebars (Verifier 7 items, Supervisor 8, Researche
 |---|---|---|
 | 1 | Type any username and password, then **Sign in** (or choose **Verifier** under DEMO ROLE and **Continue to demo**) | The working system: Dashboard, Verify, Enrol, History, Research Lab, Settings, Help |
 | 1b | Log out → **Verifier** under DEMO ROLE → **Continue to demo** → enrol or verify something → log out and continue to the demo again | The yellow bar says nothing is kept; the new person or check is gone in the next demo |
-| 2 | Log out → choose **Supervisor** or **Researcher** under DEMO ROLE → **Continue to demo** | Yellow DEMO bar; example content only (Staff Accounts, Review Queue, Method Comparison…); no model or stored data is used |
+| 2 | Log out → choose **Supervisor** or **Researcher** under DEMO ROLE → **Continue to demo** | Red DEMO bar; example content only (Staff Accounts, Review Queue, Method Comparison…); no model or stored data is used |
 | 3 | Verifier → Enrol | Enrol a person with 12 genuine signatures (for example `demo_data/Person_A_053/enrol`) |
 | 4 | Verifier → Verify → Demo Person 05 (from `tools/seed_demo.py`) → upload `full_org/original_5_14.png` | A verdict for a genuine sample *not* used for enrolment |
 | 5 | Same person → upload `full_forg/forgeries_5_3.png` | A verdict for a forgery |

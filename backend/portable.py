@@ -3,7 +3,6 @@
 Built into 4buwan.exe by tools/build_portable.py. Data is kept in a "4buwan-data" folder next to the exe.
 """
 import os
-import shutil
 import socket
 import sys
 import threading
@@ -16,9 +15,6 @@ DATA = HOME / "4buwan-data"
 
 os.environ.setdefault("SIGDESK_DATA", str(DATA))
 os.environ.setdefault("SIGDESK_STATIC", str(BUNDLE / "web"))
-# First run: copy the bundled sample people so Continue to demo has someone to verify against.
-if not (DATA / "sample" / "sigdesk.db").exists() and (BUNDLE / "sample").is_dir():
-    shutil.copytree(BUNDLE / "sample", DATA / "sample", dirs_exist_ok=True)
 
 
 def free_port(start: int = 8765) -> int:

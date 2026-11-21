@@ -1,4 +1,4 @@
-"""Sample data: example people and checks from the public CEDAR development writers, and the throwaway demo copy.
+"""Sample data: example people and checks from the public CEDAR development writers, and the empty demo session.
 
 Only the 25 CEDAR writers of the notebook's development split are used. The held-back writers are reserved for
 the one-time confirmation of the research results and must never be loaded into the app.
@@ -56,13 +56,14 @@ def seed(cedar: Path, writers: list[int] = CEDAR_DEV) -> dict:
 
 @router.post("/demo/start")
 def start_demo():
-    """Starts a fresh demo session: the demo folder becomes a new copy of the sample data (or empty if none).
-    Everything enrolled, verified or decided in the demo stays in that copy and is discarded at the next start."""
-    demo, src = ROOT / "demo", ROOT / "sample"
-    shutil.rmtree(demo, ignore_errors=True)
-    if (src / "sigdesk.db").exists(): shutil.copytree(src, demo, ignore=shutil.ignore_patterns(SEED_FILE))
+    """Starts a fresh, empty demo session. Everything enrolled, verified or decided in the demo is
+    discarded at the next start (and when the service restarts)."""
     token = current_mode.set("demo")
     try:
+        with db() as c:
+            for table in ("persons", "samples", "checks", "events", "attachments"): c.execute(f"DELETE FROM {table}")
+        for folder in ("images", "profiles"):
+            for f in (data_dir() / folder).iterdir(): f.unlink(missing_ok=True)
         with db() as c:
             persons, checks = (c.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0] for t in ("persons", "checks"))
     finally:

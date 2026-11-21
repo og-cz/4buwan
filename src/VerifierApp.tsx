@@ -57,7 +57,7 @@ export default function VerifierApp({ user, demo, health, banner, logout }: Prop
   const items = verifierModules.map(m => ({ key: m.key, label: m.label, icon: m.icon, bottom: m.bottom }));
   return <Shell demo="Verifier" user={user} items={items} active={current.key} onNav={key => go(verifierModules.find(m => m.key === key)!.home)} crumb={current.label}
     strip={<DemoBar>{demo
-      ? "This Verifier runs the real verification model on the sample CEDAR signatures. Nothing you do here is kept: every demo starts fresh."
+      ? "This Verifier runs the real verification model. Nothing you do here is kept: every demo starts empty."
       : "This Verifier runs the real verification model on the real data stored on this computer. It is a demonstration build, not the full application."}</DemoBar>}
     note={demo ? { title: "Demo session", text: "Enrol, verify and decide freely. Nothing is kept after this session." }
       : { title: "Private office system", text: "Checks, decisions and notes are recorded in each case." }}
