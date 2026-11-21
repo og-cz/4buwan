@@ -96,5 +96,5 @@ export const addAttachments = (id: string, files: Blob[], note: string) => post<
 export const logReport = (id: string) => post<{ ok: boolean }>(`/api/checks/${id}/report`);
 export const listReports = () => request<ReportEntry[]>("/api/reports");
 
-/** A fresh throwaway copy of the sample data for one demo session; nothing done in it is kept. */
+/** Empties the demo data for a new demo session; nothing done in a demo is kept. */
 export const startDemo = () => post<{ ok: boolean; persons: number; checks: number }>("/api/demo/start");

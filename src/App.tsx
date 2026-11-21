@@ -10,7 +10,7 @@ import useHealth from "./state/useHealth";
 import { applyTheme, showLoginTheme } from "./state/theme";
 import type { Role } from "./navigation";
 
-/** demo: entered with Continue to demo. A Verifier demo works on a throwaway copy of the sample data. */
+/** demo: entered with Continue to demo. A Verifier demo starts empty and nothing done in it is kept. */
 type Session = { role: Role; user: string; demo: boolean };
 
 /** Staff sign-in, then the Verifier (the working system) or a Supervisor / Researcher demonstration. */
@@ -28,9 +28,8 @@ export default function App() {
   useEffect(() => {
     if (!verifierDemo) return;
     let alive = true;
-    setDataMode("demo");
-    // If the service is down the demo opens on an empty folder and the service banner explains why.
-    startDemo().catch(() => undefined).finally(() => { if (alive) setDemoReady(true); });
+    // Empty the demo first, then switch to it. If the service is down, the service banner explains why.
+    startDemo().catch(() => undefined).finally(() => { setDataMode("demo"); if (alive) setDemoReady(true); });
     return () => { alive = false; };
   }, [verifierDemo]);
   const logout = () => { setDataMode("real"); setDemoReady(false); setSession(null); };

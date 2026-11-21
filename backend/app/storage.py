@@ -3,8 +3,8 @@
 Separate data folders under ROOT, one per data mode:
     real/    the office's own enrolled people and checks (starts empty)
     sample/  example people and checks seeded from the public CEDAR development writers
-    demo/    a throwaway copy of sample/ for one demo session; rebuilt by POST /api/demo/start and
-             cleared when the service starts, so nothing done in a demo is kept
+    demo/    one demo session; emptied by POST /api/demo/start and when the service starts,
+             so nothing done in a demo is kept
 Each holds its own sigdesk.db, images/ and profiles/. The mode of a request comes from the
 X-Data-Mode header (or ?mode= on image links) and is kept in a context variable for that request.
 """

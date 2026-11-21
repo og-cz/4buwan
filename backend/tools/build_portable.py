@@ -2,8 +2,8 @@
 
     python tools/build_portable.py        (from backend/, with the virtual environment active and PyInstaller installed)
 
-The exe needs no Python, Node or npm on the other computer. It includes the private model constants and, when
-backend/data/sample exists, the sample people for Continue to demo. Never include backend/data/real.
+The exe needs no Python, Node or npm on the other computer. It includes the private model constants; it never includes any
+stored records (backend/data).
 """
 import subprocess
 import sys
@@ -22,9 +22,6 @@ icon = WORK / "4buwan.ico"
 Image.open(ROOT / "docs" / "image" / "icon.png").save(icon, sizes=[(16, 16), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
 
 data = [(ROOT / "dist", "web"), (BACKEND / "sigdesk_engine" / "artifacts", "sigdesk_engine/artifacts")]
-sample = BACKEND / "data" / "sample"
-if (sample / "sigdesk.db").exists(): data.append((sample, "sample"))
-else: print("No backend/data/sample: the exe's demo will start with no people. Run tools/seed_sample.py first.")
 
 args = [sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean", "--onefile", "--console", "--name", "4buwan",
         "--icon", str(icon), "--distpath", str(ROOT / "release"), "--workpath", str(WORK), "--specpath", str(WORK),
