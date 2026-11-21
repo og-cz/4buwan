@@ -44,7 +44,7 @@ export default function DecoyApp({ role, user, logout }: { role: Exclude<Role, "
   }
   const items: NavItem[] = roleScreens[role].map(s => ({ key: s, label: s, icon: icons[s], bottom: s === "Help" }));
   return <Shell demo={role} user={user} items={items} active={active} onNav={key => go(key as DecoyScreen)} crumb={screen}
-    strip={<DemoBar>This {role} view is a decoy for demonstration. It does not use the verification model or any stored data; everything shown is example content.</DemoBar>}
+    strip={<DemoBar decoy>This {role} view is a decoy for demonstration. It does not use the verification model or any stored data; everything shown is example content.</DemoBar>}
     note={{ title: "Demonstration", text: "Example content only. Nothing is saved." }}
     footer="Demonstration view. No model or stored data is used." logout={logout}>
     {page}

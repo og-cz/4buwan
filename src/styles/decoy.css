@@ -1,5 +1,7 @@
 /* Supervisor / Researcher demonstrations (4buwan-ui screens) and the 4buwan-ui sign-in page. */
 .demo-bar { background: var(--uncertain-soft); color: var(--uncertain-text); border-bottom: 1px solid var(--uncertain-line); }
+.demo-bar.decoy { background: var(--forged-soft); color: var(--forged-text); border-bottom-color: var(--forged-line); }
+.demo-bar.decoy strong { border-color: var(--forged-line); }
 .demo-bar strong { padding: 1px var(--s2); border: 1px solid var(--uncertain-line); border-radius: var(--r-sm); letter-spacing: .08em; }
 
 .mock-sig svg { width: 100%; height: 100%; display: block; }

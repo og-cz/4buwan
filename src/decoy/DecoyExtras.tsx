@@ -29,7 +29,7 @@ export function DecoySettings() {
       <section className="panel"><div className="panel-head"><div><span>OFFICE</span><h2>Workspace identity</h2></div></div><div className="form-grid"><label><span>OFFICE NAME</span><input placeholder="Your office name" /></label><label><span>CALL PEOPLE</span><select><option>Client</option><option>Member</option><option>Person</option></select></label></div></section>
       <section className="panel"><div className="panel-head"><div><span>CHECKING</span><h2>Default behaviour</h2></div></div><div className="form-grid"><label><span>STRICTNESS</span><select><option>Standard</option><option>Lenient</option><option>Strict</option></select></label><label><span>UNCERTAIN ZONE</span><select><option>Standard</option><option>Narrow</option><option>Wide</option></select></label></div></section>
       <section className="panel"><div className="panel-head"><div><span>DATA</span><h2>Retention and backup</h2></div></div><div className="form-grid"><label><span>KEEP RECORDS FOR</span><select><option>7 years</option><option>5 years</option></select></label><label><span>BACKUP</span><select><option>Every night</option><option>Every week</option></select></label></div></section>
-      <section className="panel"><div className="panel-head"><div><span>DEMONSTRATION</span><h2>Demo bar</h2></div></div><DemoBarSwitch /><p className="input-hint">This switch works: it shows or hides the yellow bar in every role.</p></section>
+      <section className="panel"><div className="panel-head"><div><span>DEMONSTRATION</span><h2>Demo bar</h2></div></div><DemoBarSwitch /><p className="input-hint">This switch works: it shows or hides the DEMO bar in every role.</p></section>
     </div>
     <DemoNotice />
   </div>;
