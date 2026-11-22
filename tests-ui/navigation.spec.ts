@@ -93,3 +93,24 @@ test('The demo bar can be turned off in Settings and stays off in every role', a
   await page.getByLabel('Show the DEMO bar at the top of every page').check()
   await expect(page.locator('.demo-bar')).toContainText('decoy')
 })
+
+test('Module tabs reach every Verifier page', async ({ page }) => {
+  await signIn(page, 'Verifier')
+  const tabs = page.getByRole('tablist')
+  for (const [module, pages] of [
+    ['Dashboard', [['Overview', 'Dashboard'], ['Workbench', 'Workbench'], ['Reports', 'Reports']]],
+    ['Verify', [['Verify', 'Verify a signature'], ['Profiles', 'Reference Library'], ['Compare', 'Compare']]],
+    ['History', [['Cases', 'Cases'], ['Review Queue', 'Review Queue'], ['Batch Check', 'Batch Check'], ['Evidence Reports', 'Evidence Reports']]],
+  ] as const) {
+    await sidebarItems(page).filter({ hasText: module }).click()
+    for (const [tab, heading] of pages) {
+      await tabs.getByRole('tab', { name: tab, exact: true }).click()
+      await expect(tabs.getByRole('tab', { name: tab, exact: true })).toHaveAttribute('aria-selected', 'true')
+      await expect(page.getByRole('heading', { level: 1, name: heading, exact: true })).toBeVisible()
+    }
+  }
+  for (const module of ['Enrol', 'Research Lab', 'Settings']) {
+    await sidebarItems(page).filter({ hasText: module }).click()
+    await expect(page.locator('.module-tabs')).toHaveCount(0)
+  }
+})
