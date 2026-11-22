@@ -13,13 +13,19 @@ export type Go = (screen: Screen, params?: RouteParams) => void;
 
 export type Role = "Verifier" | "Supervisor" | "Researcher";
 
-/** The Verifier's sidebar: the working system. Each item owns the screens that open from it. */
-export type VerifierModule = { key: string; label: string; icon: IconName; home: Screen; screens: Screen[]; bottom?: boolean };
+/** The Verifier's sidebar: the working system. Each item owns the screens that open from it;
+ *  `tabs` are the pages shown as tabs at the top of the module (detail pages highlight their parent tab). */
+export type ModuleTab = { screen: Screen; label: string; parents?: Screen[] };
+export type VerifierModule = { key: string; label: string; icon: IconName; home: Screen; screens: Screen[]; tabs?: ModuleTab[]; bottom?: boolean };
 export const verifierModules: VerifierModule[] = [
-  { key: "dashboard", label: "Dashboard", icon: "home", home: "Dashboard", screens: ["Dashboard", "Workbench", "Reports"] },
-  { key: "verify", label: "Verify", icon: "verify", home: "Verify", screens: ["Verify", "Person Profile", "Reference Library", "Compare"] },
+  { key: "dashboard", label: "Dashboard", icon: "home", home: "Dashboard", screens: ["Dashboard", "Workbench", "Reports"],
+    tabs: [{ screen: "Dashboard", label: "Overview" }, { screen: "Workbench", label: "Workbench" }, { screen: "Reports", label: "Reports" }] },
+  { key: "verify", label: "Verify", icon: "verify", home: "Verify", screens: ["Verify", "Person Profile", "Reference Library", "Compare"],
+    tabs: [{ screen: "Verify", label: "Verify" }, { screen: "Reference Library", label: "Profiles", parents: ["Person Profile"] }, { screen: "Compare", label: "Compare" }] },
   { key: "enrol", label: "Enrol", icon: "enrol", home: "Enrol", screens: ["Enrol"] },
-  { key: "history", label: "History", icon: "history", home: "Cases", screens: ["Cases", "Review Queue", "CaseDetail", "Evidence Reports", "Evidence Report", "Batch Check"] },
+  { key: "history", label: "History", icon: "history", home: "Cases", screens: ["Cases", "Review Queue", "CaseDetail", "Evidence Reports", "Evidence Report", "Batch Check"],
+    tabs: [{ screen: "Cases", label: "Cases", parents: ["CaseDetail"] }, { screen: "Review Queue", label: "Review Queue" },
+      { screen: "Batch Check", label: "Batch Check" }, { screen: "Evidence Reports", label: "Evidence Reports", parents: ["Evidence Report"] }] },
   { key: "research", label: "Research Lab", icon: "ruler", home: "Research Lab", screens: ["Research Lab"] },
   { key: "settings", label: "Settings", icon: "settings", home: "Settings", screens: ["Settings"] },
   { key: "help", label: "Help", icon: "help", home: "Help", screens: ["Help"], bottom: true },
