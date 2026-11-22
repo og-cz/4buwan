@@ -278,3 +278,6 @@ math { font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", math; 
 
 .demo-switch { display: flex; align-items: center; gap: var(--s2); font: var(--t-body); }
 .demo-loading { padding: var(--s6); }
+
+/* Tabs at the top of a Verifier module (Dashboard, Verify, History). */
+.module-tabs { margin-bottom: var(--s5); }

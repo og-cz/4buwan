@@ -54,6 +54,10 @@ export default function VerifierApp({ user, demo, health, banner, logout }: Prop
     default: page = <Help />;
   }
   const current = moduleOf(screen);
+  const tabs = current.tabs && <div className="research-tabs module-tabs" role="tablist" aria-label={`${current.label} pages`}>
+    {current.tabs.map(t => { const on = t.screen === screen || !!t.parents?.includes(screen);
+      return <button key={t.screen} role="tab" aria-selected={on} className={on ? "active" : ""} onClick={() => go(t.screen)}>{t.label}</button>; })}
+  </div>;
   const items = verifierModules.map(m => ({ key: m.key, label: m.label, icon: m.icon, bottom: m.bottom }));
   return <Shell demo="Verifier" user={user} items={items} active={current.key} onNav={key => go(verifierModules.find(m => m.key === key)!.home)} crumb={current.label}
     strip={<DemoBar>{demo
@@ -62,6 +66,6 @@ export default function VerifierApp({ user, demo, health, banner, logout }: Prop
     note={demo ? { title: "Demo session", text: "Enrol, verify and decide freely. Nothing is kept after this session." }
       : { title: "Private office system", text: "Checks, decisions and notes are recorded in each case." }}
     footer={demo ? "Demo session: nothing is saved." : "Signatures are stored on this computer only."} logout={logout} banner={banner}>
-    {page}<Toast message={toast} onClose={closeToast} />
+    {tabs}{page}<Toast message={toast} onClose={closeToast} />
   </Shell>;
 }
