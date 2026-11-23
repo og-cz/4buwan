@@ -50,7 +50,7 @@ Layout check (no sideways scrolling at 360–1440 px; uses the installed Microso
 npm run test:ui
 ```
 
-The same run also checks the sidebars (Verifier 7 items, Supervisor 8, Researcher 10), the DEMO bar text of each role (yellow for the Verifier, red for the Supervisor and Researcher decoys) and its on/off switch in Settings, that Sign in stays disabled until a username and password are typed, that a signed-in Verifier only uses Real data and a Verifier demo only its throwaway copy, and that the Supervisor and Researcher demos make no request to the analysis service. Run it with both servers started; to test a server on another address, set `APP_URL` (for example `APP_URL=http://localhost:8443`).
+The same run also checks the sidebars and their categories (Verifier 13 items, Supervisor 8, Researcher 10), that every Verifier page opens from the sidebar, that Batch Check takes the CSV before or after the images, the DEMO bar text of each role (yellow for the Verifier, red for the Supervisor and Researcher decoys) and its on/off switch in Settings, that Sign in stays disabled until a username and password are typed, that a signed-in Verifier only uses Real data and a Verifier demo only its throwaway copy, and that the Supervisor and Researcher demos make no request to the analysis service. Run it with both servers started; to test a server on another address, set `APP_URL` (for example `APP_URL=http://localhost:8443`).
 
 ## 3. Manual test script
 
