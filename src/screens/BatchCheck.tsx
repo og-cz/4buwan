@@ -33,14 +33,31 @@ export default function BatchCheck({ go }: { go: Go }) {
   const [done, setDone] = useState(0);
   const [onlyUncertain, setOnlyUncertain] = useState(false);
   const [note, setNote] = useState<string | null>(null);
+  const [mapping, setMapping] = useState<{ name: string; map: Map<string, string> } | null>(null);
   const images = useRef<HTMLInputElement>(null), csv = useRef<HTMLInputElement>(null);
 
   const resolve = (value: string) => ready.find(p => p.id === value || p.external_id === value)?.id ?? "";
-  function addImages(files: File[]) { setRows(r => [...r, ...files.map(file => ({ file, personId: "" }))]); setDone(0); }
+  // The CSV can be loaded before or after the images; it is applied to every image added while it is loaded.
+  const assign = (list: Row[], map: Map<string, string>) =>
+    list.map(row => { const id = map.has(row.file.name) ? resolve(map.get(row.file.name)!) : ""; return id ? { ...row, personId: id } : row; });
+  function describe(name: string, map: Map<string, string>, list: Row[]) {
+    const missing = [...new Set([...map.values()].filter(v => !resolve(v)))];
+    if (!list.length) return `${name} loaded (${map.size} file${map.size === 1 ? "" : "s"} listed). Now choose the images.`;
+    const assigned = list.filter(r => map.has(r.file.name) && resolve(map.get(r.file.name)!)).length;
+    return `${name}: ${assigned} of ${list.length} images assigned.` + (missing.length ? ` Not enrolled yet: ${missing.join(", ")}. Enrol them with these ${t.lower} IDs first.` : "");
+  }
+  function addImages(files: File[]) {
+    const next = [...rows, ...files.map(file => ({ file, personId: "" }))];
+    const out = mapping ? assign(next, mapping.map) : next;
+    setRows(out); setDone(0);
+    if (mapping) setNote(describe(mapping.name, mapping.map, out));
+  }
   async function applyCsv(file: File) {
     const map = parseCsv(await file.text());
-    setRows(r => r.map(row => { const id = map.has(row.file.name) ? resolve(map.get(row.file.name)!) : ""; return id ? { ...row, personId: id } : row; }));
-    setNote(`Mapping applied from ${file.name}. Unmatched rows can be assigned in the table.`);
+    if (!map.size) { setNote(`${file.name} has no rows. Use two columns: file,${t.lower}_id.`); return; }
+    const out = assign(rows, map);
+    setMapping({ name: file.name, map }); setRows(out);
+    setNote(describe(file.name, map, out));
   }
   async function run() {
     setRunning(true); setDone(0);
@@ -69,7 +86,7 @@ export default function BatchCheck({ go }: { go: Go }) {
   return <div className="page"><PageHeader title="Batch Check" description={`Check many Questioned Signatures. Assign each file to a ${t.lower} with a CSV (file,person_id) or in the table.`} action={finished && <Button icon="save" onClick={exportCsv}>Export results</Button>} />
     <input ref={images} className="hidden" type="file" accept="image/*" multiple onChange={e => { addImages(Array.from(e.target.files ?? [])); e.target.value = ""; }} />
     <input ref={csv} className="hidden" type="file" accept=".csv,text/csv" onChange={e => { const f = e.target.files?.[0]; if (f) void applyCsv(f); e.target.value = ""; }} />
-    <section className="panel batch-upload"><div><Icon name="upload" size={26} /><h2>Upload signatures and an optional mapping CSV</h2><p>Choose image files first, then assign {t.people.toLowerCase()} automatically from the CSV or in the table.</p><div className="header-actions"><Button onClick={() => images.current?.click()}>Choose images</Button><Button secondary disabled={!rows.length} onClick={() => csv.current?.click()}>Apply CSV</Button>{rows.length > 0 && <Button secondary disabled={running} onClick={() => { setRows([]); setDone(0); setNote(null); }}>Clear</Button>}</div>{note && <p className="input-hint">{note}</p>}</div></section>
+    <section className="panel batch-upload"><div><Icon name="upload" size={26} /><h2>Upload signatures and an optional mapping CSV</h2><p>Add the images and the CSV in either order; the CSV assigns {t.people.toLowerCase()} automatically, or assign them in the table.</p><div className="header-actions"><Button onClick={() => images.current?.click()}>Choose images</Button><Button secondary onClick={() => csv.current?.click()}>Apply CSV</Button>{(rows.length > 0 || mapping) && <Button secondary disabled={running} onClick={() => { setRows([]); setDone(0); setNote(null); setMapping(null); }}>Clear</Button>}</div>{note && <p className="input-hint">{note}</p>}</div></section>
     {rows.length > 0 && <section className="panel table-panel">
       <div className="batch-progress"><span>{done} of {rows.length} {running ? "checked" : finished ? "complete" : "queued"}</span><i><em style={{ width: `${rows.length ? done / rows.length * 100 : 0}%` }} /></i><div className="header-actions"><label className="inline-check"><input type="checkbox" checked={onlyUncertain} onChange={e => setOnlyUncertain(e.target.checked)} /> Uncertain only</label><Button icon="scan" disabled={running || !rows.some(r => r.personId)} onClick={() => void run()}>{running ? "Running…" : "Run batch"}</Button></div></div>
       <div className="table-scroll"><table><thead><tr><th>FILE</th><th>{t.person.toUpperCase()}</th><th>VERDICT</th><th>CONFIDENCE</th><th>FLAGS</th><th /></tr></thead><tbody>{visible.map(({ r, i }) => <tr key={`${r.file.name}-${i}`} className={r.result ? "clickable-row" : ""} onClick={r.result ? () => go("CaseDetail", { caseId: r.result!.case_id }) : undefined}>
