@@ -244,15 +244,7 @@
   .wizard-actions { flex-wrap: wrap; }
 }
 
-/* ---------- workbench ---------- */
-.workbench-hero { display: flex; align-items: center; gap: var(--s4); flex-wrap: wrap; background: linear-gradient(120deg, var(--accent-soft), transparent 60%), var(--surface); }
-.workbench-hero > div { flex: 1 1 320px; display: flex; flex-direction: column; gap: var(--s1); }
-.workbench-hero h2 { font: var(--t-h2); }
-.workbench-hero p { color: var(--text-2); }
-.workbench-icon { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-text); flex: none; }
-.workbench-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: var(--s5); }
 .panel-empty { padding: 0 var(--s5) var(--s5); margin: 0; }
-@media (max-width: 599px) { .workbench-grid { grid-template-columns: minmax(0, 1fr); } }
 .note-row { display: flex; gap: var(--s2); }
 .attachment-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: var(--s2); }
 .attachment-grid figure { margin: 0; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
@@ -269,15 +261,15 @@ math { font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", math; 
 
 /* ---------- main navigation: Help at the foot ---------- */
 .sidebar .main-nav { flex: 1; min-height: 0; }
-.main-nav .nav-label { padding: var(--s3) var(--s3) var(--s1); }
+.main-nav .nav-label { padding: var(--s3) var(--s3) 2px; }
+/* Categorised sidebar: compact items so every page fits; the note box gives way on short screens. */
+.sidebar .main-nav { gap: 2px; }
+.sidebar .main-nav button { min-height: 34px; }
+@media (max-height: 940px) { .sidebar .privacy-side { display: none; } }
 .nav-bottom { margin-top: auto; padding-top: var(--s2); border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: var(--s1); }
 .sidebar .privacy-side { margin-top: var(--s3); }
-.module-tabs { margin-bottom: var(--s1); }
 
 .nav-bottom:empty { display: none; }
 
 .demo-switch { display: flex; align-items: center; gap: var(--s2); font: var(--t-body); }
 .demo-loading { padding: var(--s6); }
-
-/* Tabs at the top of a Verifier module (Dashboard, Verify, History). */
-.module-tabs { margin-bottom: var(--s5); }

@@ -18,8 +18,13 @@ const icons: Record<Exclude<DecoyScreen, "Client Profile">, IconName> = {
 
 /** Modules of each demo role (from the 4buwan-ui design, plus Dashboard, Settings and Help). */
 const roleScreens: Record<Exclude<Role, "Verifier">, Exclude<DecoyScreen, "Client Profile">[]> = {
-  Supervisor: ["Dashboard", "Verify", "Enrol", "History", "Review Queue", "Staff Accounts", "Settings", "Help"],
-  Researcher: ["Dashboard", "Verify", "Enrol", "History", "Review Queue", "Staff Accounts", "Method Comparison", "Dataset Check", "Settings", "Help"],
+  Supervisor: ["Dashboard", "Verify", "Review Queue", "Enrol", "History", "Staff Accounts", "Settings", "Help"],
+  Researcher: ["Dashboard", "Verify", "Review Queue", "Enrol", "History", "Method Comparison", "Dataset Check", "Staff Accounts", "Settings", "Help"],
+};
+/** Sidebar categories, the same names as the Verifier's. */
+const groups: Record<Exclude<DecoyScreen, "Client Profile">, string> = {
+  Dashboard: "Examine", Verify: "Examine", "Review Queue": "Examine", Enrol: "Library", History: "Evidence",
+  "Method Comparison": "Research", "Dataset Check": "Research", "Staff Accounts": "Admin", Settings: "System", Help: "System",
 };
 
 /** Supervisor and Researcher demos: every module is clickable, but nothing uses the model or any stored data. */
@@ -42,7 +47,7 @@ export default function DecoyApp({ role, user, logout }: { role: Exclude<Role, "
     case "Help": page = <DecoyHelp />; break;
     default: page = <DecoyDashboard openReview={() => go("Review Queue")} openHistory={() => go("History")} />;
   }
-  const items: NavItem[] = roleScreens[role].map(s => ({ key: s, label: s, icon: icons[s], bottom: s === "Help" }));
+  const items: NavItem[] = roleScreens[role].map(s => ({ key: s, label: s, icon: icons[s], group: groups[s], bottom: s === "Help" }));
   return <Shell demo={role} user={user} items={items} active={active} onNav={key => go(key as DecoyScreen)} crumb={screen}
     strip={<DemoBar decoy>This {role} view is a decoy for demonstration. It does not use the verification model or any stored data; everything shown is example content.</DemoBar>}
     note={{ title: "Demonstration", text: "Example content only. Nothing is saved." }}
