@@ -137,7 +137,7 @@ Profiles, checks, the uncertain rate and pending decisions at a glance.
 **Also in the box:**
 
 - **Compare** — Examine two to six signatures side by side.
-- **Batch Check** — Verify many signatures in one run.
+- **Import and export** — Load a whole workspace (people, signatures, checks and decisions) from one file.
 - **History and CSV export** — Every check, decision and note, searchable.
 - **Light and dark themes** — With a layout that works from phone to desktop.
 - **Private by design** — Signatures stay on this computer.
@@ -279,6 +279,7 @@ Open **http://localhost:8443** in your browser.
 | Task | Command |
 |---|---|
 | Fill the separate sample-data folder with the 25 CEDAR development writers | `python tools/seed_sample.py --cedar "<path to cedar-dataset>/signatures"` (in `backend`, venv active) |
+| Build the ready-made demo import file from the demo kit | `python tools/build_demo_export.py --kit ../demo_data --out ../release/4buwan-demo-import.zip` (in `backend`, venv active) |
 | Run the service tests | `pytest -q` (in `backend`, venv active) |
 | Check the layout at phone to desktop widths | `npm run test:ui` (uses the installed Microsoft Edge) |
 | Build the web interface for production | `npm run build` |
@@ -296,6 +297,8 @@ python tools/build_portable.py
 ```
 
 The result is `release/4buwan.exe`. It contains the private model constants, so share it privately and never attach it to a public release.
+
+To fill an empty demo in one step, open **Import** (sidebar, under Library) and choose `4buwan-demo-import.zip`: two people with their reference signatures, 48 checks, decisions and the Review Queue appear at once.
 
 ---
 

@@ -137,7 +137,7 @@ Perfiles, verificaciones, tasa de inciertos y decisiones pendientes de un vistaz
 **También incluye:**
 
 - **Comparar** — Examina de dos a seis firmas lado a lado.
-- **Verificación por lotes** — Verifica muchas firmas de una vez.
+- **Importar y exportar** — Carga un espacio de trabajo completo (personas, firmas, verificaciones y decisiones) desde un solo archivo.
 - **Historial y exportación CSV** — Cada verificación, decisión y nota, con búsqueda.
 - **Temas claro y oscuro** — Con un diseño que funciona del teléfono al escritorio.
 - **Privado por diseño** — Las firmas se quedan en este ordenador.

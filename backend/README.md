@@ -9,10 +9,13 @@ sigdesk_engine/artifacts/        private, not in the repository (distributed sep
   research/                      notebook outputs shown in the Research Lab
 app/main.py                      FastAPI server: health, quality, persons, verify, checks, decisions, stats, research
 app/cases.py                     case notes, Compare attachments, Evidence Report log
-app/sample.py                    sample-data seed and reset (CEDAR development writers only)
+app/sample.py                    sample-data seed and reset (CEDAR development writers only), empty demo sessions
+app/transfer.py                  export and import of a whole workspace as one .zip (import only adds, never deletes)
 app/storage.py                   SQLite + image folders per data mode: data/real, data/sample and data/demo (local only)
 tools/seed_sample.py             fills data/sample with the 25 CEDAR development writers and 50 example checks
 tools/seed_demo.py               enrols up to 25 CEDAR development writers as "Demo Person" into data/real
+tools/build_demo_export.py       builds the ready-made demo import file from the demo kit
+tools/build_portable.py          builds release/4buwan.exe
 tests/                           pytest: engine == notebook, API end to end, data modes, storage
 ```
 
