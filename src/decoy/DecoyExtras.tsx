@@ -44,3 +44,19 @@ export function DecoyHelp() {
     <section className="panel limitations"><Icon name="alert" /><div><h2>Good to know</h2><p>The result is advice, not proof. Ask for another signature when the result is uncertain or the scan is unclear.</p></div></section>
   </div>;
 }
+
+/** Demo: import and export of a whole workspace. Nothing is read or saved. */
+export function DecoyImport() {
+  const [state, setState] = useState<"idle" | "busy" | "done">("idle");
+  const [exported, setExported] = useState(false);
+  function load() { setState("busy"); window.setTimeout(() => setState("done"), 900); }
+  return <div className="page"><PageHeader title="Import" description="Load a whole workspace from one export file: clients, their reference signatures, checks, decisions and notes, with their dates." />
+    <section className="panel batch-upload"><div><Icon name="upload" size={26} /><h2>Import an export file</h2>
+      <p>Choose one export (.zip). Everything in it is added; nothing already here is changed or deleted.</p>
+      <div className="header-actions"><Button icon="upload" disabled={state === "busy"} onClick={load}>{state === "busy" ? "Importing…" : "Choose export file"}</Button></div>
+      {state === "done" && <p className="input-hint import-result" role="status">riverside-office.zip: added 12 clients and 86 checks (example content).</p>}
+    </div></section>
+    <section className="panel"><div className="panel-head"><div><span>EXPORT</span><h2>Save this workspace as one file</h2></div><Button secondary icon="save" onClick={() => setExported(true)}>Export</Button></div>
+      <p className="input-hint">{exported ? "Demonstration: nothing was exported." : "Exports every client, check and decision of this office as one file."}</p></section>
+  </div>;
+}
