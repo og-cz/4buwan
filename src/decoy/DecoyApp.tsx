@@ -7,23 +7,23 @@ import type { Role } from "../navigation";
 import { DecoyEnrol, DecoyProfile, DecoyVerify } from "./DecoyExamine";
 import { DecoyHistory, DecoyReviewQueue, DecoyStaff } from "./DecoyRecords";
 import { DecoyDataset, DecoyMethods } from "./DecoyResearch";
-import { DecoyDashboard, DecoyHelp, DecoySettings } from "./DecoyExtras";
+import { DecoyDashboard, DecoyHelp, DecoyImport, DecoySettings } from "./DecoyExtras";
 
-type DecoyScreen = "Dashboard" | "Verify" | "Client Profile" | "Enrol" | "History" | "Review Queue" | "Staff Accounts" | "Method Comparison" | "Dataset Check" | "Settings" | "Help";
+type DecoyScreen = "Dashboard" | "Verify" | "Client Profile" | "Enrol" | "Import" | "History" | "Review Queue" | "Staff Accounts" | "Method Comparison" | "Dataset Check" | "Settings" | "Help";
 
 const icons: Record<Exclude<DecoyScreen, "Client Profile">, IconName> = {
-  Dashboard: "home", Verify: "verify", Enrol: "enrol", History: "history", "Review Queue": "review", "Staff Accounts": "staff",
+  Dashboard: "home", Verify: "verify", Enrol: "enrol", Import: "upload", History: "history", "Review Queue": "review", "Staff Accounts": "staff",
   "Method Comparison": "compare", "Dataset Check": "audit", Settings: "settings", Help: "help",
 };
 
-/** Modules of each demo role (from the 4buwan-ui design, plus Dashboard, Settings and Help). */
+/** Modules of each demo role. Supervisors decide and manage staff; Researchers study the method and do not review cases. */
 const roleScreens: Record<Exclude<Role, "Verifier">, Exclude<DecoyScreen, "Client Profile">[]> = {
-  Supervisor: ["Dashboard", "Verify", "Review Queue", "Enrol", "History", "Staff Accounts", "Settings", "Help"],
-  Researcher: ["Dashboard", "Verify", "Review Queue", "Enrol", "History", "Method Comparison", "Dataset Check", "Staff Accounts", "Settings", "Help"],
+  Supervisor: ["Dashboard", "Verify", "Review Queue", "Enrol", "Import", "History", "Staff Accounts", "Settings", "Help"],
+  Researcher: ["Dashboard", "Verify", "Enrol", "Import", "History", "Method Comparison", "Dataset Check", "Settings", "Help"],
 };
 /** Sidebar categories, the same names as the Verifier's. */
 const groups: Record<Exclude<DecoyScreen, "Client Profile">, string> = {
-  Dashboard: "Examine", Verify: "Examine", "Review Queue": "Examine", Enrol: "Library", History: "Evidence",
+  Dashboard: "Examine", Verify: "Examine", "Review Queue": "Examine", Enrol: "Library", Import: "Library", History: "Evidence",
   "Method Comparison": "Research", "Dataset Check": "Research", "Staff Accounts": "Admin", Settings: "System", Help: "System",
 };
 
@@ -38,6 +38,7 @@ export default function DecoyApp({ role, user, logout }: { role: Exclude<Role, "
     case "Verify": page = <DecoyVerify onProfile={() => go("Client Profile")} onEnrol={() => go("Enrol")} />; break;
     case "Client Profile": page = <DecoyProfile canDelete verify={() => go("Verify")} reenrol={() => go("Enrol")} />; break;
     case "Enrol": page = <DecoyEnrol />; break;
+    case "Import": page = <DecoyImport />; break;
     case "History": page = <DecoyHistory />; break;
     case "Review Queue": page = <DecoyReviewQueue />; break;
     case "Staff Accounts": page = <DecoyStaff />; break;

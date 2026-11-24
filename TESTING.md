@@ -13,11 +13,12 @@ pip install -r requirements.txt
 pytest -q
 ```
 
-Expected: **39 passed**. The tests check that:
+Expected: **41 passed**. The tests check that:
 - the service gives the **same AUC as the research notebook** for the reference writers (B, G, J match exactly);
 - real CEDAR images turn into the same features and scores as the notebook (difference = 0);
 - enrol → verify → record decision works through the API, plus the preprocessing, stats, performance,
   archive, delete, notes, attachments and report-log endpoints;
+- a whole workspace exports to one file and imports again with its people, checks, decisions, notes and images, without duplicates, and unsafe import files are refused;
 - uploads that are not images, unknown strictness or uncertain-zone values, and non-image attachments are refused with a clear message (400), not a crash;
 - stored image paths are relative to the data folder, and older absolute paths are migrated once;
 - Real data and Sample data are separate folders, a fresh Real folder is empty, and the sample seed only uses CEDAR development writers;
@@ -50,7 +51,7 @@ Layout check (no sideways scrolling at 360–1440 px; uses the installed Microso
 npm run test:ui
 ```
 
-The same run also checks the sidebars and their categories (Verifier 13 items, Supervisor 8, Researcher 10), that every Verifier page opens from the sidebar, that Batch Check takes the CSV before or after the images, the DEMO bar text of each role (yellow for the Verifier, red for the Supervisor and Researcher decoys) and its on/off switch in Settings, that Sign in stays disabled until a username and password are typed, that a signed-in Verifier only uses Real data and a Verifier demo only its throwaway copy, and that the Supervisor and Researcher demos make no request to the analysis service. Run it with both servers started; to test a server on another address, set `APP_URL` (for example `APP_URL=http://localhost:8443`).
+The same run also checks the sidebars and their categories (Verifier 13 items, Supervisor 9, Researcher 9), that every Verifier page opens from the sidebar, that Import refuses a file that is not an export, the DEMO bar text of each role (yellow for the Verifier, red for the Supervisor and Researcher decoys) and its on/off switch in Settings, that Sign in stays disabled until a username and password are typed, that a signed-in Verifier only uses Real data and a Verifier demo only its throwaway copy, and that the Supervisor and Researcher demos make no request to the analysis service. Run it with both servers started; to test a server on another address, set `APP_URL` (for example `APP_URL=http://localhost:8443`).
 
 ## 3. Manual test script
 

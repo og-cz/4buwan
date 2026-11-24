@@ -137,7 +137,7 @@ Mga profile, pagsusuri, uncertain rate at mga nakabinbing desisyon sa isang ting
 **Kasama rin:**
 
 - **Compare** — Suriin ang dalawa hanggang anim na pirma nang magkatabi.
-- **Batch Check** — Patunayan ang maraming pirma nang sabay-sabay.
+- **Import at Export** — I-load ang buong workspace (mga tao, pirma, pagsusuri at desisyon) mula sa iisang file.
 - **History at CSV Export** — Bawat pagsusuri, desisyon at tala, nahahanap.
 - **Light at Dark na Theme** — May layout na gumagana mula phone hanggang desktop.
 - **Pribado sa Disenyo** — Nananatili sa computer na ito ang mga pirma.

@@ -137,7 +137,7 @@ Profils, vérifications, taux d’incertitude et décisions en attente d’un co
 **Également inclus :**
 
 - **Comparer** — Examinez de deux à six signatures côte à côte.
-- **Vérification par lot** — Vérifiez de nombreuses signatures en une fois.
+- **Importer et exporter** — Chargez tout un espace de travail (personnes, signatures, vérifications et décisions) depuis un seul fichier.
 - **Historique et export CSV** — Chaque vérification, décision et note, consultable.
 - **Thèmes clair et sombre** — Avec une mise en page qui va du téléphone à l’ordinateur.
 - **Confidentiel par conception** — Les signatures restent sur cet ordinateur.

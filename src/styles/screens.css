@@ -138,10 +138,6 @@
 .batch-upload h2 { font: var(--t-h2); color: var(--text); }
 .batch-upload p { color: var(--text-2); margin-bottom: var(--s2); }
 .batch-upload .header-actions { justify-content: center; }
-.batch-progress { display: grid; grid-template-columns: 1fr auto; gap: var(--s3); align-items: center; margin-bottom: var(--s4); }
-.batch-progress > span { font: var(--t-mono); }
-.batch-progress > i { grid-column: 1 / -1; grid-row: 2; height: 4px; border-radius: var(--r-pill); background: var(--border); overflow: hidden; }
-.batch-progress em { display: block; height: 100%; background: var(--genuine); }
 
 /* ---------- research ---------- */
 .research-lab { display: flex; flex-direction: column; gap: var(--s5); }

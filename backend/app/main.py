@@ -251,9 +251,11 @@ def delete_person(pid: str):
 
 from .cases import router as cases_router  # noqa: E402  (routes for notes, attachments and evidence reports)
 from .sample import router as sample_router  # noqa: E402  (sample data seed and reset)
+from .transfer import router as transfer_router  # noqa: E402  (export and import of a whole workspace)
 
 app.include_router(cases_router)
 app.include_router(sample_router)
+app.include_router(transfer_router)
 
 # Portable build (portable.py): the built web interface is served from the same address as the API.
 if os.environ.get("SIGDESK_STATIC") and os.path.isdir(os.environ["SIGDESK_STATIC"]):

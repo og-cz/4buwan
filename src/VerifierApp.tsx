@@ -10,7 +10,7 @@ import EvidenceReports from "./screens/EvidenceReports";
 import ReferenceLibrary from "./screens/ReferenceLibrary";
 import PersonProfile from "./screens/PersonProfile";
 import Enrol from "./screens/Enrol";
-import BatchCheck from "./screens/BatchCheck";
+import Import from "./screens/Import";
 import Dashboard from "./screens/Dashboard";
 import Reports from "./screens/Reports";
 import ResearchLab from "./screens/research/ResearchLab";
@@ -46,7 +46,7 @@ export default function VerifierApp({ user, demo, health, banner, logout }: Prop
     case "CaseDetail": page = <CaseDetail caseId={caseId} expert go={go} notify={notify} />; break;
     case "Evidence Reports": page = <EvidenceReports go={go} />; break;
     case "Evidence Report": page = <EvidenceReport caseId={caseId} go={go} />; break;
-    case "Batch Check": page = <BatchCheck go={go} />; break;
+    case "Import": page = <Import go={go} />; break;
     case "Research Lab": page = <ResearchLab model={health.model} />; break;
     case "Settings": page = <Settings notify={notify} />; break;
     default: page = <Help />;

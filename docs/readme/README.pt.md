@@ -137,7 +137,7 @@ Perfis, verificações, taxa de incertos e decisões pendentes num relance.
 **Também incluído:**
 
 - **Comparar** — Examine de duas a seis assinaturas lado a lado.
-- **Verificação em lote** — Verifique muitas assinaturas de uma vez.
+- **Importar e exportar** — Carregue um espaço de trabalho inteiro (pessoas, assinaturas, verificações e decisões) a partir de um único arquivo.
 - **Histórico e exportação CSV** — Cada verificação, decisão e nota, pesquisável.
 - **Temas claro e escuro** — Com um layout que funciona do celular ao computador.
 - **Privado por padrão** — As assinaturas ficam neste computador.

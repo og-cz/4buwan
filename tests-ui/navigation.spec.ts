@@ -2,7 +2,7 @@ import { expect, test, type Page } from '@playwright/test'
 
 test.use({ viewport: { width: 1440, height: 900 } })
 
-const VERIFIER = ['Dashboard', 'Verify', 'Batch Check', 'Compare', 'Review Queue', 'Profiles', 'Enrol', 'History', 'Evidence Reports', 'Statistics', 'Research Lab', 'Settings', 'Help']
+const VERIFIER = ['Dashboard', 'Verify', 'Compare', 'Review Queue', 'Profiles', 'Enrol', 'Import', 'History', 'Evidence Reports', 'Statistics', 'Research Lab', 'Settings', 'Help']
 const sidebarItems = (page: Page) => page.locator('aside.sidebar').getByRole('navigation', { name: 'Main navigation' }).getByRole('button')
 
 async function signIn(page: Page, role: 'Verifier' | 'Supervisor' | 'Researcher') {
@@ -21,8 +21,8 @@ test('Verifier: the working system with its 13 pages in categories, Help last, d
 })
 
 for (const [role, modules] of [
-  ['Supervisor', ['Dashboard', 'Verify', 'Review Queue', 'Enrol', 'History', 'Staff Accounts', 'Settings', 'Help']],
-  ['Researcher', ['Dashboard', 'Verify', 'Review Queue', 'Enrol', 'History', 'Method Comparison', 'Dataset Check', 'Staff Accounts', 'Settings', 'Help']],
+  ['Supervisor', ['Dashboard', 'Verify', 'Review Queue', 'Enrol', 'Import', 'History', 'Staff Accounts', 'Settings', 'Help']],
+  ['Researcher', ['Dashboard', 'Verify', 'Enrol', 'Import', 'History', 'Method Comparison', 'Dataset Check', 'Settings', 'Help']],
 ] as const) {
   test(`${role}: demonstration modules, yellow demo bar, no request to the analysis service`, async ({ page }) => {
     await signIn(page, role)
@@ -98,8 +98,8 @@ test('The demo bar can be turned off in Settings and stays off in every role', a
 test('Every Verifier page opens from the sidebar, under its category', async ({ page }) => {
   await signIn(page, 'Verifier')
   await expect(page.locator('aside.sidebar .nav-label')).toHaveText(['EXAMINE', 'LIBRARY', 'EVIDENCE', 'SYSTEM'])
-  for (const [item, heading] of [['Dashboard', 'Dashboard'], ['Verify', 'Verify a signature'], ['Batch Check', 'Batch Check'], ['Compare', 'Compare'],
-    ['Review Queue', 'Review Queue'], ['Profiles', 'Reference Library'], ['Enrol', 'Enrol a person'], ['History', 'Cases'],
+  for (const [item, heading] of [['Dashboard', 'Dashboard'], ['Verify', 'Verify a signature'], ['Compare', 'Compare'],
+    ['Review Queue', 'Review Queue'], ['Profiles', 'Reference Library'], ['Enrol', 'Enrol a person'], ['Import', 'Import'], ['History', 'Cases'],
     ['Evidence Reports', 'Evidence Reports'], ['Statistics', 'Reports'], ['Settings', 'Settings'], ['Help', 'Help']] as const) {
     await sidebarItems(page).filter({ hasText: new RegExp(`^${item}$`) }).click()
     await expect(sidebarItems(page).filter({ hasText: new RegExp(`^${item}$`) })).toHaveAttribute('aria-current', 'page')
@@ -107,13 +107,10 @@ test('Every Verifier page opens from the sidebar, under its category', async ({ 
   }
 })
 
-test('Batch Check takes the CSV before or after the images and says what it matched', async ({ page }) => {
+test('Import refuses a file that is not an export and offers Export', async ({ page }) => {
   await signIn(page, 'Verifier')
-  await sidebarItems(page).filter({ hasText: 'Batch Check' }).click()
-  const csv = { name: 'batch.csv', mimeType: 'text/csv', buffer: Buffer.from('file,person_id\nq1.png,NOT-ENROLLED\n') }
-  await page.locator('input[type=file][accept=".csv,text/csv"]').setInputFiles(csv)
-  await expect(page.getByText('batch.csv loaded (1 file listed)')).toBeVisible()
-  const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64')
-  await page.locator('input[type=file][accept="image/*"]').setInputFiles({ name: 'q1.png', mimeType: 'image/png', buffer: png })
-  await expect(page.getByText('batch.csv: 0 of 1 images assigned. Not enrolled yet: NOT-ENROLLED.')).toBeVisible()
+  await sidebarItems(page).filter({ hasText: 'Import' }).click()
+  await page.locator('input[type=file][accept=".zip,application/zip"]').setInputFiles({ name: 'notes.zip', mimeType: 'application/zip', buffer: Buffer.from('not a zip') })
+  await expect(page.getByRole('alert')).toContainText('not a 4buwan export file')
+  await expect(page.getByRole('link', { name: 'Export' })).toHaveAttribute('href', '/api/export?mode=demo')
 })
