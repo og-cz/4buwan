@@ -42,6 +42,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]),
 textarea { padding: var(--s2) var(--s3); min-height: 88px; resize: vertical; }
 input[type=file] { font: var(--t-small); color: var(--text-2); }
 input::placeholder, textarea::placeholder { color: var(--text-3); }
+/* Dropdowns: own arrow, inset from the edge by the same space as the text. */
+select:not([multiple]) { appearance: none; -webkit-appearance: none; padding-right: calc(var(--s3) + 26px) !important; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238A97A3' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") !important; background-repeat: no-repeat !important; background-position: right var(--s3) center !important; background-size: 14px 14px !important; }
 input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 0; border-color: transparent; }
 input[type=checkbox], input[type=range] { accent-color: var(--accent); }
 .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--s4); }
@@ -52,11 +54,10 @@ input[type=checkbox], input[type=range] { accent-color: var(--accent); }
 .input-hint { margin: var(--s2) 0 0; color: var(--text-3); font: var(--t-small); }
 .input-hint.error-text, .error-text { color: var(--forged-text); }
 .inline-check { display: inline-flex; align-items: center; gap: var(--s2); font: var(--t-small); color: var(--text-2); }
-.table-select { min-height: 36px !important; max-width: 240px; font: var(--t-small) !important; }
 
 /* ---------- tables ---------- */
 .table-panel { padding: 0; overflow: hidden; }
-.table-panel > .panel-head, .table-panel > .batch-progress, .table-panel > .input-hint { padding: var(--s5) var(--s5) 0; }
+.table-panel > .panel-head, .table-panel > .input-hint { padding: var(--s5) var(--s5) 0; }
 .table-scroll { width: 100%; overflow-x: auto; }
 table { width: 100%; border-collapse: separate; border-spacing: 0; }
 th { position: sticky; top: 0; text-align: left; padding: var(--s3) var(--s4); background: var(--surface-2); border-bottom: 1px solid var(--border); font: var(--t-label); letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--text-3); white-space: nowrap; }
