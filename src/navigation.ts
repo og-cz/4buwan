@@ -4,7 +4,7 @@ import type { IconName } from "./components/Icon";
 
 export type Screen =
   | "Dashboard" | "Verify" | "Compare" | "Review Queue" | "Cases" | "CaseDetail"
-  | "Reference Library" | "Person Profile" | "Enrol" | "Batch Check"
+  | "Reference Library" | "Person Profile" | "Enrol" | "Import"
   | "Evidence Reports" | "Evidence Report" | "Research Lab" | "Reports" | "Settings" | "Help";
 
 export type RouteParams = { personId?: string; caseId?: string; label?: string };
@@ -19,11 +19,11 @@ export type VerifierModule = { key: string; label: string; icon: IconName; group
 export const verifierModules: VerifierModule[] = [
   { key: "dashboard", label: "Dashboard", icon: "home", group: "Examine", home: "Dashboard", screens: ["Dashboard"] },
   { key: "verify", label: "Verify", icon: "verify", group: "Examine", home: "Verify", screens: ["Verify"] },
-  { key: "batch", label: "Batch Check", icon: "layers", group: "Examine", home: "Batch Check", screens: ["Batch Check"] },
   { key: "compare", label: "Compare", icon: "compare", group: "Examine", home: "Compare", screens: ["Compare"] },
   { key: "queue", label: "Review Queue", icon: "review", group: "Examine", home: "Review Queue", screens: ["Review Queue"] },
   { key: "profiles", label: "Profiles", icon: "user", group: "Library", home: "Reference Library", screens: ["Reference Library", "Person Profile"] },
   { key: "enrol", label: "Enrol", icon: "enrol", group: "Library", home: "Enrol", screens: ["Enrol"] },
+  { key: "import", label: "Import", icon: "upload", group: "Library", home: "Import", screens: ["Import"] },
   { key: "history", label: "History", icon: "history", group: "Evidence", home: "Cases", screens: ["Cases", "CaseDetail"] },
   { key: "reports", label: "Evidence Reports", icon: "file", group: "Evidence", home: "Evidence Reports", screens: ["Evidence Reports", "Evidence Report"] },
   { key: "statistics", label: "Statistics", icon: "audit", group: "Evidence", home: "Reports", screens: ["Reports"] },

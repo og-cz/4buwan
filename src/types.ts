@@ -84,5 +84,6 @@ export type Stats = {
   average_confidence: number | null; persons: Record<string, number>;
 };
 
+export type ImportResult = { ok: boolean; persons: number; checks: number; samples: number; attachments: number; skipped: number };
 export type Attachment = { id: string; created: string; name: string; note: string; url: string };
 export type ReportEntry = { at: string; case_id: string; case_title: string; verdict: Verdict; decision: Decision; name: string | null };

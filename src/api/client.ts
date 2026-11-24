@@ -1,5 +1,5 @@
 import type {
-  Attachment, CheckDetail, CheckSummary, Decision, Health, PerformanceRow, PersonDetail, PersonSummary, Preprocessed,
+  Attachment, CheckDetail, CheckSummary, Decision, Health, ImportResult, PerformanceRow, PersonDetail, PersonSummary, Preprocessed,
   Quality, ReportEntry, ResearchResults, Stats, Strictness, UncertainZone, Verdict, VerifyResult,
 } from "../types";
 import { getDataMode } from "../state/dataMode";
@@ -95,6 +95,11 @@ export const listAttachments = (id: string) => request<Attachment[]>(`/api/check
 export const addAttachments = (id: string, files: Blob[], note: string) => post<{ ok: boolean }>(`/api/checks/${id}/attachments`, { files, note });
 export const logReport = (id: string) => post<{ ok: boolean }>(`/api/checks/${id}/report`);
 export const listReports = () => request<ReportEntry[]>("/api/reports");
+
+/** Adds a whole workspace from one export file (.zip); nothing already stored is changed. */
+export const importWorkspace = (file: File) => post<ImportResult>("/api/import", { file });
+/** Download link for the current workspace as one export file. */
+export const exportUrl = () => modeUrl("/api/export");
 
 /** Empties the demo data for a new demo session; nothing done in a demo is kept. */
 export const startDemo = () => post<{ ok: boolean; persons: number; checks: number }>("/api/demo/start");
