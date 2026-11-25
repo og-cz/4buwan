@@ -43,24 +43,11 @@
 .staff-list strong { font: var(--t-small); font-weight: 600; }
 .staff-list small, .staff-list > div > div span { font: var(--t-small); color: var(--text-3); }
 
-.curve { width: 100%; height: 200px; }
-.curve path { fill: none; }
-.curve .grid { stroke: var(--border); }
-.curve .chance { stroke: var(--text-3); stroke-dasharray: 4 4; }
-.curve .line { stroke: var(--accent); stroke-width: 3; }
 
-.dataset-toolbar { padding: var(--s4) var(--s5); border: 1px solid var(--border); border-radius: var(--r-lg); background: var(--surface); display: grid; grid-template-columns: 220px minmax(0, 1fr) auto; gap: var(--s4); align-items: end; }
-.dataset-toolbar label, .dataset-toolbar > div { display: flex; flex-direction: column; gap: 6px; }
-.dataset-toolbar label > span, .dataset-toolbar > div > span { font: var(--t-label); letter-spacing: var(--label-tracking); color: var(--text-3); }
-.dataset-toolbar section { display: flex; }
-.dataset-toolbar section button { min-height: var(--control-h); flex: 1; border: 1px solid var(--border); border-right: 0; background: var(--surface-2); color: var(--text-2); font: var(--t-small); }
-.dataset-toolbar section button:first-child { border-radius: var(--r-sm) 0 0 var(--r-sm); }
-.dataset-toolbar section button:last-child { border-right: 1px solid var(--border); border-radius: 0 var(--r-sm) var(--r-sm) 0; }
-.dataset-toolbar section button.active { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .fact-card .tag { align-self: flex-start; }
 
 @media (max-width: 899px) {
-  .decoy-verify-grid, .review-evidence, .dataset-toolbar { grid-template-columns: minmax(0, 1fr); }
+  .decoy-verify-grid, .review-evidence { grid-template-columns: minmax(0, 1fr); }
   .staff-list > div { grid-template-columns: 40px minmax(0, 1fr) auto; }
   .staff-list > div > div:not(:first-of-type), .staff-list > div > .tag { display: none; }
 }
