@@ -3,7 +3,7 @@ import Button from "../components/Button";
 import { DemoBarSwitch, DemoNotice } from "../components/DemoBar";
 import { useDataMode } from "../state/dataMode";
 import PageHeader from "../components/PageHeader";
-import { saveSettings, strictnessHelp, uncertainHelp, useSettings, type Settings as S, type Term, type View } from "../state/settings";
+import { saveSettings, strictnessHelp, uncertainHelp, useSettings, type Settings as S, type Term } from "../state/settings";
 import type { Strictness, UncertainZone } from "../types";
 
 const terms: Term[] = ["Person", "Client", "Member", "Student", "Employee", "Custom"];
@@ -31,7 +31,6 @@ export default function Settings({ notify }: { notify: (m: string) => void }) {
       <section className="panel"><div className="panel-head"><div><span>DECISIONS</span><h2>Default checking behaviour</h2></div></div>
         <label className="compact-field"><span>STRICTNESS</span><select value={s.strictness} onChange={e => set("strictness", e.target.value as Strictness)}>{(Object.keys(strictnessHelp) as Strictness[]).map(k => <option key={k} value={k}>{k} — {strictnessHelp[k]}</option>)}</select></label>
         <label className="compact-field"><span>UNCERTAIN ZONE</span><select value={s.uncertain} onChange={e => set("uncertain", e.target.value as UncertainZone)}>{(Object.keys(uncertainHelp) as UncertainZone[]).map(k => <option key={k} value={k}>{k} — {uncertainHelp[k]}</option>)}</select></label>
-        <label className="compact-field"><span>DEFAULT VIEW</span><select value={s.defaultView} onChange={e => set("defaultView", e.target.value as View)}><option value="Simple">Simple view</option><option value="Expert">Expert view</option></select></label>
         <p className="input-hint">The decision rule is provisional and was chosen on development writers. These settings move it; they do not retrain the model.</p>
       </section>
       <section className="panel"><div className="panel-head"><div><span>DATA & PRIVACY</span><h2>Retention and backup</h2></div></div>

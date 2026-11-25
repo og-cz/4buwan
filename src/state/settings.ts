@@ -3,18 +3,17 @@ import type { Strictness, UncertainZone } from "../types";
 import { getDataMode, onDataModeChange } from "./dataMode";
 
 export type Term = "Person" | "Client" | "Member" | "Student" | "Employee" | "Custom";
-export type View = "Simple" | "Expert";
 
 export type Settings = {
   orgName: string; orgLogo: string; term: Term; customTerm: string; idLabel: string;
-  strictness: Strictness; uncertain: UncertainZone; defaultView: View;
+  strictness: Strictness; uncertain: UncertainZone;
 };
 
 /** Settings are kept per data mode, so trying things in Sample data never changes the real workspace. */
 const key = () => `signature-desk.settings.${getDataMode()}`;
 const defaults: Settings = {
   orgName: "", orgLogo: "", term: "Person", customTerm: "", idLabel: "Person ID",
-  strictness: "Standard", uncertain: "Standard", defaultView: "Simple",
+  strictness: "Standard", uncertain: "Standard",
 };
 
 function read(): Settings {

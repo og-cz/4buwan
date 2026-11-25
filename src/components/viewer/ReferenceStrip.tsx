@@ -4,7 +4,7 @@ import type { Comparison } from "../../types";
 
 type Props = { personId: string; selected: number; onSelect: (n: number) => void; comparisons?: Comparison[] };
 
-/** The 12 Reference Samples. In Expert view a small bar under each shows that comparison's model value. */
+/** The 12 Reference Samples. A small bar under each shows that comparison's model value. */
 export default function ReferenceStrip({ personId, selected, onSelect, comparisons }: Props) {
   const peak = comparisons ? Math.max(...comparisons.map(c => Math.abs(c.value)), 1e-9) : 1;
   return <div className="reference-strip" role="listbox" aria-label="Reference Samples">{Array.from({ length: 12 }, (_, i) => {
