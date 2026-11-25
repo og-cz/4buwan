@@ -4,7 +4,8 @@
 
 Enrols Person A (CEDAR-053) and Person B (CEDAR-045) with their 12 enrolment signatures, checks all 48 files of the
 kit with the real engine, records the decisions an examiner would make (Uncertain checks are left for the Review
-Queue), spreads the dates over the last 14 days, and saves everything as one export file. Uses a temporary data
+Queue) with examination notes, exports Evidence Reports for some decided cases, spreads the dates over the last
+14 days, and saves everything as one export file. Uses a temporary data
 folder: no stored records are read or changed.
 """
 import argparse
@@ -41,9 +42,15 @@ for folder, pid, name in (("Person_A_053", "CEDAR-053", "Person A"), ("Person_B_
         v = client.post("/api/verify", headers=H, data={"person_id": person, "case_title": f"{name} · {f.stem}"},
                         files={"file": (f.name, f.read_bytes(), "image/png")})
         v.raise_for_status(); res = v.json()
-        if res["verdict"] != "UNCERTAIN":
-            decision = "Accepted" if res["verdict"] == "LIKELY GENUINE" else "Rejected"
-            client.post(f"/api/checks/{res['case_id']}/decision", headers=H, data={"decision": decision, "note": "Agrees with the evidence."})
+        cid = res["case_id"]
+        if res["verdict"] == "UNCERTAIN":
+            client.post(f"/api/checks/{cid}/notes", headers=H, data={"text": "Score is near the decision line. Asked the client for a second sample."})
+            continue
+        decision = "Accepted" if res["verdict"] == "LIKELY GENUINE" else "Rejected"
+        client.post(f"/api/checks/{cid}/decision", headers=H, data={"decision": decision, "note": "Agrees with the evidence."})
+        if num(f) % 4 == 1:            # a quarter of the decided cases get a note and an exported Evidence Report
+            client.post(f"/api/checks/{cid}/notes", headers=H, data={"text": "Stroke order and pen pressure checked against the references."})
+            client.post(f"/api/checks/{cid}/report", headers=H)
 
 # Spread the activity over the last 14 days so the dashboard and statistics have something to show.
 db = sqlite3.connect(ROOT / "demo" / "sigdesk.db")
@@ -52,7 +59,9 @@ ids = [r[0] for r in db.execute("SELECT id FROM checks ORDER BY created, id")]
 for i, cid in enumerate(ids):
     when = (end - timedelta(days=13) + timedelta(hours=i * 13 * 24 / max(1, len(ids) - 1))).isoformat()
     db.execute("UPDATE checks SET created=? WHERE id=?", (when, cid))
-    db.execute("UPDATE events SET at=? WHERE ref=?", (when, cid))
+    db.execute("UPDATE events SET at=? WHERE ref=? AND kind='verify'", (when, cid))
+    for kind, minutes in (("note", 20), ("decision", 35), ("report", 50)):   # the examiner's later steps on that case
+        db.execute("UPDATE events SET at=? WHERE ref=? AND kind=?", ((datetime.fromisoformat(when) + timedelta(minutes=minutes)).isoformat(), cid, kind))
 db.execute("UPDATE persons SET created=?", ((end - timedelta(days=14)).isoformat(),))
 db.commit(); db.close()
 

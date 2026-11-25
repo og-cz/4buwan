@@ -6,7 +6,9 @@ import type { IconName } from "../components/Icon";
 import type { Role } from "../navigation";
 import { DecoyEnrol, DecoyProfile, DecoyVerify } from "./DecoyExamine";
 import { DecoyHistory, DecoyReviewQueue, DecoyStaff } from "./DecoyRecords";
-import { DecoyDataset, DecoyMethods } from "./DecoyResearch";
+import DatasetCheck from "../screens/research/DatasetCheck";
+import MethodComparison from "../screens/research/MethodComparison";
+import { researchRows } from "./researchRows";
 import { DecoyDashboard, DecoyHelp, DecoyImport, DecoySettings } from "./DecoyExtras";
 
 type DecoyScreen = "Dashboard" | "Verify" | "Client Profile" | "Enrol" | "Import" | "History" | "Review Queue" | "Staff Accounts" | "Method Comparison" | "Dataset Check" | "Settings" | "Help";
@@ -42,8 +44,8 @@ export default function DecoyApp({ role, user, logout }: { role: Exclude<Role, "
     case "History": page = <DecoyHistory />; break;
     case "Review Queue": page = <DecoyReviewQueue />; break;
     case "Staff Accounts": page = <DecoyStaff />; break;
-    case "Method Comparison": page = <DecoyMethods />; break;
-    case "Dataset Check": page = <DecoyDataset />; break;
+    case "Method Comparison": page = <MethodComparison rows={researchRows} />; break;
+    case "Dataset Check": page = <DatasetCheck rows={researchRows} />; break;
     case "Settings": page = <DecoySettings />; break;
     case "Help": page = <DecoyHelp />; break;
     default: page = <DecoyDashboard openReview={() => go("Review Queue")} openHistory={() => go("History")} />;

@@ -49,9 +49,22 @@ for (const width of widths) {
       await noHorizontalScroll(page)
     })
 
-    test('Research Lab', async ({ page }) => {
+    test('Researcher method comparison', async ({ page }) => {
       await signIn(page, 'Researcher')
       await open(page, 'Method Comparison')
+      await noHorizontalScroll(page)
+    })
+
+    test('Verifier Research Lab', async ({ page }) => {
+      await signIn(page, 'Verifier')
+      await open(page, 'Research Lab')
+      await page.waitForTimeout(600)
+      await noHorizontalScroll(page)
+    })
+
+    test('Verifier Import', async ({ page }) => {
+      await signIn(page, 'Verifier')
+      await open(page, 'Import')
       await noHorizontalScroll(page)
     })
   })
