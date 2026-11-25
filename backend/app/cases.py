@@ -77,5 +77,5 @@ def reports():
     with db() as c:
         rows = c.execute("SELECT e.at, k.id AS case_id, k.case_title, k.verdict, k.decision, p.name FROM events e "
                          "JOIN checks k ON k.id=e.ref LEFT JOIN persons p ON p.id=k.person_id "
-                         "WHERE e.kind='report' ORDER BY e.id DESC").fetchall()
+                         "WHERE e.kind='report' ORDER BY e.at DESC, e.id DESC").fetchall()
     return [dict(r) for r in rows]
