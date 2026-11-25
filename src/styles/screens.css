@@ -252,6 +252,8 @@
 .chart-svg .bar-shared { fill: var(--chart-band); }
 .formula { align-self: flex-start; padding: var(--s3) var(--s5); border: 1px solid var(--border); border-radius: var(--r-sm); background: var(--surface-2); color: var(--text); }
 .formula math { font-size: 24px; }
+.formula { max-width: 100%; overflow-x: auto; }
+@media (max-width: 599px) { .formula { padding: var(--s3); } .formula math { font-size: 17px; } }
 math { font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", math; }
 .chart-note math { font-size: 1.1em; }
 
