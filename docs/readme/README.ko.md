@@ -35,7 +35,7 @@
 
 </td>
 <td width="50%">
-  <a href="../mp4/Genuine-Only%20Enrolment.mp4"><img src="../gif/genuine-only-enrolment.gif" alt="진짜 서명만으로 등록" width="100%" /></a>
+  <a href="../mp4/Genuine-Only%20Enrolment.mp4"><picture><source srcset="../gif/genuine-only-enrolment.gif" type="image/gif"><img src="../gif/posters/genuine-only-enrolment.jpg" alt="진짜 서명만으로 등록" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -49,7 +49,7 @@ R1-WAW가 하나의 공유 기준을 각 사람의 서명 변화에 맞춘 뒤, 
 
 </td>
 <td width="50%">
-  <a href="../mp4/Writer-Adaptive%20Verification.mp4"><img src="../gif/writer-adaptive-verification.gif" alt="작성자 적응형 검증" width="100%" /></a>
+  <a href="../mp4/Writer-Adaptive%20Verification.mp4"><picture><source srcset="../gif/writer-adaptive-verification.gif" type="image/gif"><img src="../gif/posters/writer-adaptive-verification.jpg" alt="작성자 적응형 검증" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -63,7 +63,7 @@ R1-WAW가 하나의 공유 기준을 각 사람의 서명 변화에 맞춘 뒤, 
 
 </td>
 <td width="50%">
-  <a href="../mp4/Inspectable%20Evidence.mp4"><img src="../gif/inspectable-evidence.gif" alt="확인 가능한 근거" width="100%" /></a>
+  <a href="../mp4/Inspectable%20Evidence.mp4"><picture><source srcset="../gif/inspectable-evidence.gif" type="image/gif"><img src="../gif/posters/inspectable-evidence.jpg" alt="확인 가능한 근거" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -77,7 +77,7 @@ R1-WAW가 하나의 공유 기준을 각 사람의 서명 변화에 맞춘 뒤, 
 
 </td>
 <td width="50%">
-  <a href="../mp4/Printable%20Evidence%20Reports.mp4"><img src="../gif/printable-evidence-reports.gif" alt="인쇄 가능한 근거 보고서" width="100%" /></a>
+  <a href="../mp4/Printable%20Evidence%20Reports.mp4"><picture><source srcset="../gif/printable-evidence-reports.gif" type="image/gif"><img src="../gif/posters/printable-evidence-reports.jpg" alt="인쇄 가능한 근거 보고서" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -91,7 +91,7 @@ R1-WAW가 하나의 공유 기준을 각 사람의 서명 변화에 맞춘 뒤, 
 
 </td>
 <td width="50%">
-  <a href="../mp4/Human%20Decision%20Review.mp4"><img src="../gif/human-decision-review.gif" alt="사람의 결정 검토" width="100%" /></a>
+  <a href="../mp4/Human%20Decision%20Review.mp4"><picture><source srcset="../gif/human-decision-review.gif" type="image/gif"><img src="../gif/posters/human-decision-review.jpg" alt="사람의 결정 검토" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -105,7 +105,7 @@ R1-WAW가 하나의 공유 기준을 각 사람의 서명 변화에 맞춘 뒤, 
 
 </td>
 <td width="50%">
-  <a href="../mp4/Research%20Lab.mp4"><img src="../gif/research-lab.gif" alt="연구실 및 지름길 검사" width="100%" /></a>
+  <a href="../mp4/Research%20Lab.mp4"><picture><source srcset="../gif/research-lab.gif" type="image/gif"><img src="../gif/posters/research-lab.jpg" alt="연구실 및 지름길 검사" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -119,7 +119,7 @@ R1-WAW가 하나의 공유 기준을 각 사람의 서명 변화에 맞춘 뒤, 
 
 </td>
 <td width="50%">
-  <a href="../mp4/Office%20Dashboard.mp4"><img src="../gif/office-dashboard.gif" alt="사무실 대시보드" width="100%" /></a>
+  <a href="../mp4/Office%20Dashboard.mp4"><picture><source srcset="../gif/office-dashboard.gif" type="image/gif"><img src="../gif/posters/office-dashboard.jpg" alt="사무실 대시보드" width="100%" /></picture></a>
 </td>
 </tr>
 </table>
