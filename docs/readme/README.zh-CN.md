@@ -31,9 +31,11 @@
 
 12 个真实签名建立一份档案，每个签名一到就检查质量。从不需要伪造样本。
 
+[完整视频 →](../mp4/Genuine-Only%20Enrolment.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-profile.png" alt="只用真实签名登记" width="100%" />
+  <a href="../mp4/Genuine-Only%20Enrolment.mp4"><img src="../gif/genuine-only-enrolment.gif" alt="只用真实签名登记" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -43,9 +45,11 @@
 
 R1-WAW 把一把共享尺子调整到每个人自己的书写变化，再给出带不确定区间的参考结论。
 
+[完整视频 →](../mp4/Writer-Adaptive%20Verification.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-verify.png" alt="按书写者自适应的核验" width="100%" />
+  <a href="../mp4/Writer-Adaptive%20Verification.mp4"><img src="../gif/writer-adaptive-verification.gif" alt="按书写者自适应的核验" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -55,9 +59,11 @@ R1-WAW 把一把共享尺子调整到每个人自己的书写变化，再给出�
 
 每个结论都展示依据：相对决策线的分数、全部 12 次比较、17 项度量和相似度矩阵。
 
+[完整视频 →](../mp4/Inspectable%20Evidence.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-evidence.png" alt="可查验的证据" width="100%" />
+  <a href="../mp4/Inspectable%20Evidence.mp4"><img src="../gif/inspectable-evidence.gif" alt="可查验的证据" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -67,9 +73,11 @@ R1-WAW 把一把共享尺子调整到每个人自己的书写变化，再给出�
 
 一键把案件变成可存档的报告：待检签名、全部 12 个参考签名、结论和评分。可打印，也可保存为 PDF。
 
+[完整视频 →](../mp4/Printable%20Evidence%20Reports.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-report.png" alt="可打印的证据报告" width="100%" />
+  <a href="../mp4/Printable%20Evidence%20Reports.mp4"><img src="../gif/printable-evidence-reports.gif" alt="可打印的证据报告" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -79,45 +87,25 @@ R1-WAW 把一把共享尺子调整到每个人自己的书写变化，再给出�
 
 工具给建议，人来做决定。不确定的核验进入复核队列，每个决定都要写明理由。
 
+[完整视频 →](../mp4/Human%20Decision%20Review.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-review.png" alt="人工决定复核" width="100%" />
+  <a href="../mp4/Human%20Decision%20Review.mp4"><img src="../gif/human-decision-review.gif" alt="人工决定复核" width="100%" /></a>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### 研究实验室
+### 研究实验室与捷径检查
 
-论文就在应用里：方法比较、数据集捷径检查和模型卡。
+论文就在应用里：方法比较、数据集捷径检查和模型卡。 证明方法读的是笔迹，而不是扫描仪。每个结果都与只看简单图像特征的对照组比较。
 
-</td>
-<td width="50%">
-  <img src="../image/feature-research.png" alt="研究实验室" width="100%" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### 捷径检查
-
-证明方法读的是笔迹，而不是扫描仪。每个结果都与只看简单图像特征的对照组比较。
+[完整视频 →](../mp4/Research%20Lab.mp4)
 
 </td>
 <td width="50%">
-  <img src="../image/feature-shortcut.png" alt="捷径检查" width="100%" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### 角色与员工账号
-
-核验员负责核验，主管做决定并管理员工，研究员研究方法。每个角色只看到自己需要的模块。
-
-</td>
-<td width="50%">
-  <img src="../image/feature-staff.png" alt="角色与员工账号" width="100%" />
+  <a href="../mp4/Research%20Lab.mp4"><img src="../gif/research-lab.gif" alt="研究实验室与捷径检查" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -127,9 +115,11 @@ R1-WAW 把一把共享尺子调整到每个人自己的书写变化，再给出�
 
 一眼看清档案、核验、不确定比例和待决定事项。
 
+[完整视频 →](../mp4/Office%20Dashboard.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-dashboard.png" alt="机构仪表盘" width="100%" />
+  <a href="../mp4/Office%20Dashboard.mp4"><img src="../gif/office-dashboard.gif" alt="机构仪表盘" width="100%" /></a>
 </td>
 </tr>
 </table>

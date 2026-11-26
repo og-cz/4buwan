@@ -31,9 +31,11 @@
 
 Labindalawang tunay na pirma ang bumubuo ng profile, at sinusuri ang kalidad ng bawat isa pagdating. Hindi kailanman kailangan ng pineke.
 
+[Buong video →](../mp4/Genuine-Only%20Enrolment.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-profile.png" alt="Pag-enroll Gamit ang Tunay na Pirma Lamang" width="100%" />
+  <a href="../mp4/Genuine-Only%20Enrolment.mp4"><img src="../gif/genuine-only-enrolment.gif" alt="Pag-enroll Gamit ang Tunay na Pirma Lamang" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -43,9 +45,11 @@ Labindalawang tunay na pirma ang bumubuo ng profile, at sinusuri ang kalidad ng 
 
 Iniaangkop ng R1-WAW ang iisang shared na panukat sa sariling pagbabago ng pirma ng bawat tao, saka nagbibigay ng payong hatol na may uncertain zone.
 
+[Buong video →](../mp4/Writer-Adaptive%20Verification.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-verify.png" alt="Pagpapatunay na Umaangkop sa Sumulat" width="100%" />
+  <a href="../mp4/Writer-Adaptive%20Verification.mp4"><img src="../gif/writer-adaptive-verification.gif" alt="Pagpapatunay na Umaangkop sa Sumulat" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -55,9 +59,11 @@ Iniaangkop ng R1-WAW ang iisang shared na panukat sa sariling pagbabago ng pirma
 
 Ipinapakita ng bawat hatol ang batayan nito: ang score laban sa decision line, lahat ng 12 paghahambing, ang 17 sukat at ang similarity matrix.
 
+[Buong video →](../mp4/Inspectable%20Evidence.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-evidence.png" alt="Ebidensiyang Masusuri" width="100%" />
+  <a href="../mp4/Inspectable%20Evidence.mp4"><img src="../gif/inspectable-evidence.gif" alt="Ebidensiyang Masusuri" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -67,9 +73,11 @@ Ipinapakita ng bawat hatol ang batayan nito: ang score laban sa decision line, l
 
 Isang click lang, nagiging ulat ang isang kaso: ang pirmang sinusuri, lahat ng 12 reference, ang hatol at ang scoring. I-print o i-save bilang PDF.
 
+[Buong video →](../mp4/Printable%20Evidence%20Reports.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-report.png" alt="Printable na Evidence Report" width="100%" />
+  <a href="../mp4/Printable%20Evidence%20Reports.mp4"><img src="../gif/printable-evidence-reports.gif" alt="Printable na Evidence Report" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -79,45 +87,25 @@ Isang click lang, nagiging ulat ang isang kaso: ang pirmang sinusuri, lahat ng 1
 
 Nagpapayo ang tool, tao ang nagdedesisyon. Naghihintay sa review queue ang mga uncertain na pagsusuri, at kailangan ng dahilan ang bawat desisyon.
 
+[Buong video →](../mp4/Human%20Decision%20Review.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-review.png" alt="Review ng Desisyon ng Tao" width="100%" />
+  <a href="../mp4/Human%20Decision%20Review.mp4"><img src="../gif/human-decision-review.gif" alt="Review ng Desisyon ng Tao" width="100%" /></a>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Research Lab
+### Research Lab at Shortcut Check
 
-Ang thesis sa loob ng app: paghahambing ng paraan, dataset shortcut check at ang model card.
+Ang thesis sa loob ng app: paghahambing ng paraan, dataset shortcut check at ang model card. Pinatutunayan na sulat-kamay ang binabasa ng paraan, hindi ang scanner. Sinusubok ang bawat resulta laban sa control na simpleng detalye lang ng larawan ang nakikita.
 
-</td>
-<td width="50%">
-  <img src="../image/feature-research.png" alt="Research Lab" width="100%" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Shortcut Check
-
-Pinatutunayan na sulat-kamay ang binabasa ng paraan, hindi ang scanner. Sinusubok ang bawat resulta laban sa control na simpleng detalye lang ng larawan ang nakikita.
+[Buong video →](../mp4/Research%20Lab.mp4)
 
 </td>
 <td width="50%">
-  <img src="../image/feature-shortcut.png" alt="Shortcut Check" width="100%" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Mga Role at Staff Account
-
-Nagsusuri ang Verifier, nagdedesisyon at namamahala ng staff ang Supervisor, pinag-aaralan ng Researcher ang paraan. Tanging kailangang module lang ang nakikita ng bawat role.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-staff.png" alt="Mga Role at Staff Account" width="100%" />
+  <a href="../mp4/Research%20Lab.mp4"><img src="../gif/research-lab.gif" alt="Research Lab at Shortcut Check" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -127,9 +115,11 @@ Nagsusuri ang Verifier, nagdedesisyon at namamahala ng staff ang Supervisor, pin
 
 Mga profile, pagsusuri, uncertain rate at mga nakabinbing desisyon sa isang tingin.
 
+[Buong video →](../mp4/Office%20Dashboard.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-dashboard.png" alt="Dashboard ng Opisina" width="100%" />
+  <a href="../mp4/Office%20Dashboard.mp4"><img src="../gif/office-dashboard.gif" alt="Dashboard ng Opisina" width="100%" /></a>
 </td>
 </tr>
 </table>

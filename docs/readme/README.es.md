@@ -31,9 +31,11 @@
 
 Doce firmas genuinas crean un perfil, y cada una pasa un control de calidad al llegar. Nunca hacen falta falsificaciones.
 
+[Video completo →](../mp4/Genuine-Only%20Enrolment.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-profile.png" alt="Inscripción solo con firmas genuinas" width="100%" />
+  <a href="../mp4/Genuine-Only%20Enrolment.mp4"><img src="../gif/genuine-only-enrolment.gif" alt="Inscripción solo con firmas genuinas" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -43,9 +45,11 @@ Doce firmas genuinas crean un perfil, y cada una pasa un control de calidad al l
 
 R1-WAW ajusta una medida compartida a la variación propia de cada persona y da un veredicto orientativo con zona incierta.
 
+[Video completo →](../mp4/Writer-Adaptive%20Verification.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-verify.png" alt="Verificación adaptada a cada persona" width="100%" />
+  <a href="../mp4/Writer-Adaptive%20Verification.mp4"><img src="../gif/writer-adaptive-verification.gif" alt="Verificación adaptada a cada persona" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -55,9 +59,11 @@ R1-WAW ajusta una medida compartida a la variación propia de cada persona y da 
 
 Cada veredicto muestra su razonamiento: la puntuación frente a la línea de decisión, las 12 comparaciones, las 17 medidas y la matriz de similitud.
 
+[Video completo →](../mp4/Inspectable%20Evidence.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-evidence.png" alt="Evidencia inspeccionable" width="100%" />
+  <a href="../mp4/Inspectable%20Evidence.mp4"><img src="../gif/inspectable-evidence.gif" alt="Evidencia inspeccionable" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -67,9 +73,11 @@ Cada veredicto muestra su razonamiento: la puntuación frente a la línea de dec
 
 Con un clic, un caso se convierte en un informe listo para archivar: la firma cuestionada, las 12 referencias, el veredicto y la puntuación. Imprímelo o guárdalo como PDF.
 
+[Video completo →](../mp4/Printable%20Evidence%20Reports.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-report.png" alt="Informes de evidencia imprimibles" width="100%" />
+  <a href="../mp4/Printable%20Evidence%20Reports.mp4"><img src="../gif/printable-evidence-reports.gif" alt="Informes de evidencia imprimibles" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -79,45 +87,25 @@ Con un clic, un caso se convierte en un informe listo para archivar: la firma cu
 
 La herramienta aconseja, una persona decide. Las verificaciones inciertas esperan en una cola de revisión y cada decisión necesita un motivo.
 
+[Video completo →](../mp4/Human%20Decision%20Review.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-review.png" alt="Revisión con decisión humana" width="100%" />
+  <a href="../mp4/Human%20Decision%20Review.mp4"><img src="../gif/human-decision-review.gif" alt="Revisión con decisión humana" width="100%" /></a>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Laboratorio de investigación
+### Laboratorio de investigación y Comprobación de atajos
 
-La tesis dentro de la app: comparación de métodos, comprobación de atajos del conjunto de datos y la ficha del modelo.
+La tesis dentro de la app: comparación de métodos, comprobación de atajos del conjunto de datos y la ficha del modelo. Demuestra que el método lee la escritura y no el escáner. Cada resultado se contrasta con un control que solo ve datos simples de la imagen.
 
-</td>
-<td width="50%">
-  <img src="../image/feature-research.png" alt="Laboratorio de investigación" width="100%" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Comprobación de atajos
-
-Demuestra que el método lee la escritura y no el escáner. Cada resultado se contrasta con un control que solo ve datos simples de la imagen.
+[Video completo →](../mp4/Research%20Lab.mp4)
 
 </td>
 <td width="50%">
-  <img src="../image/feature-shortcut.png" alt="Comprobación de atajos" width="100%" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Roles y cuentas del personal
-
-Los Verificadores revisan, los Supervisores deciden y gestionan al personal, y los Investigadores estudian el método. Cada rol ve solo los módulos que necesita.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-staff.png" alt="Roles y cuentas del personal" width="100%" />
+  <a href="../mp4/Research%20Lab.mp4"><img src="../gif/research-lab.gif" alt="Laboratorio de investigación y Comprobación de atajos" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -127,9 +115,11 @@ Los Verificadores revisan, los Supervisores deciden y gestionan al personal, y l
 
 Perfiles, verificaciones, tasa de inciertos y decisiones pendientes de un vistazo.
 
+[Video completo →](../mp4/Office%20Dashboard.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-dashboard.png" alt="Panel de la oficina" width="100%" />
+  <a href="../mp4/Office%20Dashboard.mp4"><img src="../gif/office-dashboard.gif" alt="Panel de la oficina" width="100%" /></a>
 </td>
 </tr>
 </table>
