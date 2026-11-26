@@ -35,7 +35,7 @@ Twelve genuine signatures build a profile, each quality-checked as it arrives. N
 
 </td>
 <td width="50%">
-  <a href="docs/mp4/Genuine-Only%20Enrolment.mp4"><img src="docs/gif/genuine-only-enrolment.gif" alt="Genuine-Only Enrolment" width="100%" /></a>
+  <a href="docs/mp4/Genuine-Only%20Enrolment.mp4"><picture><source srcset="docs/gif/genuine-only-enrolment.gif" type="image/gif"><img src="docs/gif/posters/genuine-only-enrolment.jpg" alt="Genuine-Only Enrolment" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -49,7 +49,7 @@ R1-WAW tunes one shared yardstick to each person's own variation, then gives an 
 
 </td>
 <td width="50%">
-  <a href="docs/mp4/Writer-Adaptive%20Verification.mp4"><img src="docs/gif/writer-adaptive-verification.gif" alt="Writer-Adaptive Verification" width="100%" /></a>
+  <a href="docs/mp4/Writer-Adaptive%20Verification.mp4"><picture><source srcset="docs/gif/writer-adaptive-verification.gif" type="image/gif"><img src="docs/gif/posters/writer-adaptive-verification.jpg" alt="Writer-Adaptive Verification" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -63,7 +63,7 @@ Every verdict shows its working: the score against the decision line, all 12 com
 
 </td>
 <td width="50%">
-  <a href="docs/mp4/Inspectable%20Evidence.mp4"><img src="docs/gif/inspectable-evidence.gif" alt="Inspectable Evidence" width="100%" /></a>
+  <a href="docs/mp4/Inspectable%20Evidence.mp4"><picture><source srcset="docs/gif/inspectable-evidence.gif" type="image/gif"><img src="docs/gif/posters/inspectable-evidence.jpg" alt="Inspectable Evidence" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -77,7 +77,7 @@ One click turns a case into a report ready to file: the questioned signature, al
 
 </td>
 <td width="50%">
-  <a href="docs/mp4/Printable%20Evidence%20Reports.mp4"><img src="docs/gif/printable-evidence-reports.gif" alt="Printable Evidence Reports" width="100%" /></a>
+  <a href="docs/mp4/Printable%20Evidence%20Reports.mp4"><picture><source srcset="docs/gif/printable-evidence-reports.gif" type="image/gif"><img src="docs/gif/posters/printable-evidence-reports.jpg" alt="Printable Evidence Reports" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -91,7 +91,7 @@ The tool advises, a person decides. Uncertain checks wait in a review queue, and
 
 </td>
 <td width="50%">
-  <a href="docs/mp4/Human%20Decision%20Review.mp4"><img src="docs/gif/human-decision-review.gif" alt="Human Decision Review" width="100%" /></a>
+  <a href="docs/mp4/Human%20Decision%20Review.mp4"><picture><source srcset="docs/gif/human-decision-review.gif" type="image/gif"><img src="docs/gif/posters/human-decision-review.jpg" alt="Human Decision Review" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -105,7 +105,7 @@ The thesis inside the app: method comparison, the model card and a dataset check
 
 </td>
 <td width="50%">
-  <a href="docs/mp4/Research%20Lab.mp4"><img src="docs/gif/research-lab.gif" alt="Research Lab and Shortcut Check" width="100%" /></a>
+  <a href="docs/mp4/Research%20Lab.mp4"><picture><source srcset="docs/gif/research-lab.gif" type="image/gif"><img src="docs/gif/posters/research-lab.jpg" alt="Research Lab and Shortcut Check" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -119,7 +119,7 @@ Profiles, checks, the uncertain rate and pending decisions at a glance.
 
 </td>
 <td width="50%">
-  <a href="docs/mp4/Office%20Dashboard.mp4"><img src="docs/gif/office-dashboard.gif" alt="Office Dashboard" width="100%" /></a>
+  <a href="docs/mp4/Office%20Dashboard.mp4"><picture><source srcset="docs/gif/office-dashboard.gif" type="image/gif"><img src="docs/gif/posters/office-dashboard.jpg" alt="Office Dashboard" width="100%" /></picture></a>
 </td>
 </tr>
 </table>

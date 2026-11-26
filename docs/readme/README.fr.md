@@ -35,7 +35,7 @@ Douze signatures authentiques forment un profil, chacune contrôlée dès son ar
 
 </td>
 <td width="50%">
-  <a href="../mp4/Genuine-Only%20Enrolment.mp4"><img src="../gif/genuine-only-enrolment.gif" alt="Inscription avec des signatures authentiques uniquement" width="100%" /></a>
+  <a href="../mp4/Genuine-Only%20Enrolment.mp4"><picture><source srcset="../gif/genuine-only-enrolment.gif" type="image/gif"><img src="../gif/posters/genuine-only-enrolment.jpg" alt="Inscription avec des signatures authentiques uniquement" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -49,7 +49,7 @@ R1-WAW ajuste un étalon partagé à la variation propre de chaque personne, pui
 
 </td>
 <td width="50%">
-  <a href="../mp4/Writer-Adaptive%20Verification.mp4"><img src="../gif/writer-adaptive-verification.gif" alt="Vérification adaptée à chaque personne" width="100%" /></a>
+  <a href="../mp4/Writer-Adaptive%20Verification.mp4"><picture><source srcset="../gif/writer-adaptive-verification.gif" type="image/gif"><img src="../gif/posters/writer-adaptive-verification.jpg" alt="Vérification adaptée à chaque personne" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -63,7 +63,7 @@ Chaque verdict montre son raisonnement : le score face à la ligne de décision,
 
 </td>
 <td width="50%">
-  <a href="../mp4/Inspectable%20Evidence.mp4"><img src="../gif/inspectable-evidence.gif" alt="Preuves vérifiables" width="100%" /></a>
+  <a href="../mp4/Inspectable%20Evidence.mp4"><picture><source srcset="../gif/inspectable-evidence.gif" type="image/gif"><img src="../gif/posters/inspectable-evidence.jpg" alt="Preuves vérifiables" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -77,7 +77,7 @@ Un clic transforme un dossier en rapport prêt à archiver : la signature contes
 
 </td>
 <td width="50%">
-  <a href="../mp4/Printable%20Evidence%20Reports.mp4"><img src="../gif/printable-evidence-reports.gif" alt="Rapports de preuves imprimables" width="100%" /></a>
+  <a href="../mp4/Printable%20Evidence%20Reports.mp4"><picture><source srcset="../gif/printable-evidence-reports.gif" type="image/gif"><img src="../gif/posters/printable-evidence-reports.jpg" alt="Rapports de preuves imprimables" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -91,7 +91,7 @@ L’outil conseille, une personne décide. Les vérifications incertaines attend
 
 </td>
 <td width="50%">
-  <a href="../mp4/Human%20Decision%20Review.mp4"><img src="../gif/human-decision-review.gif" alt="Revue par décision humaine" width="100%" /></a>
+  <a href="../mp4/Human%20Decision%20Review.mp4"><picture><source srcset="../gif/human-decision-review.gif" type="image/gif"><img src="../gif/posters/human-decision-review.jpg" alt="Revue par décision humaine" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -105,7 +105,7 @@ La thèse dans l’application : comparaison des méthodes, contrôle des raccou
 
 </td>
 <td width="50%">
-  <a href="../mp4/Research%20Lab.mp4"><img src="../gif/research-lab.gif" alt="Laboratoire de recherche et Contrôle des raccourcis" width="100%" /></a>
+  <a href="../mp4/Research%20Lab.mp4"><picture><source srcset="../gif/research-lab.gif" type="image/gif"><img src="../gif/posters/research-lab.jpg" alt="Laboratoire de recherche et Contrôle des raccourcis" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -119,7 +119,7 @@ Profils, vérifications, taux d’incertitude et décisions en attente d’un co
 
 </td>
 <td width="50%">
-  <a href="../mp4/Office%20Dashboard.mp4"><img src="../gif/office-dashboard.gif" alt="Tableau de bord du bureau" width="100%" /></a>
+  <a href="../mp4/Office%20Dashboard.mp4"><picture><source srcset="../gif/office-dashboard.gif" type="image/gif"><img src="../gif/posters/office-dashboard.jpg" alt="Tableau de bord du bureau" width="100%" /></picture></a>
 </td>
 </tr>
 </table>
