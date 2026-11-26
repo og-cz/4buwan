@@ -31,9 +31,11 @@
 
 本物の署名 12 件でプロファイルを作成し、届いたものから品質をチェックします。偽造サンプルは一切不要です。
 
+[フル動画 →](../mp4/Genuine-Only%20Enrolment.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-profile.png" alt="本物の署名だけで登録" width="100%" />
+  <a href="../mp4/Genuine-Only%20Enrolment.mp4"><img src="../gif/genuine-only-enrolment.gif" alt="本物の署名だけで登録" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -43,9 +45,11 @@
 
 R1-WAW が共有の物差しを一人ひとりの筆跡のばらつきに合わせ、不確実ゾーン付きの参考判定を出します。
 
+[フル動画 →](../mp4/Writer-Adaptive%20Verification.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-verify.png" alt="書き手に適応する検証" width="100%" />
+  <a href="../mp4/Writer-Adaptive%20Verification.mp4"><img src="../gif/writer-adaptive-verification.gif" alt="書き手に適応する検証" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -55,9 +59,11 @@ R1-WAW が共有の物差しを一人ひとりの筆跡のばらつきに合わ�
 
 すべての判定が根拠を示します：判定線に対するスコア、12 件すべての比較、17 の指標、類似度マトリクス。
 
+[フル動画 →](../mp4/Inspectable%20Evidence.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-evidence.png" alt="確認できる根拠" width="100%" />
+  <a href="../mp4/Inspectable%20Evidence.mp4"><img src="../gif/inspectable-evidence.gif" alt="確認できる根拠" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -67,9 +73,11 @@ R1-WAW が共有の物差しを一人ひとりの筆跡のばらつきに合わ�
 
 ワンクリックでケースを提出用レポートに：疑問の署名、12 件すべての参照、判定、スコア。印刷も PDF 保存もできます。
 
+[フル動画 →](../mp4/Printable%20Evidence%20Reports.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-report.png" alt="印刷できる根拠レポート" width="100%" />
+  <a href="../mp4/Printable%20Evidence%20Reports.mp4"><img src="../gif/printable-evidence-reports.gif" alt="印刷できる根拠レポート" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -79,45 +87,25 @@ R1-WAW が共有の物差しを一人ひとりの筆跡のばらつきに合わ�
 
 ツールは助言し、人が決めます。不確実な検証はレビューキューに入り、どの判断にも理由が必要です。
 
+[フル動画 →](../mp4/Human%20Decision%20Review.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-review.png" alt="人による判断のレビュー" width="100%" />
+  <a href="../mp4/Human%20Decision%20Review.mp4"><img src="../gif/human-decision-review.gif" alt="人による判断のレビュー" width="100%" /></a>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### リサーチラボ
+### リサーチラボと近道チェック
 
-論文をアプリの中に：手法比較、データセットの近道チェック、モデルカード。
+論文をアプリの中に：手法比較、データセットの近道チェック、モデルカード。 手法がスキャナーではなく筆跡を読んでいることを示します。各結果を、単純な画像情報だけを見る対照と比べて検証します。
 
-</td>
-<td width="50%">
-  <img src="../image/feature-research.png" alt="リサーチラボ" width="100%" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### 近道チェック
-
-手法がスキャナーではなく筆跡を読んでいることを示します。各結果を、単純な画像情報だけを見る対照と比べて検証します。
+[フル動画 →](../mp4/Research%20Lab.mp4)
 
 </td>
 <td width="50%">
-  <img src="../image/feature-shortcut.png" alt="近道チェック" width="100%" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### ロールとスタッフアカウント
-
-検証者は検証し、監督者は判断してスタッフを管理し、研究者は手法を調べます。各ロールには必要なモジュールだけが表示されます。
-
-</td>
-<td width="50%">
-  <img src="../image/feature-staff.png" alt="ロールとスタッフアカウント" width="100%" />
+  <a href="../mp4/Research%20Lab.mp4"><img src="../gif/research-lab.gif" alt="リサーチラボと近道チェック" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -127,9 +115,11 @@ R1-WAW が共有の物差しを一人ひとりの筆跡のばらつきに合わ�
 
 プロファイル、検証、不確実の割合、判断待ちをひと目で。
 
+[フル動画 →](../mp4/Office%20Dashboard.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-dashboard.png" alt="事務所ダッシュボード" width="100%" />
+  <a href="../mp4/Office%20Dashboard.mp4"><img src="../gif/office-dashboard.gif" alt="事務所ダッシュボード" width="100%" /></a>
 </td>
 </tr>
 </table>

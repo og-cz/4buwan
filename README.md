@@ -31,9 +31,11 @@
 
 Twelve genuine signatures build a profile, each quality-checked as it arrives. No forgeries needed, ever.
 
+[Full video →](docs/mp4/Genuine-Only%20Enrolment.mp4)
+
 </td>
 <td width="50%">
-  <img src="docs/image/feature-profile.png" alt="Genuine-Only Enrolment" width="100%" />
+  <a href="docs/mp4/Genuine-Only%20Enrolment.mp4"><img src="docs/gif/genuine-only-enrolment.gif" alt="Genuine-Only Enrolment" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -43,9 +45,11 @@ Twelve genuine signatures build a profile, each quality-checked as it arrives. N
 
 R1-WAW tunes one shared yardstick to each person's own variation, then gives an advisory verdict with an uncertain zone.
 
+[Full video →](docs/mp4/Writer-Adaptive%20Verification.mp4)
+
 </td>
 <td width="50%">
-  <img src="docs/image/feature-verify.png" alt="Writer-Adaptive Verification" width="100%" />
+  <a href="docs/mp4/Writer-Adaptive%20Verification.mp4"><img src="docs/gif/writer-adaptive-verification.gif" alt="Writer-Adaptive Verification" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -55,9 +59,11 @@ R1-WAW tunes one shared yardstick to each person's own variation, then gives an 
 
 Every verdict shows its working: the score against the decision line, all 12 comparisons, the 17 measures and the similarity matrix.
 
+[Full video →](docs/mp4/Inspectable%20Evidence.mp4)
+
 </td>
 <td width="50%">
-  <img src="docs/image/feature-evidence.png" alt="Inspectable Evidence" width="100%" />
+  <a href="docs/mp4/Inspectable%20Evidence.mp4"><img src="docs/gif/inspectable-evidence.gif" alt="Inspectable Evidence" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -67,9 +73,11 @@ Every verdict shows its working: the score against the decision line, all 12 com
 
 One click turns a case into a report ready to file: the questioned signature, all 12 references, the verdict and the scoring. Print it or save it as PDF.
 
+[Full video →](docs/mp4/Printable%20Evidence%20Reports.mp4)
+
 </td>
 <td width="50%">
-  <img src="docs/image/feature-report.png" alt="Printable Evidence Reports" width="100%" />
+  <a href="docs/mp4/Printable%20Evidence%20Reports.mp4"><img src="docs/gif/printable-evidence-reports.gif" alt="Printable Evidence Reports" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -79,45 +87,25 @@ One click turns a case into a report ready to file: the questioned signature, al
 
 The tool advises, a person decides. Uncertain checks wait in a review queue, and every decision needs a reason.
 
+[Full video →](docs/mp4/Human%20Decision%20Review.mp4)
+
 </td>
 <td width="50%">
-  <img src="docs/image/feature-review.png" alt="Human Decision Review" width="100%" />
+  <a href="docs/mp4/Human%20Decision%20Review.mp4"><img src="docs/gif/human-decision-review.gif" alt="Human Decision Review" width="100%" /></a>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Research Lab
+### Research Lab and Shortcut Check
 
-The thesis inside the app: method comparison, a dataset shortcut check and the model card.
+The thesis inside the app: method comparison, the model card and a dataset check that proves the method reads the handwriting, not the scanner.
 
-</td>
-<td width="50%">
-  <img src="docs/image/feature-research.png" alt="Research Lab" width="100%" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Shortcut Check
-
-Proves the method reads the handwriting, not the scanner. Each result is tested against a control that only sees simple image facts.
+[Full video →](docs/mp4/Research%20Lab.mp4)
 
 </td>
 <td width="50%">
-  <img src="docs/image/feature-shortcut.png" alt="Shortcut Check" width="100%" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Roles and Staff Accounts
-
-Verifiers check, Supervisors decide and manage staff, Researchers study the method. Each role gets only the modules it needs.
-
-</td>
-<td width="50%">
-  <img src="docs/image/feature-staff.png" alt="Roles and Staff Accounts" width="100%" />
+  <a href="docs/mp4/Research%20Lab.mp4"><img src="docs/gif/research-lab.gif" alt="Research Lab and Shortcut Check" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -127,9 +115,11 @@ Verifiers check, Supervisors decide and manage staff, Researchers study the meth
 
 Profiles, checks, the uncertain rate and pending decisions at a glance.
 
+[Full video →](docs/mp4/Office%20Dashboard.mp4)
+
 </td>
 <td width="50%">
-  <img src="docs/image/feature-dashboard.png" alt="Office Dashboard" width="100%" />
+  <a href="docs/mp4/Office%20Dashboard.mp4"><img src="docs/gif/office-dashboard.gif" alt="Office Dashboard" width="100%" /></a>
 </td>
 </tr>
 </table>

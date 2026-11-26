@@ -31,9 +31,11 @@
 
 Doze assinaturas genuínas formam um perfil, cada uma conferida assim que chega. Falsificações nunca são necessárias.
 
+[Vídeo completo →](../mp4/Genuine-Only%20Enrolment.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-profile.png" alt="Cadastro só com assinaturas genuínas" width="100%" />
+  <a href="../mp4/Genuine-Only%20Enrolment.mp4"><img src="../gif/genuine-only-enrolment.gif" alt="Cadastro só com assinaturas genuínas" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -43,9 +45,11 @@ Doze assinaturas genuínas formam um perfil, cada uma conferida assim que chega.
 
 O R1-WAW ajusta uma medida compartilhada à variação própria de cada pessoa e dá um veredito consultivo com zona incerta.
 
+[Vídeo completo →](../mp4/Writer-Adaptive%20Verification.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-verify.png" alt="Verificação adaptada a cada pessoa" width="100%" />
+  <a href="../mp4/Writer-Adaptive%20Verification.mp4"><img src="../gif/writer-adaptive-verification.gif" alt="Verificação adaptada a cada pessoa" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -55,9 +59,11 @@ O R1-WAW ajusta uma medida compartilhada à variação própria de cada pessoa e
 
 Cada veredito mostra o raciocínio: a pontuação diante da linha de decisão, as 12 comparações, as 17 medidas e a matriz de similaridade.
 
+[Vídeo completo →](../mp4/Inspectable%20Evidence.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-evidence.png" alt="Evidência inspecionável" width="100%" />
+  <a href="../mp4/Inspectable%20Evidence.mp4"><img src="../gif/inspectable-evidence.gif" alt="Evidência inspecionável" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -67,9 +73,11 @@ Cada veredito mostra o raciocínio: a pontuação diante da linha de decisão, a
 
 Com um clique, um caso vira um relatório pronto para arquivo: a assinatura questionada, as 12 referências, o veredito e a pontuação. Imprima ou salve em PDF.
 
+[Vídeo completo →](../mp4/Printable%20Evidence%20Reports.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-report.png" alt="Relatórios de evidências para impressão" width="100%" />
+  <a href="../mp4/Printable%20Evidence%20Reports.mp4"><img src="../gif/printable-evidence-reports.gif" alt="Relatórios de evidências para impressão" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -79,45 +87,25 @@ Com um clique, um caso vira um relatório pronto para arquivo: a assinatura ques
 
 A ferramenta aconselha, uma pessoa decide. Verificações incertas aguardam numa fila de revisão, e toda decisão exige um motivo.
 
+[Vídeo completo →](../mp4/Human%20Decision%20Review.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-review.png" alt="Revisão com decisão humana" width="100%" />
+  <a href="../mp4/Human%20Decision%20Review.mp4"><img src="../gif/human-decision-review.gif" alt="Revisão com decisão humana" width="100%" /></a>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Laboratório de pesquisa
+### Laboratório de pesquisa e Checagem de atalhos
 
-A tese dentro do app: comparação de métodos, checagem de atalhos do conjunto de dados e o cartão do modelo.
+A tese dentro do app: comparação de métodos, checagem de atalhos do conjunto de dados e o cartão do modelo. Prova que o método lê a escrita, e não o scanner. Cada resultado é comparado a um controle que só vê características simples da imagem.
 
-</td>
-<td width="50%">
-  <img src="../image/feature-research.png" alt="Laboratório de pesquisa" width="100%" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Checagem de atalhos
-
-Prova que o método lê a escrita, e não o scanner. Cada resultado é comparado a um controle que só vê características simples da imagem.
+[Vídeo completo →](../mp4/Research%20Lab.mp4)
 
 </td>
 <td width="50%">
-  <img src="../image/feature-shortcut.png" alt="Checagem de atalhos" width="100%" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Papéis e contas da equipe
-
-Verificadores conferem, Supervisores decidem e gerenciam a equipe, Pesquisadores estudam o método. Cada papel vê só os módulos de que precisa.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-staff.png" alt="Papéis e contas da equipe" width="100%" />
+  <a href="../mp4/Research%20Lab.mp4"><img src="../gif/research-lab.gif" alt="Laboratório de pesquisa e Checagem de atalhos" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -127,9 +115,11 @@ Verificadores conferem, Supervisores decidem e gerenciam a equipe, Pesquisadores
 
 Perfis, verificações, taxa de incertos e decisões pendentes num relance.
 
+[Vídeo completo →](../mp4/Office%20Dashboard.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-dashboard.png" alt="Painel do escritório" width="100%" />
+  <a href="../mp4/Office%20Dashboard.mp4"><img src="../gif/office-dashboard.gif" alt="Painel do escritório" width="100%" /></a>
 </td>
 </tr>
 </table>

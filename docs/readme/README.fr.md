@@ -31,9 +31,11 @@
 
 Douze signatures authentiques forment un profil, chacune contrôlée dès son arrivée. Aucune contrefaçon nécessaire, jamais.
 
+[Vidéo complète →](../mp4/Genuine-Only%20Enrolment.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-profile.png" alt="Inscription avec des signatures authentiques uniquement" width="100%" />
+  <a href="../mp4/Genuine-Only%20Enrolment.mp4"><img src="../gif/genuine-only-enrolment.gif" alt="Inscription avec des signatures authentiques uniquement" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -43,9 +45,11 @@ Douze signatures authentiques forment un profil, chacune contrôlée dès son ar
 
 R1-WAW ajuste un étalon partagé à la variation propre de chaque personne, puis donne un verdict indicatif avec une zone incertaine.
 
+[Vidéo complète →](../mp4/Writer-Adaptive%20Verification.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-verify.png" alt="Vérification adaptée à chaque personne" width="100%" />
+  <a href="../mp4/Writer-Adaptive%20Verification.mp4"><img src="../gif/writer-adaptive-verification.gif" alt="Vérification adaptée à chaque personne" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -55,9 +59,11 @@ R1-WAW ajuste un étalon partagé à la variation propre de chaque personne, pui
 
 Chaque verdict montre son raisonnement : le score face à la ligne de décision, les 12 comparaisons, les 17 mesures et la matrice de similarité.
 
+[Vidéo complète →](../mp4/Inspectable%20Evidence.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-evidence.png" alt="Preuves vérifiables" width="100%" />
+  <a href="../mp4/Inspectable%20Evidence.mp4"><img src="../gif/inspectable-evidence.gif" alt="Preuves vérifiables" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -67,9 +73,11 @@ Chaque verdict montre son raisonnement : le score face à la ligne de décision,
 
 Un clic transforme un dossier en rapport prêt à archiver : la signature contestée, les 12 références, le verdict et le score. Imprimez-le ou enregistrez-le en PDF.
 
+[Vidéo complète →](../mp4/Printable%20Evidence%20Reports.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-report.png" alt="Rapports de preuves imprimables" width="100%" />
+  <a href="../mp4/Printable%20Evidence%20Reports.mp4"><img src="../gif/printable-evidence-reports.gif" alt="Rapports de preuves imprimables" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -79,45 +87,25 @@ Un clic transforme un dossier en rapport prêt à archiver : la signature contes
 
 L’outil conseille, une personne décide. Les vérifications incertaines attendent dans une file de revue, et chaque décision exige un motif.
 
+[Vidéo complète →](../mp4/Human%20Decision%20Review.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-review.png" alt="Revue par décision humaine" width="100%" />
+  <a href="../mp4/Human%20Decision%20Review.mp4"><img src="../gif/human-decision-review.gif" alt="Revue par décision humaine" width="100%" /></a>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### Laboratoire de recherche
+### Laboratoire de recherche et Contrôle des raccourcis
 
-La thèse dans l’application : comparaison des méthodes, contrôle des raccourcis du jeu de données et fiche du modèle.
+La thèse dans l’application : comparaison des méthodes, contrôle des raccourcis du jeu de données et fiche du modèle. Prouve que la méthode lit l’écriture, pas le scanner. Chaque résultat est confronté à un contrôle qui ne voit que des caractéristiques simples de l’image.
 
-</td>
-<td width="50%">
-  <img src="../image/feature-research.png" alt="Laboratoire de recherche" width="100%" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Contrôle des raccourcis
-
-Prouve que la méthode lit l’écriture, pas le scanner. Chaque résultat est confronté à un contrôle qui ne voit que des caractéristiques simples de l’image.
+[Vidéo complète →](../mp4/Research%20Lab.mp4)
 
 </td>
 <td width="50%">
-  <img src="../image/feature-shortcut.png" alt="Contrôle des raccourcis" width="100%" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### Rôles et comptes du personnel
-
-Les Vérificateurs contrôlent, les Superviseurs décident et gèrent le personnel, les Chercheurs étudient la méthode. Chaque rôle ne voit que les modules utiles.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-staff.png" alt="Rôles et comptes du personnel" width="100%" />
+  <a href="../mp4/Research%20Lab.mp4"><img src="../gif/research-lab.gif" alt="Laboratoire de recherche et Contrôle des raccourcis" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -127,9 +115,11 @@ Les Vérificateurs contrôlent, les Superviseurs décident et gèrent le personn
 
 Profils, vérifications, taux d’incertitude et décisions en attente d’un coup d’œil.
 
+[Vidéo complète →](../mp4/Office%20Dashboard.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-dashboard.png" alt="Tableau de bord du bureau" width="100%" />
+  <a href="../mp4/Office%20Dashboard.mp4"><img src="../gif/office-dashboard.gif" alt="Tableau de bord du bureau" width="100%" /></a>
 </td>
 </tr>
 </table>

@@ -31,9 +31,11 @@
 
 진짜 서명 12개로 프로필을 만들고, 들어오는 즉시 품질을 확인합니다. 위조 샘플은 절대 필요 없습니다.
 
+[전체 영상 →](../mp4/Genuine-Only%20Enrolment.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-profile.png" alt="진짜 서명만으로 등록" width="100%" />
+  <a href="../mp4/Genuine-Only%20Enrolment.mp4"><img src="../gif/genuine-only-enrolment.gif" alt="진짜 서명만으로 등록" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -43,9 +45,11 @@
 
 R1-WAW가 하나의 공유 기준을 각 사람의 서명 변화에 맞춘 뒤, 불확실 구간이 있는 참고 판정을 냅니다.
 
+[전체 영상 →](../mp4/Writer-Adaptive%20Verification.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-verify.png" alt="작성자 적응형 검증" width="100%" />
+  <a href="../mp4/Writer-Adaptive%20Verification.mp4"><img src="../gif/writer-adaptive-verification.gif" alt="작성자 적응형 검증" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -55,9 +59,11 @@ R1-WAW가 하나의 공유 기준을 각 사람의 서명 변화에 맞춘 뒤, 
 
 모든 판정이 근거를 보여 줍니다: 판정선 대비 점수, 12번의 비교 전체, 17가지 측정값과 유사도 행렬.
 
+[전체 영상 →](../mp4/Inspectable%20Evidence.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-evidence.png" alt="확인 가능한 근거" width="100%" />
+  <a href="../mp4/Inspectable%20Evidence.mp4"><img src="../gif/inspectable-evidence.gif" alt="확인 가능한 근거" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -67,9 +73,11 @@ R1-WAW가 하나의 공유 기준을 각 사람의 서명 변화에 맞춘 뒤, 
 
 클릭 한 번으로 사례를 제출용 보고서로 만듭니다: 의심 서명, 참조 12개 전체, 판정과 점수. 인쇄하거나 PDF로 저장하세요.
 
+[전체 영상 →](../mp4/Printable%20Evidence%20Reports.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-report.png" alt="인쇄 가능한 근거 보고서" width="100%" />
+  <a href="../mp4/Printable%20Evidence%20Reports.mp4"><img src="../gif/printable-evidence-reports.gif" alt="인쇄 가능한 근거 보고서" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -79,45 +87,25 @@ R1-WAW가 하나의 공유 기준을 각 사람의 서명 변화에 맞춘 뒤, 
 
 도구는 조언하고 사람이 결정합니다. 불확실한 검증은 검토 대기열에 들어가며, 모든 결정에는 이유가 필요합니다.
 
+[전체 영상 →](../mp4/Human%20Decision%20Review.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-review.png" alt="사람의 결정 검토" width="100%" />
+  <a href="../mp4/Human%20Decision%20Review.mp4"><img src="../gif/human-decision-review.gif" alt="사람의 결정 검토" width="100%" /></a>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="middle">
 
-### 연구실
+### 연구실 및 지름길 검사
 
-앱 안의 논문: 방법 비교, 데이터셋 지름길 검사, 모델 카드.
+앱 안의 논문: 방법 비교, 데이터셋 지름길 검사, 모델 카드. 방법이 스캐너가 아니라 필적을 읽는다는 것을 보여 줍니다. 모든 결과를 단순한 이미지 정보만 보는 대조군과 비교해 검증합니다.
 
-</td>
-<td width="50%">
-  <img src="../image/feature-research.png" alt="연구실" width="100%" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### 지름길 검사
-
-방법이 스캐너가 아니라 필적을 읽는다는 것을 보여 줍니다. 모든 결과를 단순한 이미지 정보만 보는 대조군과 비교해 검증합니다.
+[전체 영상 →](../mp4/Research%20Lab.mp4)
 
 </td>
 <td width="50%">
-  <img src="../image/feature-shortcut.png" alt="지름길 검사" width="100%" />
-</td>
-</tr>
-<tr>
-<td width="50%" valign="middle">
-
-### 역할과 직원 계정
-
-검증자는 검증하고, 감독자는 결정하며 직원을 관리하고, 연구자는 방법을 연구합니다. 각 역할에는 필요한 모듈만 보입니다.
-
-</td>
-<td width="50%">
-  <img src="../image/feature-staff.png" alt="역할과 직원 계정" width="100%" />
+  <a href="../mp4/Research%20Lab.mp4"><img src="../gif/research-lab.gif" alt="연구실 및 지름길 검사" width="100%" /></a>
 </td>
 </tr>
 <tr>
@@ -127,9 +115,11 @@ R1-WAW가 하나의 공유 기준을 각 사람의 서명 변화에 맞춘 뒤, 
 
 프로필, 검증, 불확실 비율, 대기 중인 결정을 한눈에.
 
+[전체 영상 →](../mp4/Office%20Dashboard.mp4)
+
 </td>
 <td width="50%">
-  <img src="../image/feature-dashboard.png" alt="사무실 대시보드" width="100%" />
+  <a href="../mp4/Office%20Dashboard.mp4"><img src="../gif/office-dashboard.gif" alt="사무실 대시보드" width="100%" /></a>
 </td>
 </tr>
 </table>
