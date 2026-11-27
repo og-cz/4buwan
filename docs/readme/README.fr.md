@@ -97,7 +97,7 @@ L’outil conseille, une personne décide. Les vérifications incertaines attend
 <tr>
 <td width="50%" valign="middle">
 
-### Laboratoire de recherche et Contrôle des raccourcis
+### Laboratoire de recherche
 
 La thèse dans l’application : comparaison des méthodes, contrôle des raccourcis du jeu de données et fiche du modèle. Prouve que la méthode lit l’écriture, pas le scanner. Chaque résultat est confronté à un contrôle qui ne voit que des caractéristiques simples de l’image.
 
@@ -105,7 +105,7 @@ La thèse dans l’application : comparaison des méthodes, contrôle des raccou
 
 </td>
 <td width="50%">
-  <a href="../mp4/Research%20Lab.mp4"><picture><source srcset="../gif/research-lab.gif" type="image/gif"><img src="../gif/posters/research-lab.jpg" alt="Laboratoire de recherche et Contrôle des raccourcis" width="100%" /></picture></a>
+  <a href="../mp4/Research%20Lab.mp4"><picture><source srcset="../gif/research-lab.gif" type="image/gif"><img src="../gif/posters/research-lab.jpg" alt="Laboratoire de recherche" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>

@@ -97,7 +97,7 @@ La herramienta aconseja, una persona decide. Las verificaciones inciertas espera
 <tr>
 <td width="50%" valign="middle">
 
-### Laboratorio de investigación y Comprobación de atajos
+### Laboratorio de investigación
 
 La tesis dentro de la app: comparación de métodos, comprobación de atajos del conjunto de datos y la ficha del modelo. Demuestra que el método lee la escritura y no el escáner. Cada resultado se contrasta con un control que solo ve datos simples de la imagen.
 
@@ -105,7 +105,7 @@ La tesis dentro de la app: comparación de métodos, comprobación de atajos del
 
 </td>
 <td width="50%">
-  <a href="../mp4/Research%20Lab.mp4"><picture><source srcset="../gif/research-lab.gif" type="image/gif"><img src="../gif/posters/research-lab.jpg" alt="Laboratorio de investigación y Comprobación de atajos" width="100%" /></picture></a>
+  <a href="../mp4/Research%20Lab.mp4"><picture><source srcset="../gif/research-lab.gif" type="image/gif"><img src="../gif/posters/research-lab.jpg" alt="Laboratorio de investigación" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>

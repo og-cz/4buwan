@@ -97,7 +97,7 @@ R1-WAW 把一把共享尺子调整到每个人自己的书写变化，再给出�
 <tr>
 <td width="50%" valign="middle">
 
-### 研究实验室与捷径检查
+### 研究实验室
 
 论文就在应用里：方法比较、数据集捷径检查和模型卡。 证明方法读的是笔迹，而不是扫描仪。每个结果都与只看简单图像特征的对照组比较。
 
@@ -105,7 +105,7 @@ R1-WAW 把一把共享尺子调整到每个人自己的书写变化，再给出�
 
 </td>
 <td width="50%">
-  <a href="../mp4/Research%20Lab.mp4"><picture><source srcset="../gif/research-lab.gif" type="image/gif"><img src="../gif/posters/research-lab.jpg" alt="研究实验室与捷径检查" width="100%" /></picture></a>
+  <a href="../mp4/Research%20Lab.mp4"><picture><source srcset="../gif/research-lab.gif" type="image/gif"><img src="../gif/posters/research-lab.jpg" alt="研究实验室" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>

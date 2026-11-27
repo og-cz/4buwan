@@ -97,7 +97,7 @@ R1-WAW가 하나의 공유 기준을 각 사람의 서명 변화에 맞춘 뒤, 
 <tr>
 <td width="50%" valign="middle">
 
-### 연구실 및 지름길 검사
+### 연구실
 
 앱 안의 논문: 방법 비교, 데이터셋 지름길 검사, 모델 카드. 방법이 스캐너가 아니라 필적을 읽는다는 것을 보여 줍니다. 모든 결과를 단순한 이미지 정보만 보는 대조군과 비교해 검증합니다.
 
@@ -105,7 +105,7 @@ R1-WAW가 하나의 공유 기준을 각 사람의 서명 변화에 맞춘 뒤, 
 
 </td>
 <td width="50%">
-  <a href="../mp4/Research%20Lab.mp4"><picture><source srcset="../gif/research-lab.gif" type="image/gif"><img src="../gif/posters/research-lab.jpg" alt="연구실 및 지름길 검사" width="100%" /></picture></a>
+  <a href="../mp4/Research%20Lab.mp4"><picture><source srcset="../gif/research-lab.gif" type="image/gif"><img src="../gif/posters/research-lab.jpg" alt="연구실" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>

@@ -97,7 +97,7 @@ The tool advises, a person decides. Uncertain checks wait in a review queue, and
 <tr>
 <td width="50%" valign="middle">
 
-### Research Lab and Shortcut Check
+### Research Lab
 
 The thesis inside the app: method comparison, the model card and a dataset check that proves the method reads the handwriting, not the scanner.
 
@@ -105,7 +105,7 @@ The thesis inside the app: method comparison, the model card and a dataset check
 
 </td>
 <td width="50%">
-  <a href="docs/mp4/Research%20Lab.mp4"><picture><source srcset="docs/gif/research-lab.gif" type="image/gif"><img src="docs/gif/posters/research-lab.jpg" alt="Research Lab and Shortcut Check" width="100%" /></picture></a>
+  <a href="docs/mp4/Research%20Lab.mp4"><picture><source srcset="docs/gif/research-lab.gif" type="image/gif"><img src="docs/gif/posters/research-lab.jpg" alt="Research Lab" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
