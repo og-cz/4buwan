@@ -97,7 +97,7 @@ Nagpapayo ang tool, tao ang nagdedesisyon. Naghihintay sa review queue ang mga u
 <tr>
 <td width="50%" valign="middle">
 
-### Research Lab at Shortcut Check
+### Research Lab
 
 Ang thesis sa loob ng app: paghahambing ng paraan, dataset shortcut check at ang model card. Pinatutunayan na sulat-kamay ang binabasa ng paraan, hindi ang scanner. Sinusubok ang bawat resulta laban sa control na simpleng detalye lang ng larawan ang nakikita.
 
@@ -105,7 +105,7 @@ Ang thesis sa loob ng app: paghahambing ng paraan, dataset shortcut check at ang
 
 </td>
 <td width="50%">
-  <a href="../mp4/Research%20Lab.mp4"><picture><source srcset="../gif/research-lab.gif" type="image/gif"><img src="../gif/posters/research-lab.jpg" alt="Research Lab at Shortcut Check" width="100%" /></picture></a>
+  <a href="../mp4/Research%20Lab.mp4"><picture><source srcset="../gif/research-lab.gif" type="image/gif"><img src="../gif/posters/research-lab.jpg" alt="Research Lab" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>

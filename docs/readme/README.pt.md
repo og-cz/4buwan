@@ -97,7 +97,7 @@ A ferramenta aconselha, uma pessoa decide. Verificações incertas aguardam numa
 <tr>
 <td width="50%" valign="middle">
 
-### Laboratório de pesquisa e Checagem de atalhos
+### Laboratório de pesquisa
 
 A tese dentro do app: comparação de métodos, checagem de atalhos do conjunto de dados e o cartão do modelo. Prova que o método lê a escrita, e não o scanner. Cada resultado é comparado a um controle que só vê características simples da imagem.
 
@@ -105,7 +105,7 @@ A tese dentro do app: comparação de métodos, checagem de atalhos do conjunto 
 
 </td>
 <td width="50%">
-  <a href="../mp4/Research%20Lab.mp4"><picture><source srcset="../gif/research-lab.gif" type="image/gif"><img src="../gif/posters/research-lab.jpg" alt="Laboratório de pesquisa e Checagem de atalhos" width="100%" /></picture></a>
+  <a href="../mp4/Research%20Lab.mp4"><picture><source srcset="../gif/research-lab.gif" type="image/gif"><img src="../gif/posters/research-lab.jpg" alt="Laboratório de pesquisa" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>

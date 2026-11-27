@@ -97,7 +97,7 @@ R1-WAW が共有の物差しを一人ひとりの筆跡のばらつきに合わ�
 <tr>
 <td width="50%" valign="middle">
 
-### リサーチラボと近道チェック
+### リサーチラボ
 
 論文をアプリの中に：手法比較、データセットの近道チェック、モデルカード。 手法がスキャナーではなく筆跡を読んでいることを示します。各結果を、単純な画像情報だけを見る対照と比べて検証します。
 
@@ -105,7 +105,7 @@ R1-WAW が共有の物差しを一人ひとりの筆跡のばらつきに合わ�
 
 </td>
 <td width="50%">
-  <a href="../mp4/Research%20Lab.mp4"><picture><source srcset="../gif/research-lab.gif" type="image/gif"><img src="../gif/posters/research-lab.jpg" alt="リサーチラボと近道チェック" width="100%" /></picture></a>
+  <a href="../mp4/Research%20Lab.mp4"><picture><source srcset="../gif/research-lab.gif" type="image/gif"><img src="../gif/posters/research-lab.jpg" alt="リサーチラボ" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
