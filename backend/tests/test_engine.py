@@ -24,16 +24,25 @@ def test_constants_shapes():
 
 
 def test_j_closed_form():
-    """J = G + (sigma_w^-1 - lambda1^-1/2) u1 u1^T  (notebook Step 10 check)."""
+    """R1-WAW: W = G + (sigma_eff^-1 - lambda1^-1/2) u1 u1^T with sigma_eff^2 = lambda1 (sigma_w^2 / lambda1)^eta."""
     P = np.array(REF[0]["P"])
-    S = E.writer_covariance(P, K); u1 = K.pool_evec[:, 0]; s2 = float(u1 @ S @ u1)
-    closed = E.inv_sqrt(K.sigma_pool) + (s2 ** -0.5 - K.pool_eval[0] ** -0.5) * np.outer(u1, u1)
-    assert np.allclose(closed, E.metric_matrix(P, K, "J")[1], atol=1e-6)
+    S = E.writer_covariance(P, K); u1 = K.pool_evec[:, 0]; s2 = float(u1 @ S @ u1); lam1 = K.pool_eval[0]
+    s_eff2 = lam1 * (s2 / lam1) ** E.R1WAW_ETA
+    closed = E.inv_sqrt(K.sigma_pool) + (s_eff2 ** -0.5 - lam1 ** -0.5) * np.outer(u1, u1)
+    W = E.metric_matrix(P, K, "J")[1]
+    assert np.allclose(closed, W, atol=1e-9 * np.abs(W).max())
+
+
+def test_final_settings_and_first_form():
+    """The app runs the final model (eta = 3, tau = 3); eta = 1 gives back the first form (rank-1 own covariance)."""
+    assert E.R1WAW_ETA == 3.0 and E.KERNEL_SHARPNESS == 3.0
+    P = np.array(REF[0]["P"]); S = E.writer_covariance(P, K)
+    assert np.allclose(E.r1waw_sigma(S, 1.0, K), E.rank_r_sigma(S, 1, K), atol=1e-12)
 
 
 @pytest.mark.parametrize("ref", REF, ids=lambda r: f"{r['corpus']}-{r['writer']}")
 def test_auc_matches_notebook(ref):
-    """Same pairs in -> same AUC out as per_writer_results.csv (condition J)."""
+    """Same pairs in -> same AUC out as per_writer_results.csv (condition J, the final model)."""
     P, Qg, Qf = (np.array(ref[x]) for x in ("P", "Qg", "Qf"))
     m = E.fit_model(P, K, "J")
     sg = np.array([E.score_pairs(m, q, K).mean() for q in Qg])
