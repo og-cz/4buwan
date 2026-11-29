@@ -158,19 +158,19 @@ Registro: genuinas 1–12. Prueba: genuinas 13–24 y falsificaciones 1–12. 17
 
 | Métrica | AUC | EER |
 |---|---|---|
-| B — Diagonal global | 0.772 | 25.8% |
-| G — Covarianza completa agrupada | 0.831 | 22.0% |
-| **J — Adaptativa al escritor de rango 1** | **0.837** | **21.3%** |
+| B — Diagonal global | 0.805 | 23.9% |
+| G — Covarianza completa agrupada | 0.850 | 19.9% |
+| **J — R1-WAW** | **0.858** | **19.2%** |
 
 | Conjunto | J AUC | J EER |
 |---|---|---|
-| CEDAR | 0.839 | 21.3% |
-| BHSig260 Bengali | 0.801 | 25.4% |
-| BHSig260 Hindi | 0.858 | 18.8% |
+| CEDAR | 0.846 | 21.3% |
+| BHSig260 Bengali | 0.855 | 20.5% |
+| BHSig260 Hindi | 0.865 | 17.7% |
 
-Comparación pareada por escritor con pruebas de Wilcoxon, corrección de Holm e intervalos bootstrap. J frente a G: +0,006 de AUC (53 escritores mejoran, 13 empeoran, 76 sin cambios).
+Comparación pareada por escritor con pruebas de Wilcoxon, corrección de Holm e intervalos bootstrap. J frente a G: +0,008 de AUC (57 escritores mejoran, 29 empeoran, 56 sin cambios).
 
-> **Estado:** borrador. Los resultados son solo de los escritores de desarrollo; la evaluación reservada aún no se ha ejecutado. En bengalí, un control basado en estadísticas de imagen iguala al modelo, por lo que esos resultados no se presentan como verificación de firmas.
+> **Estado:** la verificación única con 132 escritores reservados evaluó una forma anterior del modelo y no mostró una mejora significativa frente a G; los ajustes finales se eligieron después y obtuvieron 0.860 con los mismos escritores (post hoc), por lo que aún deben confirmarse con escritores nuevos. En bengalí, un control basado en estadísticas de imagen supera al modelo, por lo que esos resultados no se presentan como verificación de firmas.
 
 ---
 

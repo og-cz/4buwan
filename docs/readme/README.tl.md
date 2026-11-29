@@ -158,19 +158,19 @@ Enrolment: tunay 1–12. Test: tunay 13–24 at pineke 1–12. 172 sumulat ang n
 
 | Metric | AUC | EER |
 |---|---|---|
-| B — Global diagonal | 0.772 | 25.8% |
-| G — Pinagsamang full covariance | 0.831 | 22.0% |
-| **J — Rank-1 writer-adaptive** | **0.837** | **21.3%** |
+| B — Global diagonal | 0.805 | 23.9% |
+| G — Pinagsamang full covariance | 0.850 | 19.9% |
+| **J — R1-WAW** | **0.858** | **19.2%** |
 
 | Dataset | J AUC | J EER |
 |---|---|---|
-| CEDAR | 0.839 | 21.3% |
-| BHSig260 Bengali | 0.801 | 25.4% |
-| BHSig260 Hindi | 0.858 | 18.8% |
+| CEDAR | 0.846 | 21.3% |
+| BHSig260 Bengali | 0.855 | 20.5% |
+| BHSig260 Hindi | 0.865 | 17.7% |
 
-Paired ayon sa sumulat gamit ang Wilcoxon test, Holm correction at bootstrap interval. J laban sa G: +0.006 AUC (53 sumulat ang gumanda, 13 ang lumala, 76 ang walang pagbabago).
+Paired ayon sa sumulat gamit ang Wilcoxon test, Holm correction at bootstrap interval. J laban sa G: +0.008 AUC (57 sumulat ang gumanda, 29 ang lumala, 56 ang walang pagbabago).
 
-> **Status:** draft. Mula lamang sa mga development na sumulat ang mga resulta; hindi pa naisasagawa ang ebalwasyon sa nakareserbang set. Sa Bengali, katumbas ng modelo ang control na batay sa image statistics, kaya hindi iniuulat ang resulta sa Bengali bilang pagpapatunay ng pirma.
+> **Status:** sinubok ng isang beses na pagsusuri sa 132 nakareserbang sumulat ang naunang anyo ng modelo, at walang makabuluhang pag-angat laban sa G; pinili pagkatapos ang huling settings at nakakuha ng 0.860 sa parehong mga sumulat (post-hoc), kaya kailangan pa itong kumpirmahin sa mga bagong sumulat. Sa Bengali, mas mataas kaysa sa modelo ang control na batay sa image statistics, kaya hindi iniuulat ang resulta sa Bengali bilang pagpapatunay ng pirma.
 
 ---
 

@@ -158,19 +158,19 @@ Enrôlement : authentiques 1–12. Test : authentiques 13–24 et contrefaçons 
 
 | Métrique | AUC | EER |
 |---|---|---|
-| B — Diagonale globale | 0.772 | 25.8% |
-| G — Covariance complète commune | 0.831 | 22.0% |
-| **J — Adaptée au scripteur, rang 1** | **0.837** | **21.3%** |
+| B — Diagonale globale | 0.805 | 23.9% |
+| G — Covariance complète commune | 0.850 | 19.9% |
+| **J — R1-WAW** | **0.858** | **19.2%** |
 
 | Jeu de données | J AUC | J EER |
 |---|---|---|
-| CEDAR | 0.839 | 21.3% |
-| BHSig260 Bengali | 0.801 | 25.4% |
-| BHSig260 Hindi | 0.858 | 18.8% |
+| CEDAR | 0.846 | 21.3% |
+| BHSig260 Bengali | 0.855 | 20.5% |
+| BHSig260 Hindi | 0.865 | 17.7% |
 
-Comparaisons appariées par scripteur avec tests de Wilcoxon, correction de Holm et intervalles bootstrap. J par rapport à G : +0,006 d'AUC (53 scripteurs améliorés, 13 dégradés, 76 inchangés).
+Comparaisons appariées par scripteur avec tests de Wilcoxon, correction de Holm et intervalles bootstrap. J par rapport à G : +0,008 d'AUC (57 scripteurs améliorés, 29 dégradés, 56 inchangés).
 
-> **Statut :** brouillon. Les résultats portent uniquement sur les scripteurs de développement ; l'évaluation réservée n'a pas encore été effectuée. En bengali, un contrôle fondé sur des statistiques d'image égale le modèle : ces résultats ne sont donc pas présentés comme de la vérification de signatures.
+> **Statut :** la vérification unique sur 132 scripteurs réservés a testé une forme antérieure du modèle, sans gain significatif par rapport à G ; les réglages finaux ont été choisis ensuite et obtiennent 0.860 sur ces mêmes scripteurs (post hoc) : ils restent à confirmer sur de nouveaux scripteurs. En bengali, un contrôle fondé sur des statistiques d'image dépasse le modèle : ces résultats ne sont donc pas présentés comme de la vérification de signatures.
 
 ---
 

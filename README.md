@@ -158,19 +158,31 @@ Enrolment: genuine 1–12. Test: genuine 13–24 and forgeries 1–12. 172 write
 
 | Metric | AUC | EER |
 |---|---|---|
-| B — global diagonal | 0.772 | 25.8% |
-| G — pooled full covariance | 0.831 | 22.0% |
-| **J — rank-1 writer-adaptive** | **0.837** | **21.3%** |
+| B — global diagonal | 0.805 | 23.9% |
+| G — pooled full covariance | 0.850 | 19.9% |
+| **J — R1-WAW** | **0.858** | **19.2%** |
 
 | Dataset | J AUC | J EER |
 |---|---|---|
-| CEDAR | 0.839 | 21.3% |
-| BHSig260 Bengali | 0.801 | 25.4% |
-| BHSig260 Hindi | 0.858 | 18.8% |
+| CEDAR | 0.846 | 21.3% |
+| BHSig260 Bengali | 0.855 | 20.5% |
+| BHSig260 Hindi | 0.865 | 17.7% |
 
-Paired over writers with Wilcoxon tests, Holm correction and bootstrap intervals. J over G: +0.006 AUC (53 writers improved, 13 worse, 76 unchanged).
+Paired over writers with Wilcoxon tests, Holm correction and bootstrap intervals. J over G: +0.008 AUC (57 writers improved, 29 worse, 56 unchanged; Holm p = 0.002), reliable on Hindi.
 
-> **Status:** draft. Results are on development writers only; the held-back evaluation has not been run. An image-statistics control matches the model on Bengali, so Bengali results are not reported as signature verification.
+### Held-back writers
+
+The one-time check on the 132 never-evaluated held-back writers (26 October 2026) tested the earlier form (η = 1, τ = 1): it was not significantly better than G (+0.002, Holm p = 0.56). The final settings were chosen afterwards and scored once on the same writers, so these results are post-hoc:
+
+| Metric | AUC (132 writers) |
+|---|---|
+| G — pooled full covariance | 0.834 |
+| G with the same kernel | 0.855 |
+| **J — R1-WAW** | **0.860** |
+
+Decision rule at the Standard setting: 5.8% of genuine signatures judged forged, 13.3% of forgeries judged genuine, 37.6% referred as Uncertain.
+
+> **Status:** the final model still has to be confirmed on writers never scored. An image-statistics control beats the model on Bengali, so Bengali results are not reported as signature verification.
 
 ### Sample data
 
