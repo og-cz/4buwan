@@ -31,7 +31,7 @@ export default function Settings({ notify }: { notify: (m: string) => void }) {
       <section className="panel"><div className="panel-head"><div><span>DECISIONS</span><h2>Default checking behaviour</h2></div></div>
         <label className="compact-field"><span>STRICTNESS</span><select value={s.strictness} onChange={e => set("strictness", e.target.value as Strictness)}>{(Object.keys(strictnessHelp) as Strictness[]).map(k => <option key={k} value={k}>{k} — {strictnessHelp[k]}</option>)}</select></label>
         <label className="compact-field"><span>UNCERTAIN ZONE</span><select value={s.uncertain} onChange={e => set("uncertain", e.target.value as UncertainZone)}>{(Object.keys(uncertainHelp) as UncertainZone[]).map(k => <option key={k} value={k}>{k} — {uncertainHelp[k]}</option>)}</select></label>
-        <p className="input-hint">The decision rule is provisional and was chosen on development writers. These settings move it; they do not retrain the model.</p>
+        <p className="input-hint">The decision line sits below this person's typical genuine score, measured from their 12 references. These settings move the line and the Uncertain zone; they do not retrain the model.</p>
       </section>
       <section className="panel"><div className="panel-head"><div><span>DATA & PRIVACY</span><h2>Retention and backup</h2></div></div>
         <label className="compact-field"><span>RETENTION PERIOD · COMING SOON</span><select disabled><option>Until manually deleted</option></select></label>

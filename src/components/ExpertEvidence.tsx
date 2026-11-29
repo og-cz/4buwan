@@ -45,7 +45,7 @@ export default function ExpertEvidence({ result, person, questioned, reference }
     <Card code="G" title="PROFILE PARAMETERS" what="Read-only model record for this check">
       <dl className="parameters-list">
         <div><dt>Signature Consistency</dt><dd>{result.consistency.value.toFixed(3)}× population · {result.consistency.label}</dd></div>
-        <div><dt>nu</dt><dd>{result.settings.nu}</dd></div><div><dt>gamma</dt><dd>{result.settings.gamma}</dd></div>
+        <div><dt>nu</dt><dd>{result.settings.nu}</dd></div><div><dt>gamma</dt><dd>{result.settings.gamma}</dd></div>{result.settings.eta !== undefined && <div><dt>η / τ</dt><dd>{result.settings.eta} / {result.settings.tau}</dd></div>}
         <div><dt>rank</dt><dd>{result.settings.rank}</dd></div><div><dt>Reference pairs</dt><dd>{result.settings.pairs}</dd></div>
         <div><dt>Model</dt><dd>R1-WAW, model version {result.settings.model_version}</dd></div>
       </dl>

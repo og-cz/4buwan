@@ -16,6 +16,7 @@ export default function VerdictCard({ result, label = "ADVISORY VERDICT", uncert
   return <>
     <div className="result-top"><span className={`verdict-icon ${genuine ? "good" : uncertain ? "warn" : "bad"}`}><Icon name={genuine ? "check" : "alert"} size={26} /></span><div><span>{label}</span><strong>{result.verdict}</strong><small>{result.reason}</small></div></div>
     <ConfidenceBar result={result} />
+    {result.consistency && <div className="verdict-consistency"><strong>Signature Consistency · {result.consistency.label}</strong><span>{result.consistency.value.toFixed(2)}× the population</span><p>{result.consistency.text}</p></div>}
     <div className="next-steps"><strong>Recommended next step</strong><p className="next-step-text">{nextStep[result.verdict]}</p>{uncertain && uncertainAction && <div>{uncertainAction}</div>}</div>
     {actions && <div className="result-actions">{actions}</div>}
     <p className="advice"><Icon name="help" size={14} />The tool advises; a human makes the final decision.</p>

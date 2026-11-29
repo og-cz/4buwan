@@ -271,3 +271,7 @@ math { font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", math; 
 
 .demo-switch { display: flex; align-items: center; gap: var(--s2); font: var(--t-body); }
 .demo-loading { padding: var(--s6); }
+.verdict-consistency { display: grid; grid-template-columns: 1fr auto; gap: 2px var(--s3); padding: var(--s3) var(--s4); border-radius: var(--r-sm); background: var(--surface-2); border: 1px solid var(--border); }
+.verdict-consistency > strong { font: var(--t-label); letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--text-3); }
+.verdict-consistency > span { font: var(--t-small); color: var(--text-2); }
+.verdict-consistency > p { grid-column: 1 / -1; margin: 0; font: var(--t-small); color: var(--text-2); }
