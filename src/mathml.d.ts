@@ -7,7 +7,8 @@ declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
       math: MathProps; mrow: MathProps; mi: MathProps; mn: MathProps; mo: MathProps;
-      msub: MathProps; msup: MathProps; msubsup: MathProps;
+      msub: MathProps; msup: MathProps; msubsup: MathProps; mtext: MathProps; mfrac: MathProps;
+      mspace: MathProps & { width?: string };
     }
   }
 }

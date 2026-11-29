@@ -7,7 +7,7 @@ export const corpora: [Corpus, string][] = [["ALL", "All"], ["CEDAR", "CEDAR"], 
 export const CONDITIONS = {
   standard: "B global diagonal",
   shared: "G pooled full covariance",
-  ours: "J rank-1 writer-adaptive (proposed)",
+  ours: "J R1-WAW (proposed)",
   perWriter: "A per-writer diagonal (v9)",
   cohort: "E cohort-weighted diagonal (v10)",
   shortcut: "D-G trivial control, G-whitened",

@@ -64,8 +64,8 @@ def test_preprocess():
 
 def test_research_performance():
     rows = client.get("/api/research/performance").json()
-    j = next(r for r in rows if r["condition"] == "J rank-1 writer-adaptive (proposed)" and r["scope"] == "ALL")
-    assert round(j["AUC"], 3) == 0.837 and j["writers"] == 142
+    j = next(r for r in rows if r["condition"] == "J R1-WAW (proposed)" and r["scope"] == "ALL")
+    assert round(j["AUC"], 4) == 0.8581 and j["writers"] == 142
 
 
 def test_stats_counts_checks():

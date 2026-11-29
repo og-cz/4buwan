@@ -8,7 +8,7 @@ export type UncertainZone = "Narrow" | "Standard" | "Wide";
 export type Percentiles = { p5: number; p10: number; p25: number; p50: number; p75: number; p90: number; p95: number };
 
 export type ModelSettings = {
-  nu: number; gamma: string; rank: number; n_enrol: number; pairs: number; measures: number;
+  nu: number; gamma: string; eta?: number; tau?: number; rank: number; n_enrol: number; pairs: number; measures: number;
   hog_dim: number; image: string; hog: string;
 };
 
@@ -49,7 +49,7 @@ export type VerifyResult = {
   majority_rule_accept: boolean; reason: string; policy: string; comparisons: Comparison[];
   measures: MeasureValues[]; similarity_matrix: number[][]; loo_scores: number[];
   method_comparison: Record<MethodName, MethodScore>; consistency: Consistency;
-  settings: { nu: number; gamma: string; rank: number; pairs: number; model_version: string };
+  settings: { nu: number; gamma: string | number; eta?: number; tau?: number; rank: number; pairs: number; model_version: string };
   quality: Quality;
 };
 
@@ -76,6 +76,15 @@ export type ResearchResults = {
   auc: Record<string, Record<string, number>>;
   split: { development: Record<string, string>; reserved: Record<string, string> };
   checks: Record<string, { status: string; detail: string }>;
+  heldback?: HeldBack;
+};
+
+export type HeldBack = {
+  writers: number; date: string;
+  confirmation: { model: string; shared: number; first_form: number; significant: boolean; p_holm: number };
+  posthoc: { model: string; final: number; shared: number; shared_same_kernel: number;
+    vs_shared: { diff: number; p_holm: number }; vs_shared_same_kernel: { diff: number; p_holm: number } };
+  decision_rule_standard: { genuine_judged_forged: number; forged_judged_genuine: number; uncertain: number };
 };
 
 export type Stats = {
