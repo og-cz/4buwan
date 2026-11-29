@@ -96,3 +96,12 @@ def test_profile_roundtrip(tmp_path):
 def test_quality_check_flags_blank(tmp_path):
     p = tmp_path / "blank.png"; Image.fromarray(np.full((200, 400), 255, np.uint8)).save(p)
     assert not E.quality_check(str(p))["ok"]
+
+
+def test_profile_from_an_earlier_model_is_refreshed():
+    """A profile saved by an earlier model version gets the current model's leave-one-out scores."""
+    prof, _ = E.build_profile([str(FIX / f"original_10_{i}.png") for i in range(1, 13)], K)
+    fresh = prof.loo_scores.copy()
+    prof.loo_scores = np.zeros(12); prof.model_version = "J-rank1-v1"
+    assert E.refresh_profile(prof, K) and np.allclose(prof.loo_scores, fresh)
+    assert prof.model_version == K.meta["model_version"] and not E.refresh_profile(prof, K)

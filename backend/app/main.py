@@ -120,7 +120,9 @@ def run_check(person_id: str, blob: bytes, filename: str, strictness: str = "Sta
     if not p or p["status"] != "Ready" or not pf.exists(): raise HTTPException(404, "This person has no ready Signature Profile.")
     qc = E.quality_check(blob)
     if not qc["ok"]: raise HTTPException(400, qc["issues"][0]["message"])
-    res = E.verify(E.Profile.load(pf), blob, K, strictness, uncertain)
+    prof = E.Profile.load(pf)
+    if E.refresh_profile(prof, K): prof.save(pf)          # enrolled with an earlier model version: decision line updated
+    res = E.verify(prof, blob, K, strictness, uncertain)
     cid = "C-" + uuid.uuid4().hex[:8].upper()
     out = dict(case_id=cid, quality=qc, **res)
     with db() as c:
