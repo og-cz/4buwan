@@ -41,7 +41,9 @@ export default function EvidenceReport({ caseId, go }: { caseId?: string; go: Go
       <h2>Settings</h2>
       <dl className="parameters-list">
         <div><dt>Model</dt><dd>{r.settings.model_version}</dd></div><div><dt>Signature Consistency</dt><dd>{r.consistency.value.toFixed(3)} · {r.consistency.label}</dd></div>
-        <div><dt>nu / gamma / rank</dt><dd>{r.settings.nu} / {r.settings.gamma} / {r.settings.rank}{r.settings.eta !== undefined && <> · η {r.settings.eta} · τ {r.settings.tau}</>}</dd></div><div><dt>Reference pairs</dt><dd>{r.settings.pairs}</dd></div>
+        {r.settings.model === "R1-WAW-V"
+          ? <div><dt>Score / thresholds</dt><dd>{r.settings.score} · Likely forged below {r.uncertain_low.toFixed(2)} · Likely genuine above {r.uncertain_high.toFixed(2)}</dd></div>
+          : <div><dt>nu / gamma / rank</dt><dd>{r.settings.nu} / {r.settings.gamma} / {r.settings.rank}{r.settings.eta !== undefined && <> · η {r.settings.eta} · τ {r.settings.tau}</>}</dd></div>}<div><dt>Reference pairs</dt><dd>{r.settings.pairs}</dd></div>
         <div><dt>Policy</dt><dd>{r.policy}</dd></div><div><dt>Image quality</dt><dd>{r.quality?.ok ? "Good" : "—"}</dd></div>
       </dl>
       <h2>Limitations</h2><p className="report-text">{LIMITATIONS}</p>

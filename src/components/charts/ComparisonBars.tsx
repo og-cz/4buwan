@@ -4,7 +4,7 @@ import type { Comparison } from "../../types";
 import { fmt, useChartWidth, useTip } from "./chartKit";
 
 /** Panel b: one bar per Reference Sample with a zero baseline. Positive = genuine-like. */
-export default function ComparisonBars({ comparisons, matches, majorityAccept }: { comparisons: Comparison[]; matches: number; majorityAccept: boolean }) {
+export default function ComparisonBars({ comparisons, matches, majorityAccept }: { comparisons: Comparison[]; matches: number; majorityAccept: boolean | null }) {
   const [byValue, setByValue] = useState(false);
   const { ref, width } = useChartWidth();
   const tip = useTip();
@@ -20,7 +20,7 @@ export default function ComparisonBars({ comparisons, matches, majorityAccept }:
     {width > 0 && <svg className="chart-svg" viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Model output for each Reference Sample">
       {rows.map((c, i) => {
         const h = Math.max(1, Math.abs(c.value) * scale), cx = slot * i + slot / 2, y = c.value >= 0 ? zero - h : zero;
-        return <g key={c.reference} onMouseMove={e => tip.show(e, `R${pad2(c.reference)} ${fmt(c.value)}`, c.value >= 0 ? "Genuine-like: inside this person's genuine region." : "Outside this person's genuine region for this pair.")} onMouseLeave={tip.hide}>
+        return <g key={c.reference} onMouseMove={e => tip.show(e, `R${pad2(c.reference)} ${fmt(c.value)}`, majorityAccept === null ? (c.value >= 0 ? "Closer to this reference than this person's genuine signatures usually are to one another." : "Farther from this reference than this person's genuine signatures usually are.") : c.value >= 0 ? "Genuine-like: inside this person's genuine region." : "Outside this person's genuine region for this pair.")} onMouseLeave={tip.hide}>
           <rect x={cx - slot / 2} y={0} width={slot} height={H} fill="transparent" />
           <rect className={c.value >= 0 ? "bar-pos" : "bar-neg"} x={cx - bw / 2} y={y} width={bw} height={h} rx={3} />
           {slot >= 34 && <text className="value" x={cx} y={c.value >= 0 ? Math.max(12, y - 5) : Math.min(H - 26, y + h + 14)} textAnchor="middle">{fmt(c.value, 2)}</text>}
@@ -29,7 +29,7 @@ export default function ComparisonBars({ comparisons, matches, majorityAccept }:
       })}
       <line className="zero" x1={0} x2={W} y1={zero} y2={zero} />
     </svg>}
-    <p className="chart-note"><span className="num">{matches}</span> of 12 above zero (majority rule: {majorityAccept ? "accept" : "reject"}).</p>
+    <p className="chart-note"><span className="num">{matches}</span> of 12 above zero{majorityAccept === null ? "; the score is the highest bar (the closest reference)." : ` (majority rule: ${majorityAccept ? "accept" : "reject"}).`}</p>
     {tip.node}
   </div>;
 }

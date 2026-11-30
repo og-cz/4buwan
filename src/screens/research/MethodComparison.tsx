@@ -3,13 +3,13 @@ import Icon from "../../components/Icon";
 import PageHeader from "../../components/PageHeader";
 import Tag from "../../components/Tag";
 import { percent } from "../../format";
-import { METHOD_NAME, OUR_METHOD } from "../../methods";
+import { METHOD_NAME } from "../../methods";
 import type { PerformanceRow } from "../../types";
 import { CONDITIONS, corpora, find, type Corpus } from "./corpora";
 import R1WawExplainer from "./R1WawExplainer";
 
 const methods: [string, string, string][] = [
-  [CONDITIONS.ours, OUR_METHOD, "Adapts the shared yardstick to each person"],
+  [CONDITIONS.ours, METHOD_NAME.J, "Adapts the shared yardstick to each person, scored by a one-class SVM"],
   [CONDITIONS.shared, METHOD_NAME.G, "One yardstick learned from many writers"],
   [CONDITIONS.standard, METHOD_NAME.B, "The conventional approach"],
 ];
@@ -25,7 +25,7 @@ export default function MethodComparison({ rows }: { rows: PerformanceRow[] }) {
     <div className="method-grid">{methods.map(([condition, name, about], i) => {
       const r = find(rows, condition, corpus);
       return <section className={`panel method-card ${i === 0 ? "ours" : ""}`} key={condition}>
-        <div className="method-title"><span>{String(i + 1).padStart(2, "0")}</span><div><h2>{name}</h2><p>{about}</p></div>{i === 0 && <Tag tone="accent">Proposed</Tag>}</div>
+        <div className="method-title"><span>{String(i + 1).padStart(2, "0")}</span><div><h2>{name}</h2><p>{about}</p></div>{i === 0 && <Tag tone="accent">One-class form</Tag>}</div>
         {r ? <div className="method-values"><div><span>Separation (AUC)</span><strong>{r.AUC.toFixed(3)}</strong><small>1.0 perfect · 0.5 guessing</small></div><div><span>Equal error rate</span><strong>{percent(r.EER)}</strong></div></div> : <p className="input-hint">No result for this corpus.</p>}
         {r && <p className="chart-note">{r.writers} development writers</p>}
       </section>;

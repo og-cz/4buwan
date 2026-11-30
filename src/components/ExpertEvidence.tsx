@@ -23,11 +23,12 @@ export default function ExpertEvidence({ result, person, questioned, reference }
   const trace = useAsync(() => questioned ? preprocess(questioned) : Promise.resolve(null), [questioned]);
   const best = result.comparisons.reduce((a, b) => b.value > a.value ? b : a, result.comparisons[0]);
   const chosen = reference ?? best.reference;
+  const isV = result.settings.model === "R1-WAW-V";
   return <section className="expert-section"><div className="expert-heading"><div><span>ANALYSIS</span><h2>Analysis evidence</h2></div><p>Exact values and technical panels for examination and audit.</p></div><div className="expert-grid">
     <Card code="A" title="SCORE VS DECISION LINE" what="This signature's score against the person's own genuine scores">
       <ScoreDistribution looScores={result.loo_scores} score={result.score} line={result.decision_line} low={result.uncertain_low} high={result.uncertain_high} />
     </Card>
-    <Card code="B" title="12 COMPARISONS" what="Model output for the questioned signature paired with each Reference Sample">
+    <Card code="B" title="12 COMPARISONS" what={isV ? "Score against each Reference Sample, in this person's own units (the verdict uses the closest)" : "Model output for the questioned signature paired with each Reference Sample"}>
       <ComparisonBars comparisons={result.comparisons} matches={result.matches} majorityAccept={result.majority_rule_accept} />
     </Card>
     <Card code="C" title="17 DIFFERENCE MEASURES" what="Questioned values against the person's genuine range" span="rows">
@@ -45,9 +46,16 @@ export default function ExpertEvidence({ result, person, questioned, reference }
     <Card code="G" title="PROFILE PARAMETERS" what="Read-only model record for this check">
       <dl className="parameters-list">
         <div><dt>Signature Consistency</dt><dd>{result.consistency.value.toFixed(3)}× population · {result.consistency.label}</dd></div>
-        <div><dt>nu</dt><dd>{result.settings.nu}</dd></div><div><dt>gamma</dt><dd>{result.settings.gamma}</dd></div>{result.settings.eta !== undefined && <div><dt>η / τ</dt><dd>{result.settings.eta} / {result.settings.tau}</dd></div>}
-        <div><dt>rank</dt><dd>{result.settings.rank}</dd></div><div><dt>Reference pairs</dt><dd>{result.settings.pairs}</dd></div>
-        <div><dt>Model</dt><dd>R1-WAW, model version {result.settings.model_version}</dd></div>
+        {isV ? <>
+          <div><dt>Score</dt><dd>{result.settings.score} · {result.settings.measures} vector measures</dd></div>
+          <div><dt>Writer level / spread</dt><dd>{result.settings.writer_mean} / {result.settings.writer_spread} (floor {result.settings.sigma_floor})</dd></div>
+          <div><dt>Thresholds</dt><dd>Likely forged below {result.uncertain_low.toFixed(2)} · Likely genuine above {result.uncertain_high.toFixed(2)}</dd></div>
+        </> : <>
+          <div><dt>nu</dt><dd>{result.settings.nu}</dd></div><div><dt>gamma</dt><dd>{result.settings.gamma}</dd></div>{result.settings.eta !== undefined && <div><dt>η / τ</dt><dd>{result.settings.eta} / {result.settings.tau}</dd></div>}
+          <div><dt>rank</dt><dd>{result.settings.rank}</dd></div>
+        </>}
+        <div><dt>Reference pairs</dt><dd>{result.settings.pairs}</dd></div>
+        <div><dt>Model</dt><dd>{isV ? "R1-WAW-V" : "R1-WAW"}, model version {result.settings.model_version}</dd></div>
       </dl>
       <p className="chart-note">{result.consistency.text}</p><p className="chart-note policy-line">Policy: {result.policy}</p>
     </Card>

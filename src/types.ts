@@ -8,8 +8,9 @@ export type UncertainZone = "Narrow" | "Standard" | "Wide";
 export type Percentiles = { p5: number; p10: number; p25: number; p50: number; p75: number; p90: number; p95: number };
 
 export type ModelSettings = {
-  nu: number; gamma: string; eta?: number; tau?: number; rank: number; n_enrol: number; pairs: number; measures: number;
+  nu?: number; gamma?: string; eta?: number; tau?: number; rank?: number; n_enrol: number; pairs: number; measures: number;
   hog_dim: number; image: string; hog: string;
+  model?: string; score?: string; sigma_floor?: number; u1_share?: number; threshold_low?: number; threshold_high?: number;
 };
 
 export type ModelMeta = {
@@ -43,13 +44,20 @@ export type MeasureValues = { name: string; questioned: number[] };
 export type MethodScore = { code: string; score: number; matches: number };
 export type MethodName = "Standard method" | "Shared yardstick" | "Our method";
 
+/** R1-WAW-V checks carry model "R1-WAW-V"; checks made by the one-class model carry nu, gamma, eta, tau and rank. */
+export type VerifySettings = {
+  pairs: number; model_version: string; nu?: number; gamma?: string | number; eta?: number; tau?: number; rank?: number;
+  model?: string; score?: string; measures?: number; sigma_floor?: number; threshold_low?: number; threshold_high?: number;
+  writer_mean?: number; writer_spread?: number;
+};
+
 export type VerifyResult = {
   case_id: string; verdict: Verdict; confidence: number; position: number; score: number;
   decision_line: number; uncertain_low: number; uncertain_high: number; matches: number;
-  majority_rule_accept: boolean; reason: string; policy: string; comparisons: Comparison[];
+  majority_rule_accept: boolean | null; reason: string; policy: string; comparisons: Comparison[];
   measures: MeasureValues[]; similarity_matrix: number[][]; loo_scores: number[];
   method_comparison: Record<MethodName, MethodScore>; consistency: Consistency;
-  settings: { nu: number; gamma: string | number; eta?: number; tau?: number; rank: number; pairs: number; model_version: string };
+  settings: VerifySettings;
   quality: Quality;
 };
 

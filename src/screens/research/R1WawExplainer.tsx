@@ -28,6 +28,15 @@ export default function R1WawExplainer() {
         <msup><mrow><mo>(</mo><mfrac><msubsup><mi>σ</mi><mi>w</mi><mn>2</mn></msubsup><msub><mi>λ</mi><mn>1</mn></msub></mfrac><mo>)</mo></mrow><mi>η</mi></msup>
       </math>
     </div>
-    <p className="chart-note">{WG} whitens the 17 difference measures with the pooled within-writer covariance; {U1} is its main direction and {L1} the pooled spread along it. The person&apos;s own spread <math><msub><mi>σ</mi><mi>w</mi></msub></math> is one number, so 12 references are enough to estimate it; η = 3 was chosen on the development writers (η = 1 is the earlier form).</p>
+    <p className="chart-note">{WG} whitens the 17 difference measures with the pooled within-writer covariance; {U1} is its main direction and {L1} the pooled spread along it. The person&apos;s own spread <math><msub><mi>σ</mi><mi>w</mi></msub></math> is one number, so 12 references are enough to estimate it; η = 3 was chosen on the development writers for the one-class form (η = 1 is the first form).</p>
+    <h3>R1-WAW-V: how the app scores a signature</h3>
+    <p>The app keeps R1-WAW&apos;s main direction {U1} and the person&apos;s own statistics along it, and drops the one-class SVM. Each pair of signatures gets one level <math><mi>t</mi></math> along {U1} over the 12 measures that compare the two HOG vectors; a larger level means a more different pair. A questioned signature is judged at its closest reference, one-sidedly, in the person&apos;s own units:</p>
+    <div className="formula" role="img" aria-label="z equals minus, in brackets, the smallest t k minus m w, divided by sigma w">
+      <math display="block">
+        <mi>z</mi><mo>=</mo><mo>−</mo>
+        <mfrac><mrow><munder><mo movablelimits="true">min</mo><mi>k</mi></munder><msub><mi>t</mi><mi>k</mi></msub><mo>−</mo><msub><mi>m</mi><mi>w</mi></msub></mrow><msub><mi>σ</mi><mi>w</mi></msub></mfrac>
+      </math>
+    </div>
+    <p className="chart-note"><math><msub><mi>m</mi><mi>w</mi></msub></math> and <math><msub><mi>σ</mi><mi>w</mi></msub></math> are the mean and spread of the person&apos;s 66 reference pairs along {U1} (η = 1, strict whitening). Because every score is in its person&apos;s own units, one pair of thresholds serves every person. Under writer-level cross-validation on the development writers it reached a per-writer AUC of 0.930 against 0.857 for the one-class form; it has not yet been confirmed on new writers.</p>
   </section>;
 }
