@@ -1,4 +1,6 @@
-"""Proves the app's engine gives the notebook's numbers. Run:  pytest -q   (from the backend folder)
+"""Proves the app's engine gives the notebooks' numbers. Run:  pytest -q   (from the backend folder)
+
+The app runs R1-WAW-V (thesis Section 3.4.6); the one-class model R1-WAW is kept in the engine and tested here too.
 
 If any test here fails, the app no longer matches the research results. Fix the app, not the test.
 """
@@ -72,16 +74,24 @@ def test_preprocess_and_hog_shapes(tmp_path):
 
 
 FIX = Path(__file__).parent / "fixtures" / "cedar10"
+# R1-WAW-V scores of CEDAR writer 10 from the notebook's cached HOG features (the same numbers the images must give)
+V_CEDAR10 = {"genuine_score": 0.9572706163527691, "forged_score": -1.905829026280397}
+# R1-WAW-V per-writer AUC of the reference writers, from the cached features of the 142 development writers
+V_REF_AUC = {"Bengali-002": 0.8194444444444445, "CEDAR-005": 0.8194444444444444, "Hindi-002": 0.9236111111111112}
 
 
 def test_real_images_match_notebook_scores():
     """CEDAR writer 10 (a development writer): 12 enrolment images -> profile; the scores of one held-out genuine
-    and one forgery must equal the scores the notebook's cached features give."""
+    and one forgery must equal the scores the notebooks' cached features give, for R1-WAW-V and for the one-class model."""
     exp = json.loads((FIX / "expected.json").read_text())
     prof, details = E.build_profile([str(FIX / f"original_10_{i}.png") for i in range(1, 13)], K)
     g = E.verify(prof, str(FIX / "original_10_13.png"), K)
     f = E.verify(prof, str(FIX / "forgeries_10_1.png"), K)
-    assert abs(g["score"] - exp["genuine_score"]) < 1e-9 and abs(f["score"] - exp["forged_score"]) < 1e-9
+    assert abs(g["score"] - V_CEDAR10["genuine_score"]) < 1e-9 and abs(f["score"] - V_CEDAR10["forged_score"]) < 1e-9
+    m = E.fit_model(E.enrolment_pairs(prof.hogs), K, "J")
+    for name, key in (("original_10_13.png", "genuine_score"), ("forgeries_10_1.png", "forged_score")):
+        q = E.hog_vector(E.preprocess(str(FIX / name)))
+        assert abs(E.score_pairs(m, E.query_pairs(q, prof.hogs), K).mean() - exp[key]) < 1e-9
     assert len(g["comparisons"]) == 12 and len(g["measures"]) == 17 and len(g["similarity_matrix"]) == 13
     assert g["verdict"] in ("LIKELY GENUINE", "LIKELY FORGED", "UNCERTAIN")
 
@@ -105,3 +115,44 @@ def test_profile_from_an_earlier_model_is_refreshed():
     prof.loo_scores = np.zeros(12); prof.model_version = "J-rank1-v1"
     assert E.refresh_profile(prof, K) and np.allclose(prof.loo_scores, fresh)
     assert prof.model_version == K.meta["model_version"] and not E.refresh_profile(prof, K)
+
+
+def test_v_constants():
+    """R1-WAW-V Phase A constants reproduce the thesis (Sections 3.4.6 and 4.1.14)."""
+    assert len(E.V_IDX) == 12 and E.V_SPREAD.shape == (12,) and E.V_U1.shape == (12,)
+    assert abs(np.linalg.norm(E.V_U1) - 1) < 1e-9 and np.all(E.V_U1 > 0), "u1 is a unit vector with all loadings positive"
+    assert abs(E.V_SHARE - 0.7736) < 5e-5 and abs(E.V_SIGMA_FLOOR - 1.00) < 5e-3
+    lo, hi = E.V_THRESHOLDS[0.05]; assert abs(lo + 0.41) < 5e-3 and abs(hi - 1.03) < 5e-3
+    assert K.meta["model_version"] == E.MODEL_VERSION and K.meta["settings"]["model"] == "R1-WAW-V"
+
+
+@pytest.mark.parametrize("ref", REF, ids=lambda r: f"{r['corpus']}-{r['writer']}")
+def test_v_auc_matches_notebook(ref):
+    """Same pairs in -> same R1-WAW-V AUC out as the cached features of the development writers."""
+    P, Qg, Qf = (np.array(ref[x]) for x in ("P", "Qg", "Qf"))
+    t = E.v_levels(P); m, sd = t.mean(), max(t.std(), E.V_SIGMA_FLOOR)
+    s = [-(E.v_levels(q).min() - m) / sd for q in list(Qg) + list(Qf)]
+    auc = roc_auc_score(np.r_[np.ones(len(Qg)), np.zeros(len(Qf))], s)
+    assert abs(auc - V_REF_AUC[ref["writer"]]) < 1e-9, (auc, V_REF_AUC[ref["writer"]])
+
+
+def test_v_score_is_the_closest_reference_in_the_writers_units():
+    prof, _ = E.build_profile([str(FIX / f"original_10_{i}.png") for i in range(1, 13)], K)
+    r = E.verify(prof, str(FIX / "forgeries_10_1.png"), K)
+    vals = np.array([c["value"] for c in r["comparisons"]])
+    assert abs(r["score"] - vals.max()) < 1e-5 and r["matches"] == int((vals > 0).sum())
+    m, sd = E.v_writer_stats(prof.hogs)
+    assert abs(prof.consistency - sd / np.sqrt(E.V_LAMBDA1)) < 1e-12 and sd >= E.V_SIGMA_FLOOR
+
+
+def test_v_thresholds_follow_the_settings():
+    """Standard = 5% targets; Strict raises the lower threshold, Wide raises the upper one; the zone never inverts."""
+    lo, hi = E.v_thresholds("Standard", "Standard"); assert (lo, hi) == E.V_THRESHOLDS[0.05]
+    assert E.v_thresholds("Strict", "Standard")[0] > lo > E.v_thresholds("Lenient", "Standard")[0]
+    assert E.v_thresholds("Standard", "Wide")[1] > hi > E.v_thresholds("Standard", "Narrow")[1]
+    for s in E.V_STRICTNESS:
+        for u in E.V_UNCERTAIN:
+            a, b = E.v_thresholds(s, u); assert a <= b
+    assert E.decide_v(hi + 0.01, np.ones(12))["verdict"] == "LIKELY GENUINE"
+    assert E.decide_v(lo - 0.01, np.ones(12))["verdict"] == "LIKELY FORGED"
+    assert E.decide_v((lo + hi) / 2, np.ones(12))["verdict"] == "UNCERTAIN"
