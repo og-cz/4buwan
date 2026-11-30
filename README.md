@@ -290,7 +290,7 @@ See [TESTING.md](TESTING.md) for a step-by-step manual test.
 
 ### Portable app (no installation)
 
-`4buwan.exe` runs the whole system on any Windows 10 or 11 computer without Python, Node or npm. Double-click it: a small window opens, and the app opens in the browser a few seconds later. Close that window to stop it. Data is kept in a `4buwan-data` folder next to the exe.
+`4buwan-R1-WAW.exe` runs the whole system on any Windows 10 or 11 computer without Python, Node or npm. Double-click it: a small window opens, and the app opens in the browser a few seconds later. Close that window to stop it. Data is kept in a `4buwan-R1-WAW-data` folder next to the exe.
 
 To build it (in `backend`, venv active, after `pip install pyinstaller`):
 
@@ -298,7 +298,7 @@ To build it (in `backend`, venv active, after `pip install pyinstaller`):
 python tools/build_portable.py
 ```
 
-The result is `release/4buwan.exe`. It contains the private model constants, so share it privately and never attach it to a public release.
+The result is `release/4buwan-R1-WAW.exe` (the `r1-waw-v` branch builds `4buwan-R1-WAW-V.exe`; each keeps its own data folder). It contains the private model constants, so share it privately and never attach it to a public release.
 
 To fill an empty demo in one step, open **Import** (sidebar, under Library) and choose `4buwan-demo-import.zip`: two people with their reference signatures, 48 checks, decisions and the Review Queue appear at once.
 

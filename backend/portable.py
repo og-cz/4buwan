@@ -1,6 +1,7 @@
 """Portable 4buwan: one program that runs the verification service and opens the web interface.
 
-Built into 4buwan.exe by tools/build_portable.py. Data is kept in a "4buwan-data" folder next to the exe.
+Built into 4buwan-R1-WAW.exe by tools/build_portable.py. Data is kept in a "<exe name>-data" folder next to the exe
+(4buwan-R1-WAW-data), so builds of different models can sit in the same folder without sharing records.
 """
 import os
 import socket
@@ -11,7 +12,8 @@ from pathlib import Path
 
 BUNDLE = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))          # files packed into the exe
 HOME = Path(sys.executable).resolve().parent if getattr(sys, "frozen", False) else Path(__file__).resolve().parent
-DATA = HOME / "4buwan-data"
+EXE = Path(sys.executable).stem if getattr(sys, "frozen", False) else "4buwan"
+DATA = HOME / f"{EXE}-data"
 
 os.environ.setdefault("SIGDESK_DATA", str(DATA))
 os.environ.setdefault("SIGDESK_STATIC", str(BUNDLE / "web"))

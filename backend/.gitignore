@@ -5,5 +5,7 @@ __pycache__/
 sigdesk_engine/artifacts/
 tests/fixtures/
 # The engine source and the constants exporter are private; the repository ships engine.pyc instead.
+# engine_src/ keeps one private source per model; each branch commits the engine.pyc of its own model.
 sigdesk_engine/engine.py
+engine_src/
 tools/export_constants.py

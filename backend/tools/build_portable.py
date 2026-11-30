@@ -1,4 +1,4 @@
-"""Builds release/4buwan.exe: the web interface, the verification service, the engine and its constants in one file.
+"""Builds release/4buwan-R1-WAW.exe: the web interface, the verification service, the engine and its constants in one file.
 
     python tools/build_portable.py        (from backend/, with the virtual environment active and PyInstaller installed)
 
@@ -11,6 +11,7 @@ from pathlib import Path
 
 from PIL import Image
 
+NAME = "4buwan-R1-WAW"          # the model this branch ships; the r1-waw-v branch builds 4buwan-R1-WAW-V.exe
 BACKEND = Path(__file__).resolve().parents[1]
 ROOT = BACKEND.parent
 WORK = BACKEND / "build" / "portable"
@@ -23,10 +24,10 @@ Image.open(ROOT / "docs" / "image" / "icon.png").save(icon, sizes=[(16, 16), (32
 
 data = [(ROOT / "dist", "web"), (BACKEND / "sigdesk_engine" / "artifacts", "sigdesk_engine/artifacts")]
 
-args = [sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean", "--onefile", "--console", "--name", "4buwan",
+args = [sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean", "--onefile", "--console", "--name", NAME,
         "--icon", str(icon), "--distpath", str(ROOT / "release"), "--workpath", str(WORK), "--specpath", str(WORK),
         "--paths", str(BACKEND), "--collect-submodules", "uvicorn", "--collect-submodules", "app",
         "--hidden-import", "sigdesk_engine.engine"]
 for src, dest in data: args += ["--add-data", f"{src}{SEP}{dest}"]
 subprocess.run(args + [str(BACKEND / "portable.py")], cwd=BACKEND, check=True)
-print("Built", ROOT / "release" / "4buwan.exe")
+print("Built", ROOT / "release" / f"{NAME}.exe")
