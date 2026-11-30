@@ -15,7 +15,7 @@ app/storage.py                   SQLite + image folders per data mode: data/real
 tools/seed_sample.py             fills data/sample with the 25 CEDAR development writers and 50 example checks
 tools/seed_demo.py               enrols up to 25 CEDAR development writers as "Demo Person" into data/real
 tools/build_demo_export.py       builds the ready-made demo import file from the demo kit
-tools/build_portable.py          builds release/4buwan-R1-WAW.exe
+tools/build_portable.py          builds release/4buwan-R1-WAW-V.exe
 tests/                           pytest: engine == notebook, API end to end, data modes, storage
 ```
 

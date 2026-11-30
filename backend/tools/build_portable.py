@@ -1,4 +1,4 @@
-"""Builds release/4buwan-R1-WAW.exe: the web interface, the verification service, the engine and its constants in one file.
+"""Builds release/4buwan-R1-WAW-V.exe: the web interface, the verification service, the engine and its constants in one file.
 
     python tools/build_portable.py        (from backend/, with the virtual environment active and PyInstaller installed)
 
@@ -11,7 +11,7 @@ from pathlib import Path
 
 from PIL import Image
 
-NAME = "4buwan-R1-WAW"          # the model this branch ships; the r1-waw-v branch builds 4buwan-R1-WAW-V.exe
+NAME = "4buwan-R1-WAW-V"        # the model this branch ships; the r1-waw branch builds 4buwan-R1-WAW.exe
 BACKEND = Path(__file__).resolve().parents[1]
 ROOT = BACKEND.parent
 WORK = BACKEND / "build" / "portable"

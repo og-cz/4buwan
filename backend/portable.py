@@ -1,7 +1,7 @@
 """Portable 4buwan: one program that runs the verification service and opens the web interface.
 
-Built into 4buwan-R1-WAW.exe by tools/build_portable.py. Data is kept in a "<exe name>-data" folder next to the exe
-(4buwan-R1-WAW-data), so builds of different models can sit in the same folder without sharing records.
+Built into 4buwan-R1-WAW-V.exe by tools/build_portable.py. Data is kept in a "<exe name>-data" folder next to the exe
+(4buwan-R1-WAW-V-data), so builds of different models can sit in the same folder without sharing records.
 """
 import os
 import socket

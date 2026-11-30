@@ -43,7 +43,7 @@ Twelve genuine signatures build a profile, each quality-checked as it arrives. N
 
 ### Writer-Adaptive Verification
 
-R1-WAW tunes one shared yardstick to each person's own variation, then gives an advisory verdict with an uncertain zone.
+R1-WAW-V scores a signature at its closest reference in the person's own units, then gives an advisory verdict with an uncertain zone.
 
 [Full video →](docs/mp4/Writer-Adaptive%20Verification.mp4)
 
@@ -140,7 +140,7 @@ Writer-dependent offline signature verification. Each writer is enrolled with **
 
 ### Method (abstract)
 
-Signatures are compared in pairs. A model learned only from the writer's genuine pairs scores a questioned signature against all 12 references. The core of the method, **R1-WAW** (rank-one writer-adaptive whitening), adapts a yardstick shared across many writers to each writer with a single parameter, so 12 references are enough to fit it.
+Signatures are compared in pairs. A model learned only from the writer's genuine pairs scores a questioned signature against all 12 references. The core of the method, **R1-WAW** (rank-one writer-adaptive whitening), adapts a yardstick shared across many writers to each writer with a single parameter, so 12 references are enough to fit it. The app runs its final form, **R1-WAW-V**: the 12 measures that compare the two HOG vectors are combined along R1-WAW's main direction, and a questioned signature is scored one-sidedly at its closest reference, in the writer's own mean and spread along that direction, with one pair of thresholds for every writer.
 
 The implementation is not published: the verification engine ships in compiled form (`backend/sigdesk_engine/engine.pyc`, Python 3.14).
 
@@ -182,7 +182,18 @@ The one-time check on the 132 never-evaluated held-back writers (26 October 2026
 
 Decision rule at the Standard setting: 5.8% of genuine signatures judged forged, 13.3% of forgeries judged genuine, 37.6% referred as Uncertain.
 
-> **Status:** the final model still has to be confirmed on writers never scored. An image-statistics control beats the model on Bengali, so Bengali results are not reported as signature verification.
+### R1-WAW-V (the app's model)
+
+Derived after the one-time check, on the development writers only; writer-level cross-validation (5 folds × 10, constants re-estimated in every fold):
+
+| Model | Per-writer AUC | AUC, one threshold | EER, one threshold |
+|---|---|---|---|
+| J — R1-WAW + one-class SVM | 0.857 | 0.835 | 23.4% |
+| **R1-WAW-V** | **0.930** | **0.907** | **16.3%** |
+
+Decision rule at the Standard setting (5% targets), on writers that did not set the thresholds: 5.2% of genuine signatures judged forged, 5.1% of forgeries judged genuine, 37.4% referred as Uncertain. Without the duplicated Bengali genuine files (110 writers): 0.924 per writer.
+
+> **Status:** R1-WAW-V has not been scored on the held-back writers and still has to be confirmed on writers never scored. An image-statistics control beats the one-class model on Bengali; R1-WAW-V exceeds it on CEDAR and Hindi, and on Bengali only once the duplicated genuine files are removed.
 
 ### Sample data
 
@@ -290,7 +301,7 @@ See [TESTING.md](TESTING.md) for a step-by-step manual test.
 
 ### Portable app (no installation)
 
-`4buwan-R1-WAW.exe` runs the whole system on any Windows 10 or 11 computer without Python, Node or npm. Double-click it: a small window opens, and the app opens in the browser a few seconds later. Close that window to stop it. Data is kept in a `4buwan-R1-WAW-data` folder next to the exe.
+`4buwan-R1-WAW-V.exe` runs the whole system on any Windows 10 or 11 computer without Python, Node or npm. Double-click it: a small window opens, and the app opens in the browser a few seconds later. Close that window to stop it. Data is kept in a `4buwan-R1-WAW-V-data` folder next to the exe.
 
 To build it (in `backend`, venv active, after `pip install pyinstaller`):
 
@@ -298,7 +309,7 @@ To build it (in `backend`, venv active, after `pip install pyinstaller`):
 python tools/build_portable.py
 ```
 
-The result is `release/4buwan-R1-WAW.exe` (the `r1-waw-v` branch builds `4buwan-R1-WAW-V.exe`; each keeps its own data folder). It contains the private model constants, so share it privately and never attach it to a public release.
+The result is `release/4buwan-R1-WAW-V.exe` (the `r1-waw` branch builds `4buwan-R1-WAW.exe` with the one-class model; each keeps its own data folder). It contains the private model constants, so share it privately and never attach it to a public release.
 
 To fill an empty demo in one step, open **Import** (sidebar, under Library) and choose `4buwan-demo-import.zip`: two people with their reference signatures, 48 checks, decisions and the Review Queue appear at once.
 
